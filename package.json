@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "npx webpack --mode production",
+    "lint": "npx eslint --ext .js,.jsx,.ts,.tsx --fix src/",
     "test": "npx jest"
   },
   "repository": {
@@ -22,10 +23,16 @@
     "@babel/preset-env": "^7.9.0",
     "@babel/preset-typescript": "^7.9.0",
     "@types/jest": "^25.1.4",
+    "@typescript-eslint/eslint-plugin": "^2.25.0",
+    "@typescript-eslint/parser": "^2.25.0",
     "babel-jest": "^25.2.4",
     "babel-loader": "^8.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-prettier": "^3.1.2",
     "html-webpack-plugin": "^4.0.3",
     "jest": "^25.2.4",
+    "prettier": "^2.0.2",
     "typescript": "^3.8.3",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11",
