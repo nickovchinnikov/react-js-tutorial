@@ -1,0 +1,36 @@
+{
+  "name": "react-js-tutorial",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx webpack --mode production",
+    "test": "npx jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nickovchinnikov/react-js-tutorial.git"
+  },
+  "author": "Nick Ovchinnikov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nickovchinnikov/react-js-tutorial/issues"
+  },
+  "homepage": "https://github.com/nickovchinnikov/react-js-tutorial#readme",
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
+    "@babel/preset-typescript": "^7.9.0",
+    "@types/jest": "^25.1.4",
+    "babel-jest": "^25.2.4",
+    "babel-loader": "^8.1.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "html-webpack-plugin": "^4.0.3",
+    "jest": "^25.2.4",
+    "typescript": "^3.8.3",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
+  }
+}
