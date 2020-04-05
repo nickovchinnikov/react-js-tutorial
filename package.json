@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "npx webpack --mode production",
-    "lint": "npx eslint --ext .js,.jsx,.ts,.tsx --fix src/",
+    "lint": "npx eslint --ext .js,.jsx,.ts,.tsx --fix ./",
     "test": "npx jest"
   },
   "husky": {
