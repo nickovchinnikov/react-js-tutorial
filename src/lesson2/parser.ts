@@ -1,7 +1,7 @@
 import { isNumber } from "./helpers";
 import { mathOperators } from "./mathOperators";
 
-export type ParsedLineType = Array<number | string>;
+export type ParsedLineType = (number | string)[];
 
 export const parser = (line: string): ParsedLineType | null => {
   const stack = line.split(" ");
