@@ -26,11 +26,14 @@ export const firstPrioritiesCalc = (stack: ParsedLineType): ParsedLineType =>
 
 export const secondPrioritiesCalc = (stack: ParsedLineType): number =>
   stack.reduce<number>((result, nextItem, key) => {
-    const prevItem = result;
     const item = stack[key - 1];
 
+    if (mathOperatorsPriorities[item] === FIRST) {
+      throw new TypeError("Unexpected stack!");
+    }
+
     if (!isNumber(String(item)) && mathOperatorsPriorities[item] === SECOND) {
-      result = mathOperators[item](Number(prevItem), Number(nextItem));
+      result = mathOperators[item](Number(result), Number(nextItem));
     }
     return result;
   }, Number(stack[0]));
