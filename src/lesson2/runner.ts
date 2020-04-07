@@ -1,6 +1,6 @@
 import { parser } from "./parser";
 
-import { firstPrioritiesCalc, secondPrioritiesCalc } from "./engine";
+import { firstPrioritiesCalc, secondPrioritiesCalc, thirdPrioritiesCalc } from "./engine";
 
 export const runner = (line: string): number => {
   const stack = parser(line);
@@ -15,5 +15,11 @@ export const runner = (line: string): number => {
     return Number(firstPrioritiesRes[0]);
   }
 
-  return secondPrioritiesCalc(firstPrioritiesRes);
+  const secondPrioritiesRes = secondPrioritiesCalc(firstPrioritiesRes);
+
+  if (secondPrioritiesRes.length === 1) {
+    return Number(secondPrioritiesRes[0]);
+  }
+
+  return thirdPrioritiesCalc(secondPrioritiesRes);
 };
