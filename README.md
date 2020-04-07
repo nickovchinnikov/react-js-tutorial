@@ -8,6 +8,7 @@ Basic configuration for the project on the master branch. What configurations yo
 * Eslint
 * Jest
 * Precommit hooks / husky
+https://github.com/nickovchinnikov/react-js-tutorial/pull/1
 
 ## Lesson 2:
 Math calculator with basic arithmetic operations without eval
@@ -26,3 +27,4 @@ Result: 180
 > 19 + -10
 Result: 9
 ```
+https://github.com/nickovchinnikov/react-js-tutorial/pull/3
