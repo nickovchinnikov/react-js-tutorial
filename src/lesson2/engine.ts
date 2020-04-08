@@ -1,4 +1,4 @@
-import { ParsedLineType } from "./parser";
+import { ParsedLineType, parser } from "./parser";
 import { isNumber } from "./helpers";
 import {
   mathOperators,
@@ -50,7 +50,10 @@ export const thirdPrioritiesCalc = (stack: ParsedLineType): number =>
   stack.reduce<number>((result, nextItem, key) => {
     const item = stack[key - 1];
 
-    if (mathOperatorsPriorities[item] === FIRST || mathOperatorsPriorities[item] === SECOND ) {
+    if (
+      mathOperatorsPriorities[item] === FIRST ||
+      mathOperatorsPriorities[item] === SECOND
+    ) {
       throw new TypeError("Unexpected stack!");
     }
 
@@ -59,3 +62,30 @@ export const thirdPrioritiesCalc = (stack: ParsedLineType): number =>
     }
     return result;
   }, Number(stack[0]));
+
+export const solveSimpleExp = (line: string): number => {
+  const stack = parser(line);
+
+  if (stack === null) {
+    throw new TypeError("Unexpected string");
+  }
+
+  const firstPrioritiesRes = firstPrioritiesCalc(stack);
+
+  if (firstPrioritiesRes.length === 1) {
+    return Number(firstPrioritiesRes[0]);
+  }
+
+  const secondPrioritiesRes = secondPrioritiesCalc(firstPrioritiesRes);
+
+  if (secondPrioritiesRes.length === 1) {
+    return Number(secondPrioritiesRes[0]);
+  }
+
+  return thirdPrioritiesCalc(secondPrioritiesRes);
+};
+
+export const simplifyExp = (line: string): string => {
+  let newLine = line.replace(/\*\*/g, '^ 2');
+  return newLine;
+}

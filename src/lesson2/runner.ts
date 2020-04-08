@@ -1,25 +1,15 @@
-import { parser } from "./parser";
+import { solveSimpleExp, simplifyExp } from "./engine";
 
-import { firstPrioritiesCalc, secondPrioritiesCalc, thirdPrioritiesCalc } from "./engine";
+
 
 export const runner = (line: string): number => {
-  const stack = parser(line);
-
-  if (stack === null) {
-    throw new TypeError("Unexpected string");
+  let expression = simplifyExp(line);
+  let expInBrackets = expression.match(/\(([^\(\)]+)\)/);
+  while (expInBrackets !== null) {
+    let expPart = expInBrackets[1];
+    const answer = solveSimpleExp(expPart);
+    expression = expression.replace(expInBrackets[0], `${answer}`);
+    expInBrackets = expression.match(/\(([^\(\)]+)\)/);
   }
-
-  const firstPrioritiesRes = firstPrioritiesCalc(stack);
-
-  if (firstPrioritiesRes.length === 1) {
-    return Number(firstPrioritiesRes[0]);
-  }
-
-  const secondPrioritiesRes = secondPrioritiesCalc(firstPrioritiesRes);
-
-  if (secondPrioritiesRes.length === 1) {
-    return Number(secondPrioritiesRes[0]);
-  }
-
-  return thirdPrioritiesCalc(secondPrioritiesRes);
+  return solveSimpleExp(expression);
 };
