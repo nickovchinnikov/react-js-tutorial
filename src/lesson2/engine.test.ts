@@ -83,4 +83,7 @@ describe("simplify expression", () => {
   it("(2 ** + 4) * 1", () => {
     expect(simplifyExp("(2 ** + 4) * 1")).toEqual("(2 ^ 2 + 4) * 1");
   });
+  it("3!", () => {
+    expect(simplifyExp("3!")).toEqual("1 * 2 * 3");
+  });
 });
