@@ -1,5 +1,7 @@
 import React, { Component, ReactNode } from "react";
 
+import { ClickCounterButton } from "./ClickCounterButton";
+
 interface Prop {
   start?: number;
 }
@@ -28,6 +30,10 @@ export class ClickCounter extends Component<Prop, State> {
 
   render(): ReactNode {
     const { count } = this.state;
-    return <button onClick={this.increment}>Clicked {count} times!</button>;
+    return (
+      <ClickCounterButton increment={this.increment}>
+        {count}
+      </ClickCounterButton>
+    );
   }
 }

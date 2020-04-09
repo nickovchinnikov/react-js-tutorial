@@ -1,36 +1,10 @@
 import React from "react";
-import { shallow, mount, render } from "enzyme";
+import { mount, render } from "enzyme";
 
 import { ClickCounter } from "./ClickCounter";
 
-describe("Click counter render check", function () {
-  it("Default render", function () {
-    expect(
-      shallow(<ClickCounter />).matchesElement(
-        <button>Clicked 0 times!</button>
-      )
-    ).toBe(true);
-  });
-
-  it("Default render with prop", function () {
-    expect(
-      shallow(<ClickCounter start={1} />).matchesElement(
-        <button>Clicked 1 times!</button>
-      )
-    ).toBe(true);
-  });
-
-  it("Click simulation", function () {
-    const wrapper = shallow(<ClickCounter />);
-
-    expect(wrapper.text()).toEqual("Clicked 0 times!");
-
-    wrapper.find("button").simulate("click");
-
-    expect(wrapper.text()).toEqual("Clicked 1 times!");
-  });
-
-  it("componentDidMount test", function () {
+describe("Click counter render check", () => {
+  it("componentDidMount test", () => {
     const spy = jest.spyOn(ClickCounter.prototype, "componentDidMount");
     const wrapper = mount(<ClickCounter />);
 
@@ -43,7 +17,7 @@ describe("Click counter render check", function () {
     expect(spy).toHaveBeenCalled();
   });
 
-  it("should render to static HTML", function () {
+  it("should render to static HTML", () => {
     expect(render(<ClickCounter />).text()).toEqual("Clicked 0 times!");
   });
 });
