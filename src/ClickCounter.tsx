@@ -12,7 +12,7 @@ export class ClickCounter extends Component<Prop, State> {
   constructor(props: Prop) {
     super(props);
     this.state = {
-      count: 0,
+      count: props.start || 0,
     };
     this.increment = this.increment.bind(this);
   }
@@ -20,6 +20,10 @@ export class ClickCounter extends Component<Prop, State> {
   increment(): void {
     const { count } = this.state;
     this.setState({ count: count + 1 });
+  }
+
+  componentDidMount(): void {
+    console.log("ClickCounter: componentDidMount");
   }
 
   render(): ReactNode {
