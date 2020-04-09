@@ -45,4 +45,5 @@ Result: 36
 > (sin(30) + 3.5)^2
 Result: 16
 ```
-https://github.com/nickovchinnikov/react-js-tutorial/pull/4
+https://github.com/nickovchinnikov/react-js-tutorial/pull/6
+If you want to see entire commit history, go here https://github.com/shurupov/otus-react/pull/2
