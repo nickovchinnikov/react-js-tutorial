@@ -43,5 +43,6 @@ Basic react configuration
 * Jest config
 
 [Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/7)
+[Pull request2](https://github.com/nickovchinnikov/react-js-tutorial/pull/8)
 
 [Presentation](https://drive.google.com/open?id=10qgUTWj5aMG4WxcNk9UV8_xMHdnE5GRH7I7_Z8w0P7M)

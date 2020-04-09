@@ -23,6 +23,8 @@ describe("Click counter render check", () => {
   });
 
   it("Click simulation", () => {
+    const incMock = jest.fn();
+
     const wrapper = shallow(
       <ClickCounterButton increment={incMock}>{1}</ClickCounterButton>
     );
