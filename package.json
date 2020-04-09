@@ -6,6 +6,7 @@
   "scripts": {
     "build": "npx webpack --mode production",
     "calc": "npx ts-node src/lesson2",
+    "calc2": "npx ts-node src/lesson-2-shurupov",
     "lint": "npx eslint --ext .js,.jsx,.ts,.tsx --fix ./",
     "test": "npx jest",
     "check": "npm test && npm run lint"
