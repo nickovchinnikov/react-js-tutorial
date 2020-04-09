@@ -16,6 +16,10 @@ export const withAButton: React.FC<{}> = () => (
   </button>
 );
 
+export const megaHeader: React.FC<{}> = () => (
+  <h1 onClick={action("Header click")}>{text("Header", "MegaHeader")}</h1>
+);
+
 export const asDynamicVariables: React.FC<{}> = () => {
   const name = text("Name", "James");
   const age = number("Age", 35);
