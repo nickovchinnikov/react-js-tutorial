@@ -16,7 +16,9 @@
       {
         "endOfLine": "auto"
       }
-    ]
+    ],
+    "@typescript-eslint/explicit-function-return-type": 0,
+    "react/prop-types": 0
   },
   "parserOptions": {
     "sourceType": "module",

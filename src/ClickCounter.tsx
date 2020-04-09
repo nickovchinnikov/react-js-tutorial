@@ -19,16 +19,16 @@ export class ClickCounter extends Component<Prop, State> {
     this.increment = this.increment.bind(this);
   }
 
-  increment(): void {
+  increment() {
     const { count } = this.state;
     this.setState({ count: count + 1 });
   }
 
-  componentDidMount(): void {
+  componentDidMount() {
     console.log("ClickCounter: componentDidMount");
   }
 
-  render(): ReactNode {
+  render() {
     const { count } = this.state;
     return (
       <ClickCounterButton increment={this.increment}>

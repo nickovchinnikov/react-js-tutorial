@@ -6,14 +6,7 @@ import { ClickCounter } from "./ClickCounter";
 describe("Click counter render check", () => {
   it("componentDidMount test", () => {
     const spy = jest.spyOn(ClickCounter.prototype, "componentDidMount");
-    const wrapper = mount(<ClickCounter />);
-
-    const instance = wrapper.instance();
-
-    if (instance && instance.componentDidMount) {
-      instance.componentDidMount();
-    }
-
+    mount(<ClickCounter />);
     expect(spy).toHaveBeenCalled();
   });
 
