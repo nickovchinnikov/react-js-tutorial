@@ -29,15 +29,20 @@
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.0",
+    "@babel/preset-react": "^7.9.4",
     "@babel/preset-typescript": "^7.9.0",
     "@types/jest": "^25.1.4",
+    "@types/react": "^16.9.33",
     "@typescript-eslint/eslint-plugin": "^2.25.0",
     "@typescript-eslint/parser": "^2.25.0",
     "babel-jest": "^25.2.4",
     "babel-loader": "^8.1.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.1",
     "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.19.0",
     "html-webpack-plugin": "^4.0.3",
     "husky": "^4.2.3",
     "jest": "^25.2.4",
@@ -47,5 +52,9 @@
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3"
+  },
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
   }
 }
