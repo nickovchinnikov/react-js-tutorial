@@ -20,11 +20,33 @@ describe("Parser correct cases", () => {
   it("sin 30 + cos 60", () => {
     expect(parser("sin 30 + cos 60")).toEqual(["sin", 30, "+", "cos", 60]);
   });
+
+  it("tg 30 + 5 - ctg 7", () => {
+    expect(parser("tg 30 + 5 - ctg 7")).toEqual([
+      "tg",
+      30,
+      "+",
+      5,
+      "-",
+      "ctg",
+      7,
+    ]);
+  });
 });
 
 describe("Parser invalid cases", () => {
   it("1 + + 33 - 2", () => {
     expect(() => parser("1 + + 33 - 2")).toThrow(
+      TypeError("Unexpected string")
+    );
+  });
+
+  it("1 + cos - 2", () => {
+    expect(() => parser("1 + cos - 2")).toThrow(TypeError("Unexpected string"));
+  });
+
+  it("1 + cos tg 2", () => {
+    expect(() => parser("1 + cos tg 2")).toThrow(
       TypeError("Unexpected string")
     );
   });

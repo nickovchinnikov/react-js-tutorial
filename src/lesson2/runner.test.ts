@@ -37,3 +37,13 @@ describe("Runner long cases", () => {
     expect(runner("20 - 10 * 10 / 5 - 3")).toEqual(-3);
   });
 });
+
+describe("Runner brackets cases", () => {
+  it("(2 + 3) * ((1 + 7 * (5 + 3)))", () => {
+    expect(runner("(2 + 3) * ((1 + 7 * (5 + 3)))")).toEqual(285);
+  });
+
+  it("(1 + 5) ^ 2", () => {
+    expect(runner("(1 + 5) ^ 2")).toEqual(36);
+  });
+});

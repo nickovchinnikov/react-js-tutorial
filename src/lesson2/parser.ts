@@ -20,9 +20,12 @@ export const parser = (line: string): ParsedLineType | null => {
       isNumber(prevItem) &&
       !isNumber(item) &&
       mathOperators.hasOwnProperty(item);
-    const isValidTrigOperatorsPush = mathOperatorsPriorities[item] === FIRST;
-    mathOperators.hasOwnProperty(item) &&
-      (key === 0 || mathOperators.hasOwnProperty(prevItem));
+    const isValidTrigOperatorsPush =
+      mathOperatorsPriorities[item] === FIRST &&
+      mathOperators.hasOwnProperty(item) &&
+      (key === 0 ||
+        (mathOperators.hasOwnProperty(prevItem) &&
+          mathOperatorsPriorities[prevItem] !== FIRST));
 
     if (isValidNumberPush) {
       result.push(Number(item));

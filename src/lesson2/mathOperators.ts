@@ -38,7 +38,9 @@ export const tg: TrigonometricOperationType = (value: number): number =>
 export const ctg: TrigonometricOperationType = (value: number): number =>
   parseFloat((cos(value) / sin(value)).toFixed(2));
 
-export const mathOperators: { [key: string]: ScalarOperationType } = {
+export const mathOperators: {
+  [key: string]: ScalarOperationType | TrigonometricOperationType;
+} = {
   "*": mul,
   "/": div,
   "+": add,
