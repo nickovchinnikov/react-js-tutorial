@@ -47,3 +47,17 @@ describe("Runner brackets cases", () => {
     expect(runner("(1 + 5) ^ 2")).toEqual(36);
   });
 });
+
+describe("Runner RPN", () => {
+  it("5 3 6 * +_6 3 / - 7 +", () => {
+    expect(runner("5 3 6 * + 6 3 / - 7 +")).toEqual(28);
+  });
+
+  it("30 sin", () => {
+    expect(runner("30 sin")).toEqual(0.5);
+  });
+
+  it("30 sin 60 cos +", () => {
+    expect(runner("30 sin 60 cos +")).toEqual(1);
+  });
+});

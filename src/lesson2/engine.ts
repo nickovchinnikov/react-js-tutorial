@@ -4,6 +4,7 @@ import {
   mathOperators,
   mathPriorities,
   mathOperatorsPriorities,
+  trigonomenticOperators,
 } from "./mathOperators";
 
 const [ZERO, FIRST, SECOND, THIRD] = mathPriorities;
@@ -40,7 +41,7 @@ export const firstPrioritiesCalc = (stack: ParsedLineType): ParsedLineType =>
       }
       result = [
         ...result.slice(0, -1),
-        mathOperators[prevItem](Number(item), 0),
+        trigonomenticOperators[prevItem](Number(item)),
       ];
     } else {
       result.push(item);
@@ -122,6 +123,22 @@ export const simplifyExp = (line: string): string => {
     let result = "";
     while (count <= num) {
       result = `${result} ${count === 1 ? "" : "*"} ${count}`;
+      count++;
+    }
+    return result.trim();
+  });
+  return newLine;
+};
+
+export const polishNotationSimplify = (line: string): string => {
+  let newLine = line.replace(/\*\*/g, "2 ^");
+  newLine = newLine.replace("0!", "1");
+  newLine = newLine.replace(/(\d+)\!/g, (exp, numMatch) => {
+    const num = parseInt(numMatch, 10);
+    let count = 1;
+    let result = "";
+    while (count <= num) {
+      result = `${count} ${result} ${count === 1 ? "" : "*"}`;
       count++;
     }
     return result.trim();
