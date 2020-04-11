@@ -1,7 +1,13 @@
 import { isNumber } from "./helpers";
-import { mathOperators } from "./mathOperators";
+import {
+  mathOperators,
+  mathOperatorsPriorities,
+  mathPriorities,
+} from "./mathOperators";
 
 export type ParsedLineType = (number | string)[];
+
+const [, FIRST] = mathPriorities;
 
 export const parser = (line: string): ParsedLineType | null => {
   const stack = line.split(" ");
@@ -14,10 +20,13 @@ export const parser = (line: string): ParsedLineType | null => {
       isNumber(prevItem) &&
       !isNumber(item) &&
       mathOperators.hasOwnProperty(item);
+    const isValidTrigOperatorsPush = mathOperatorsPriorities[item] === FIRST;
+    mathOperators.hasOwnProperty(item) &&
+      (key === 0 || mathOperators.hasOwnProperty(prevItem));
 
     if (isValidNumberPush) {
       result.push(Number(item));
-    } else if (isValidOperatorPush) {
+    } else if (isValidOperatorPush || isValidTrigOperatorsPush) {
       result.push(item);
     } else {
       throw new TypeError("Unexpected string");

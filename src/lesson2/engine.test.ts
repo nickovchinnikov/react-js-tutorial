@@ -1,4 +1,5 @@
 import {
+  zeroPrioritiesCalc,
   firstPrioritiesCalc,
   secondPrioritiesCalc,
   thirdPrioritiesCalc,
@@ -6,13 +7,23 @@ import {
   simplifyExp,
 } from "./engine";
 
-describe("firstPrioritiesCalc simple cases", () => {
+describe("zeroPrioritiesCalc simple cases", () => {
   it("[2, ^ 3]", () => {
-    expect(firstPrioritiesCalc([2, "^", 3])).toEqual([8]);
+    expect(zeroPrioritiesCalc([2, "^", 3])).toEqual([8]);
   });
 
   it("[3, ^ 2]", () => {
-    expect(firstPrioritiesCalc([3, "^", 2])).toEqual([9]);
+    expect(zeroPrioritiesCalc([3, "^", 2])).toEqual([9]);
+  });
+});
+
+describe("firstPrioritiesCalc simple cases", () => {
+  it("[cos, 60]", () => {
+    expect(firstPrioritiesCalc(["cos", 60])).toEqual([0.5]);
+  });
+
+  it("[sin, 90]", () => {
+    expect(firstPrioritiesCalc(["sin", 90])).toEqual([1]);
   });
 });
 
