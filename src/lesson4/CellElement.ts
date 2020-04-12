@@ -1,11 +1,24 @@
 import React from "react";
 
-export function getCellElement() {
+interface CellProps {
+  filled?: string;
+}
+
+export function getCellElement(props: CellProps) {
+  if (!props.filled) {
+    return React.createElement(
+      "button",
+      {
+        className: "cell cell-empty",
+      },
+      " "
+    );
+  }
   return React.createElement(
-    "button",
+    "span",
     {
-      className: "cell cell-empty",
+      className: "cell cell-filled",
     },
-    " "
+    props.filled
   );
 }
