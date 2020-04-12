@@ -2,16 +2,18 @@ import React from "react";
 
 interface CellProps {
   filled?: string;
-  onClick: () => void;
+  onClick: (x: number, y: number) => void;
+  x?: number;
+  y?: number;
 }
 
-export function getCellElement(props: CellProps) {
-  if (!props.filled) {
+export function getCellElement({ onClick, filled, x = 0, y = 0 }: CellProps) {
+  if (!filled) {
     return React.createElement(
       "button",
       {
         className: "cell cell-empty",
-        onClick: props.onClick,
+        onClick: () => onClick(x, y),
       },
       " "
     );
@@ -21,6 +23,6 @@ export function getCellElement(props: CellProps) {
     {
       className: "cell cell-filled",
     },
-    props.filled
+    filled
   );
 }

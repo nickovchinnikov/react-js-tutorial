@@ -28,4 +28,12 @@ describe("cell", () => {
     wrapper.simulate("click");
     expect(onClick).not.toHaveBeenCalled();
   });
+  it("calls onClick callback with passed x, y params", () => {
+    const onClick = jest.fn();
+    const x = 12;
+    const y = 14;
+    const wrapper = mount(getCellElement({ onClick, x, y }));
+    wrapper.simulate("click");
+    expect(onClick).toHaveBeenCalledWith(x, y);
+  });
 });
