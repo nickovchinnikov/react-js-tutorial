@@ -18,7 +18,9 @@ const Cell: FC<CellProps> = ({ filled, x, y, onClick }) => {
 
 export default Cell;
 
-export const getCell = (props: CellProps) => <Cell {...props} />;
-// На самом деле это означает тоже самое что и
-// return <Cell x={props.x} y={props.y} onClick={props.onClick} />;
-// Все параметры передаются в компонент
+export function getCell(props: CellProps) {
+  // На самом деле это означает тоже самое что и
+  // return <Cell x={props.x} y={props.y} onClick={props.onClick} />;
+  // Все параметры передаются в компонент
+  return <Cell {...props} />;
+}
