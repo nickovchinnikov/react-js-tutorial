@@ -2,6 +2,7 @@ import React from "react";
 
 interface CellProps {
   filled?: string;
+  onClick: () => void;
 }
 
 export function getCellElement(props: CellProps) {
@@ -10,6 +11,7 @@ export function getCellElement(props: CellProps) {
       "button",
       {
         className: "cell cell-empty",
+        onClick: props.onClick,
       },
       " "
     );
