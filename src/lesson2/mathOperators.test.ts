@@ -1,4 +1,4 @@
-import { mul, div, add, minus } from "./mathOperators";
+import { mul, div, add, minus, power } from "./mathOperators";
 
 describe("mathOperators test cases", () => {
   it("mul 1 * 2 to equal 2", () => {
@@ -23,5 +23,17 @@ describe("mathOperators test cases", () => {
 
   it("minus 4 - 2 to equal 2", () => {
     expect(minus(4, 2)).toBe(2);
+  });
+
+  it("power 4 ^ 2 to equal 16", () => {
+    expect(power(4, 2)).toBe(16);
+  });
+
+  it("power 100 ^ 0 to equal 1", () => {
+    expect(power(100, 0)).toBe(1);
+  });
+
+  it("power 5 ^ -1 to equal 0.2", () => {
+    expect(power(5, -1)).toBe(0.2);
   });
 });
