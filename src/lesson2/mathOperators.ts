@@ -26,11 +26,12 @@ export const power: ScalarOperationType = (
   second: number
 ): number => first ** second;
 
-export const square: NumberOperationType = (
-  argument: number
-): number => power(argument, 2);
+export const square: NumberOperationType = (argument: number): number =>
+  power(argument, 2);
 
-export const mathOperators: { [key: string]: ScalarOperationType | NumberOperationType } = {
+export const mathOperators: {
+  [key: string]: ScalarOperationType | NumberOperationType;
+} = {
   "*": mul,
   "/": div,
   "+": add,

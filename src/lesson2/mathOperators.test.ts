@@ -48,5 +48,4 @@ describe("mathOperators test cases", () => {
   it("square 0 to equal 0", () => {
     expect(square(0)).toBe(0);
   });
-  
 });
