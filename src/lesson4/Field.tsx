@@ -21,7 +21,7 @@ const Field: FC<FieldProps> = (props) => (
           key={`${x}_${y}`}
         />
       )),
-      y !== row.length - 1 ? <br /> : null,
+      y !== row.length - 1 ? <br key={y} /> : null,
     ])}
   </div>
 );
