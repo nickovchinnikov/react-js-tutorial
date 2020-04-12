@@ -3,14 +3,18 @@ import { action } from "@storybook/addon-actions";
 import { withKnobs, object } from "@storybook/addon-knobs";
 import { getField as getFieldElement } from "./FieldElement";
 import Field from "./Field";
+
 export default {
   title: "Lesson 4 / Field",
   decorators: [withKnobs],
 };
 
+const elementClicked = action("Cell clicked (element)");
+const elementClickedJsx = action("Cell clicked (jsx");
+
 export const emptyField = () => [
   getFieldElement({
-    onClick: action("Cell clicked (element)"),
+    onClick: elementClicked,
     field: object("field", [
       ["", "", ""],
       ["", "", ""],
@@ -19,7 +23,7 @@ export const emptyField = () => [
   }),
   <Field
     key="jsx"
-    onClick={action("Cell clicked (jsx")}
+    onClick={elementClickedJsx}
     field={object("field", [
       ["", "", ""],
       ["", "", ""],
@@ -30,7 +34,7 @@ export const emptyField = () => [
 
 export const nonEmptyField = () => [
   getFieldElement({
-    onClick: action("Cell clicked"),
+    onClick: elementClicked,
     field: object("field", [
       ["x", "o", ""],
       ["", "o", ""],
@@ -39,7 +43,7 @@ export const nonEmptyField = () => [
   }),
   <Field
     key="jsx"
-    onClick={action("Cell clicked (jsx")}
+    onClick={elementClickedJsx}
     field={object("field", [
       ["x", "o", ""],
       ["", "o", ""],
