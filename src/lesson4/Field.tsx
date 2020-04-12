@@ -16,6 +16,4 @@ const Field: FC<FieldProps> = ({ field, onClick }) => (
 
 export default Field;
 
-export function getField(props: FieldProps) {
-  return <Field {...props} />;
-}
+export const getField = (props: FieldProps) => <Field {...props} />;

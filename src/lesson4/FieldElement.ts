@@ -3,8 +3,8 @@ import React from "react";
 import { getCell } from "./CellElement";
 import type { FieldProps } from "./interfaces";
 
-export function getField(props: FieldProps) {
-  return React.createElement(
+export const getField = (props: FieldProps) =>
+  React.createElement(
     "div",
     {
       className: "field",
@@ -24,4 +24,3 @@ export function getField(props: FieldProps) {
       ];
     }, [] as React.ReactHTMLElement<HTMLElement>[])
   );
-}
