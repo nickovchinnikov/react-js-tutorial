@@ -9,4 +9,8 @@ module.exports = {
   transform: {
     "^.+\\.(js|jsx|ts|tsx)$": "<rootDir>/node_modules/babel-jest",
   },
+  moduleNameMapper: {
+    // https://jestjs.io/docs/en/webpack#handling-static-assets
+    "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js",
+  },
 };
