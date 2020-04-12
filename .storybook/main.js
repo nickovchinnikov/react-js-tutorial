@@ -9,6 +9,7 @@ module.exports = {
     '@storybook/addon-links',
     '@storybook/addon-knobs/register',
     '@storybook/addon-storysource',
+    'storybook-addon-react-docgen/register'
   ],
   webpackFinal: (config) => {
     config.plugins.push(new webpack.HotModuleReplacementPlugin());
