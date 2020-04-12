@@ -36,4 +36,10 @@ describe("Parser invalid cases", () => {
 
     expect(parserCall).toThrow(unexpectedStringError);
   });
+
+  it("1 2 * 3 should throw unexpected string error", () => {
+    const parserCall = () => parser("1^6-8");
+
+    expect(parserCall).toThrow(unexpectedStringError);
+  });
 });
