@@ -1,0 +1,20 @@
+.cell {
+  width: 25px;
+  height: 25px;
+  border: 1px solid;
+  display: inline-block;
+  border-radius: 10px;
+  line-height: 25px;
+  text-align: center;
+  margin: 5px;
+  vertical-align: bottom;
+}
+
+.cell-empty {
+  border-color: gray;
+}
+
+.cell-filled {
+  border-color: lightgray;
+  color: gray;
+}

@@ -1,12 +1,12 @@
 import React from "react";
 
-import { getCellElement } from "./CellElement";
+import { getCell } from "./CellElement";
 interface FieldProps {
   field: string[][];
   onClick: (x: number, y: number) => void;
 }
 
-export function getFieldElement(props: FieldProps) {
+export function getField(props: FieldProps) {
   return React.createElement(
     "div",
     {
@@ -16,7 +16,7 @@ export function getFieldElement(props: FieldProps) {
       return [
         ...acc,
         ...row.map((filled, x) => {
-          return getCellElement({
+          return getCell({
             onClick: props.onClick,
             filled: filled ? filled : undefined,
             x,

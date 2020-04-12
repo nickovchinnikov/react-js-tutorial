@@ -7,7 +7,7 @@ interface CellProps {
   y?: number;
 }
 
-export function getCellElement({ onClick, filled, x = 0, y = 0 }: CellProps) {
+export function getCell({ onClick, filled, x = 0, y = 0 }: CellProps) {
   if (!filled) {
     return React.createElement(
       "button",
