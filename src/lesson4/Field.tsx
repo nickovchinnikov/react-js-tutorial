@@ -9,17 +9,11 @@ interface FieldProps {
   onClick: (x: number, y: number) => void;
 }
 
-const Field: FC<FieldProps> = (props) => (
+const Field: FC<FieldProps> = ({ field, onClick }) => (
   <div className="field">
-    {props.field.map((row, y) => [
+    {field.map((row, y) => [
       ...row.map((filled: string, x) => (
-        <Cell
-          filled={filled}
-          x={x}
-          y={y}
-          onClick={props.onClick}
-          key={`${x}_${y}`}
-        />
+        <Cell filled={filled} x={x} y={y} onClick={onClick} key={`${x}_${y}`} />
       )),
       y !== row.length - 1 ? <br key={y} /> : null,
     ])}

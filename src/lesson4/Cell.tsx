@@ -15,15 +15,12 @@ interface CellProps {
 /**
  * Some custom description for Cell component
  */
-const Cell: FC<CellProps> = (props) => {
-  if (props.filled) {
-    return <span className="cell cell-filled">{props.filled}</span>;
+const Cell: FC<CellProps> = ({ filled, x, y, onClick }) => {
+  if (filled) {
+    return <span className="cell cell-filled">{filled}</span>;
   }
   return (
-    <button
-      className="cell cell-empty"
-      onClick={() => props.onClick(props.x || 0, props.y || 0)}
-    >
+    <button className="cell cell-empty" onClick={() => onClick(x || 0, y || 0)}>
       {" "}
     </button>
   );
