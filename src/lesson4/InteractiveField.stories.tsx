@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { action } from "@storybook/addon-actions";
+import React from "react";
 import { withKnobs, number, array } from "@storybook/addon-knobs";
 import Field from "./Field";
 import InteractiveField from "./InteractiveField";
