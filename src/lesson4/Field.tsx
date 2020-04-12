@@ -1,13 +1,7 @@
 import React, { FC } from "react";
 import Cell from "./Cell";
 import "./Field.css";
-
-interface FieldProps {
-  // array representing field state
-  field: string[][];
-  // calback to fire event on field interaction
-  onClick: (x: number, y: number) => void;
-}
+import type { FieldProps } from "./interfaces";
 
 const Field: FC<FieldProps> = ({ field, onClick }) => (
   <div className="field">

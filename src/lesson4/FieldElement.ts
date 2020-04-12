@@ -1,10 +1,7 @@
 import React from "react";
 
 import { getCell } from "./CellElement";
-interface FieldProps {
-  field: string[][];
-  onClick: (x: number, y: number) => void;
-}
+import type { FieldProps } from "./interfaces";
 
 export function getField(props: FieldProps) {
   return React.createElement(
