@@ -1,4 +1,4 @@
-import { parser } from "./parser";
+import { parser, ParsedLineType } from "./parser";
 
 describe("Parser correct cases", () => {
   it("1 + 32", () => {
@@ -32,13 +32,13 @@ describe("Parser invalid cases", () => {
   });
 
   it("1^6-8 should throw unexpected string error", () => {
-    const parserCall = () => parser("1^6-8");
+    const parserCall = (): ParsedLineType | null => parser("1^6-8");
 
     expect(parserCall).toThrow(unexpectedStringError);
   });
 
   it("1 2 * 3 should throw unexpected string error", () => {
-    const parserCall = () => parser("1^6-8");
+    const parserCall = (): ParsedLineType | null => parser("1 2 * 3");
 
     expect(parserCall).toThrow(unexpectedStringError);
   });
