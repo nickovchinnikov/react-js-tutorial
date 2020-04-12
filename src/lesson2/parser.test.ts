@@ -14,27 +14,26 @@ describe("Parser correct cases", () => {
   });
 
   it("100 ^ -1 + 10 ^ 2", () => {
-    const parserResult = parser("100 ^ -1 + 10 ^ 2")
+    const parserResult = parser("100 ^ -1 + 10 ^ 2");
 
-    expect(parserResult).toEqual([100, "^", -1, "+", 10, "^", 2])
+    expect(parserResult).toEqual([100, "^", -1, "+", 10, "^", 2]);
   });
 });
 
 describe("Parser invalid cases", () => {
+  const unexpectedStringError = TypeError("Unexpected string");
+
   it("1 + + 33 - 2", () => {
-    expect(() => parser("1 + + 33 - 2")).toThrow(
-      TypeError("Unexpected string")
-    );
+    expect(() => parser("1 + + 33 - 2")).toThrow(unexpectedStringError);
   });
 
   it("1 ! 33 - 2", () => {
-    expect(() => parser("1 ! 33 - 2")).toThrow(TypeError("Unexpected string"));
+    expect(() => parser("1 ! 33 - 2")).toThrow(unexpectedStringError);
   });
 
   it("1^6-8 should throw unexpected string error", () => {
-    const parserCall = () => parser("1^6-8")
-    const typeError = TypeError("Unexpected string")
+    const parserCall = () => parser("1^6-8");
 
-    expect(parserCall).toThrow(typeError)
-  })
+    expect(parserCall).toThrow(unexpectedStringError);
+  });
 });

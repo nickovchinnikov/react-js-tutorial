@@ -14,10 +14,10 @@ describe("firstPrioritiesCalc simple cases", () => {
   });
 
   it("[2, ^, -1] should return [0.5]", () => {
-    const result = firstPrioritiesCalc([2, "^", -1])
+    const result = firstPrioritiesCalc([2, "^", -1]);
 
-    expect(result).toEqual([0.5])
-  })
+    expect(result).toEqual([0.5]);
+  });
 });
 
 describe("firstPrioritiesCalc mixed with second priorities cases", () => {
@@ -30,22 +30,23 @@ describe("firstPrioritiesCalc mixed with second priorities cases", () => {
   });
 
   it("[2, ^, 3, -, 4, ^, 2] should return [8, -, 16]", () => {
-    const result = firstPrioritiesCalc([2, "^", 3, "-", 4, "^", 2])
+    const result = firstPrioritiesCalc([2, "^", 3, "-", 4, "^", 2]);
 
-    expect(result).toEqual([8, "-", 16])
-  })
+    expect(result).toEqual([8, "-", 16]);
+  });
 });
 
 describe("secondPrioritiesCalc invalid cases", () => {
+  const unexpectedStackError = TypeError("Unexpected stack!");
   it("[32, /, 32]", () => {
     expect(() => secondPrioritiesCalc([32, "/", 32])).toThrow(
-      TypeError("Unexpected stack!")
+      unexpectedStackError
     );
   });
 
   it("[2, ^, 3] should throw unexpected stack error", () => {
     expect(() => secondPrioritiesCalc([2, "^", 3])).toThrow(
-      TypeError("Unexpected stack!")
+      unexpectedStackError
     );
   });
 });

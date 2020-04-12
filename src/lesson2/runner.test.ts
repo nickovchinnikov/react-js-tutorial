@@ -14,14 +14,14 @@ describe("Runner simple cases", () => {
   });
 
   it("2 ^ 10", () => {
-    const result = runner("2 ^ 10")
+    const result = runner("2 ^ 10");
 
-    expect(result).toEqual(1024)
+    expect(result).toEqual(1024);
   });
   it("2 ^ -1", () => {
-    const result = runner("2 ^ -1")
+    const result = runner("2 ^ -1");
 
-    expect(result).toEqual(0.5)
+    expect(result).toEqual(0.5);
   });
 });
 
@@ -39,11 +39,10 @@ describe("Runner tripled/mixed cases", () => {
   });
 
   it("2 ^ 10 - 100", () => {
-    const result = runner("2 ^ 10 - 100")
+    const result = runner("2 ^ 10 - 100");
 
-    expect(result).toEqual(924)
+    expect(result).toEqual(924);
   });
-
 });
 
 describe("Runner long cases", () => {
@@ -56,8 +55,8 @@ describe("Runner long cases", () => {
   });
 
   it("2 ^ 10 - 100 * 20 / 2 + 1", () => {
-    const result = runner("2 ^ 10 - 100 * 20 / 2 + 1")
+    const result = runner("2 ^ 10 - 100 * 20 / 2 + 1");
 
-    expect(result).toEqual(25)
+    expect(result).toEqual(25);
   });
 });
