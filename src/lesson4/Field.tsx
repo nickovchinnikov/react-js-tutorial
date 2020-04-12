@@ -7,7 +7,7 @@ const Field: FC<FieldProps> = ({ field, onClick }) => (
   <div className="field">
     {field.map((row, y) => [
       ...row.map((filled: string, x) => (
-        <Cell filled={filled} x={x} y={y} onClick={onClick} key={`${x}_${y}`} />
+        <Cell key={`${x}_${y}`} filled={filled} x={x} y={y} onClick={onClick} />
       )),
       y !== row.length - 1 ? <br key={y} /> : null,
     ])}
