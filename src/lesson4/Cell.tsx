@@ -12,6 +12,9 @@ interface CellProps {
   y?: number;
 }
 
+/**
+ * Some custom description for Cell component
+ */
 const Cell: FC<CellProps> = (props) => {
   if (props.filled) {
     return <span className="cell cell-filled">{props.filled}</span>;
