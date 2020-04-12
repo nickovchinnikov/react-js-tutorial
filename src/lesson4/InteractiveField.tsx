@@ -62,22 +62,22 @@ class InteractiveField extends React.Component<
   }
 
   public onClick(x: number, y: number) {
-    if (
-      y >= 0 &&
-      y < this.state.fieldState.length &&
-      x >= 0 &&
-      x < this.state.fieldState[0].length
-    ) {
-      this.setState((state) => {
-        const fieldStateCopy = state.fieldState.map((row) => [...row]);
-        fieldStateCopy[y][x] = this.getPlayerMark();
-
-        return {
-          fieldState: fieldStateCopy,
-          moveNumber: state.moveNumber + 1,
-        };
-      });
+    const isXValid = x >= 0 && x < this.state.fieldState[0].length;
+    const isYValid = y >= 0 && y < this.state.fieldState.length;
+    const areCoordinatesValid = isXValid && isYValid;
+    if (!areCoordinatesValid) {
+      return;
     }
+
+    this.setState((state) => {
+      const fieldStateCopy = state.fieldState.map((row) => [...row]);
+      fieldStateCopy[y][x] = this.getPlayerMark();
+
+      return {
+        fieldState: fieldStateCopy,
+        moveNumber: state.moveNumber + 1,
+      };
+    });
   }
 
   private getPlayerMark() {
