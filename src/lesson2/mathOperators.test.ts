@@ -1,4 +1,12 @@
-import { mul, div, add, minus, power, square, factorial } from "./mathOperators";
+import {
+  mul,
+  div,
+  add,
+  minus,
+  power,
+  square,
+  factorial,
+} from "./mathOperators";
 
 describe("mathOperators test cases", () => {
   it("mul 1 * 2 to equal 2", () => {
@@ -50,7 +58,9 @@ describe("mathOperators test cases", () => {
   });
 
   it("factorial -1 to throw error", () => {
-    expect(() => factorial(-1)).toThrow(TypeError('The factorial function is only defined for nonnegative values'));
+    expect(() => factorial(-1)).toThrow(
+      TypeError("The factorial function is only defined for nonnegative values")
+    );
   });
 
   it("factorial 1 to equal 1", () => {
