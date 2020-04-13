@@ -6,6 +6,9 @@ import {
   zeroPrioritiesCalc,
 } from "./engine";
 
+const openBracket = "(";
+const closeBracket = ")";
+
 const calculateBlock = (block: string): number => {
   const stack = parser(block.trim());
 
@@ -24,10 +27,9 @@ const calculateBlock = (block: string): number => {
 };
 
 const calculateBrackets = (line: string): string => {
-  const openBracket = "(";
-  const closeBracket = ")";
   let blocksCount = 0;
   let result = "";
+  let blockStarted = false;
   let block = "";
 
   for (const letter of line) {
@@ -35,6 +37,7 @@ const calculateBrackets = (line: string): string => {
 
     if (letter === openBracket) {
       blocksCount++;
+      blockStarted = true;
       block = "";
     } else if (letter === closeBracket) {
       blocksCount--;
@@ -42,15 +45,19 @@ const calculateBrackets = (line: string): string => {
         throw TypeError("Unexpected bracket sequence");
       }
 
-      const blockResult = calculateBlock(block);
-      const blockWithBrackets = "(" + block + ")";
-      if (result.endsWith(blockWithBrackets)) {
-        result = result.slice(0, blockWithBrackets.length * -1);
-        result += blockResult;
-      } else {
-        throw TypeError("Unexpected error");
+      if (blockStarted) {
+        const blockResult = calculateBlock(block);
+        const blockWithBrackets = "(" + block + ")";
+        if (result.endsWith(blockWithBrackets)) {
+          result = result.slice(0, blockWithBrackets.length * -1);
+          result += blockResult;
+          block = "";
+          blockStarted = false;
+        } else {
+          throw TypeError("Unexpected error");
+        }
       }
-    } else {
+    } else if (blockStarted) {
       block += letter;
     }
   }
@@ -62,6 +69,14 @@ const calculateBrackets = (line: string): string => {
 };
 
 export const runner = (line: string): number => {
-  const calculateBracketsResult = calculateBrackets(line);
-  return calculateBlock(calculateBracketsResult);
+  let result = line;
+
+  while (
+    result.includes(openBracket) ||
+    result.includes(closeBracket)
+  ) {
+    result = calculateBrackets(result);
+  }
+
+  return calculateBlock(result);
 };

@@ -21,10 +21,20 @@ describe("Invalid cases", () => {
     );
   });
 
-  it("(2 + 2) - () throw error", () => {
-    expect(() => runner("(2 + 2) - ()")).toThrowError(
-      TypeError("Unexpected string")
+  it("(2 + ) - (1 + 2)) throw error", () => {
+    expect(() => runner("(2 + ) - (1 + 2))")).toThrowError(
+      TypeError("Unexpected bracket sequence")
     );
+  });
+
+  it("(2 + 2)) - (4 - 4) throw error", () => {
+    expect(() => runner("(2 + 2)) - (4 - 4)")).toThrowError(
+      TypeError("Unexpected bracket sequence")
+    );
+  });
+
+  it("( ) throw error", () => {
+    expect(() => runner("( )")).toThrowError(TypeError("Unexpected string"));
   });
 });
 
@@ -143,9 +153,37 @@ describe("Runner brackets cases", () => {
     expect(result).toEqual(2);
   });
 
+  it(" ( 1 + 3 ) - ( 8 - 4 ) / 2 ", () => {
+    const result = runner(" ( 1 + 3 ) - ( 8 - 4 ) / 2 ");
+
+    expect(result).toEqual(2);
+  });
+
   it("(1 + 3 - 4 / 2)", () => {
     const result = runner("(1 + 3 - 4 / 2)");
 
     expect(result).toEqual(2);
+  });
+
+  it("(2 ^ (5 + (3 + 2)) - 100 * 20 / 2 + (3 - 2))", () => {
+    const result = runner("(2 ^ (5 + (3 + 2)) - 100 * 20 / 2 + (3 - 2))");
+
+    expect(result).toEqual(25);
+  });
+
+  it("(2 + 2 - (3 * (2 - 1))) * (((2 + 1) + (1 + 1)) + (9 / (10 - 1)))", () => {
+    const result = runner(
+      "(2 + 2 - (3 * (2 - 1))) * (((2 + 1) + (1 + 1)) + (9 / (10 - 1)))"
+    );
+
+    expect(result).toEqual(6);
+  });
+
+  it("((2 + 2 ^ (1 + 2)) ** + (2 + 2) ! / 2 ** - 2 ! * (10 - (3 + 2)))", () => {
+    const result = runner(
+      "((2 + 2 ^ (1 + 2)) ** + (2 + 2) ! / 2 ** - 2 ! * (10 - (3 + 2)))"
+    );
+
+    expect(result).toEqual(96);
   });
 });
