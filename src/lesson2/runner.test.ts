@@ -8,6 +8,24 @@ describe("Invalid cases", () => {
   it("White space should throw error", () => {
     expect(() => runner(" ")).toThrowError(TypeError("Unexpected string"));
   });
+
+  it("((2 + 2) throw error", () => {
+    expect(() => runner("((2 + 2)")).toThrowError(
+      TypeError("Unexpected bracket sequence")
+    );
+  });
+
+  it("(2 + 2)) throw error", () => {
+    expect(() => runner("(2 + 2))")).toThrowError(
+      TypeError("Unexpected bracket sequence")
+    );
+  });
+
+  it("(2 + 2) - () throw error", () => {
+    expect(() => runner("(2 + 2) - ()")).toThrowError(
+      TypeError("Unexpected string")
+    );
+  });
 });
 
 describe("Runner simple cases", () => {
@@ -109,5 +127,25 @@ describe("Runner long cases", () => {
     const result = runner("10 ** + 4 ! / 2 ** - 2 ! * 5");
 
     expect(result).toEqual(96);
+  });
+});
+
+describe("Runner brackets cases", () => {
+  it("(1 + 3)", () => {
+    const result = runner("(1 + 3)");
+
+    expect(result).toEqual(4);
+  });
+
+  it("(1 + 3) - (8 - 4) / 2", () => {
+    const result = runner("(1 + 3) - (8 - 4) / 2");
+
+    expect(result).toEqual(2);
+  });
+
+  it("(1 + 3 - 4 / 2)", () => {
+    const result = runner("(1 + 3 - 4 / 2)");
+
+    expect(result).toEqual(2);
   });
 });
