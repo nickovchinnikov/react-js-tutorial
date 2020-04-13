@@ -28,7 +28,6 @@ describe("Runner simple cases", () => {
 
     expect(result).toEqual(9);
   });
-
 });
 
 describe("Runner tripled/mixed cases", () => {

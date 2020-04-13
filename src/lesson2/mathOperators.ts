@@ -1,36 +1,36 @@
-export type ScalarOperationType = (first: number, second: number) => number;
-export type NumberOperationType = (argument: number) => number;
+export type BinaryOperationType = (first: number, second: number) => number;
+export type UnaryOperationType = (argument: number) => number;
 
-export const mul: ScalarOperationType = (
+export const mul: BinaryOperationType = (
   first: number,
   second: number
 ): number => first * second;
 
-export const div: ScalarOperationType = (
+export const div: BinaryOperationType = (
   first: number,
   second: number
 ): number => first / second;
 
-export const add: ScalarOperationType = (
+export const add: BinaryOperationType = (
   first: number,
   second: number
 ): number => first + second;
 
-export const minus: ScalarOperationType = (
+export const minus: BinaryOperationType = (
   first: number,
   second: number
 ): number => first - second;
 
-export const power: ScalarOperationType = (
+export const power: BinaryOperationType = (
   first: number,
   second: number
 ): number => first ** second;
 
-export const square: NumberOperationType = (argument: number): number =>
+export const square: UnaryOperationType = (argument: number): number =>
   power(argument, 2);
 
 export const binaryMathOperators: {
-  [key: string]: ScalarOperationType;
+  [key: string]: BinaryOperationType;
 } = {
   "*": mul,
   "/": div,
@@ -40,13 +40,13 @@ export const binaryMathOperators: {
 };
 
 export const unaryMathOperators: {
-  [key: string]: NumberOperationType;
+  [key: string]: UnaryOperationType;
 } = {
   "**": square,
 };
 
 export const mathOperators: {
-  [key: string]: NumberOperationType | ScalarOperationType;
+  [key: string]: UnaryOperationType | BinaryOperationType;
 } = { ...unaryMathOperators, ...binaryMathOperators };
 
 export const mathPriorities: number[] = [0, 1, 2];
