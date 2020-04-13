@@ -24,12 +24,12 @@ describe("Parser correct cases", () => {
 
     expect(parserResult).toEqual([10, "^", 2, "-", 10, "**"]);
   });
-});
 
-it("10 ** + 4 / 2 ** - 2", () => {
-  const parserResult = parser("10 ** + 4 / 2 ** - 2");
+  it("10 ** + 4 / 2 ** - 2", () => {
+    const parserResult = parser("10 ** + 4 / 2 ** - 2");
 
-  expect(parserResult).toEqual([10, "**", "+", 4, "/", 2, "**", "-", 2]);
+    expect(parserResult).toEqual([10, "**", "+", 4, "/", 2, "**", "-", 2]);
+  });
 });
 
 describe("Parser invalid cases", () => {

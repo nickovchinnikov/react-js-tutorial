@@ -9,7 +9,8 @@ export const parser = (line: string): ParsedLineType | null => {
   return stack.reduce<ParsedLineType>((result, item, key) => {
     const prevItem = stack[key - 1];
 
-    const isValidNumberPush = !isNumber(prevItem) && !isUnaryOperation(prevItem) && isNumber(item);
+    const isValidNumberPush =
+      !isNumber(prevItem) && !isUnaryOperation(prevItem) && isNumber(item);
     const isValidOperatorPush =
       (isNumber(prevItem) || isUnaryOperation(prevItem)) &&
       !isNumber(item) &&
