@@ -2,13 +2,13 @@ import { runner } from "./runner";
 
 describe("Invalid cases", () => {
   it("Empty line should throw error", () => {
-    expect();
-  })
+    expect(() => runner("")).toThrowError(TypeError("Unexpected string"));
+  });
 
   it("White space should throw error", () => {
     expect(() => runner(" ")).toThrowError(TypeError("Unexpected string"));
   });
-})
+});
 
 describe("Runner simple cases", () => {
   it("7", () => {
@@ -18,7 +18,6 @@ describe("Runner simple cases", () => {
   it("5 ", () => {
     expect(runner("5 ")).toEqual(5);
   });
-
 
   it("1 * 32", () => {
     expect(runner("1 * 32")).toEqual(32);
