@@ -54,6 +54,9 @@ describe("Parser correct cases", () => {
 
 describe("Parser invalid cases", () => {
   const unexpectedStringError = TypeError("Unexpected string");
+  it("", () => {
+    expect(() => parser("")).toThrow(unexpectedStringError);
+  });
 
   it("1 + + 33 - 2", () => {
     expect(() => parser("1 + + 33 - 2")).toThrow(unexpectedStringError);

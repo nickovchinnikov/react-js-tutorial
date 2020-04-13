@@ -1,6 +1,25 @@
 import { runner } from "./runner";
 
+describe("Invalid cases", () => {
+  it("Empty line should throw error", () => {
+    expect();
+  })
+
+  it("White space should throw error", () => {
+    expect(() => runner(" ")).toThrowError(TypeError("Unexpected string"));
+  });
+})
+
 describe("Runner simple cases", () => {
+  it("7", () => {
+    expect(runner("7")).toEqual(7);
+  });
+
+  it("5 ", () => {
+    expect(runner("5 ")).toEqual(5);
+  });
+
+
   it("1 * 32", () => {
     expect(runner("1 * 32")).toEqual(32);
   });

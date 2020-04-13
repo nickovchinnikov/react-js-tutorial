@@ -7,7 +7,7 @@ import {
 } from "./engine";
 
 export const runner = (line: string): number => {
-  const stack = parser(line);
+  const stack = parser(line.trim());
 
   if (stack === null) {
     throw new TypeError("Unexpected string");
