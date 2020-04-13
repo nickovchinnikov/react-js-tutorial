@@ -19,6 +19,12 @@ describe("zeroPrioritiesCalc", () => {
     expect(result).toEqual([4]);
   });
 
+  it("[3, !] should return [6]", () => {
+    const result = zeroPrioritiesCalc([3, "!"]);
+
+    expect(result).toEqual([6]);
+  });
+
   it("[2, **, +, 3] should return [4, +, 3]", () => {
     const result = zeroPrioritiesCalc([2, "**", "+", 3]);
 
@@ -29,6 +35,12 @@ describe("zeroPrioritiesCalc", () => {
     const result = zeroPrioritiesCalc([8, "+", 2, "**", "/", 5]);
 
     expect(result).toEqual([8, "+", 4, "/", 5]);
+  });
+
+  it("[3, !, +, 4, **, /, 2, !] should return [6, +, 16, /, 2]", () => {
+    const result = zeroPrioritiesCalc([3, "!", "+", 4, "**", "/", 2, "!"]);
+
+    expect(result).toEqual([6, "+", 16, "/", 2]);
   });
 });
 
@@ -83,6 +95,12 @@ describe("secondPrioritiesCalc invalid cases", () => {
 
   it("[2, **, +, 3] should throw unexpected stack error", () => {
     expect(() => secondPrioritiesCalc([2, "**", "+", 3])).toThrow(
+      unexpectedStackError
+    );
+  });
+
+  it("[2, !, +, 3] should throw unexpected stack error", () => {
+    expect(() => secondPrioritiesCalc([2, "!", "+", 3])).toThrow(
       unexpectedStackError
     );
   });

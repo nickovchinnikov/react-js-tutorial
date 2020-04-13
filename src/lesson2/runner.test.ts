@@ -28,6 +28,11 @@ describe("Runner simple cases", () => {
 
     expect(result).toEqual(9);
   });
+  it("4 !", () => {
+    const result = runner("4 !");
+
+    expect(result).toEqual(24);
+  });
 });
 
 describe("Runner tripled/mixed cases", () => {
@@ -53,6 +58,12 @@ describe("Runner tripled/mixed cases", () => {
 
     expect(result).toEqual(9);
   });
+
+  it("3 ! + 2 ** / 4 - 3 !", () => {
+    const result = runner("3 ! + 2 ** / 4 - 3 !");
+
+    expect(result).toEqual(1);
+  });
 });
 
 describe("Runner long cases", () => {
@@ -74,5 +85,11 @@ describe("Runner long cases", () => {
     const result = runner("10 ** + 4 / 2 ** - 2");
 
     expect(result).toEqual(99);
+  });
+
+  it("10 ** + 4 ! / 2 ** - 2 ! * 5", () => {
+    const result = runner("10 ** + 4 ! / 2 ** - 2 ! * 5");
+
+    expect(result).toEqual(96);
   });
 });

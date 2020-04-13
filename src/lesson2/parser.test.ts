@@ -30,6 +30,12 @@ describe("Parser correct cases", () => {
 
     expect(parserResult).toEqual([10, "**", "+", 4, "/", 2, "**", "-", 2]);
   });
+
+  it("10 ** + 4 ! / 2 ** - 2 ! * 5", () => {
+    const parserResult = parser("10 ** + 4 ! / 2 ** - 2 ! * 5");
+
+    expect(parserResult).toEqual([10, "**", "+", 4, "!", "/", 2, "**", "-", 2, "!", "*", 5]);
+  });
 });
 
 describe("Parser invalid cases", () => {
