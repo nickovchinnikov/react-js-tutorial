@@ -3,8 +3,8 @@ import { isNumber } from "./helpers";
 import {
   mathPriorities,
   mathOperatorsPriorities,
-  scalarMathOperators,
-  numberMathOperators,
+  binaryMathOperators,
+  unaryMathOperators,
 } from "./mathOperators";
 
 const [ZERO, FIRST, SECOND] = mathPriorities;
@@ -14,13 +14,13 @@ export const zeroPrioritiesCalc = (stack: ParsedLineType): ParsedLineType =>
     const prevItem = result[result.length - 1];
 
     if (!isNumber(String(item)) && mathOperatorsPriorities[item] === ZERO) {
-      if (!numberMathOperators[item]) {
+      if (!unaryMathOperators[item]) {
         throw new TypeError("Unexpected stack!");
       }
       if (prevItem) {
         result = [
           ...result.slice(0, -1),
-          numberMathOperators[item](Number(prevItem)),
+          unaryMathOperators[item](Number(prevItem)),
         ];
       }
     } else {
@@ -36,12 +36,12 @@ export const firstPrioritiesCalc = (stack: ParsedLineType): ParsedLineType =>
     const item = result[result.length - 1];
 
     if (!isNumber(String(item)) && mathOperatorsPriorities[item] === FIRST) {
-      if (!scalarMathOperators[item]) {
+      if (!binaryMathOperators[item]) {
         throw new TypeError("Unexpected stack!");
       }
       result = [
         ...result.slice(0, -2),
-        scalarMathOperators[item](Number(prevItem), Number(nextItem)),
+        binaryMathOperators[item](Number(prevItem), Number(nextItem)),
       ];
     } else {
       result.push(nextItem);
@@ -54,14 +54,12 @@ export const secondPrioritiesCalc = (stack: ParsedLineType): number =>
     const item = stack[key - 1];
 
     if (item) {
-
       if (!isNumber(String(item))) {
-        
         if (mathOperatorsPriorities[item] !== SECOND) {
           throw new TypeError("Unexpected stack!");
         }
 
-        result = scalarMathOperators[item](Number(result), Number(nextItem));
+        result = binaryMathOperators[item](Number(result), Number(nextItem));
       }
     }
 

@@ -29,7 +29,7 @@ export const power: ScalarOperationType = (
 export const square: NumberOperationType = (argument: number): number =>
   power(argument, 2);
 
-export const scalarMathOperators: {
+export const binaryMathOperators: {
   [key: string]: ScalarOperationType;
 } = {
   "*": mul,
@@ -39,7 +39,7 @@ export const scalarMathOperators: {
   "^": power,
 };
 
-export const numberMathOperators: {
+export const unaryMathOperators: {
   [key: string]: NumberOperationType;
 } = {
   "**": square,
@@ -47,7 +47,7 @@ export const numberMathOperators: {
 
 export const mathOperators: {
   [key: string]: NumberOperationType | ScalarOperationType;
-} = { ...numberMathOperators, ...scalarMathOperators }
+} = { ...unaryMathOperators, ...binaryMathOperators };
 
 export const mathPriorities: number[] = [0, 1, 2];
 

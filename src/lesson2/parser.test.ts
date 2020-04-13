@@ -18,6 +18,18 @@ describe("Parser correct cases", () => {
 
     expect(parserResult).toEqual([100, "^", -1, "+", 10, "^", 2]);
   });
+
+  it("10 ^ 2 - 10 **", () => {
+    const parserResult = parser("10 ^ 2 - 10 **");
+
+    expect(parserResult).toEqual([10, "^", 2, "-", 10, "**"]);
+  });
+});
+
+it("10 ** + 4 / 2 ** - 2", () => {
+  const parserResult = parser("10 ** + 4 / 2 ** - 2");
+
+  expect(parserResult).toEqual([10, "**", "+", 4, "/", 2, "**", "-", 2]);
 });
 
 describe("Parser invalid cases", () => {
@@ -39,6 +51,12 @@ describe("Parser invalid cases", () => {
 
   it("1 2 * 3 should throw unexpected string error", () => {
     const parserCall = (): ParsedLineType | null => parser("1 2 * 3");
+
+    expect(parserCall).toThrow(unexpectedStringError);
+  });
+
+  it("1 ** 2 * 3 should throw unexpected string error", () => {
+    const parserCall = (): ParsedLineType | null => parser("1 ** 2 * 3");
 
     expect(parserCall).toThrow(unexpectedStringError);
   });
