@@ -1,4 +1,32 @@
-import { firstPrioritiesCalc, secondPrioritiesCalc } from "./engine";
+import { firstPrioritiesCalc, secondPrioritiesCalc, zeroPrioritiesCalc } from "./engine";
+
+const unexpectedStackError = TypeError("Unexpected stack!");
+
+describe("zeroPrioritiesCalc", () => {
+  it("[1, **] should return [1]", () => {
+    const result = zeroPrioritiesCalc([1, "**"])
+
+    expect(result).toEqual([1]);
+  });
+
+  it("[2, **] should return [4]", () => {
+    const result = zeroPrioritiesCalc([2, "**"])
+
+    expect(result).toEqual([4]);
+  });
+
+  it("[2, **, +, 3] should return [4, +, 3]", () => {
+    const result = zeroPrioritiesCalc([2, "**", "+", 3])
+
+    expect(result).toEqual([4, "+", 3]);
+  });
+
+  it("[8, +, 2, **, /, 5] should return [8, +, 4, /, 5]", () => {
+    const result = zeroPrioritiesCalc([8, "+", 2, "**", "/", 5])
+
+    expect(result).toEqual([8, "+", 4, "/", 5]);
+  });
+});
 
 describe("firstPrioritiesCalc simple cases", () => {
   it("[1, * 32]", () => {
@@ -37,7 +65,7 @@ describe("firstPrioritiesCalc mixed with second priorities cases", () => {
 });
 
 describe("secondPrioritiesCalc invalid cases", () => {
-  const unexpectedStackError = TypeError("Unexpected stack!");
+
   it("[32, /, 32]", () => {
     expect(() => secondPrioritiesCalc([32, "/", 32])).toThrow(
       unexpectedStackError
@@ -46,6 +74,12 @@ describe("secondPrioritiesCalc invalid cases", () => {
 
   it("[2, ^, 3] should throw unexpected stack error", () => {
     expect(() => secondPrioritiesCalc([2, "^", 3])).toThrow(
+      unexpectedStackError
+    );
+  });
+
+  it("[2, **, +, 3] should throw unexpected stack error", () => {
+    expect(() => secondPrioritiesCalc([2, "**", "+", 3])).toThrow(
       unexpectedStackError
     );
   });
