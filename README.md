@@ -56,4 +56,4 @@ React and JSX
 
 [Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/9)
 
-[Presentation](https://docs.google.com/presentation/d/1TVkOviAfORwmYncUL51g2UboNtj8kczWoLIRL3hO7AE/edit?usp=sharing)
+[Presentation](https://docs.google.com/presentation/d/1R7sU2VQHHgCExYgX1yEKrcbwhebYSQq_OII5LY4pZuI/edit?usp=sharing)
