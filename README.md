@@ -46,3 +46,14 @@ Basic react configuration
 [Pull request2](https://github.com/nickovchinnikov/react-js-tutorial/pull/8)
 
 [Presentation](https://drive.google.com/open?id=10qgUTWj5aMG4WxcNk9UV8_xMHdnE5GRH7I7_Z8w0P7M)
+
+## Lesson 4:
+React and JSX
+
+* React elements
+* JSX
+* Component docs
+
+[Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/9)
+
+[Presentation](https://docs.google.com/presentation/d/1R7sU2VQHHgCExYgX1yEKrcbwhebYSQq_OII5LY4pZuI/edit?usp=sharing)
