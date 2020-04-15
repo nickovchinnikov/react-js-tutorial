@@ -71,10 +71,7 @@ const calculateBrackets = (line: string): string => {
 export const runner = (line: string): number => {
   let result = line;
 
-  while (
-    result.includes(openBracket) ||
-    result.includes(closeBracket)
-  ) {
+  while (result.includes(openBracket) || result.includes(closeBracket)) {
     result = calculateBrackets(result);
   }
 
