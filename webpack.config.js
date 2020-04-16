@@ -1,6 +1,7 @@
 const path = require("path");
 
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const webpackRules = require("./webpackRules");
 
 module.exports = {
   entry: "./src/index.tsx",
@@ -15,10 +16,11 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|ts)x?$/,
-        loader: require.resolve("babel-loader"),
-        exclude: /node_modules/,
+        test: /\.css$/,
+        loader: "css-loader",
+        options: { modules: true },
       },
+      ...webpackRules,
     ],
   },
   devServer: {
