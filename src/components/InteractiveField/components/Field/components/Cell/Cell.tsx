@@ -1,11 +1,11 @@
 import React, { FC } from "react";
 import "./Cell.css";
-import type { CellProps } from "./interfaces";
+import type { CellProps } from "types/field";
 
 /**
  * Some custom description for Cell component
  */
-const Cell: FC<CellProps> = ({ filled, x, y, onClick }) => {
+export const Cell: FC<CellProps> = ({ filled, x, y, onClick }) => {
   if (filled) {
     return <span className="cell cell-filled">{filled}</span>;
   }
@@ -15,8 +15,6 @@ const Cell: FC<CellProps> = ({ filled, x, y, onClick }) => {
     </button>
   );
 };
-
-export default Cell;
 
 export function getCell(props: CellProps) {
   // На самом деле это означает тоже самое что и

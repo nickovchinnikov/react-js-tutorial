@@ -1,6 +1,14 @@
 import React from "react";
 import { render } from "react-dom";
 
-import { ClickCounter } from "./ClickCounter";
+import { InteractiveField, Field } from "./components";
 
-render(<ClickCounter start={1} />, document.getElementById("root"));
+render(
+  <InteractiveField
+    xSize={3}
+    ySize={3}
+    playerMarks={["x", "y"]}
+    fieldComponent={Field}
+  />,
+  document.getElementById("root")
+);

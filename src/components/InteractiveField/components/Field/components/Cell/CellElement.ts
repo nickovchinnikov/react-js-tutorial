@@ -1,5 +1,5 @@
 import React from "react";
-import { CellProps } from "./interfaces";
+import { CellProps } from "types/field";
 
 export const getCell = ({ onClick, filled, x = 0, y = 0 }: CellProps) =>
   filled

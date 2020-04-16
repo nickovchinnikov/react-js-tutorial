@@ -1,8 +1,8 @@
 import React from "react";
-import InteractionField from "./InteractiveField";
+import { InteractiveField } from "./InteractiveField";
 import { shallow } from "enzyme";
 
-describe("InteractionField", () => {
+describe("InteractiveField", () => {
   const FakeComponent: React.FC<{
     field: string[][];
     onClick: (x: number, y: number) => void;
@@ -10,7 +10,7 @@ describe("InteractionField", () => {
 
   it("renders passed component with field/onClick params and proper field size", () => {
     const field = shallow(
-      <InteractionField
+      <InteractiveField
         fieldComponent={FakeComponent}
         xSize={1}
         ySize={2}
@@ -25,7 +25,7 @@ describe("InteractionField", () => {
 
   it("updates field on calling onClick with correct values", () => {
     const wrapper = shallow(
-      <InteractionField
+      <InteractiveField
         fieldComponent={FakeComponent}
         xSize={2}
         ySize={2}
@@ -61,7 +61,7 @@ describe("InteractionField", () => {
 
   it("changes player mark on eash move", () => {
     const wrapper = shallow(
-      <InteractionField
+      <InteractiveField
         fieldComponent={FakeComponent}
         xSize={8}
         ySize={1}
@@ -100,7 +100,7 @@ describe("InteractionField", () => {
 
   it("updates field on calling onClick ignores incorrect clicks", () => {
     const wrapper = shallow(
-      <InteractionField
+      <InteractiveField
         fieldComponent={FakeComponent}
         xSize={2}
         ySize={2}

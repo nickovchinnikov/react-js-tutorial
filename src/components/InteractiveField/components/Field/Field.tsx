@@ -1,9 +1,9 @@
 import React, { FC } from "react";
-import Cell from "./Cell";
+import { Cell } from "./components";
 import "./Field.css";
-import type { FieldProps } from "./interfaces";
+import type { FieldProps } from "types/field";
 
-const Field: FC<FieldProps> = ({ field, onClick }) => (
+export const Field: FC<FieldProps> = ({ field, onClick }) => (
   <div className="field">
     {field.map((row, y) => [
       ...row.map((filled: string, x) => (
@@ -13,7 +13,5 @@ const Field: FC<FieldProps> = ({ field, onClick }) => (
     ])}
   </div>
 );
-
-export default Field;
 
 export const getField = (props: FieldProps) => <Field {...props} />;

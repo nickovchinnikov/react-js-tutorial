@@ -2,9 +2,9 @@ import React from "react";
 import { action } from "@storybook/addon-actions";
 import { withKnobs, text, number } from "@storybook/addon-knobs";
 import { getCell as getCellElement } from "./CellElement";
-import Cell from "./Cell";
+import { Cell } from "./Cell";
 export default {
-  title: "Lesson 4 / Cell",
+  title: "Cell",
   decorators: [withKnobs],
 };
 

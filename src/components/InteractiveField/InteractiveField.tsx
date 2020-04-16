@@ -41,7 +41,7 @@ interface InteractiveFieldState {
   fieldState: string[][];
 }
 
-class InteractiveField extends React.Component<
+export class InteractiveField extends React.Component<
   InteractiveFieldProps,
   InteractiveFieldState
 > {
@@ -91,5 +91,3 @@ class InteractiveField extends React.Component<
     );
   }
 }
-
-export default InteractiveField;

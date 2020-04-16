@@ -35,7 +35,6 @@ import { getField } from "./Field";
           onClick: jest.fn(),
         })
       );
-      console.log(field.html());
       expect(field.find("br").length).toBe(1);
       expect(field.find(".cell").length).toBe(4);
       expect(field.find(".cell-empty").length).toBe(1);

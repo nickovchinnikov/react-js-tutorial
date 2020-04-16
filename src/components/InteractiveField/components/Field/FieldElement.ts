@@ -1,7 +1,7 @@
 import React from "react";
 
-import { getCell } from "./CellElement";
-import type { FieldProps } from "./interfaces";
+import { getCell } from "./components";
+import type { FieldProps } from "types/field";
 
 export const getField = (props: FieldProps) =>
   React.createElement(
@@ -9,10 +9,10 @@ export const getField = (props: FieldProps) =>
     {
       className: "field",
     },
-    ...props.field.reduce((acc, row, y) => {
+    ...props.field.reduce((acc: any, row: any[], y: number) => {
       return [
         ...acc,
-        ...row.map((filled, x) => {
+        ...row.map((filled: string | undefined, x: any) => {
           return getCell({
             onClick: props.onClick,
             filled: filled ? filled : undefined,

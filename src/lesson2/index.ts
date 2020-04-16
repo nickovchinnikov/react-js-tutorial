@@ -13,6 +13,7 @@ const question = (): Promise<null> =>
       const result = runner(answer);
 
       if (result) {
+        // eslint-disable-next-line
         console.log(`Result: ${result}`);
       }
 
