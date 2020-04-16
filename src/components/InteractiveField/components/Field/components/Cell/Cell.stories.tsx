@@ -25,33 +25,37 @@ export const nonFilled = () => [
 export const filledWithX = () => [
   <Cell
     onClick={action("Cell clicked")}
-    filled={text("filled with", "x")}
     x={number("x", 1)}
     y={number("y", 23)}
     key="jsx"
-  />,
+  >
+    {text("filled with", "x")}
+  </Cell>,
   <Cell
     onClick={action("Cell clicked")}
-    filled={text("filled with", "x")}
     x={number("x", 1)}
     y={number("y", 23)}
     key="jsx2"
-  />,
+  >
+    {text("filled with", "x")}
+  </Cell>,
 ];
 
 export const filledWithY = () => [
   <Cell
     onClick={action("Cell clicked")}
-    filled={text("filled with", "y")}
     x={number("x", 1)}
     y={number("y", 23)}
     key="jsx"
-  />,
+  >
+    {text("filled with", "y")}
+  </Cell>,
   <Cell
     onClick={action("Cell clicked")}
-    filled={text("filled with", "y")}
     x={number("x", 1)}
     y={number("y", 23)}
     key="jsx2"
-  />,
+  >
+    {text("filled with", "y")}
+  </Cell>,
 ];

@@ -59,7 +59,7 @@ describe("Field", () => {
   it("passed onClick inside cells", () => {
     const onClick = jest.fn();
     const field = mount(<Field field={[["", "x", "o"]]} onClick={onClick} />);
-    field.find("button").simulate("click");
+    field.find("button:empty").simulate("click");
     expect(onClick).toHaveBeenCalledWith(0, 0);
   });
 });

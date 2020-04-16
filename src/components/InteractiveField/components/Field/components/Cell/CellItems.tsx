@@ -13,13 +13,20 @@ const BaseCell = css`
   vertical-align: bottom;
 `;
 
-export const CellEmpty = styled.button`
-  ${BaseCell};
+const EmptyCell = css`
   border-color: gray;
 `;
 
-export const CellFilled = styled.span`
-  ${BaseCell};
+const FilledCell = css`
   border-color: lightgray;
   color: gray;
+`;
+
+interface Props {
+  isFilled: boolean;
+}
+
+export const CellItem = styled.button`
+  ${BaseCell};
+  ${({ isFilled }: Props) => (isFilled ? FilledCell : EmptyCell)};
 `;

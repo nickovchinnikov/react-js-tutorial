@@ -17,9 +17,7 @@ exports[`Cell renders button for empty cell 1`] = `
 <button
   className="emotion-0"
   onClick={[Function]}
->
-   
-</button>
+/>
 `;
 
 exports[`Cell renders button for filled with x cell 1`] = `
@@ -37,9 +35,10 @@ exports[`Cell renders button for filled with x cell 1`] = `
   color: gray;
 }
 
-<span
+<button
   className="emotion-0"
+  onClick={[Function]}
 >
   x
-</span>
+</button>
 `;

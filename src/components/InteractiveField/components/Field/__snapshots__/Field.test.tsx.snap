@@ -27,26 +27,26 @@ exports[`Field renders cells for passed empty field 1`] = `
     className="emotion-0"
     onClick={[Function]}
   >
-     
+    
   </button>
   <button
     className="emotion-0"
     onClick={[Function]}
   >
-     
+    
   </button>
   <br />
   <button
     className="emotion-0"
     onClick={[Function]}
   >
-     
+    
   </button>
   <button
     className="emotion-0"
     onClick={[Function]}
   >
-     
+    
   </button>
 </div>
 `;
@@ -88,27 +88,30 @@ exports[`Field renders filled cells snapshot check 1`] = `
 <div
   className="emotion-4"
 >
-  <span
+  <button
     className="emotion-0"
+    onClick={[Function]}
   >
     x
-  </span>
-  <span
+  </button>
+  <button
     className="emotion-0"
+    onClick={[Function]}
   >
     o
-  </span>
+  </button>
   <br />
-  <span
+  <button
     className="emotion-0"
+    onClick={[Function]}
   >
     o
-  </span>
+  </button>
   <button
     className="emotion-3"
     onClick={[Function]}
   >
-     
+    
   </button>
 </div>
 `;

@@ -12,7 +12,7 @@ describe("Cell", () => {
   });
   it("renders button for filled with x cell", () => {
     expect(
-      renderer.create(<Cell onClick={jest.fn()} filled="x" />).toJSON()
+      renderer.create(<Cell onClick={jest.fn()}>x</Cell>).toJSON()
     ).toMatchSnapshot();
   });
   it("calls onClick callback on click by empty cell", () => {
@@ -23,7 +23,7 @@ describe("Cell", () => {
   });
   it("does not call onClick callback on click by filled cell", () => {
     const onClick = jest.fn();
-    const wrapper = mount(<Cell onClick={onClick} filled="y" />);
+    const wrapper = mount(<Cell onClick={onClick}>y</Cell>);
     wrapper.simulate("click");
     expect(onClick).not.toHaveBeenCalled();
   });
