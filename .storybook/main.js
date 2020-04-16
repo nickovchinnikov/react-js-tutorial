@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const custom = require('../webpack.config.js');
+const webpackRules = require("../webpackRules");
 
 module.exports = {
   stories: ['../src/**/*.stories.tsx'],
@@ -59,12 +60,10 @@ module.exports = {
 
     return {
       ...config,
-      resolve: {
-        extensions: custom.resolve.extensions
-      },
+      resolve: custom.resolve,
       module: {
         ...config.module,
-        rules: [...config.module.rules, ...custom.module.rules],
+        rules: [...config.module.rules, ...webpackRules],
       },
     };
   },

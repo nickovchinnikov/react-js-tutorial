@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Cell renders button for empty cell 1`] = `
+.emotion-0 {
+  width: 25px;
+  height: 25px;
+  border: 1px solid;
+  display: inline-block;
+  border-radius: 10px;
+  line-height: 25px;
+  text-align: center;
+  margin: 5px;
+  vertical-align: bottom;
+  border-color: gray;
+}
+
+<button
+  className="emotion-0"
+  onClick={[Function]}
+/>
+`;
+
+exports[`Cell renders button for filled with x cell 1`] = `
+.emotion-0 {
+  width: 25px;
+  height: 25px;
+  border: 1px solid;
+  display: inline-block;
+  border-radius: 10px;
+  line-height: 25px;
+  text-align: center;
+  margin: 5px;
+  vertical-align: bottom;
+  border-color: lightgray;
+  color: gray;
+}
+
+<button
+  className="emotion-0"
+  onClick={[Function]}
+>
+  x
+</button>
+`;

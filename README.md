@@ -57,3 +57,11 @@ React and JSX
 [Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/9)
 
 [Presentation](https://docs.google.com/presentation/d/1R7sU2VQHHgCExYgX1yEKrcbwhebYSQq_OII5LY4pZuI/edit?usp=sharing)
+
+## Lesson 5:
+* JSX + CSS
+* Project architecture
+
+[Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/11)
+
+[Presentation](https://docs.google.com/presentation/d/1t96SBbpVXh7mPr3G_zsa6cVaCJKR6b4Bl9XnYY6-KHs/edit?usp=sharing)
