@@ -1,4 +1,7 @@
-.cell {
+import styled from "@emotion/styled";
+import { css } from "@emotion/core";
+
+const BaseCell = css`
   width: 25px;
   height: 25px;
   border: 1px solid;
@@ -8,13 +11,15 @@
   text-align: center;
   margin: 5px;
   vertical-align: bottom;
-}
+`;
 
-.cell-empty {
+export const CellEmpty = styled.button`
+  ${BaseCell};
   border-color: gray;
-}
+`;
 
-.cell-filled {
+export const CellFilled = styled.span`
+  ${BaseCell};
   border-color: lightgray;
   color: gray;
-}
+`;

@@ -1,17 +1,22 @@
 import React, { FC } from "react";
-import { Cell } from "./components";
-import "./Field.css";
+import styled from "@emotion/styled";
 import type { FieldProps } from "types/field";
 
+import { Cell } from "./components";
+
+const FieldWrapper = styled.div`
+  display: inline-block;
+  padding: 10px;
+  border: 2px solid lightgray;
+`;
+
 export const Field: FC<FieldProps> = ({ field, onClick }) => (
-  <div className="field">
+  <FieldWrapper>
     {field.map((row, y) => [
       ...row.map((filled: string, x) => (
         <Cell key={`${x}_${y}`} filled={filled} x={x} y={y} onClick={onClick} />
       )),
       y !== row.length - 1 ? <br key={y} /> : null,
     ])}
-  </div>
+  </FieldWrapper>
 );
-
-export const getField = (props: FieldProps) => <Field {...props} />;
