@@ -1,11 +1,8 @@
 import React from "react";
 import { mount } from "enzyme";
-import serializer from "jest-emotion";
 import renderer from "react-test-renderer";
 
 import { Field } from "./Field";
-
-expect.addSnapshotSerializer(serializer);
 
 describe("Field", () => {
   it("renders cells for passed empty field", () => {

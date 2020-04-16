@@ -1,6 +1,7 @@
 import React from "react";
-import { InteractiveField } from "./InteractiveField";
 import { shallow } from "enzyme";
+
+import { InteractiveField } from "./InteractiveField";
 
 describe("InteractiveField", () => {
   const FakeComponent: React.FC<{

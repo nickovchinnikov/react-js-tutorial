@@ -1,11 +1,8 @@
 import React from "react";
 import { mount } from "enzyme";
-import serializer from "jest-emotion";
 import renderer from "react-test-renderer";
 
 import { Cell } from "./Cell";
-
-expect.addSnapshotSerializer(serializer);
 
 describe("Cell", () => {
   it("renders button for empty cell", () => {
