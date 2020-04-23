@@ -1,4 +1,5 @@
 import React from "react";
+import { getUrl } from "./utils";
 
 interface ImageProps {
   id: number;
@@ -18,7 +19,7 @@ export class ImageLocal extends React.Component<ImageProps, ImageState> {
 
   static getDerivedStateFromProps(props: ImageProps) {
     return {
-      url: `https://picsum.photos/id/${props.id}/200`,
+      url: getUrl(props.id),
     };
   }
 

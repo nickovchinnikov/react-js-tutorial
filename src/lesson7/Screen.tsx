@@ -1,7 +1,11 @@
 import React from "react";
+import styled from "@emotion/styled";
 import { ImageServer as Image } from "./ImageServer";
-// import { ImageLocal as Image} from "./ImageLocal";
 import { ImageRandom } from "./ImageRandom";
+
+const Container = styled.div`
+  text-align: center;
+`;
 
 interface ScreenState {
   id: number;
@@ -37,7 +41,7 @@ export class App extends React.Component<{}, ScreenState> {
   render() {
     const { id, interval, isActive } = this.state;
     return (
-      <div style={{ textAlign: "center" }}>
+      <Container>
         <h1>Navigate Image</h1>
         <div>
           <button onClick={this.decrement}>prev</button>
@@ -60,7 +64,7 @@ export class App extends React.Component<{}, ScreenState> {
         <div>
           <ImageRandom interval={interval} isActive={isActive} />
         </div>
-      </div>
+      </Container>
     );
   }
 }

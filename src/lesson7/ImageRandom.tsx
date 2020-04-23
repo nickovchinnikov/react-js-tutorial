@@ -1,9 +1,5 @@
 import React from "react";
-
-const getUrl = (id: number): string => {
-  const goodId = Math.min(1000, Math.max(1, id));
-  return `https://picsum.photos/id/${goodId}/200`;
-};
+import { getUrl } from "./utils";
 
 interface ImageProps {
   interval: number;
@@ -17,21 +13,26 @@ interface ImageState {
 
 export class ImageRandom extends React.Component<ImageProps, ImageState> {
   intervalID?: NodeJS.Timeout;
+  _isMounted: boolean;
+
   constructor(props: ImageProps) {
     super(props);
     this.state = {
       url: "",
       imageNumber: 0,
     };
+    this._isMounted = false;
     this.setNewImage = this.setNewImage.bind(this);
   }
 
   setNewImage() {
-    const newId = Math.floor(Math.random() * 200);
-    this.setState((state: ImageState) => ({
-      url: getUrl(newId),
-      imageNumber: state.imageNumber + 1,
-    }));
+    if (this._isMounted) {
+      const newId = Math.floor(Math.random() * 200);
+      this.setState((state: ImageState) => ({
+        url: getUrl(newId),
+        imageNumber: state.imageNumber + 1,
+      }));
+    }
   }
 
   clearWorker() {
@@ -42,6 +43,7 @@ export class ImageRandom extends React.Component<ImageProps, ImageState> {
   }
 
   componentDidMount() {
+    this._isMounted = true;
     const { interval, isActive } = this.props;
     if (isActive) {
       this.intervalID = setInterval(this.setNewImage, interval);
@@ -50,14 +52,15 @@ export class ImageRandom extends React.Component<ImageProps, ImageState> {
   }
 
   componentWillUnmount() {
+    this._isMounted = false;
     this.clearWorker();
   }
 
   componentDidUpdate(prevProps: ImageProps) {
-    if (
+    const didPropsChanged =
       prevProps.interval !== this.props.interval ||
-      this.props.isActive !== prevProps.isActive
-    ) {
+      this.props.isActive !== prevProps.isActive;
+    if (didPropsChanged) {
       this.clearWorker();
       if (this.props.isActive) {
         this.intervalID = setInterval(this.setNewImage, this.props.interval);

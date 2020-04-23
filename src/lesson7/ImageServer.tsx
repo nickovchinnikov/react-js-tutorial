@@ -1,13 +1,5 @@
 import React from "react";
-
-const getUrl = async (id: number): Promise<string> => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      const goodId = Math.min(1000, Math.max(1, id));
-      resolve(`https://picsum.photos/id/${goodId}/200`);
-    }, 0);
-  });
-};
+import { getAsyncUrl } from "./utils";
 
 interface ImageProps {
   id: number;
@@ -18,25 +10,37 @@ interface ImageState {
 }
 
 export class ImageServer extends React.Component<ImageProps, ImageState> {
+  _isMounted: boolean;
+
   constructor(props: ImageProps) {
     super(props);
     this.state = {
       url: "",
     };
+    this._isMounted = false;
+  }
+
+  setImage() {
+    getAsyncUrl(this.props.id).then((url) => {
+      if (this._isMounted) {
+        this.setState({ url });
+      }
+    });
   }
 
   componentDidMount() {
-    getUrl(this.props.id).then((url) => {
-      this.setState({ url });
-    });
+    this._isMounted = true;
+    this.setImage();
   }
 
   componentDidUpdate(prevProps: ImageProps) {
     if (prevProps.id !== this.props.id) {
-      getUrl(this.props.id).then((url) => {
-        this.setState({ url });
-      });
+      this.setImage();
     }
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   shouldComponentUpdate(nextProps: ImageProps, nextState: ImageState) {
