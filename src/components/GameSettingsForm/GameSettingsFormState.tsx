@@ -62,6 +62,7 @@ export class GameSettingsFormState extends React.Component<
                 type="text"
                 placeholder="Player 1 name"
                 required
+                value={this.state.player1Name}
                 onChange={this.handleFormChange("player1Name")}
               />
             </label>
@@ -69,6 +70,7 @@ export class GameSettingsFormState extends React.Component<
               Color:
               <input
                 type="color"
+                value={this.state.player1Color}
                 onChange={this.handleFormChange("player1Color")}
               />
             </label>
@@ -77,6 +79,7 @@ export class GameSettingsFormState extends React.Component<
               <select
                 defaultValue="X"
                 onChange={this.handleFormChange("player1Symbol")}
+                value={this.state.player1Symbol}
               >
                 <option>X</option>
                 <option>Y</option>
@@ -92,6 +95,7 @@ export class GameSettingsFormState extends React.Component<
                 type="text"
                 placeholder="Player 2 name"
                 required
+                value={this.state.player2Name}
                 onChange={this.handleFormChange("player2Name")}
               />
             </label>
@@ -99,6 +103,7 @@ export class GameSettingsFormState extends React.Component<
               Color:
               <input
                 type="color"
+                value={this.state.player2Color}
                 onChange={this.handleFormChange("player2Color")}
               />
             </label>
@@ -106,6 +111,7 @@ export class GameSettingsFormState extends React.Component<
               Symbol:
               <select
                 defaultValue="O"
+                value={this.state.player2Symbol}
                 onChange={this.handleFormChange("player2Symbol")}
               >
                 <option>X</option>
