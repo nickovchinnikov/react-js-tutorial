@@ -1,6 +1,8 @@
 import React from "react";
 import { GameSettingsFormProps } from "./interfaces";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field } from "formik";
+
+type PlayerType = { name: string; color: string; symbol: string };
 
 const initialFormProps = {
   player1: {
@@ -15,6 +17,22 @@ const initialFormProps = {
   },
 } as const;
 
+const getFieldset = (num: number, player: PlayerType) => {
+  const { name, color } = player;
+  return (
+    <fieldset>
+      <legend>{`Player: ${num}`}</legend>
+      <Field type="text" name={name} />
+      <Field type="color" name={color} />
+      <Field name="player1.symbol" as="select">
+        <option>X</option>
+        <option>Y</option>
+        <option>O</option>
+      </Field>
+    </fieldset>
+  );
+};
+
 export class GameSettingsFormFormik extends React.Component<
   GameSettingsFormProps,
   {}
@@ -25,28 +43,8 @@ export class GameSettingsFormFormik extends React.Component<
         <Form>
           <fieldset>
             <legend>Game Settings</legend>
-            <fieldset>
-              <legend>Player 1</legend>
-              <Field type="text" name="player1.name" />
-              <Field type="color" name="player1.color" />
-              <Field name="player1.symbol" as="select">
-                <option>X</option>
-                <option>Y</option>
-                <option>O</option>
-              </Field>
-            </fieldset>
-            <fieldset>
-              <legend>Player 2</legend>
-              <Field type="text" name="player2.name" required />
-
-              <Field type="color" name="player2.color" />
-              <Field name="player2.symbol" as="select">
-                <option>X</option>
-                <option>Y</option>
-                <option>O</option>
-              </Field>
-            </fieldset>
-
+            {getFieldset(1, initialFormProps.player1)}
+            {getFieldset(2, initialFormProps.player2)}
             <button>Start</button>
           </fieldset>
         </Form>
