@@ -1,4 +1,4 @@
-import React, { useState, ComponentType } from "react";
+import React, { useState, ComponentType, useRef, useCallback } from "react";
 import { withKnobs } from "@storybook/addon-knobs";
 import { GameSettingsFormDOM } from "./GameSettingsFormDOM";
 import { GameSettingsFormRef } from "./GameSettingsFormRef";
@@ -25,10 +25,19 @@ const DemoFormWrapper = styled.div`
 
 const DemoForm: React.FC<DemoFormProps> = ({ FormComponent, title }) => {
   const [result, setResult] = useState({});
+  const formRef = useRef<any>();
+  const submitForm = useCallback(() => {
+    if (formRef.current && formRef.current?.handleSubmit) {
+      formRef.current.handleSubmit({
+        preventDefault: () => null,
+      });
+    }
+  }, [formRef.current]);
   return (
     <DemoFormWrapper>
       <h2>{title}</h2>
-      <FormComponent onSubmit={setResult} />
+      <FormComponent onSubmit={setResult} ref={formRef} />
+      <button onClick={submitForm}>Submit form from outside</button>
       <pre>{JSON.stringify(result, null, 2)}</pre>
     </DemoFormWrapper>
   );
