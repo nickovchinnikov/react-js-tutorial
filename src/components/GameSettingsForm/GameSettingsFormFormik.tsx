@@ -9,7 +9,7 @@ const initialFormProps = {
     symbol: "Y",
   },
   player2: {
-    name: "",
+    name: "Alice",
     color: "#73fa79",
     symbol: "O",
   },

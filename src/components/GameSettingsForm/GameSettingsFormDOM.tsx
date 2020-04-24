@@ -1,6 +1,10 @@
 import React from "react";
 import { GameSettingsFormProps } from "./interfaces";
 
+const getInputValue = (form: HTMLFormElement, name: string): string => {
+  return (form.querySelector(`[name=${name}]`) as HTMLInputElement).value;
+};
+
 export class GameSettingsFormDOM extends React.Component<
   GameSettingsFormProps,
   {}
@@ -10,22 +14,14 @@ export class GameSettingsFormDOM extends React.Component<
     const target = ev.target as HTMLFormElement;
     this.props.onSubmit({
       player1: {
-        name: (target.querySelector("[name=player1Name]") as HTMLInputElement)
-          .value,
-        symbol: (target.querySelector(
-          "[name=player1Symbol]"
-        ) as HTMLSelectElement).value,
-        color: (target.querySelector("[name=player1Color]") as HTMLInputElement)
-          .value,
+        name: getInputValue(target, "player1Name"),
+        symbol: getInputValue(target, "player1Symbol"),
+        color: getInputValue(target, "player1Color"),
       },
       player2: {
-        name: (target.querySelector("[name=player2Name]") as HTMLInputElement)
-          .value,
-        symbol: (target.querySelector(
-          "[name=player2Symbol]"
-        ) as HTMLSelectElement).value,
-        color: (target.querySelector("[name=player2Color]") as HTMLInputElement)
-          .value,
+        name: getInputValue(target, "player2Name"),
+        symbol: getInputValue(target, "player2Symbol"),
+        color: getInputValue(target, "player2Color"),
       },
     });
   };
