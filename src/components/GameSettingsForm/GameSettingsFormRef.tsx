@@ -1,86 +1,75 @@
-import React from "react";
+import React, { RefObject } from "react";
 import { GameSettingsFormProps } from "./interfaces";
+
+type Refs = {
+  name: RefObject<HTMLInputElement>;
+  symbol: RefObject<HTMLSelectElement>;
+  color: RefObject<HTMLInputElement>;
+};
 
 export class GameSettingsFormRef extends React.Component<
   GameSettingsFormProps,
   {}
 > {
-  player1Name = React.createRef<HTMLInputElement>();
-  player1Color = React.createRef<HTMLInputElement>();
-  player1Symbol = React.createRef<HTMLSelectElement>();
-  player2Name = React.createRef<HTMLInputElement>();
-  player2Color = React.createRef<HTMLInputElement>();
-  player2Symbol = React.createRef<HTMLSelectElement>();
+  inputsRefs: Array<Refs> = [];
 
   handleSubmit = (ev: React.FormEvent) => {
     ev.preventDefault();
     this.props.onSubmit({
       player1: {
-        name: this.player1Name.current!.value,
-        symbol: this.player1Symbol.current!.value,
-        color: this.player1Color.current!.value,
+        name: this.inputsRefs[0].name.current?.value || "",
+        symbol: this.inputsRefs[0].symbol.current?.value || "",
+        color: this.inputsRefs[0].color.current?.value || "",
       },
       player2: {
-        name: this.player2Name.current!.value,
-        symbol: this.player2Symbol.current!.value,
-        color: this.player2Color.current!.value,
+        name: this.inputsRefs[1].name.current?.value || "",
+        symbol: this.inputsRefs[1].symbol.current?.value || "",
+        color: this.inputsRefs[1].color.current?.value || "",
       },
     });
   };
+
+  getFieldSet(index: number) {
+    this.inputsRefs.push({
+      name: React.createRef<HTMLInputElement>(),
+      symbol: React.createRef<HTMLSelectElement>(),
+      color: React.createRef<HTMLInputElement>(),
+    });
+    return (
+      <fieldset>
+        <legend>{`Player ${index + 1}`}</legend>
+        <label>
+          Name:
+          <input
+            ref={this.inputsRefs[index].name}
+            type="text"
+            placeholder={`Player ${index + 1} name`}
+            required
+          />
+        </label>
+        <label>
+          Color:
+          <input type="color" ref={this.inputsRefs[index].color} />
+        </label>
+        <label>
+          Symbol:
+          <select ref={this.inputsRefs[index].symbol} defaultValue="X">
+            <option>X</option>
+            <option>Y</option>
+            <option>O</option>
+          </select>
+        </label>
+      </fieldset>
+    );
+  }
 
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
         <fieldset>
           <legend>Game Settings</legend>
-          <fieldset>
-            <legend>Player 1</legend>
-            <label>
-              Name:
-              <input
-                ref={this.player1Name}
-                type="text"
-                placeholder="Player 1 name"
-                required
-              />
-            </label>
-            <label>
-              Color:
-              <input type="color" ref={this.player1Color} />
-            </label>
-            <label>
-              Symbol:
-              <select ref={this.player1Symbol} defaultValue="X">
-                <option>X</option>
-                <option>Y</option>
-                <option>O</option>
-              </select>
-            </label>
-          </fieldset>
-          <fieldset>
-            <legend>Player 2</legend>
-            <label>
-              Name:
-              <input
-                ref={this.player2Name}
-                type="text"
-                placeholder="Player 2 name"
-                required
-              />
-            </label>
-            <label>
-              Color:
-              <input type="color" ref={this.player2Color} />
-            </label>
-            <label>
-              Symbol:
-              <select ref={this.player2Symbol} defaultValue="O">
-                <option>X</option>
-                <option>Y</option>
-                <option>O</option>
-              </select>
-            </label>
-          </fieldset>
+          {this.getFieldSet(0)}
+          {this.getFieldSet(1)}
           <button>Start</button>
         </fieldset>
       </form>
