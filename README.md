@@ -65,3 +65,14 @@ React and JSX
 [Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/11)
 
 [Presentation](https://docs.google.com/presentation/d/1t96SBbpVXh7mPr3G_zsa6cVaCJKR6b4Bl9XnYY6-KHs/edit?usp=sharing)
+
+
+## Lesson 8:
+* Списки
+* События
+* Формы
+* Рефы
+
+[Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/14/)
+
+[Presentation](https://docs.google.com/presentation/d/1-dCyyIYT0sgeITNLKeSIBufGiuiBKoGRYpeO3pdlZlY/edit?usp=sharing)
