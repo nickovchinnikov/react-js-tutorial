@@ -7,7 +7,7 @@ import {
 
 export type ParsedLineType = (number | string)[];
 
-const [, FIRST] = mathPriorities;
+const [ZERO, , SECOND] = mathPriorities;
 
 export const parser = (line: string): ParsedLineType | null => {
   const stack = line.split(" ");
@@ -17,15 +17,15 @@ export const parser = (line: string): ParsedLineType | null => {
 
     const isValidNumberPush = !isNumber(prevItem) && isNumber(item);
     const isValidOperatorPush =
-      isNumber(prevItem) &&
+      (isNumber(prevItem) || mathOperatorsPriorities[prevItem] === ZERO) &&
       !isNumber(item) &&
       mathOperators.hasOwnProperty(item);
     const isValidTrigOperatorsPush =
-      mathOperatorsPriorities[item] === FIRST &&
+      mathOperatorsPriorities[item] === SECOND &&
       mathOperators.hasOwnProperty(item) &&
       (key === 0 ||
         (mathOperators.hasOwnProperty(prevItem) &&
-          mathOperatorsPriorities[prevItem] !== FIRST));
+          mathOperatorsPriorities[prevItem] !== SECOND));
 
     if (isValidNumberPush) {
       result.push(Number(item));

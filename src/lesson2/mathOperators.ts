@@ -1,4 +1,4 @@
-export type ScalarOperationType = (first: number, second: number) => number;
+export type ScalarOperationType = (first: number, second?: number) => number;
 export type TrigonometricOperationType = (value: number) => number;
 
 export const mul: ScalarOperationType = (
@@ -26,6 +26,10 @@ export const pow: ScalarOperationType = (
   second: number
 ): number => Math.pow(first, second);
 
+export const factorial: ScalarOperationType = (
+  first: number,
+): number => first ? first * factorial(first - 1) : 1;
+
 export const sin: TrigonometricOperationType = (value: number): number =>
   parseFloat(Math.sin(value * (Math.PI / 180)).toFixed(2));
 
@@ -44,6 +48,7 @@ export const scalarOperators: { [key: string]: ScalarOperationType } = {
   "+": add,
   "-": minus,
   "^": pow,
+  "!": factorial,
 };
 
 export const trigonomenticOperators: {
@@ -61,18 +66,19 @@ export const mathOperators: {
   ...trigonomenticOperators,
 };
 
-export const mathPriorities: number[] = [0, 1, 2, 3];
+export const mathPriorities: number[] = [0, 1, 2, 3, 4];
 
-const [ZERO, FIRST, SECOND, THIRD] = mathPriorities;
+const [ZERO, FIRST, SECOND, THIRD, FOURTH ] = mathPriorities;
 
 export const mathOperatorsPriorities: { [key: string]: number } = {
-  "^": ZERO,
-  sin: FIRST,
-  cos: FIRST,
-  tg: FIRST,
-  ctg: FIRST,
-  "*": SECOND,
-  "/": SECOND,
-  "+": THIRD,
-  "-": THIRD,
+  "!": ZERO,
+  "^": FIRST,
+  sin: SECOND,
+  cos: SECOND,
+  tg: SECOND,
+  ctg: SECOND,
+  "*": THIRD,
+  "/": THIRD,
+  "+": FOURTH,
+  "-": FOURTH,
 };

@@ -1,4 +1,4 @@
-import { mul, div, add, minus, pow, sin, cos, tg, ctg } from "./mathOperators";
+import { mul, div, add, minus, pow, sin, cos, tg, ctg, factorial } from "./mathOperators";
 
 describe("mathOperators test cases", () => {
   it("mul 1 * 2 to equal 2", () => {
@@ -27,6 +27,10 @@ describe("mathOperators test cases", () => {
 
   it("pow 2 ^ 3 to equal 8", () => {
     expect(pow(2, 3)).toBe(8);
+  });
+
+  it("3! to equal 6", () => {
+    expect(factorial(3)).toBe(6);
   });
 });
 

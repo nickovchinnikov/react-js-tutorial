@@ -3,47 +3,57 @@ import {
   firstPrioritiesCalc,
   secondPrioritiesCalc,
   thirdPrioritiesCalc,
+  fourthPrioritiesCalc,
   solveSimpleExp,
   simplifyExp,
 } from "./engine";
 
 describe("zeroPrioritiesCalc simple cases", () => {
-  it("[2, ^ 3]", () => {
-    expect(zeroPrioritiesCalc([2, "^", 3])).toEqual([8]);
+  it("[3, ! ]", () => {
+    expect(zeroPrioritiesCalc([3, "!"])).toEqual([6]);
   });
-
-  it("[3, ^ 2]", () => {
-    expect(zeroPrioritiesCalc([3, "^", 2])).toEqual([9]);
+  it("[2, !]", () => {
+    expect(zeroPrioritiesCalc([2, "!"])).toEqual([2]);
   });
 });
 
 describe("firstPrioritiesCalc simple cases", () => {
-  it("[cos, 60]", () => {
-    expect(firstPrioritiesCalc(["cos", 60])).toEqual([0.5]);
+  it("[2, ^ 3]", () => {
+    expect(firstPrioritiesCalc([2, "^", 3])).toEqual([8]);
   });
 
-  it("[sin, 90]", () => {
-    expect(firstPrioritiesCalc(["sin", 90])).toEqual([1]);
+  it("[3, ^ 2]", () => {
+    expect(firstPrioritiesCalc([3, "^", 2])).toEqual([9]);
   });
 });
 
 describe("secondPrioritiesCalc simple cases", () => {
-  it("[1, * 32]", () => {
-    expect(secondPrioritiesCalc([1, "*", 32])).toEqual([32]);
+  it("[cos, 60]", () => {
+    expect(secondPrioritiesCalc(["cos", 60])).toEqual([0.5]);
   });
 
-  it("[32, /, 32]", () => {
-    expect(secondPrioritiesCalc([32, "/", 32])).toEqual([1]);
-  });
-
-  it("[32, + 32]", () => {
-    expect(secondPrioritiesCalc([32, "+", 32])).toEqual([32, "+", 32]);
+  it("[sin, 90]", () => {
+    expect(secondPrioritiesCalc(["sin", 90])).toEqual([1]);
   });
 });
 
-describe("secondrioritiesCalc mixed with second priorities cases", () => {
+describe("thirdPrioritiesCalc simple cases", () => {
+  it("[1, * 32]", () => {
+    expect(thirdPrioritiesCalc([1, "*", 32])).toEqual([32]);
+  });
+
+  it("[32, /, 32]", () => {
+    expect(thirdPrioritiesCalc([32, "/", 32])).toEqual([1]);
+  });
+
+  it("[32, + 32]", () => {
+    expect(thirdPrioritiesCalc([32, "+", 32])).toEqual([32, "+", 32]);
+  });
+});
+
+describe("third priorities Calc mixed with fourth priorities cases", () => {
   it("[32, /, 32, +, 10, *, 10]", () => {
-    expect(secondPrioritiesCalc([32, "/", 32, "+", 10, "*", 10])).toEqual([
+    expect(thirdPrioritiesCalc([32, "/", 32, "+", 10, "*", 10])).toEqual([
       1,
       "+",
       100,
@@ -51,25 +61,18 @@ describe("secondrioritiesCalc mixed with second priorities cases", () => {
   });
 });
 
-describe("thirdPrioritiesCalc invalid cases", () => {
-  it("[32, / 32]", () => {
-    expect(() => thirdPrioritiesCalc([32, "/", 32])).toThrow(
-      TypeError("Unexpected stack!")
-    );
-  });
-});
 
-describe("thirdPrioritiesCalc simple cases", () => {
+describe("fourthPrioritiesCalc simple cases", () => {
   it("[32, + 32]", () => {
-    expect(thirdPrioritiesCalc([32, "+", 32])).toEqual(64);
+    expect(fourthPrioritiesCalc([32, "+", 32])).toEqual(64);
   });
 
   it("[32, - 32]", () => {
-    expect(thirdPrioritiesCalc([32, "-", 32])).toEqual(0);
+    expect(fourthPrioritiesCalc([32, "-", 32])).toEqual(0);
   });
 
   it("[32, - 32, +, 10]", () => {
-    expect(thirdPrioritiesCalc([32, "-", 32, "+", 10])).toEqual(10);
+    expect(fourthPrioritiesCalc([32, "-", 32, "+", 10])).toEqual(10);
   });
 });
 
@@ -95,6 +98,6 @@ describe("simplify expression", () => {
     expect(simplifyExp("(2 ** + 4) * 1")).toEqual("(2 ^ 2 + 4) * 1");
   });
   it("3!", () => {
-    expect(simplifyExp("3!")).toEqual("1 * 2 * 3");
+    expect(simplifyExp("3!")).toEqual("3 !");
   });
 });
