@@ -1,7 +1,7 @@
-import { solveSimpleExp, simplifyExp, polishNotationSimplify } from "./engine";
+import { solveSimpleExp, simplifyExp } from "./engine";
 import { scalarOperators, trigonomenticOperators } from "./mathOperators";
 
-const makepolishNotationReg = (): string => {
+export const makepolishNotationReg = (): string => {
   const scalarPart = Object.keys(scalarOperators).reduce(
     (reg, value, index) => {
       return `${reg}${index !== 0 ? "|" : ""}\\${value}`;
@@ -17,40 +17,58 @@ const makepolishNotationReg = (): string => {
   const reg = `(((\\d+|\\d+\\.\\d+)\\s(\\d+|\\d+\\.\\d+)\\s(${scalarPart}))|((\\d+|\\d+\\.\\d+)\\s(${trigonometricPart})))`;
   return new RegExp(reg);
 };
-export const runner = (line: string): number => {
-  const pnReg = makepolishNotationReg();
-  let pnExpression = line.match(pnReg);
-  if (pnExpression !== null) {
-    let expression = polishNotationSimplify(line);
-    pnExpression = expression.match(pnReg);
-    while (pnExpression !== null) {
-      const expPart = pnExpression[1].trim();
-      const pnArray = expPart.split(" ");
-      let normalExpression = "";
-      if (pnArray.length === 2) {
-        normalExpression = pnArray.reverse().join(" ");
-      } else {
-        normalExpression = [pnArray[0], pnArray[2], pnArray[1]].join(" ");
-      }
-      const answer = solveSimpleExp(normalExpression);
 
-      expression = expression.replace(pnExpression[0], `${answer}`);
-      pnExpression = expression.match(pnReg);
+export const pnMode = (
+  line: string,
+  pnReg: string = makepolishNotationReg()
+) => {
+  const pnSolve = (pnExp: Array<string> | null, exp): number => {
+    if (pnExp === null) {
+      return Number(exp);
     }
-    if (/\s+/g.test(expression)) {
-      return solveSimpleExp(expression);
+    const expPart = pnExp[1].trim();
+
+    const pnArray = expPart.split(" ");
+    let normalExpression = "";
+    if (pnArray.length === 2) {
+      normalExpression = pnArray.reverse().join(" ");
     } else {
-      return Number(expression);
+      normalExpression = [pnArray[0], pnArray[2], pnArray[1]].join(" ");
     }
-  }
 
-  let expression = simplifyExp(line);
-  let expInBrackets = expression.match(/\(([^\(\)]+)\)/);
-  while (expInBrackets !== null) {
+    const answer = solveSimpleExp(normalExpression);
+    const expression = exp.replace(pnExp[0], `${answer}`);
+    return pnSolve(expression.match(pnReg), expression);
+  };
+  const expression = simplifyExp(line, false);
+  const pnExpression = expression.match(pnReg);
+  return pnSolve(pnExpression, expression);
+};
+
+export const normalMode = (line: string): number => {
+  const solveBreackets = (
+    expInBrackets: Array<sring> | null,
+    exp: string
+  ): number => {
+    if (expInBrackets === null) {
+      return solveSimpleExp(exp);
+    }
     const expPart = expInBrackets[1].trim();
     const answer = solveSimpleExp(expPart);
-    expression = expression.replace(expInBrackets[0], `${answer}`);
-    expInBrackets = expression.match(/\(([^\(\)]+)\)/);
+    return solveBreackets(
+      exp.match(/\(([^\(\)]+)\)/),
+      exp.replace(expInBrackets[0], `${answer}`)
+    );
+  };
+  const expression = simplifyExp(line);
+  const expInBrackets = expression.match(/\(([^\(\)]+)\)/);
+  return solveBreackets(expInBrackets, expression);
+};
+
+export const runner = (line: string): number => {
+  const pnReg = makepolishNotationReg();
+  if (line.match(pnReg) !== null) {
+    return pnMode(line, pnReg);
   }
-  return solveSimpleExp(expression);
+  return normalMode(line);
 };

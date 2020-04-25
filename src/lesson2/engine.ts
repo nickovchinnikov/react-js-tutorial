@@ -17,10 +17,7 @@ export const zeroPrioritiesCalc = (stack: ParsedLineType): ParsedLineType =>
       if (!mathOperators[item]) {
         throw new TypeError("Unexpected stack!");
       }
-      result = [
-        ...result.slice(0, -1),
-        mathOperators[item](Number(prevItem)),
-      ];
+      result = [...result.slice(0, -1), mathOperators[item](Number(prevItem))];
     } else {
       result.push(item);
     }
@@ -36,13 +33,11 @@ export const firstPrioritiesCalc = (stack: ParsedLineType): ParsedLineType =>
       if (!mathOperators[item]) {
         throw new TypeError("Unexpected stack!");
       }
-      if (nextItem === '!') {
-        console.log('here')
+      if (nextItem === "!") {
         result = [
           ...result.slice(0, -1),
           mathOperators[nextItem](Number(item)),
         ];
-        console.log(result)
       } else {
         result = [
           ...result.slice(0, -2),
@@ -146,35 +141,11 @@ export const solveSimpleExp = (line: string): number => {
   return fourthPrioritiesCalc(thirdPrioritiesRes);
 };
 
-export const simplifyExp = (line: string): string => {
-  let newLine = line.replace(/\*\*/g, "^ 2");
+export const simplifyExp = (line: string, normalMode: boolean = true): string => {
+  const powReplace = normalMode ? '^ 2' : '2 ^';
+  let newLine = line.replace(/\*\*/g, powReplace);
   newLine = newLine.replace(/.\(/g, " (");
   newLine = newLine.replace(/\!/g, " !");
-  // newLine = newLine.replace(/(\d+)\!/g, (exp, numMatch) => {
-  //   const num = parseInt(numMatch, 10);
-  //   let count = 1;
-  //   let result = "";
-  //   while (count <= num) {
-  //     result = `${result} ${count === 1 ? "" : "*"} ${count}`;
-  //     count++;
-  //   }
-  //   return result.trim();
-  // });
   return newLine;
 };
 
-export const polishNotationSimplify = (line: string): string => {
-  let newLine = line.replace(/\*\*/g, "2 ^");
-  newLine = newLine.replace("0!", "1");
-  newLine = newLine.replace(/(\d+)\!/g, (exp, numMatch) => {
-    const num = parseInt(numMatch, 10);
-    let count = 1;
-    let result = "";
-    while (count <= num) {
-      result = `${count} ${result} ${count === 1 ? "" : "*"}`;
-      count++;
-    }
-    return result.trim();
-  });
-  return newLine;
-};

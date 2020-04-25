@@ -1,30 +1,30 @@
-import { runner } from "./runner";
+import { runner, normalMode, pnMode, makepolishNotationReg } from "./runner";
 
-describe("Runner simple cases", () => {
+describe("Runner normal mode simple cases", () => {
   it("1 * 32", () => {
-    expect(runner("1 * 32")).toEqual(32);
+    expect(normalMode("1 * 32")).toEqual(32);
   });
 
   it("2 * 32", () => {
-    expect(runner("2 * 32")).toEqual(64);
+    expect(normalMode("2 * 32")).toEqual(64);
   });
 
   it("2 + 32", () => {
-    expect(runner("2 + 32")).toEqual(34);
+    expect(normalMode("2 + 32")).toEqual(34);
   });
 });
 
-describe("Runner tripled/mixed cases", () => {
+describe("Runner normal mode simple mix cases", () => {
   it("2 * 2 * 3", () => {
-    expect(runner("2 * 2 * 3")).toEqual(12);
+    expect(normalMode("2 * 2 * 3")).toEqual(12);
   });
 
   it("2 * 2 + 3", () => {
-    expect(runner("2 * 2 + 3")).toEqual(7);
+    expect(normalMode("2 * 2 + 3")).toEqual(7);
   });
 
   it("2 + 2 * 3", () => {
-    expect(runner("2 + 2 * 3")).toEqual(8);
+    expect(normalMode("2 + 2 * 3")).toEqual(8);
   });
 });
 
@@ -48,16 +48,24 @@ describe("Runner brackets cases", () => {
   });
 });
 
-describe("Runner RPN", () => {
+describe("Runner polish notation mode", () => {
   it("5 3 6 * +_6 3 / - 7 +", () => {
-    expect(runner("5 3 6 * + 6 3 / - 7 +")).toEqual(28);
+    expect(pnMode("5 3 6 * + 6 3 / - 7 +")).toEqual(28);
   });
 
   it("30 sin", () => {
-    expect(runner("30 sin")).toEqual(0.5);
+    expect(pnMode("30 sin")).toEqual(0.5);
   });
 
   it("30 sin 60 cos +", () => {
-    expect(runner("30 sin 60 cos +")).toEqual(1);
+    expect(pnMode("30 sin 60 cos +")).toEqual(1);
+  });
+});
+
+describe("polish notation reg expression test", () => {
+  it("get polish notation reg expression", () => {
+    expect(makepolishNotationReg()).toEqual(
+      /(((\d+|\d+\.\d+)\s(\d+|\d+\.\d+)\s(\*|\/|\+|\-|\^|\!))|((\d+|\d+\.\d+)\s(sin|cos|tg|ctg)))/
+    );
   });
 });

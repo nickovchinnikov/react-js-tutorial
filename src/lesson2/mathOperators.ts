@@ -26,9 +26,8 @@ export const pow: ScalarOperationType = (
   second: number
 ): number => Math.pow(first, second);
 
-export const factorial: ScalarOperationType = (
-  first: number,
-): number => first ? first * factorial(first - 1) : 1;
+export const factorial: ScalarOperationType = (first: number): number =>
+  first ? first * factorial(first - 1) : 1;
 
 export const sin: TrigonometricOperationType = (value: number): number =>
   parseFloat(Math.sin(value * (Math.PI / 180)).toFixed(2));
@@ -68,7 +67,7 @@ export const mathOperators: {
 
 export const mathPriorities: number[] = [0, 1, 2, 3, 4];
 
-const [ZERO, FIRST, SECOND, THIRD, FOURTH ] = mathPriorities;
+const [ZERO, FIRST, SECOND, THIRD, FOURTH] = mathPriorities;
 
 export const mathOperatorsPriorities: { [key: string]: number } = {
   "!": ZERO,

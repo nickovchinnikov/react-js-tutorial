@@ -22,7 +22,7 @@ describe("Parser correct cases", () => {
   });
 
   it("3! + 7", () => {
-    expect(parser("3 ! + 7")).toEqual([ 3, "!", "+", 7]);
+    expect(parser("3 ! + 7")).toEqual([3, "!", "+", 7]);
   });
 
   it("tg 30 + 5 - ctg 7", () => {

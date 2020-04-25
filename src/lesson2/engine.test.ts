@@ -61,7 +61,6 @@ describe("third priorities Calc mixed with fourth priorities cases", () => {
   });
 });
 
-
 describe("fourthPrioritiesCalc simple cases", () => {
   it("[32, + 32]", () => {
     expect(fourthPrioritiesCalc([32, "+", 32])).toEqual(64);
@@ -99,5 +98,8 @@ describe("simplify expression", () => {
   });
   it("3!", () => {
     expect(simplifyExp("3!")).toEqual("3 !");
+  });
+  it("2 ** PN", () => {
+    expect(simplifyExp("2 **", false)).toEqual("2 2 ^");
   });
 });
