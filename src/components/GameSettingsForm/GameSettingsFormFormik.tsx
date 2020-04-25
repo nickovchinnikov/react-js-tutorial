@@ -1,6 +1,6 @@
 import React from "react";
 import { GameSettingsFormProps } from "./interfaces";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field } from "formik";
 
 const initialFormProps = {
   player1: {
