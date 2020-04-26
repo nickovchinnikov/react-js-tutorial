@@ -12,7 +12,7 @@ const question = (): Promise<null> =>
     rl.question("> ", (answer: string) => {
       const result = runner(answer);
 
-      if (result) {
+      if (result !== undefined) {
         // eslint-disable-next-line
         console.log(`Result: ${result}`);
       }
