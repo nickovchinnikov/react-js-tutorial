@@ -66,6 +66,19 @@ React and JSX
 
 [Presentation](https://docs.google.com/presentation/d/1t96SBbpVXh7mPr3G_zsa6cVaCJKR6b4Bl9XnYY6-KHs/edit?usp=sharing)
 
+## Lesson 7:
+
+* React lifecycles
+* React state/props
+* PureComponent
+
+[Sandbox with examples](https://codesandbox.io/s/random-images-v9wmt)
+
+[Sandbox with react-hooks](https://codesandbox.io/s/condescending-lewin-hbzpe)
+
+[Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/13)
+
+[Presentation](https://docs.google.com/presentation/d/1xRNMkPFhoB3dnrnjQjAGeOumkjjYcga7g0O23UVYYK0/edit?usp=sharing)
 
 ## Lesson 8:
 * Списки
