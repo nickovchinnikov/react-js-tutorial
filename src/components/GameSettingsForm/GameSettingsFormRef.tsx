@@ -1,6 +1,7 @@
 import React from "react";
 import { GameSettingsFormProps } from "./interfaces";
 import { SYMBOL_OPTIONS } from "./constants";
+import { InputColor, InputText } from "./components";
 
 export class GameSettingsFormRef extends React.Component<
   GameSettingsFormProps,
@@ -38,16 +39,15 @@ export class GameSettingsFormRef extends React.Component<
             <legend>Player 1</legend>
             <label>
               Name:
-              <input
+              <InputText
                 ref={this.player1Name}
-                type="text"
                 placeholder="Player 1 name"
                 required
               />
             </label>
             <label>
               Color:
-              <input type="color" ref={this.player1Color} />
+              <InputColor ref={this.player1Color} />
             </label>
             <label>
               Symbol:
@@ -62,16 +62,15 @@ export class GameSettingsFormRef extends React.Component<
             <legend>Player 2</legend>
             <label>
               Name:
-              <input
+              <InputText
                 ref={this.player2Name}
-                type="text"
                 placeholder="Player 2 name"
                 required
               />
             </label>
             <label>
               Color:
-              <input type="color" ref={this.player2Color} />
+              <InputColor ref={this.player2Color} />
             </label>
             <label>
               Symbol:

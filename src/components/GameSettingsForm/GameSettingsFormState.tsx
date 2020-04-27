@@ -1,6 +1,7 @@
 import React from "react";
 import { GameSettingsFormProps } from "./interfaces";
 import { SYMBOL_OPTIONS } from "./constants";
+import { InputColor, InputText } from "./components";
 
 interface GameSettingsFormStateState {
   player1Name: string;
@@ -41,7 +42,7 @@ export class GameSettingsFormState extends React.Component<
   };
 
   handleFormChange = (prop: keyof GameSettingsFormStateState) => (
-    ev: React.ChangeEvent
+    ev: React.FormEvent<HTMLInputElement> | React.ChangeEvent
   ) => {
     this.setState(
       {
@@ -59,8 +60,7 @@ export class GameSettingsFormState extends React.Component<
             <legend>Player 1</legend>
             <label>
               Name:
-              <input
-                type="text"
+              <InputText
                 placeholder="Player 1 name"
                 required
                 value={this.state.player1Name}
@@ -69,8 +69,7 @@ export class GameSettingsFormState extends React.Component<
             </label>
             <label>
               Color:
-              <input
-                type="color"
+              <InputColor
                 value={this.state.player1Color}
                 onChange={this.handleFormChange("player1Color")}
               />
@@ -91,8 +90,7 @@ export class GameSettingsFormState extends React.Component<
             <legend>Player 2</legend>
             <label>
               Name:
-              <input
-                type="text"
+              <InputText
                 placeholder="Player 2 name"
                 required
                 value={this.state.player2Name}
@@ -101,8 +99,7 @@ export class GameSettingsFormState extends React.Component<
             </label>
             <label>
               Color:
-              <input
-                type="color"
+              <InputColor
                 value={this.state.player2Color}
                 onChange={this.handleFormChange("player2Color")}
               />

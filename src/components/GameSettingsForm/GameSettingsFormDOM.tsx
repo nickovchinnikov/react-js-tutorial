@@ -1,6 +1,7 @@
 import React from "react";
 import { GameSettingsFormProps } from "./interfaces";
 import { SYMBOL_OPTIONS } from "./constants";
+import { InputColor, InputText } from "./components";
 
 const getInputValue = (form: HTMLFormElement, name: string): string => {
   return (form.querySelector(`[name=${name}]`) as HTMLInputElement).value;
@@ -36,16 +37,15 @@ export class GameSettingsFormDOM extends React.Component<
             <legend>Player 1</legend>
             <label>
               Name:
-              <input
+              <InputText
                 name="player1Name"
-                type="text"
                 placeholder="Player 1 name"
                 required
               />
             </label>
             <label>
               Color:
-              <input type="color" name="player1Color" />
+              <InputColor name="player1Color" />
             </label>
             <label>
               Symbol:
@@ -60,16 +60,15 @@ export class GameSettingsFormDOM extends React.Component<
             <legend>Player 2</legend>
             <label>
               Name:
-              <input
+              <InputText
                 name="player2Name"
-                type="text"
                 placeholder="Player 2 name"
                 required
               />
             </label>
             <label>
               Color:
-              <input type="color" name="player2Color" />
+              <InputColor name="player2Color" />
             </label>
             <label>
               Symbol:
