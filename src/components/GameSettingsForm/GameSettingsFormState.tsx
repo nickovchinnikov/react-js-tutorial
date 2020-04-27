@@ -1,5 +1,6 @@
 import React from "react";
 import { GameSettingsFormProps } from "./interfaces";
+import { SYMBOL_OPTIONS } from "./constants";
 
 interface GameSettingsFormStateState {
   player1Name: string;
@@ -77,13 +78,12 @@ export class GameSettingsFormState extends React.Component<
             <label>
               Symbol:
               <select
-                defaultValue="X"
                 onChange={this.handleFormChange("player1Symbol")}
                 value={this.state.player1Symbol}
               >
-                <option>X</option>
-                <option>Y</option>
-                <option>O</option>
+                {SYMBOL_OPTIONS.map((symbol) => (
+                  <option key={symbol}>{symbol}</option>
+                ))}
               </select>
             </label>
           </fieldset>
@@ -110,13 +110,12 @@ export class GameSettingsFormState extends React.Component<
             <label>
               Symbol:
               <select
-                defaultValue="O"
                 value={this.state.player2Symbol}
                 onChange={this.handleFormChange("player2Symbol")}
               >
-                <option>X</option>
-                <option>Y</option>
-                <option>O</option>
+                {SYMBOL_OPTIONS.map((symbol) => (
+                  <option key={symbol}>{symbol}</option>
+                ))}
               </select>
             </label>
           </fieldset>

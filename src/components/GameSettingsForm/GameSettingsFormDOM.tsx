@@ -1,5 +1,6 @@
 import React from "react";
 import { GameSettingsFormProps } from "./interfaces";
+import { SYMBOL_OPTIONS } from "./constants";
 
 const getInputValue = (form: HTMLFormElement, name: string): string => {
   return (form.querySelector(`[name=${name}]`) as HTMLInputElement).value;
@@ -49,9 +50,9 @@ export class GameSettingsFormDOM extends React.Component<
             <label>
               Symbol:
               <select name="player1Symbol" defaultValue="X">
-                <option>X</option>
-                <option>Y</option>
-                <option>O</option>
+                {SYMBOL_OPTIONS.map((symbol) => (
+                  <option key={symbol}>{symbol}</option>
+                ))}
               </select>
             </label>
           </fieldset>
@@ -73,9 +74,9 @@ export class GameSettingsFormDOM extends React.Component<
             <label>
               Symbol:
               <select name="player2Symbol" defaultValue="O">
-                <option>X</option>
-                <option>Y</option>
-                <option>O</option>
+                {SYMBOL_OPTIONS.map((symbol) => (
+                  <option key={symbol}>{symbol}</option>
+                ))}
               </select>
             </label>
           </fieldset>
