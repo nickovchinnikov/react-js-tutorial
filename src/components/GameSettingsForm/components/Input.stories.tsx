@@ -15,6 +15,4 @@ export const inputText = () => [
   <InputText key="jsx" placeholder="textInput" />,
 ];
 
-export const inputColor = () => [
-  <InputColor key="jsx" placeholder="color input" />,
-];
+export const inputColor = () => [<InputColor key="jsx" />];
