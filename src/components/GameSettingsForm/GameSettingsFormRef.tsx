@@ -50,14 +50,12 @@ export class GameSettingsFormRef extends React.Component<
               Color:
               <InputColor ref={this.player1Color} />
             </label>
-            <label>
-              Symbol:
-              <Select
-                name="player1Symbol"
-                defaultValue="X"
-                options={SYMBOL_OPTIONS}
-              />
-            </label>
+            <Select
+              label="Symbol:"
+              name="player1Symbol"
+              defaultValue="X"
+              options={SYMBOL_OPTIONS}
+            />
           </fieldset>
           <fieldset>
             <legend>Player 2</legend>
@@ -73,14 +71,12 @@ export class GameSettingsFormRef extends React.Component<
               Color:
               <InputColor ref={this.player2Color} />
             </label>
-            <label>
-              Symbol:
-              <Select
-                name="player1Symbol"
-                defaultValue="X"
-                options={SYMBOL_OPTIONS}
-              />
-            </label>
+            <Select
+              label="Symbol:"
+              name="player1Symbol"
+              defaultValue="X"
+              options={SYMBOL_OPTIONS}
+            />
           </fieldset>
           <button>Start</button>
         </fieldset>

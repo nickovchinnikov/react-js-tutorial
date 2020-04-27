@@ -48,14 +48,12 @@ export class GameSettingsFormDOM extends React.Component<
               Color:
               <InputColor name="player1Color" />
             </label>
-            <label>
-              Symbol:
-              <Select
-                name="player1Symbol"
-                defaultValue="X"
-                options={SYMBOL_OPTIONS}
-              />
-            </label>
+            <Select
+              label="Symbol:"
+              name="player1Symbol"
+              defaultValue="X"
+              options={SYMBOL_OPTIONS}
+            />
           </fieldset>
           <fieldset>
             <legend>Player 2</legend>
@@ -71,14 +69,12 @@ export class GameSettingsFormDOM extends React.Component<
               Color:
               <InputColor name="player2Color" />
             </label>
-            <label>
-              Symbol:
-              <Select
-                name="player1Symbol"
-                defaultValue="X"
-                options={SYMBOL_OPTIONS}
-              />
-            </label>
+            <Select
+              label="Symbol:"
+              name="player1Symbol"
+              defaultValue="X"
+              options={SYMBOL_OPTIONS}
+            />
           </fieldset>
           <button>Start</button>
         </fieldset>
