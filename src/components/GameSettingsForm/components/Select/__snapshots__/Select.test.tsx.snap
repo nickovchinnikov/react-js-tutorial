@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Select renders Select with two options 1`] = `
+<select>
+  <option>
+    X
+  </option>
+  <option>
+    Y
+  </option>
+</select>
+`;
