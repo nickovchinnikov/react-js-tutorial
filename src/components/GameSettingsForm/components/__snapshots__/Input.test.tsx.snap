@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Inputs renders InputColor with default green value 1`] = `
+<input
+  defaultValue="green"
+  type="color"
+/>
+`;
+
+exports[`Inputs renders InputText placeholder set to 'placeholder' 1`] = `
+<input
+  placeholder="placeholder"
+  type="text"
+/>
+`;
