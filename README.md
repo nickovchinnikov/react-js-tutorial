@@ -89,3 +89,25 @@ React and JSX
 [Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/14/)
 
 [Presentation](https://docs.google.com/presentation/d/1-dCyyIYT0sgeITNLKeSIBufGiuiBKoGRYpeO3pdlZlY/edit?usp=sharing)
+
+## Lesson 9:
+React Patterns
+* function component;
+* destructuring props;
+* JSX spread attributes;
+* merge destructured props with other values;
+* conditional rendering;
+* children types;
+* array as children;
+* function as children;
+* render prop;
+* children pass-through;
+* proxy component;
+* style component.
+
+
+[Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/18/)
+
+[Presentation](https://docs.google.com/presentation/d/1Y2TtBz19oXIJgfnddar9v-6m7LYLdKEr4ejibU2YuWQ/edit?usp=sharing)
+
+[Code samples](https://codesandbox.io/s/react-patterns-5huin)
