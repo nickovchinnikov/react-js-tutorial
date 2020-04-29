@@ -1,6 +1,7 @@
 import React from "react";
 import { GameSettingsFormProps } from "./interfaces";
 import { Formik, Form, Field } from "formik";
+import { SYMBOL_OPTIONS } from "./constants";
 
 const initialFormProps = {
   player1: {
@@ -30,9 +31,9 @@ export class GameSettingsFormFormik extends React.Component<
               <Field type="text" name="player1.name" />
               <Field type="color" name="player1.color" />
               <Field name="player1.symbol" as="select">
-                <option>X</option>
-                <option>Y</option>
-                <option>O</option>
+                {SYMBOL_OPTIONS.map((symbol) => (
+                  <option key={symbol}>{symbol}</option>
+                ))}
               </Field>
             </fieldset>
             <fieldset>
@@ -41,9 +42,9 @@ export class GameSettingsFormFormik extends React.Component<
 
               <Field type="color" name="player2.color" />
               <Field name="player2.symbol" as="select">
-                <option>X</option>
-                <option>Y</option>
-                <option>O</option>
+                {SYMBOL_OPTIONS.map((symbol) => (
+                  <option key={symbol}>{symbol}</option>
+                ))}
               </Field>
             </fieldset>
 

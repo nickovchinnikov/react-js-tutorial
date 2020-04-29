@@ -1,5 +1,8 @@
 import React from "react";
 import { GameSettingsFormProps } from "./interfaces";
+import { SYMBOL_OPTIONS } from "./constants";
+import { InputColor, InputText } from "./components";
+import { Select } from "./components/Select/Select";
 
 interface GameSettingsFormStateState {
   player1Name: string;
@@ -40,7 +43,7 @@ export class GameSettingsFormState extends React.Component<
   };
 
   handleFormChange = (prop: keyof GameSettingsFormStateState) => (
-    ev: React.ChangeEvent
+    ev: React.FormEvent<HTMLInputElement> | React.ChangeEvent
   ) => {
     this.setState(
       {
@@ -58,8 +61,7 @@ export class GameSettingsFormState extends React.Component<
             <legend>Player 1</legend>
             <label>
               Name:
-              <input
-                type="text"
+              <InputText
                 placeholder="Player 1 name"
                 required
                 value={this.state.player1Name}
@@ -68,31 +70,25 @@ export class GameSettingsFormState extends React.Component<
             </label>
             <label>
               Color:
-              <input
-                type="color"
+              <InputColor
                 value={this.state.player1Color}
                 onChange={this.handleFormChange("player1Color")}
               />
             </label>
             <label>
               Symbol:
-              <select
+              <Select
+                name="player1Symbol"
                 defaultValue="X"
-                onChange={this.handleFormChange("player1Symbol")}
-                value={this.state.player1Symbol}
-              >
-                <option>X</option>
-                <option>Y</option>
-                <option>O</option>
-              </select>
+                options={SYMBOL_OPTIONS}
+              />
             </label>
           </fieldset>
           <fieldset>
             <legend>Player 2</legend>
             <label>
               Name:
-              <input
-                type="text"
+              <InputText
                 placeholder="Player 2 name"
                 required
                 value={this.state.player2Name}
@@ -101,23 +97,18 @@ export class GameSettingsFormState extends React.Component<
             </label>
             <label>
               Color:
-              <input
-                type="color"
+              <InputColor
                 value={this.state.player2Color}
                 onChange={this.handleFormChange("player2Color")}
               />
             </label>
             <label>
               Symbol:
-              <select
-                defaultValue="O"
-                value={this.state.player2Symbol}
-                onChange={this.handleFormChange("player2Symbol")}
-              >
-                <option>X</option>
-                <option>Y</option>
-                <option>O</option>
-              </select>
+              <Select
+                name="player1Symbol"
+                defaultValue="X"
+                options={SYMBOL_OPTIONS}
+              />
             </label>
           </fieldset>
           <button>Start</button>

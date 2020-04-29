@@ -1,5 +1,8 @@
 import React from "react";
 import { GameSettingsFormProps } from "./interfaces";
+import { SYMBOL_OPTIONS } from "./constants";
+import { InputColor, InputText } from "./components";
+import { Select } from "./components/Select/Select";
 
 export class GameSettingsFormRef extends React.Component<
   GameSettingsFormProps,
@@ -37,49 +40,43 @@ export class GameSettingsFormRef extends React.Component<
             <legend>Player 1</legend>
             <label>
               Name:
-              <input
+              <InputText
                 ref={this.player1Name}
-                type="text"
                 placeholder="Player 1 name"
                 required
               />
             </label>
             <label>
               Color:
-              <input type="color" ref={this.player1Color} />
+              <InputColor ref={this.player1Color} />
             </label>
-            <label>
-              Symbol:
-              <select ref={this.player1Symbol} defaultValue="X">
-                <option>X</option>
-                <option>Y</option>
-                <option>O</option>
-              </select>
-            </label>
+            <Select
+              label="Symbol:"
+              name="player1Symbol"
+              defaultValue="X"
+              options={SYMBOL_OPTIONS}
+            />
           </fieldset>
           <fieldset>
             <legend>Player 2</legend>
             <label>
               Name:
-              <input
+              <InputText
                 ref={this.player2Name}
-                type="text"
                 placeholder="Player 2 name"
                 required
               />
             </label>
             <label>
               Color:
-              <input type="color" ref={this.player2Color} />
+              <InputColor ref={this.player2Color} />
             </label>
-            <label>
-              Symbol:
-              <select ref={this.player2Symbol} defaultValue="O">
-                <option>X</option>
-                <option>Y</option>
-                <option>O</option>
-              </select>
-            </label>
+            <Select
+              label="Symbol:"
+              name="player1Symbol"
+              defaultValue="X"
+              options={SYMBOL_OPTIONS}
+            />
           </fieldset>
           <button>Start</button>
         </fieldset>
