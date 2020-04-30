@@ -42,14 +42,13 @@ export class GameSettingsFormState extends React.Component<
     });
   };
 
-  handleFormChange = (prop: keyof GameSettingsFormStateState) => (
-    ev: React.FormEvent<HTMLInputElement> | React.ChangeEvent
-  ) => {
-    this.setState(
-      {
-        [prop]: (ev.target as HTMLInputElement).value,
-      } as any /** don't do this in real projects. Better to have multiple setters */
-    );
+  handleFormInputChange = (ev: FormEvent<HTMLInputElement>) => {
+    this.setState({
+      [ev.target.getAttribute(
+        "name"
+      ) as keyof GameSettingsFormStateState]: (ev.target as HTMLInputElement)
+        .value,
+    } as any);
   };
 
   render() {
@@ -64,25 +63,26 @@ export class GameSettingsFormState extends React.Component<
               <InputText
                 placeholder="Player 1 name"
                 required
+                name="player1Name"
                 value={this.state.player1Name}
-                onChange={this.handleFormChange("player1Name")}
+                onChange={this.handleFormInputChange}
               />
             </label>
             <label>
               Color:
               <InputColor
+                name="player1Color"
                 value={this.state.player1Color}
-                onChange={this.handleFormChange("player1Color")}
+                onChange={this.handleFormInputChange}
               />
             </label>
-            <label>
-              Symbol:
-              <Select
-                name="player1Symbol"
-                defaultValue="X"
-                options={SYMBOL_OPTIONS}
-              />
-            </label>
+            <Select
+              label="Symbol"
+              name="player1Symbol"
+              defaultValue="X"
+              options={SYMBOL_OPTIONS}
+              onChange={this.handleFormInputChange}
+            />
           </fieldset>
           <fieldset>
             <legend>Player 2</legend>
@@ -91,25 +91,26 @@ export class GameSettingsFormState extends React.Component<
               <InputText
                 placeholder="Player 2 name"
                 required
+                name="player2Name"
                 value={this.state.player2Name}
-                onChange={this.handleFormChange("player2Name")}
+                onChange={this.handleFormInputChange}
               />
             </label>
             <label>
               Color:
               <InputColor
+                name="player2Color"
                 value={this.state.player2Color}
-                onChange={this.handleFormChange("player2Color")}
+                onChange={this.handleFormInputChange}
               />
             </label>
-            <label>
-              Symbol:
-              <Select
-                name="player1Symbol"
-                defaultValue="X"
-                options={SYMBOL_OPTIONS}
-              />
-            </label>
+            <Select
+              label="Symbol"
+              name="player2Symbol"
+              defaultValue="X"
+              options={SYMBOL_OPTIONS}
+              onChange={this.handleFormInputChange}
+            />
           </fieldset>
           <button>Start</button>
         </fieldset>
