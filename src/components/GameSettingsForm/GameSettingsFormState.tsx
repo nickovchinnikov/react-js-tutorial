@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FormEvent } from "react";
 import { GameSettingsFormProps } from "./interfaces";
 import { SYMBOL_OPTIONS } from "./constants";
 import { InputColor, InputText } from "./components";
@@ -42,9 +42,13 @@ export class GameSettingsFormState extends React.Component<
     });
   };
 
+  componentDidUpdate() {
+    console.log("@@GameSettingsFormState.componentDidUpdate");
+  }
+
   handleFormInputChange = (ev: FormEvent<HTMLInputElement>) => {
     this.setState({
-      [ev.target.getAttribute(
+      [(ev.target as HTMLInputElement).getAttribute(
         "name"
       ) as keyof GameSettingsFormStateState]: (ev.target as HTMLInputElement)
         .value,
