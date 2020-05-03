@@ -5,6 +5,7 @@ module.exports = {
   clearMocks: true,
   coverageDirectory: "coverage",
   testEnvironment: "jsdom",
+  snapshotSerializers: ["enzyme-to-json/serializer", "jest-emotion"],
   setupFilesAfterEnv: ["<rootDir>/internals/jestSettings.js"],
   transform: {
     "^.+\\.(js|jsx|ts|tsx)$": "<rootDir>/node_modules/babel-jest",
