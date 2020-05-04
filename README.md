@@ -111,3 +111,18 @@ React Patterns
 [Presentation](https://docs.google.com/presentation/d/1Y2TtBz19oXIJgfnddar9v-6m7LYLdKEr4ejibU2YuWQ/edit?usp=sharing)
 
 [Code samples](https://codesandbox.io/s/react-patterns-5huin)
+
+
+## Lesson 10:
+* React Patterns
+* Event switch
+* Layout component
+* Container component
+* Higher-order component
+* State hoisting
+* Controlled input
+
+
+[Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/19)
+
+[Presentation](https://docs.google.com/presentation/d/1rbPStqB8Q7inem-HH72QpUQxK5Ux7cCEjmR0Zzu_8jk/edit?usp=sharing)

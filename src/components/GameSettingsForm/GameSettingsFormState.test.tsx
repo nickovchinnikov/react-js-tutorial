@@ -21,20 +21,26 @@ describe("GameSettingsFormState", () => {
 
     const el = mount(<GameSettingsFormState onSubmit={onSubmit} />);
     el.find('input[placeholder="Player 1 name"]').simulate("change", {
-      target: { value: data.player1.name },
+      target: { value: data.player1.name, getAttribute: () => "player1Name" },
     });
     el.find('input[placeholder="Player 2 name"]').simulate("change", {
-      target: { value: data.player2.name },
+      target: { value: data.player2.name, getAttribute: () => "player2Name" },
     });
     el.find('input[type="color"]')
       .at(0)
       .simulate("change", {
-        target: { value: data.player1.color },
+        target: {
+          value: data.player1.color,
+          getAttribute: () => "player1Color",
+        },
       });
     el.find('input[type="color"]')
       .at(1)
       .simulate("change", {
-        target: { value: data.player2.color },
+        target: {
+          value: data.player2.color,
+          getAttribute: () => "player2Color",
+        },
       });
     el.find("button").simulate("submit");
     expect(onSubmit).toHaveBeenCalled();

@@ -48,17 +48,44 @@ const StoryWrapper = styled.div`
   flex-direction: row;
 `;
 
-export const forms = () => (
-  <StoryWrapper>
-    <DemoForm FormComponent={GameSettingsFormDOM} title="GameSettingsFormDOM" />
-    <DemoForm FormComponent={GameSettingsFormRef} title="GameSettingsFormRef" />
-    <DemoForm
-      FormComponent={GameSettingsFormState}
-      title="GameSettingsFormState"
-    />
-    <DemoForm
-      FormComponent={GameSettingsFormFormik}
-      title="GameSettingsFormFormik"
-    />
-  </StoryWrapper>
-);
+class StoryWrapperLayout extends React.Component<{
+  columns: DemoFormProps[];
+}> {
+  shouldComponentUpdate() {
+    return false;
+  }
+
+  render() {
+    return (
+      <StoryWrapper>
+        {this.props.columns.map(({ FormComponent, title }) => (
+          <DemoForm FormComponent={FormComponent} title={title} key={title} />
+        ))}
+      </StoryWrapper>
+    );
+  }
+}
+
+export const forms = () => {
+  const [title, setTitle] = useState("Forms demo");
+  return (
+    <>
+      <h1>{title}</h1>
+      <input value={title} onChange={(ev) => setTitle(ev.target.value)} />
+      <StoryWrapperLayout
+        columns={[
+          { FormComponent: GameSettingsFormDOM, title: "GameSettingsFormDOM" },
+          { FormComponent: GameSettingsFormRef, title: "GameSettingsFormRef" },
+          {
+            FormComponent: GameSettingsFormState,
+            title: "GameSettingsFormState",
+          },
+          {
+            FormComponent: GameSettingsFormFormik,
+            title: "GameSettingsFormFormik",
+          },
+        ]}
+      />
+    </>
+  );
+};

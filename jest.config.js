@@ -13,4 +13,5 @@ module.exports = {
     // https://jestjs.io/docs/en/webpack#handling-static-assets
     "\\.(css|less)$": "<rootDir>/internals/__mocks__/styleMock.js",
   },
+  moduleDirectories: ["node_modules", "src"],
 };
