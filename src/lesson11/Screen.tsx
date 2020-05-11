@@ -6,7 +6,7 @@ export const Screen = () => {
   return (
     <div>
       <h3>Reach hooks lesson</h3>
-      <p>Is foreground: {isForeground ? "true" : "false"}</p>
+      <p>Is foreground: {String(isForeground)}</p>
     </div>
   );
 };

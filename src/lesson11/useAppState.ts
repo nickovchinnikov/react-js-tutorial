@@ -6,13 +6,13 @@ export const useAppState = (): boolean => {
   const isForegroundRef = useRef(isForeground);
 
   const handleAppStateChange = useCallback(({ type }) => {
-    if (["focus", "blur"].some((p) => p === type)) {
+    if (["focus", "blur"].includes(type)) {
       if (!isForegroundRef.current && type === "focus") {
         logAppOpen();
       }
-      const newState = type === "focus";
-      setIsForeground(newState);
-      isForegroundRef.current = newState;
+      const isInForeground = type === "focus";
+      setIsForeground(isInForeground);
+      isForegroundRef.current = isInForeground;
     }
   }, []);
 
@@ -29,7 +29,7 @@ export const useAppState = (): boolean => {
 };
 
 // simplified version, just an example without tests.
-export const useAppStateWithoutLogs = (): boolean => {
+const useAppStateWithoutLogs = (): boolean => {
   const [isForeground, setIsForeground] = useState(true);
 
   const handleAppStateChange = useCallback(({ type }) => {

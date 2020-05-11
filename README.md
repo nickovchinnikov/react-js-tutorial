@@ -132,6 +132,6 @@ React Patterns
 * Hooks testing
 * React Fiber
 
-[Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/19) <br>
+[Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/20) <br>
 [Presentation](https://docs.google.com/presentation/d/1ASdPCTPObKZHHfFvd2RARfmHeq4EvHM8x-YBMCzGcb4/edit?usp=sharing) <br>
 [Code samples](https://codesandbox.io/s/react-hooks-c3jf4?file=/src/index.tsx)

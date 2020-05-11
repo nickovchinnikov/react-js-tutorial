@@ -15,11 +15,13 @@ describe("test useAppState hook", () => {
       handler,
     });
   });
+
   window.removeEventListener = jest.fn((name, handler) => {
     listeners = listeners.filter(
       (p) => p.name !== name && p.handler !== handler
     );
   });
+
   const emit = (name: string) => {
     listeners.forEach((p) => {
       if (p.name === name) {
