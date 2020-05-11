@@ -5,6 +5,9 @@
     "plugin:prettier/recommended",
     "plugin:react/recommended"
   ],
+  "plugins": [
+    "react-hooks"
+  ],
   "settings": {
     "react": {
       "version": "detect"
@@ -33,7 +36,9 @@
       }
     ],
     "@typescript-eslint/explicit-function-return-type": 0,
-    "react/prop-types": 0
+    "react/prop-types": 0,
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
   },
   "parserOptions": {
     "sourceType": "module",

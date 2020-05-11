@@ -126,3 +126,12 @@ React Patterns
 [Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/19)
 
 [Presentation](https://docs.google.com/presentation/d/1rbPStqB8Q7inem-HH72QpUQxK5Ux7cCEjmR0Zzu_8jk/edit?usp=sharing)
+
+## Lesson 11:
+* React Hooks
+* Hooks testing
+* React Fiber
+
+[Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/20) <br>
+[Presentation](https://docs.google.com/presentation/d/1ASdPCTPObKZHHfFvd2RARfmHeq4EvHM8x-YBMCzGcb4/edit?usp=sharing) <br>
+[Code samples](https://codesandbox.io/s/react-hooks-c3jf4?file=/src/index.tsx)
