@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { LoginScreen } from "@/screens/LoginScreen";
 import { FieldScreen } from "@/screens/FieldScreen";
 import { NoMatchScreen } from "@/screens/NoMatchScreen";
+import { UserScreen } from "@/screens/UserScreen";
 
 export const App: React.FC<{}> = () => (
   <Router>
@@ -24,6 +25,7 @@ export const App: React.FC<{}> = () => (
         <Route path="/field">
           <FieldScreen />
         </Route>
+        <Route path="/user/:name" component={UserScreen} />
         <Route path="*">
           <NoMatchScreen />
         </Route>
