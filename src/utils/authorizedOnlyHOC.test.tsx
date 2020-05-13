@@ -2,6 +2,7 @@ import React from "react";
 import { authorizedOnlyHoc } from "./authorizedOnlyHoc";
 import { isLoggedIn } from "@/api/auth";
 import { mount } from "enzyme";
+import { sleep } from "@/utils/sleep";
 
 jest.mock("@/api/auth", () => ({
   isLoggedIn: jest.fn(),
@@ -12,8 +13,6 @@ jest.mock("react-router-dom", () => ({
     return <div>Redirect: {JSON.stringify(props)}</div>;
   },
 }));
-
-const sleep = (x: number) => new Promise((r) => setTimeout(r, x));
 
 describe("authorizedOnlyHoc", () => {
   interface ComponentProps {

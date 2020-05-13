@@ -1,4 +1,4 @@
-const sleep = (x: number) => new Promise((r) => setTimeout(r, x));
+import { sleep } from '@/utils/sleep';
 
 export const login = async (name: string) => {
   await localStorage.setItem("login", name);

@@ -4,8 +4,6 @@ import { LoginScreen } from "./LoginScreen";
 import { shallow } from "enzyme";
 import { login } from "@/api/auth";
 
-const sleep = (x: number) => new Promise((r) => setTimeout(r, x));
-
 const mockHistory = { push: jest.fn() };
 jest.mock("react-router-dom", () => ({
   useHistory: () => mockHistory,
