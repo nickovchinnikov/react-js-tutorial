@@ -1,12 +1,13 @@
 import React from "react";
 import { RouteComponentProps } from "react-router-dom";
 import { logout } from "@/api/auth";
+import { authorizedOnlyHoc } from "@/utils/authorizedOnlyHOC";
 
 interface RouteParams {
   name: string;
 }
 
-export class UserScreen extends React.PureComponent<
+class RawUserScreen extends React.PureComponent<
   RouteComponentProps<RouteParams>,
   {}
 > {
@@ -23,3 +24,5 @@ export class UserScreen extends React.PureComponent<
     );
   }
 }
+
+export const UserScreen = authorizedOnlyHoc(RawUserScreen, "/login");
