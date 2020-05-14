@@ -135,3 +135,9 @@ React Patterns
 [Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/20) <br>
 [Presentation](https://docs.google.com/presentation/d/1ASdPCTPObKZHHfFvd2RARfmHeq4EvHM8x-YBMCzGcb4/edit?usp=sharing) <br>
 [Code samples](https://codesandbox.io/s/react-hooks-c3jf4?file=/src/index.tsx)
+
+## Lesson 12:
+* React Router
+
+[Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/21) <br>
+[Presentation](https://drive.google.com/file/d/19xQYJASeA3HQf0tR-tQ3J_I6MRyoHRvw/view?usp=sharing) <br>
