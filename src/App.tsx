@@ -7,7 +7,6 @@ import { UserScreen } from "@/screens/UserScreen";
 
 export const App: React.FC<{}> = () => (
   <Router>
-    <div>
       <nav>
         <ul>
           <li>
@@ -30,6 +29,5 @@ export const App: React.FC<{}> = () => (
           <NoMatchScreen />
         </Route>
       </Switch>
-    </div>
   </Router>
 );
