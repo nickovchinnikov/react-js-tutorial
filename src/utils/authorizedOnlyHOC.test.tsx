@@ -19,10 +19,7 @@ describe("authorizedOnlyHoc", () => {
     name: string;
   }
   const Component: React.FC<ComponentProps> = ({ name }) => <h1>{name}</h1>;
-  let WrappedComponent: React.ComponentType<ComponentProps>;
-  beforeEach(() => {
-    WrappedComponent = authorizedOnlyHoc(Component);
-  });
+  const WrappedComponent = authorizedOnlyHoc(Component);
 
   it("renders placeholder during request and component on success", async () => {
     const wrapper = mount(<WrappedComponent name="Bob" />);
