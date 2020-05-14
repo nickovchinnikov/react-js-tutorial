@@ -15,15 +15,16 @@ export const App: React.FC<{}> = () => (
           <li>
             <Link to="/field">Field</Link>
           </li>
+          <li>
+            <Link to="/user/Nick">Nick</Link>
+          </li>
         </ul>
       </nav>
       <Switch>
         <Route path="/login">
           <LoginScreen />
         </Route>
-        <Route path="/field">
-          <FieldScreen />
-        </Route>
+        <Route path="/field" render={() => <FieldScreen />} />
         <Route path="/user/:name" component={UserScreen} />
         <Route path="*">
           <NoMatchScreen />
