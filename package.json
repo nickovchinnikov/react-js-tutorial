@@ -50,6 +50,7 @@
     "@types/jest": "^25.1.4",
     "@types/react": "^16.9.33",
     "@types/react-dom": "^16.9.6",
+    "@types/react-router-dom": "^5.1.5",
     "@types/react-test-renderer": "^16.9.2",
     "@typescript-eslint/eslint-plugin": "^2.25.0",
     "@typescript-eslint/parser": "^2.25.0",
@@ -84,7 +85,8 @@
     "@emotion/styled": "^10.0.27",
     "formik": "^2.1.4",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0"
   },
   "loki": {
     "configurations": {

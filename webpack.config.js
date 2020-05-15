@@ -11,11 +11,13 @@ module.exports = {
     alias: {
       types: path.resolve(__dirname, "src/types"),
       components: path.resolve(__dirname, "src/components"),
+      "@": path.resolve(__dirname, "src"),
     },
   },
   output: {
     path: path.join(__dirname, "/dist"),
-    filename: "index.js",
+    filename: "./index.js",
+    publicPath: "/",
   },
   module: {
     rules: [
