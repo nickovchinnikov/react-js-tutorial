@@ -1,29 +1,25 @@
-import React, { useState, useRef } from "react";
-import { Validator } from "./validator";
+import React, { useState } from "react";
+import { ValidationResult, isNotEmpty as getIsEmptyError } from "./validator";
 
 export const SomeForm = () => {
   const [username, setUsername] = useState("");
-  const validatorRef = useRef<Validator>(new Validator());
+  const [usernameError, setUsernameError] = useState<ValidationResult>(
+    undefined
+  );
 
   const setUsernameWithValidation = (value: string) => {
-    const validator = validatorRef.current;
     setUsername(value);
-    validator.updateField("username", value);
 
-    validator.checkIsNotEmpty("username");
-
-    if (validator.hasErrors()) {
-      return;
-    }
-
-    validator.checkIsAlphanumeric("username");
+    const isEmptyError = getIsEmptyError(value, "username");
+    setUsernameError(isEmptyError);
+    // validator.checkIsAlphanumeric("username");
   };
 
   const handleSumbit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (validatorRef.current.hasErrors()) {
-      console.error("validation errors", validatorRef.current.errors);
+    if (usernameError) {
+      console.error("validation errors");
       return;
     }
 
@@ -38,10 +34,8 @@ export const SomeForm = () => {
         value={username}
         onChange={(e) => setUsernameWithValidation(e.currentTarget.value)}
       />
-      {validatorRef.current.hasErrors() && (
-        <span style={{ color: "red" }}>
-          {validatorRef.current.errors["username"].message}
-        </span>
+      {usernameError && (
+        <span style={{ color: "red" }}>{usernameError.message}</span>
       )}
       <button type="submit">Submit</button>
     </form>

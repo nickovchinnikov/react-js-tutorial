@@ -1,45 +1,59 @@
 export type Value = string | number | boolean;
 
-export class Validator {
-  errors: { [key: string]: Error } = {};
-  values: { [key: string]: Value } = {};
+export type ValidationResult = Error | undefined;
 
-  updateField(key: string, value: Value) {
-    this.values[key] = value;
+export type ValidatorFunc = (value: Value, key: string) => ValidationResult;
+
+export const isNotEmpty: ValidatorFunc = (value, key) => {
+  if (
+    typeof value !== "number" && typeof value !== "boolean" ? !!value : true
+  ) {
+    return undefined;
   }
 
-  hasErrors() {
-    let isValid = true;
+  return new Error(`${key} is required`);
+};
 
-    Object.keys(this.errors).forEach((key) => {
-      if (this.errors[key]) {
-        isValid = false;
-      }
-    });
+// export class Validator {
+//   errors: { [key: string]: Error } = {};
+//   values: { [key: string]: Value } = {};
 
-    return !isValid;
-  }
+//   updateField(key: string, value: Value) {
+//     this.values[key] = value;
+//   }
 
-  checkIsNotEmpty(key: string) {
-    const value = this.values[key];
-    const isValid =
-      typeof value !== "number" && typeof value !== "boolean" ? !!value : true;
+//   hasErrors() {
+//     let isValid = true;
 
-    if (!isValid) {
-      this.errors[key] = new Error(`${key} is required`);
-    } else {
-      delete this.errors[key];
-    }
-  }
+//     Object.keys(this.errors).forEach((key) => {
+//       if (this.errors[key]) {
+//         isValid = false;
+//       }
+//     });
 
-  checkIsAlphanumeric(key: string) {
-    const value = this.values[key];
-    const isValid = /^[a-zA-Z0-9_]*$/.test(value.toString());
+//     return !isValid;
+//   }
 
-    if (!isValid) {
-      this.errors[key] = new Error(`${key} must be alphanumeric`);
-    } else {
-      delete this.errors[key];
-    }
-  }
-}
+//   checkIsNotEmpty(key: string) {
+//     const value = this.values[key];
+//     const isValid =
+//       typeof value !== "number" && typeof value !== "boolean" ? !!value : true;
+
+//     if (!isValid) {
+//       this.errors[key] = new Error(`${key} is required`);
+//     } else {
+//       delete this.errors[key];
+//     }
+//   }
+
+//   checkIsAlphanumeric(key: string) {
+//     const value = this.values[key];
+//     const isValid = /^[a-zA-Z0-9_]*$/.test(value.toString());
+
+//     if (!isValid) {
+//       this.errors[key] = new Error(`${key} must be alphanumeric`);
+//     } else {
+//       delete this.errors[key];
+//     }
+//   }
+// }
