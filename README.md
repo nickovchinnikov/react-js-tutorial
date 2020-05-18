@@ -146,4 +146,4 @@ React Patterns
 * Functional programming
 
 [Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/22) <br>
-[Presentation](https://otus-lesson-fp.now.sh/) <br>
+[Presentation](https://otus-lesson-fp.saitonakamura.now.sh/) <br>

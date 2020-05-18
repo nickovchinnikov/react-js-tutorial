@@ -173,6 +173,7 @@ const newId = () => id++`}</Code>
       </Fragment>
     </List>
   </TitleSlide>,
+  QuestionsSlide,
   <TitleSlide
     key='purepractice'
     name='Практика'
@@ -345,6 +346,7 @@ const newPerson = {
   interests: newInterests
 }`}</Code>
   </OtusSlide>,
+  QuestionsSlide,
 ]
 
 const CurrySlides = [
@@ -353,6 +355,36 @@ const CurrySlides = [
     name='Каррирование'
     alert='Каррирование и частичное применение'
   ></AlertSlide>,
+  <TitleSlide
+    key='partial'
+    name='Частичное применение'
+    title='Частичное применение'
+    layout={CenteredPlainLayout}
+  >
+    <Code>{`const fetchData = (url, params) =>\n  fetch(\`\${url}?\${toUrlParams(params)}\`)
+
+const fetchOnUsers = (params) => fetchData('/users', params)
+
+fetchOnUsers({ id: 1 })`}</Code>
+  </TitleSlide>,
+  <TitleSlide
+    key='curryex'
+    name='Каррирование'
+    title='Каррирование'
+    layout={CenteredPlainLayout}
+  >
+    <Code fontSize={35}>{`String -> Object -> Promise<unknown>`}</Code>
+    <Code fontSize={35}>{`  const fetchData = (url, params) => ...`}</Code>
+  </TitleSlide>,
+  QuestionsSlide,
+  <TitleSlide
+    key='purepractice'
+    name='Практика'
+    title='Время практики!'
+    layout={CenteredPlainLayout}
+  >
+    <Text size={150}>👩‍💻</Text>
+  </TitleSlide>,
 ]
 
 const TypesSlides = [
@@ -361,6 +393,7 @@ const TypesSlides = [
     name='ФП Типы'
     alert='Типы по функциональному'
   ></AlertSlide>,
+  QuestionsSlide,
 ]
 
 const App = () => (
@@ -478,7 +511,7 @@ const App = () => (
           </FullWidthFragment>
           <FullWidthFragment>
             <ListItem>
-              <NoticeBlock>Монады 😈</NoticeBlock>
+              <NoticeBlock>Монады? 😈</NoticeBlock>
             </ListItem>
           </FullWidthFragment>
         </List>
