@@ -4,13 +4,15 @@
 
 ## Входной тест
 
-## ФП
+## Зачем ФП
 
 ## Purity
 
 ### Immutablity
 
 ### Referential transparency
+
+### Практика
 
 ## Pipe
 
@@ -22,22 +24,32 @@
 
 ### Point free
 
-## Expression problem
+### Практика
 
-## Reactivity
+## FP Types
 
-### React hooks
+### Inference
 
-## ФП Практика
+### Invariants
 
-## Type inference
+### Nominal types
 
-## Monads
-
-### Error handling
 
 ## Выходной тест
 
 ## Материалы
 
 ## Финальные вопросы
+
+
+## Если успеем
+
+## Monads
+
+### Error handling
+
+## Expression problem
+
+## Reactivity
+
+### React hooks

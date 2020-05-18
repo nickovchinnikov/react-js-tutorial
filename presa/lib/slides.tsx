@@ -13,26 +13,32 @@ import {
 } from './blocks'
 import { SlideProps, Fragment } from '@saitonakamura/presa'
 import { CenteredLayout } from '@saitonakamura/presa/lib/components/slide/layouts'
+import { Size } from './utils'
 
 export const CheckRecordSlide = (
-  <TitleSlide name='Проверяем запись' title='Проверить, идет ли запись!'>
-    <CenteredPlainLayout>
-      <CameraImage />
-    </CenteredPlainLayout>
+  <TitleSlide
+    name='Проверяем запись'
+    title='Проверить, идет ли запись!'
+    layout={CenteredPlainLayout}
+  >
+    <CameraImage />
   </TitleSlide>
 )
 
 export const CheckSoundVideoSlide = (
-  <AlertSlide name='Проверяем связь'>
-    <Alert>
-      Меня хорошо видно && слышно?
-      <AlertDescription>
-        Ставьте ➕ , если все хорошо
-        <br />
-        Напишите в чат, если есть проблемы
-      </AlertDescription>
-    </Alert>
-  </AlertSlide>
+  <AlertSlide
+    name='Проверяем связь'
+    alert={
+      <>
+        Меня хорошо видно && слышно?
+        <AlertDescription>
+          Ставьте ➕ , если все хорошо
+          <br />
+          Напишите в чат, если есть проблемы
+        </AlertDescription>
+      </>
+    }
+  />
 )
 
 export const RulesSlide = (
@@ -66,8 +72,8 @@ export const RulesSlide = (
   </TitleSlide>
 )
 
-export const MicrophoneSlide = (props: SlideProps & { title: string }) => (
-  <TitleSlide title={props.title} layout={CenteredLayout}>
+export const MicrophoneSlide = (props: SlideProps & { title: string; titleSize?: Size }) => (
+  <TitleSlide {...props} layout={CenteredLayout}>
     <Text size={150}>🎤</Text>
   </TitleSlide>
 )

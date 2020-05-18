@@ -71,3 +71,14 @@ export const horizontalWrapFlex = css`
 export const elevated = css`
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `
+
+export const text = ({ size, italic }: { size: Size; italic?: boolean }) => css`
+  font-size: ${(p) => sizeToPx(p.theme, size)};
+  line-height: 1.2em;
+  font-style: ${italic ? 'italic' : 'normal'};
+`
+
+export const quote = css`
+  font-style: italic;
+  border-left: 5px solid ${(p) => p.theme.darkGrayColor};
+`

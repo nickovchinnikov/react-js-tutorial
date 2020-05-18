@@ -1,6 +1,8 @@
 import { useSpring, AnimatedValue, ForwardedProps } from 'react-spring'
 import React, { useCallback, useMemo, CSSProperties } from 'react'
 import { SlideProps, Slide, ControlledFragment } from '@saitonakamura/presa'
+import { PlainLayout } from '@saitonakamura/presa/lib/components/slide/layouts'
+import { OtusSlide, OtusSlideProps } from './blocks'
 
 const processSteps = <T extends Record<string, {}>>(steps: T[]) => {
   const states = new Map<keyof T, Record<string, {}>>()
@@ -83,7 +85,7 @@ export function AnimatedSlide<T extends Record<string, {}>>({
   children,
   steps,
   ...rest
-}: SlideProps & {
+}: OtusSlideProps & {
   steps: Array<PartialL2<T>>
   children: (steps: AnimatedStyles<T>, step: number) => React.ReactNode
 }) {
@@ -91,12 +93,12 @@ export function AnimatedSlide<T extends Record<string, {}>>({
   const memedSteps = useMemo(() => steps, [])
 
   return (
-    <Slide layout='centered' {...rest}>
+    <OtusSlide layout={PlainLayout} {...rest}>
       <ControlledFragment numberOfSteps={steps.length}>
         {(index) => (
           <AnimatedPart step={index} steps={memedSteps} children={children} />
         )}
       </ControlledFragment>
-    </Slide>
+    </OtusSlide>
   )
 }

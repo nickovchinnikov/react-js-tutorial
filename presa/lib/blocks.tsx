@@ -3,6 +3,7 @@ import styled, { css, createGlobalStyle, DefaultTheme } from 'styled-components'
 import {
   PlainLayout,
   DefaultLayout,
+  CenteredLayout,
 } from '@saitonakamura/presa/lib/components/slide/layouts'
 import { Slide, SlideProps, Fragment } from '@saitonakamura/presa'
 import CameraImgUrl from '../assets/image3.png'
@@ -18,23 +19,26 @@ import {
   dividerLeft,
   plainLayout,
   padding,
+  text,
+  quote,
 } from './mixins'
 import { sizeToPx, iconToUrl, matchColor } from './utils'
 import type { Size, Color, IconType } from './utils'
 
-export const Text = styled.span<{ size: Size }>`
-  font-size: ${(p) => matchSize(18, 36, 48)(p.size)};
-  line-height: 1.2em;
+export const Text = styled.span<{ size: Size; italic?: boolean }>`
+  ${(p) => text(p)}
 `
 
 export const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     box-sizing: border-box;
+    // line-height: 1.2em;
   }
 
   * {
     box-sizing: inherit;
+    // line-height: inherit;
   }
 
   ul, h1, h2, h3, h4, h5, h6, li, pre {
@@ -115,7 +119,7 @@ export const AlertDescription = styled.span`
   font-weight: normal;
 `
 
-export const AlertSlide = (props: SlideProps & { alert: string }) => (
+export const AlertSlide = (props: SlideProps & { alert: React.ReactNode }) => (
   <Slide
     {...props}
     layout={(children) => <CenteredPlainLayout children={children} />}
@@ -134,8 +138,8 @@ const TitleContainer = styled(GradientBlock)`
   ${headingTypography};
 `
 
-export const Title = styled.h1`
-  font-size: 45px;
+export const Title = styled.h1<{ size?: Size }>`
+  font-size: ${(p) => sizeToPx(p.theme, p.size ?? 45)};
   font-weight: bold;
   ${headingTypography};
 `
@@ -148,23 +152,20 @@ const TitleSlideContent = styled.div<{ padding?: Size }>`
 type Layout = React.ComponentType<any>
 
 export const TitleSlide = (
-  props: Omit<SlideProps, 'layout'> & {
+  props: OtusSlideProps & {
     title: React.ReactNode
-    layout?: Layout
+    titleSize?: Size
   },
 ) => {
   const Layout = props.layout ?? TitleSlideContent
 
   return (
-    <Slide
-      {...props}
-      layout={(children) => <VerticalPlainLayout children={children} />}
-    >
+    <OtusSlide {...props} layout={VerticalPlainLayout}>
       <TitleContainer>
-        <Title>{props.title}</Title>
+        <Title size={props.titleSize}>{props.title}</Title>
       </TitleContainer>
       <Layout>{props.children}</Layout>
-    </Slide>
+    </OtusSlide>
   )
 }
 
@@ -231,7 +232,7 @@ export const List = styled.ul<{ gapSize?: Size }>`
   list-style-type: none;
 
   > * + * {
-    margin-top: ${(p) => sizeToPx(p.theme, p.gapSize || 'm')};
+    margin-top: ${(p) => sizeToPx(p.theme, p.gapSize ?? 'm')};
   }
 `
 
@@ -302,4 +303,28 @@ export const OuterLink = styled.a.attrs({
   &:hover {
     background-color: ${(p) => p.theme.primaryColor};
   }
+`
+
+export type OtusSlideProps = Omit<SlideProps, 'layout'> & {
+  layout?: Layout
+  layoutStyle?: React.CSSProperties
+}
+
+export const OtusSlide = (props: OtusSlideProps) => {
+  const Layout = props.layout ?? CenteredLayout
+
+  return (
+    <Slide
+      {...props}
+      layout={(children) => (
+        <Layout children={children} style={props.layoutStyle} />
+      )}
+    />
+  )
+}
+
+export const Quote = styled.span<{ size: Size }>`
+  ${(p) => text(p)};
+  ${quote};
+  ${padding('m')}
 `
