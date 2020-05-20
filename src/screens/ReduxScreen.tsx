@@ -17,14 +17,22 @@ store.dispatch({ type: actionTypes.X_MOVE });
 store.dispatch({ type: actionTypes.O_MOVE })
 
 export class ReduxScreen extends React.Component<{}, {}>{
-  onCellClick = (x: number, y: number) => {
+  state = {
+    gameField: store.getState().gameField,
+    nextMove: store.getState().nextMove,
+  }
 
+  onCellClick = (x: number, y: number) => {
+    store.dispatch({
+      type: this.state.nextMove === 'x' ? actionTypes.X_MOVE : actionTypes.O_MOVE
+    })
   }
 
   render() {
     return <div>
       <h1>Open console to observe</h1>
-      <Field field={store.getState().gameField} onClick={this.onCellClick} />
+      <h2>Next move: {this.state.nextMove}</h2>
+      <Field field={this.state.gameField} onClick={this.onCellClick} />
       <pre>{JSON.stringify(store.getState(), null, 2)}</pre>
     </div>
   }
