@@ -19,18 +19,26 @@ const defaultState: TicTacToeGameState = {
   ],
 }
 
-export function reducer(state: TicTacToeGameState = defaultState, action: Action): TicTacToeGameState {
+export function reducer(state: TicTacToeGameState = defaultState, action: Action & { payload?: any }): TicTacToeGameState {
   switch (action.type) {
-    case actionTypes.O_MOVE:
+    case actionTypes.O_MOVE: {
+      const { y, x } = action.payload;
+      const newState = JSON.parse(JSON.stringify(state));
+      newState.gameField[y][x] = 'o';
       return {
-        ...state,
+        ...newState,
         nextMove: 'x',
       }
-    case actionTypes.X_MOVE:
+    }
+    case actionTypes.X_MOVE: {
+      const { y, x } = action.payload;
+      const newState = JSON.parse(JSON.stringify(state));
+      newState.gameField[y][x] = 'x';
       return {
-        ...state,
+        ...newState,
         nextMove: 'o',
       }
+    }
   }
 
 

@@ -13,9 +13,6 @@ store.dispatch({
   type: 'SOME_ACTION'
 });
 
-store.dispatch({ type: actionTypes.X_MOVE });
-store.dispatch({ type: actionTypes.O_MOVE });
-
 function getReduxScreenState() {
   return {
     gameField: store.getState().gameField,
@@ -37,7 +34,8 @@ export class ReduxScreen extends React.Component<{}, {}>{
 
   onCellClick = (x: number, y: number) => {
     store.dispatch({
-      type: this.state.nextMove === 'x' ? actionTypes.X_MOVE : actionTypes.O_MOVE
+      type: this.state.nextMove === 'x' ? actionTypes.X_MOVE : actionTypes.O_MOVE,
+      payload: { x, y },
     })
   }
 
