@@ -16,17 +16,23 @@ store.dispatch({
 store.dispatch({ type: actionTypes.X_MOVE });
 store.dispatch({ type: actionTypes.O_MOVE });
 
-export class ReduxScreen extends React.Component<{}, {}>{
-  state = {
+function getReduxScreenState() {
+  return {
     gameField: store.getState().gameField,
     nextMove: store.getState().nextMove,
-  }
+  };
+}
+
+export class ReduxScreen extends React.Component<{}, {}>{
+  storeSubscription?: Function;
+  state = getReduxScreenState()
 
   componentDidMount() {
-    store.subscribe(() => this.setState({
-      gameField: store.getState().gameField,
-      nextMove: store.getState().nextMove,
-    }));
+    this.storeSubscription = store.subscribe(() => this.setState(getReduxScreenState()));
+  }
+
+  componentWillUnmount() {
+    this.storeSubscription && this.storeSubscription();
   }
 
   onCellClick = (x: number, y: number) => {
