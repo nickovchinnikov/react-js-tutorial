@@ -6,16 +6,16 @@ type PlayerMark = 'x' | 'o';
 interface TicTacToeGameState {
   nextMove: PlayerMark;
 
-  gameField: (PlayerMark | null)[][];
+  gameField: (PlayerMark | '')[][];
 }
 
 const defaultState: TicTacToeGameState = {
   nextMove: 'x',
 
   gameField: [
-    [null, null, null],
-    [null, null, null],
-    [null, null, null]
+    ['', '', ''],
+    ['', '', ''],
+    ['', '', '']
   ],
 }
 
