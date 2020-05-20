@@ -1,7 +1,5 @@
-import { createStore, Action } from 'redux';
+import { createStore } from 'redux';
 
-function reducer(state = {}, action: Action) {
-  return state;
-}
+import { reducer } from './reducer';
 
 export const store = createStore(reducer);
