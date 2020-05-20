@@ -2,16 +2,10 @@ import { store } from '@/rdx/store';
 import React from 'react';
 import * as actionTypes from '@/rdx/types';
 import { Field } from '@/components/InteractiveField/components/Field';
+import { withRedux } from '@/utils/withReduxHOC';
+import { Action } from 'redux';
 
 (window as any).__store = store;
-
-store.subscribe(() => {
-  console.log('State', store.getState());
-});
-
-store.dispatch({
-  type: 'SOME_ACTION'
-});
 
 function getReduxScreenState() {
   return {
@@ -20,21 +14,16 @@ function getReduxScreenState() {
   };
 }
 
-export class ReduxScreen extends React.Component<{}, {}>{
-  storeSubscription?: Function;
-  state = getReduxScreenState()
+interface RawReduxScreenProps {
+  nextMove: string;
+  gameField: string[][];
+  dispatch: (action: Action & { payload?: any }) => void;
+}
 
-  componentDidMount() {
-    this.storeSubscription = store.subscribe(() => this.setState(getReduxScreenState()));
-  }
-
-  componentWillUnmount() {
-    this.storeSubscription && this.storeSubscription();
-  }
-
+class RawReduxScreen extends React.Component<RawReduxScreenProps, {}>{
   onCellClick = (x: number, y: number) => {
-    store.dispatch({
-      type: this.state.nextMove === 'x' ? actionTypes.X_MOVE : actionTypes.O_MOVE,
+    this.props.dispatch({
+      type: this.props.nextMove === 'x' ? actionTypes.X_MOVE : actionTypes.O_MOVE,
       payload: { x, y },
     })
   }
@@ -42,9 +31,11 @@ export class ReduxScreen extends React.Component<{}, {}>{
   render() {
     return <div>
       <h1>Open console to observe</h1>
-      <h2>Next move: {this.state.nextMove}</h2>
-      <Field field={this.state.gameField} onClick={this.onCellClick} />
+      <h2>Next move: {this.props.nextMove}</h2>
+      <Field field={this.props.gameField} onClick={this.onCellClick} />
       <pre>{JSON.stringify(store.getState(), null, 2)}</pre>
     </div>
   }
 }
+
+export const ReduxScreen = withRedux(RawReduxScreen, getReduxScreenState);
