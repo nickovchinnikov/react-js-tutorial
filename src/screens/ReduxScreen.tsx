@@ -2,8 +2,9 @@ import { store } from '@/rdx/store';
 import React from 'react';
 import * as actionTypes from '@/rdx/types';
 import { Field } from '@/components/InteractiveField/components/Field';
-import { withRedux } from '@/utils/withReduxHOC';
+import { withRedux } from '@/utils/withRedux';
 import { Action } from 'redux';
+import { NextMove } from 'components/NextMove';
 
 (window as any).__store = store;
 
@@ -31,7 +32,7 @@ class RawReduxScreen extends React.Component<RawReduxScreenProps, {}>{
   render() {
     return <div>
       <h1>Open console to observe</h1>
-      <h2>Next move: {this.props.nextMove}</h2>
+      <NextMove />
       <Field field={this.props.gameField} onClick={this.onCellClick} />
       <pre>{JSON.stringify(store.getState(), null, 2)}</pre>
     </div>

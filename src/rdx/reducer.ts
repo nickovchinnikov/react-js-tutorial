@@ -3,7 +3,7 @@ import * as actionTypes from './types';
 
 type PlayerMark = 'x' | 'o';
 
-interface TicTacToeGameState {
+export interface TicTacToeGameState {
   nextMove: PlayerMark;
 
   gameField: (PlayerMark | '')[][];
