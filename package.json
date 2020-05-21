@@ -48,6 +48,7 @@
     "@testing-library/react-hooks": "^3.2.1",
     "@types/enzyme": "^3.10.5",
     "@types/jest": "^25.1.4",
+    "@types/ramda": "^0.27.6",
     "@types/react": "^16.9.33",
     "@types/react-dom": "^16.9.6",
     "@types/react-router-dom": "^5.1.5",
@@ -84,6 +85,7 @@
     "@emotion/core": "^10.0.28",
     "@emotion/styled": "^10.0.27",
     "formik": "^2.1.4",
+    "ramda": "^0.27.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0"
