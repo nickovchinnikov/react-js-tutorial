@@ -7,28 +7,28 @@ import { UserScreen } from "@/screens/UserScreen";
 
 export const App: React.FC<{}> = () => (
   <Router>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-          <li>
-            <Link to="/field">Field</Link>
-          </li>
-          <li>
-            <Link to="/user/Nick">Nick</Link>
-          </li>
-        </ul>
-      </nav>
-      <Switch>
-        <Route path="/login">
-          <LoginScreen />
-        </Route>
-        <Route path="/field" render={() => <FieldScreen />} />
-        <Route path="/user/:name" component={UserScreen} />
-        <Route path="*">
-          <NoMatchScreen />
-        </Route>
-      </Switch>
+    <nav>
+      <ul>
+        <li>
+          <Link to="/login">Login</Link>
+        </li>
+        <li>
+          <Link to="/field">Field</Link>
+        </li>
+        <li>
+          <Link to="/user/Nick">Nick</Link>
+        </li>
+      </ul>
+    </nav>
+    <Switch>
+      <Route path="/login">
+        <LoginScreen />
+      </Route>
+      <Route path="/field" render={() => <FieldScreen />} />
+      <Route path="/user/:name" component={UserScreen} />
+      <Route path="*">
+        <NoMatchScreen />
+      </Route>
+    </Switch>
   </Router>
 );

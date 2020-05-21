@@ -1,0 +1,39 @@
+{
+  "name": "otus-react-course",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "yarn start:fp",
+    "start:fp": "cross-env LESSON=fp yarn start:abstract",
+    "build:fp": "cross-env LESSON=fp yarn build:abstract",
+    "start:demo-redux": "cross-env LESSON=demo-redux yarn start:abstract",
+    "build:demo-redux": "cross-env LESSON=demo-redux yarn build:abstract",
+    "start:abstract": "parcel serve --cache-dir .cache-${LESSON} --out-dir dist-${LESSON} lesson-${LESSON}/index.html",
+    "build:abstract": "parcel build --cache-dir .cache-${LESSON} --out-dir docs-${LESSON} --public-url . lesson-${LESSON}/index.html",
+    "deploy:abstract": "yarn build:abstract && vercel deploy docs-${LESSON}"
+  },
+  "dependencies": {
+    "@saitonakamura/presa": "^1.1.5",
+    "@types/react": "^16.9.34",
+    "@types/react-dom": "^16.9.6",
+    "@types/styled-components": "^5.1.0",
+    "@typescript-eslint/eslint-plugin": "^2.30.0",
+    "@typescript-eslint/parser": "^2.30.0",
+    "babel-plugin-styled-components": "^1.10.7",
+    "cross-env": "^7.0.2",
+    "eslint": "^6.8.0",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^4.0.0",
+    "parcel-bundler": "^1.12.4",
+    "react": "^16.13.1",
+    "react-archer": "^2.0.0",
+    "react-dom": "^16.13.1",
+    "react-is": "^16.13.1",
+    "react-spring": "^8.0.27",
+    "react-syntax-highlighter": "7.0.4",
+    "rimraf": "^3.0.2",
+    "styled-components": "^5.1.0",
+    "typescript": "^3.8.3",
+    "vercel": "^19.0.1"
+  }
+}
