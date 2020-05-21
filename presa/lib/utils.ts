@@ -12,20 +12,7 @@ export type Color = 'primary' | 'secondary' | 'white'
 export const sizeToPx = (theme: DefaultTheme, size: Size) => {
   if (typeof size === 'number') return `${size}px`
 
-  switch (size) {
-    case 'xs':
-      return theme.gutter.xs + 'px'
-    case 's':
-      return theme.gutter.s + 'px'
-    case 'm':
-      return theme.gutter.m + 'px'
-    case 'l':
-      return theme.gutter.l + 'px'
-    case 'xl':
-      return theme.gutter.xl + 'px'
-    case 'xxl':
-      return theme.gutter.xxl + 'px'
-  }
+  return `${theme.gutter[size]}px`;
 }
 
 export type IconType = 'talk' | 'time' | 'slack' | 'questions' | 'camera'
