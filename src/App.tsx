@@ -5,6 +5,7 @@ import { FieldScreen } from "@/screens/FieldScreen";
 import { NoMatchScreen } from "@/screens/NoMatchScreen";
 import { UserScreen } from "@/screens/UserScreen";
 import { ReduxScreen } from "@/screens/ReduxScreen";
+import { FormScreen } from "@/screens/FormScreen";
 
 export const App: React.FC<{}> = () => (
   <Router>
@@ -20,6 +21,9 @@ export const App: React.FC<{}> = () => (
           <Link to="/user/Nick">Nick</Link>
         </li>
         <li>
+          <Link to="/form">Form</Link>
+        </li>
+        <li>
           <Link to="/redux">Redux</Link>
         </li>
       </ul>
@@ -31,6 +35,7 @@ export const App: React.FC<{}> = () => (
       <Route path="/field" render={() => <FieldScreen />} />
       <Route path="/user/:name" component={UserScreen} />
       <Route path="/redux" component={ReduxScreen} />
+      <Route path="/form" component={FormScreen} />
       <Route path="*">
         <NoMatchScreen />
       </Route>
