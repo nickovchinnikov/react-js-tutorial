@@ -1,17 +1,15 @@
-import { store } from '@/rdx/store';
 import React from 'react';
 import * as actionTypes from '@/rdx/types';
 import { Field } from '@/components/InteractiveField/components/Field';
 import { withRedux } from '@/utils/withRedux';
 import { Action } from 'redux';
 import { NextMove } from 'components/NextMove';
+import { TicTacToeGameState } from '@/rdx/reducer';
 
-(window as any).__store = store;
-
-function getReduxScreenState() {
+function getReduxScreenState(state: TicTacToeGameState) {
   return {
-    gameField: store.getState().gameField,
-    nextMove: store.getState().nextMove,
+    gameField: state.gameField,
+    nextMove: state.nextMove,
   };
 }
 
@@ -34,7 +32,7 @@ class RawReduxScreen extends React.Component<RawReduxScreenProps, {}>{
       <h1>Open console to observe</h1>
       <NextMove />
       <Field field={this.props.gameField} onClick={this.onCellClick} />
-      <pre>{JSON.stringify(store.getState(), null, 2)}</pre>
+      <pre>{JSON.stringify(this.props, null, 2)}</pre>
     </div>
   }
 }
