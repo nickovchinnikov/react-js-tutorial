@@ -147,3 +147,10 @@ React Patterns
 
 [Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/22) <br>
 [Presentation](https://otus-lesson-fp.saitonakamura.now.sh/) <br>
+
+
+## Lesson 14:
+* Redux
+
+[Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/23) <br>
+[Presentation](https://drive.google.com/file/d/1VezGwpkXUV38X-pL48j9ZjC58ASPuTPl/view?usp=sharing) <br>
