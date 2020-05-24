@@ -9,10 +9,23 @@ export type Size = 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl' | number
 
 export type Color = 'primary' | 'secondary' | 'white'
 
+export type ExactSize = string | number
+
+export const exactSizeToPx = (exactSize: ExactSize | undefined) => {
+  switch (typeof exactSize) {
+    case 'number':
+      return `${exactSize}px`
+    case 'undefined':
+      return undefined
+    default:
+      return exactSize
+  }
+}
+
 export const sizeToPx = (theme: DefaultTheme, size: Size) => {
   if (typeof size === 'number') return `${size}px`
 
-  return `${theme.gutter[size]}px`;
+  return `${theme.gutter[size]}px`
 }
 
 export type IconType = 'talk' | 'time' | 'slack' | 'questions' | 'camera'

@@ -115,7 +115,7 @@ const newId = () => id++`}</Code>
   <OtusSlide key='sideeffectdef' name='Сайд-эффекты' layout={CenteredLayout}>
     <Quote size={35}>
       Сайд-эффект это изменение состояния системы или взаимодействие с внешним
-      миров которое происходит в момент вычисления результата
+      миром которое происходит в момент вычисления результата
     </Quote>
   </OtusSlide>,
   <TitleSlide
@@ -472,7 +472,7 @@ const App = () => (
         <List gapSize={70}>
           <Fragment>
             <ListItem>
-              <Text size={45}>ФП имеет множество приемуществ</Text>
+              <Text size={45}>ФП имеет множество преимуществ</Text>
             </ListItem>
           </Fragment>
           <Fragment>
