@@ -1,10 +1,10 @@
 import React from 'react';
-import * as actionTypes from '@/rdx/types';
 import { Field } from '@/components/InteractiveField/components/Field';
 import { withRedux } from '@/utils/withRedux';
 import { Action } from 'redux';
 import { NextMove } from 'components/NextMove';
 import { TicTacToeGameState } from '@/rdx/reducer';
+import { xMove, oMove } from '@/rdx/actions';
 
 function getReduxScreenState(state: TicTacToeGameState) {
   return {
@@ -21,10 +21,8 @@ interface RawReduxScreenProps {
 
 class RawReduxScreen extends React.Component<RawReduxScreenProps, {}>{
   onCellClick = (x: number, y: number) => {
-    this.props.dispatch({
-      type: this.props.nextMove === 'x' ? actionTypes.X_MOVE : actionTypes.O_MOVE,
-      payload: { x, y },
-    })
+    const action = this.props.nextMove === 'x' ? xMove : oMove;
+    this.props.dispatch(action({ x, y }));
   }
 
   render() {
