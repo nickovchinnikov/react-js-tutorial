@@ -1,11 +1,9 @@
 import React from "react";
 import { Field } from "@/components/InteractiveField/components/Field";
-import { Dispatch } from "redux";
 import { NextMove } from "components/NextMove";
 import { TicTacToeGameState } from "@/rdx/reducer";
 import { Coordinates, xMove, oMove } from "@/rdx/actions";
 import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
 
 interface RawReduxScreenProps {
   nextMove: string;
@@ -38,9 +36,7 @@ function mapStateToProps(state: TicTacToeGameState) {
   };
 }
 
-function mapDispatchToProps(dispatch: Dispatch) {
-  return bindActionCreators({ xMove, oMove }, dispatch);
-}
+const mapDispatchToProps = { xMove, oMove };
 
 export const ReduxScreen = connect(
   mapStateToProps,
