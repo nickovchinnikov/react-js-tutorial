@@ -1,19 +1,22 @@
 import React from "react";
 import { ReduxScreen } from "./ReduxScreen";
-import configureStore from "redux-mock-store";
 import { Provider } from "react-redux";
-import { mount, shallow } from "enzyme";
-
-const mockStore = configureStore([]);
+import { mount } from "enzyme";
+import { reducer } from "@/rdx/reducer";
+import { createStore } from "redux";
 
 describe("ReduxScreen", () => {
   let store: any;
 
   beforeEach(() => {
-    store = mockStore({
+    store = createStore(reducer, {
       nextMove: "x",
-      gameField: [[]],
+      gameField: [
+        ["", ""],
+        ["", ""],
+      ],
     });
+    jest.spyOn(store, "dispatch");
   });
 
   it("should generate action on click", () => {
@@ -23,17 +26,45 @@ describe("ReduxScreen", () => {
       </Provider>
     );
 
-    (wrapper.find("Field").props() as any).onClick(100, 999);
+    (wrapper.find("Field").props() as any).onClick(0, 1);
+    wrapper.update();
+    (wrapper.find("Field").props() as any).onClick(1, 1);
 
-    expect(store.getActions()).toMatchInlineSnapshot(`
+    expect(store.getState()).toMatchInlineSnapshot(`
+      Object {
+        "gameField": Array [
+          Array [
+            "",
+            "",
+          ],
+          Array [
+            "x",
+            "o",
+          ],
+        ],
+        "nextMove": "x",
+      }
+    `);
+    expect((store.dispatch as jest.Mock).mock.calls).toMatchInlineSnapshot(`
       Array [
-        Object {
-          "payload": Object {
-            "x": 100,
-            "y": 999,
+        Array [
+          Object {
+            "payload": Object {
+              "x": 0,
+              "y": 1,
+            },
+            "type": "X_MOVE",
           },
-          "type": "X_MOVE",
-        },
+        ],
+        Array [
+          Object {
+            "payload": Object {
+              "x": 1,
+              "y": 1,
+            },
+            "type": "O_MOVE",
+          },
+        ],
       ]
     `);
   });
