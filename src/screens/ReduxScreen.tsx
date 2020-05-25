@@ -16,7 +16,7 @@ interface RawReduxScreenProps {
 
 class RawReduxScreen extends React.Component<RawReduxScreenProps, {}> {
   onCellClick = (x: number, y: number) => {
-    this.props[this.props.nextMove ? "xMove" : "oMove"]({ x, y });
+    this.props[this.props.nextMove === "x" ? "xMove" : "oMove"]({ x, y });
   };
 
   render() {
