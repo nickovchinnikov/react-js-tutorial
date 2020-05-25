@@ -4,8 +4,44 @@ import { Provider } from "react-redux";
 import { mount } from "enzyme";
 import { reducer } from "@/rdx/reducer";
 import { createStore } from "redux";
+import configureStore from "redux-mock-store";
 
-describe("ReduxScreen", () => {
+describe("ReduxScreen with mocked store", () => {
+  const mockStore = configureStore([]);
+
+  let store: any;
+
+  beforeEach(() => {
+    store = mockStore({
+      nextMove: "x",
+      gameField: [[]],
+    });
+  });
+
+  it("should generate action on click", () => {
+    const wrapper = mount(
+      <Provider store={store}>
+        <ReduxScreen />
+      </Provider>
+    );
+
+    (wrapper.find("Field").props() as any).onClick(100, 999);
+
+    expect(store.getActions()).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "payload": Object {
+            "x": 100,
+            "y": 999,
+          },
+          "type": "X_MOVE",
+        },
+      ]
+    `);
+  });
+});
+
+describe("ReduxScreen with real store", () => {
   let store: any;
 
   beforeEach(() => {
@@ -27,7 +63,7 @@ describe("ReduxScreen", () => {
     );
 
     (wrapper.find("Field").props() as any).onClick(0, 1);
-    wrapper.update();
+    wrapper.update(); // we need this if we're going to compare snapshots
     (wrapper.find("Field").props() as any).onClick(1, 1);
 
     expect(store.getState()).toMatchInlineSnapshot(`
