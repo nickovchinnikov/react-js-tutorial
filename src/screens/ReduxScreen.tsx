@@ -6,13 +6,6 @@ import { TicTacToeGameState } from "@/rdx/reducer";
 import { xMove, oMove } from "@/rdx/actions";
 import { connect } from "react-redux";
 
-function getReduxScreenState(state: TicTacToeGameState) {
-  return {
-    gameField: state.gameField,
-    nextMove: state.nextMove,
-  };
-}
-
 interface RawReduxScreenProps {
   nextMove: string;
   gameField: string[][];
@@ -37,4 +30,11 @@ class RawReduxScreen extends React.Component<RawReduxScreenProps, {}> {
   }
 }
 
-export const ReduxScreen = connect(getReduxScreenState)(RawReduxScreen);
+function mapStateToProps(state: TicTacToeGameState) {
+  return {
+    gameField: state.gameField,
+    nextMove: state.nextMove,
+  };
+}
+
+export const ReduxScreen = connect(mapStateToProps)(RawReduxScreen);
