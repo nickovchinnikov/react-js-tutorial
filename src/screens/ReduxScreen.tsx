@@ -1,21 +1,21 @@
 import React from "react";
 import { Field } from "@/components/InteractiveField/components/Field";
-import { Action } from "redux";
+import { Action, Dispatch } from "redux";
 import { NextMove } from "components/NextMove";
 import { TicTacToeGameState } from "@/rdx/reducer";
-import { xMove, oMove } from "@/rdx/actions";
+import { Coordinates, xMove, oMove } from "@/rdx/actions";
 import { connect } from "react-redux";
 
 interface RawReduxScreenProps {
   nextMove: string;
   gameField: string[][];
-  dispatch: (action: Action & { payload?: any }) => void;
+  xMove: (coords: Coordinates) => void;
+  oMove: (coords: Coordinates) => void;
 }
 
 class RawReduxScreen extends React.Component<RawReduxScreenProps, {}> {
   onCellClick = (x: number, y: number) => {
-    const action = this.props.nextMove === "x" ? xMove : oMove;
-    this.props.dispatch(action({ x, y }));
+    this.props[this.props.nextMove ? "xMove" : "oMove"]({ x, y });
   };
 
   render() {
@@ -37,4 +37,14 @@ function mapStateToProps(state: TicTacToeGameState) {
   };
 }
 
-export const ReduxScreen = connect(mapStateToProps)(RawReduxScreen);
+function mapDispatchToProps(dispatch: Dispatch) {
+  return {
+    xMove: (coords: Coordinates) => dispatch(xMove(coords)),
+    oMove: (coords: Coordinates) => dispatch(oMove(coords)),
+  };
+}
+
+export const ReduxScreen = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(RawReduxScreen);
