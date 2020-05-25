@@ -154,3 +154,10 @@ React Patterns
 
 [Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/23) <br>
 [Presentation](https://drive.google.com/file/d/1VezGwpkXUV38X-pL48j9ZjC58ASPuTPl/view?usp=sharing) <br>
+
+
+## Lesson 16:
+* React + Redux
+
+[Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/27) <br>
+[Presentation](https://docs.google.com/presentation/d/1kng-DBHU91jQqjWHQVOMNMZjjfe8zawS8zzLP44TnuM/edit?usp=sharing) <br>
