@@ -18,8 +18,31 @@ export class Validator {
 
   checkIsNotEmpty(key: string) {
     const value = this.values[key];
-    const isValid =
-      typeof value !== "number" && typeof value !== "boolean" ? !!value : true;
+
+    let isValid = true;
+
+    switch (typeof value) {
+      // numbers or bools have the value implicitly
+      case "number":
+      case "boolean":
+      case "bigint":
+        isValid = true;
+        break;
+      case "object":
+      case "function":
+      case "undefined":
+      case "symbol":
+        // Checking for null and undefined
+        isValid = value != null;
+        break;
+      case "string":
+        isValid = value !== "";
+        break;
+      default:
+        // Thruthy fallback
+        isValid = !!value;
+        break;
+    }
 
     if (!isValid) {
       this.errors[key] = new Error(`${key} is required`);
@@ -35,7 +58,7 @@ export class Validator {
     if (!isValid) {
       this.errors[key] = new Error(`${key} must be alphanumeric`);
     } else {
-      this.errors[key] = undefined
+      this.errors[key] = undefined;
     }
   }
 }
