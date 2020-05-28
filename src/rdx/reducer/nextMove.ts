@@ -1,5 +1,5 @@
 import { Action } from "redux";
-import * as actionTypes from "@/rdx/actions";
+import * as actions from "@/rdx/actions";
 
 type nextMoveState = "x" | "o";
 
@@ -9,13 +9,11 @@ export function nextMove(
   state: nextMoveState = defaultState,
   action: Action & { payload?: any }
 ): nextMoveState {
-  switch (action.type) {
-    case actionTypes.O_MOVE: {
-      return "x";
-    }
-    case actionTypes.X_MOVE: {
-      return "o";
-    }
+  if (actions.oMove.match(action)) {
+    return "x";
+  }
+  if (actions.xMove.match(action)) {
+    return "o";
   }
 
   return state;

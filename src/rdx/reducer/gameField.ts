@@ -1,5 +1,5 @@
 import { Action } from "redux";
-import * as actionTypes from "@/rdx/actions";
+import * as actions from "@/rdx/actions";
 
 type GameFieldState = string[][];
 
@@ -13,19 +13,17 @@ export function gameField(
   state: GameFieldState = defaultState,
   action: Action & { payload?: any }
 ): GameFieldState {
-  switch (action.type) {
-    case actionTypes.O_MOVE: {
-      const { y, x } = action.payload;
-      const newState = JSON.parse(JSON.stringify(state));
-      newState[y][x] = "o";
-      return newState;
-    }
-    case actionTypes.X_MOVE: {
-      const { y, x } = action.payload;
-      const newState = JSON.parse(JSON.stringify(state));
-      newState[y][x] = "x";
-      return newState;
-    }
+  if (actions.oMove.match(action)) {
+    const { x, y } = action.payload;
+    const newState = JSON.parse(JSON.stringify(state));
+    newState[y][x] = "o";
+    return newState;
+  }
+  if (actions.xMove.match(action)) {
+    const { x, y } = action.payload;
+    const newState = JSON.parse(JSON.stringify(state));
+    newState[y][x] = "x";
+    return newState;
   }
 
   return state;
