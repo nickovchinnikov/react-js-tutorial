@@ -1,5 +1,5 @@
 import { Action } from "redux";
-import * as actionTypes from '@/rdx/types';
+import * as actionTypes from '@/rdx/actions';
 
 type GameFieldState = string[][];
 

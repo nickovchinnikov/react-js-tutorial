@@ -1,40 +1,44 @@
-import React from 'react';
-import * as actionTypes from '@/rdx/types';
-import { Field } from '@/components/InteractiveField/components/Field';
-import { withRedux } from '@/utils/withRedux';
-import { Action } from 'redux';
-import { NextMove } from 'components/NextMove';
-import { TicTacToeGameState } from '@/rdx/reducer';
+import React from "react";
+import { Field } from "@/components/InteractiveField/components/Field";
+import { NextMove } from "components/NextMove";
+import { TicTacToeGameState } from "@/rdx/reducer";
+import { Coordinates, xMove, oMove } from "@/rdx/actions";
+import { connect } from "react-redux";
 
-function getReduxScreenState(state: TicTacToeGameState) {
+interface RawReduxScreenProps {
+  nextMove: string;
+  gameField: string[][];
+  xMove: (coords: Coordinates) => void;
+  oMove: (coords: Coordinates) => void;
+}
+
+class RawReduxScreen extends React.Component<RawReduxScreenProps, {}> {
+  onCellClick = (x: number, y: number) => {
+    this.props[this.props.nextMove === "x" ? "xMove" : "oMove"]({ x, y });
+  };
+
+  render() {
+    return (
+      <div>
+        <h1>Open console to observe</h1>
+        <NextMove />
+        <Field field={this.props.gameField} onClick={this.onCellClick} />
+        <pre>{JSON.stringify(this.props, null, 2)}</pre>
+      </div>
+    );
+  }
+}
+
+function mapStateToProps(state: TicTacToeGameState) {
   return {
     gameField: state.gameField,
     nextMove: state.nextMove,
   };
 }
 
-interface RawReduxScreenProps {
-  nextMove: string;
-  gameField: string[][];
-  dispatch: (action: Action & { payload?: any }) => void;
-}
+const mapDispatchToProps = { xMove, oMove };
 
-class RawReduxScreen extends React.Component<RawReduxScreenProps, {}>{
-  onCellClick = (x: number, y: number) => {
-    this.props.dispatch({
-      type: this.props.nextMove === 'x' ? actionTypes.X_MOVE : actionTypes.O_MOVE,
-      payload: { x, y },
-    })
-  }
-
-  render() {
-    return <div>
-      <h1>Open console to observe</h1>
-      <NextMove />
-      <Field field={this.props.gameField} onClick={this.onCellClick} />
-      <pre>{JSON.stringify(this.props, null, 2)}</pre>
-    </div>
-  }
-}
-
-export const ReduxScreen = withRedux(RawReduxScreen, getReduxScreenState);
+export const ReduxScreen = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(RawReduxScreen);
