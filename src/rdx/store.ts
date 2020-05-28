@@ -1,10 +1,6 @@
-import { createStore } from "redux";
-
 import { reducer } from "./reducer";
+import { configureStore } from "@reduxjs/toolkit";
 
-export const store = createStore(
+export const store = configureStore({
   reducer,
-  // https://github.com/zalmoxisus/redux-devtools-extension
-  (window as any).__REDUX_DEVTOOLS_EXTENSION__ &&
-    (window as any).__REDUX_DEVTOOLS_EXTENSION__()
-);
+});
