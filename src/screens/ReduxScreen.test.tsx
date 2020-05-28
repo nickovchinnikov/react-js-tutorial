@@ -34,7 +34,7 @@ describe("ReduxScreen with mocked store", () => {
             "x": 100,
             "y": 999,
           },
-          "type": "X_MOVE",
+          "type": "xMove",
         },
       ]
     `);
@@ -74,10 +74,11 @@ describe("ReduxScreen with real store", () => {
             "",
           ],
           Array [
-            "x",
             "o",
+            "x",
           ],
         ],
+        "name": "",
         "nextMove": "x",
       }
     `);
@@ -89,7 +90,7 @@ describe("ReduxScreen with real store", () => {
               "x": 0,
               "y": 1,
             },
-            "type": "X_MOVE",
+            "type": "xMove",
           },
         ],
         Array [
@@ -98,7 +99,7 @@ describe("ReduxScreen with real store", () => {
               "x": 1,
               "y": 1,
             },
-            "type": "O_MOVE",
+            "type": "oMove",
           },
         ],
       ]
