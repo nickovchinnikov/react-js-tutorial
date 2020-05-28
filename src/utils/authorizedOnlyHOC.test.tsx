@@ -3,7 +3,7 @@ import { authorizedOnlyHoc } from "./authorizedOnlyHoc";
 import { isLoggedIn } from "@/api/auth";
 import { mount, ReactWrapper } from "enzyme";
 import { sleep } from "@/utils/sleep";
-import { act } from 'react-dom/test-utils';
+import { act } from "react-dom/test-utils";
 
 jest.mock("@/api/auth", () => ({
   isLoggedIn: jest.fn(),

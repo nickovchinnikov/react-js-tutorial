@@ -36,4 +36,4 @@ export type Team = {
 
 export const originalTeamToExpectedTeam = (originalTeam: Team): Team => {
   //
-}
+};

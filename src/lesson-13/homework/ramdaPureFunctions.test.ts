@@ -1,5 +1,10 @@
-
-import { getTopName, Team, QsObj, createQs, parseQs } from "./ramdaPureFunctions";
+import {
+  getTopName,
+  Team,
+  QsObj,
+  createQs,
+  parseQs,
+} from "./ramdaPureFunctions";
 
 test("getTopName", () => {
   const teams: Team[] = [

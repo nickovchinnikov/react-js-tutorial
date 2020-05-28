@@ -12,7 +12,7 @@ export type Color = 'primary' | 'secondary' | 'white'
 export const sizeToPx = (theme: DefaultTheme, size: Size) => {
   if (typeof size === 'number') return `${size}px`
 
-  return `${theme.gutter[size]}px`;
+  return `${theme.gutter[size]}px`
 }
 
 export type IconType = 'talk' | 'time' | 'slack' | 'questions' | 'camera'

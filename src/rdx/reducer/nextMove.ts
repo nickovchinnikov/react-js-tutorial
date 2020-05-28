@@ -1,17 +1,20 @@
 import { Action } from "redux";
-import * as actionTypes from '@/rdx/actions';
+import * as actionTypes from "@/rdx/actions";
 
-type nextMoveState = 'x' | 'o';
+type nextMoveState = "x" | "o";
 
-const defaultState: nextMoveState = 'x';
+const defaultState: nextMoveState = "x";
 
-export function nextMove(state: nextMoveState = defaultState, action: Action & { payload?: any }): nextMoveState {
+export function nextMove(
+  state: nextMoveState = defaultState,
+  action: Action & { payload?: any }
+): nextMoveState {
   switch (action.type) {
     case actionTypes.O_MOVE: {
-      return 'x';
+      return "x";
     }
     case actionTypes.X_MOVE: {
-      return 'o';
+      return "o";
     }
   }
 
