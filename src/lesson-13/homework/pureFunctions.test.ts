@@ -4,6 +4,8 @@ test("dummy test", () => undefined);
 
 import { getTopName, Team, QsObj, createQs, parseQs } from "./pureFunctions";
 
+test("it works", () => expect(true).toBe(true));
+
 // test("getTopName", () => {
 //   const teams: Team[] = [
 //     { name: "Lions", score: 5 },

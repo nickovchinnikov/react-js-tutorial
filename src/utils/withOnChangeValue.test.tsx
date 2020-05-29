@@ -7,7 +7,8 @@ import { withOnChangeValue } from "./withOnChangeValue";
 import { InputText } from "components/GameSettingsForm/components/InputText";
 import { shallow } from "enzyme";
 
-describe("withOnChangeValue", () => {
+// todo: remove `.skip` to check your implementation
+describe.skip("withOnChangeValue", () => {
   it("is a function", () => {
     expect(typeof withOnChangeValue).toBe("function");
   });
