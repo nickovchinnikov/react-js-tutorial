@@ -7,7 +7,7 @@ import {
 } from "./immutability";
 
 // Задание 1
-test.skip("team to team", () => {
+test("team to team", () => {
   const originalTeam: OriginalTeam = Object.freeze({
     size: 15,
     name: "Tampa Bay Roosters",
@@ -20,20 +20,20 @@ test.skip("team to team", () => {
     roster: 25,
   };
 
-  expect(originalTeamToExpectedTeam(originalTeam)).toBe(expectedTeam);
+  expect(originalTeamToExpectedTeam(originalTeam)).toEqual(expectedTeam);
 });
 
 // Задание 2
-test.skip("array to array", () => {
+test("array to array", () => {
   const originalArray = Object.freeze([1, 2, 3, 4]);
 
   const expectedArray = ["two", 3, 4, 5];
 
-  expect(originalArrayToExpectedArray(originalArray)).toBe(expectedArray);
+  expect(originalArrayToExpectedArray(originalArray)).toEqual(expectedArray);
 });
 
 // Задание 3
-test.skip("team to team deep", () => {
+test("team to team deep", () => {
   const originalTeam = Object.freeze({
     name: "Tampa Bay Roosters",
     captain: {
@@ -50,5 +50,5 @@ test.skip("team to team deep", () => {
     },
   };
 
-  expect(originalTeamToExpectedTeamDeep(originalTeam)).toBe(expectedTeam);
+  expect(originalTeamToExpectedTeamDeep(originalTeam)).toEqual(expectedTeam);
 });
