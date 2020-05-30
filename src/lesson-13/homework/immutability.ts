@@ -29,7 +29,7 @@ export const originalArrayToExpectedArray = <T>(
 ): SomeArray => {
   return originalArray.map((el, index) => {
     if (index == 0) {
-      return "two"
+      return "two";
     } else {
       return Number(el) + 1;
     }
