@@ -1,4 +1,4 @@
-import { sleep } from '@/utils/sleep';
+import { sleep } from "@/utils/sleep";
 
 export const login = async (name: string) => {
   await sleep(1000);

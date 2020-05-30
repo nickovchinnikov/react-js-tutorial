@@ -42,10 +42,6 @@ export class GameSettingsFormState extends React.Component<
     });
   };
 
-  componentDidUpdate() {
-    console.log("@@GameSettingsFormState.componentDidUpdate");
-  }
-
   handleFormInputChange = (ev: FormEvent<HTMLInputElement>) => {
     this.setState({
       [(ev.target as HTMLInputElement).getAttribute(

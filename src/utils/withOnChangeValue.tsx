@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 
 /**
  * см тесты в src/utils/withOnChangeValue.test.tsx
@@ -12,6 +12,13 @@ export const withOnChangeValue = <P extends object>(
     onChangeValue?: (newText: string) => void;
   }
 ) => {
-  // put your code here
-  return null;
+  const onChange = useCallback(
+    (ev: React.ChangeEvent) => {
+      props.onChange && props.onChange(ev);
+      props.onChangeValue &&
+        props.onChangeValue((ev.target as HTMLInputElement).value);
+    },
+    [props.onChange, props.onChangeValue]
+  );
+  return <Component {...props} onChange={onChange} />;
 };

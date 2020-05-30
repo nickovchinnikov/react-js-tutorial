@@ -1,7 +1,13 @@
-import { OriginalTeam, ExpectedTeam } from "./immutability";
+import {
+  OriginalTeam,
+  ExpectedTeam,
+  originalTeamToExpectedTeam,
+  originalTeamToExpectedTeamDeep,
+  originalArrayToExpectedArray,
+} from "./immutability";
 
 // Задание 1
-test("team to team", () => {
+test.skip("team to team", () => {
   const originalTeam: OriginalTeam = Object.freeze({
     size: 15,
     name: "Tampa Bay Roosters",
@@ -18,7 +24,7 @@ test("team to team", () => {
 });
 
 // Задание 2
-test("array to array", () => {
+test.skip("array to array", () => {
   const originalArray = Object.freeze([1, 2, 3, 4]);
 
   const expectedArray = ["two", 3, 4, 5];
@@ -27,7 +33,7 @@ test("array to array", () => {
 });
 
 // Задание 3
-test("team to team deep", () => {
+test.skip("team to team deep", () => {
   const originalTeam = Object.freeze({
     name: "Tampa Bay Roosters",
     captain: {
@@ -44,5 +50,5 @@ test("team to team deep", () => {
     },
   };
 
-  expect(originalTeamToExpectedTeam(originalTeam)).toBe(expectedTeam);
+  expect(originalTeamToExpectedTeamDeep(originalTeam)).toBe(expectedTeam);
 });

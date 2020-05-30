@@ -1,7 +1,7 @@
-import { useSpring, AnimatedValue, ForwardedProps } from 'react-spring'
-import React, { useCallback, useMemo, CSSProperties } from 'react'
-import { SlideProps, Slide, ControlledFragment } from '@saitonakamura/presa'
+import { ControlledFragment } from '@saitonakamura/presa'
 import { PlainLayout } from '@saitonakamura/presa/lib/components/slide/layouts'
+import React, { useMemo } from 'react'
+import { AnimatedValue, ForwardedProps, useSpring } from 'react-spring'
 import { OtusSlide, OtusSlideProps } from './blocks'
 
 const processSteps = <T extends Record<string, {}>>(steps: T[]) => {
@@ -44,7 +44,6 @@ export const useAnimatedSteps = <T extends Record<string, {}>>(
 
     Object.keys(processedSteps[step]).forEach((key: keyof T) => {
       /* eslint-disable react-hooks/rules-of-hooks */
-      // @ts-ignore
       springs[key] = useSpring({
         from: processedSteps[step > 0 ? step - 1 : 0][key],
         to: processedSteps[step][key],

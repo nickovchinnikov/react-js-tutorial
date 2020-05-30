@@ -1,7 +1,12 @@
+import {
+  getTopName,
+  Team,
+  QsObj,
+  createQs,
+  parseQs,
+} from "./ramdaPureFunctions";
 
-import { getTopName, Team, QsObj, createQs, parseQs } from "./ramdaPureFunctions";
-
-test("getTopName", () => {
+test.skip("getTopName", () => {
   const teams: Team[] = [
     { name: "Lions", score: 5 },
     { name: "Tigers", score: 4 },
@@ -12,7 +17,7 @@ test("getTopName", () => {
   expect(getTopName(teams)).toBe("Bears");
 });
 
-test("createQs", () => {
+test.skip("createQs", () => {
   const qsObj: QsObj = {
     page: "2",
     pageSize: "10",
@@ -25,7 +30,7 @@ test("createQs", () => {
   );
 });
 
-test("parseQs", () => {
+test.skip("parseQs", () => {
   const qs = "?page=2&pageSize=10&total=205&somethingElse=value";
 
   expect(parseQs(qs)).toBe({

@@ -66,7 +66,7 @@ class StoryWrapperLayout extends React.Component<{
   }
 }
 
-export const forms = () => {
+export const Forms = () => {
   const [title, setTitle] = useState("Forms demo");
   return (
     <>

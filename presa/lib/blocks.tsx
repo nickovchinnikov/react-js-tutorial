@@ -69,6 +69,19 @@ export const CenteredPlainLayout = styled(PlainLayout)`
   ${centered};
 `
 
+const matchSize = (s: number, m: number, l: number) => (size: Size) => {
+  if (typeof size === 'number') return `${size}px`
+
+  switch (size) {
+    case 's':
+      return `${s}px`
+    case 'm':
+      return `${m}px`
+    case 'l':
+      return `${l}px`
+  }
+}
+
 export const HorizontalWrapLayout = styled(DefaultLayout)<{ gapSize?: Size }>`
   ${horizontalWrapFlex};
   > * + * {
@@ -259,19 +272,6 @@ export const IconText = (props: {
     <span>{props.children}</span>
   </IconTextContainer>
 )
-
-const matchSize = (s: number, m: number, l: number) => (size: Size) => {
-  if (typeof size === 'number') return `${size}px`
-
-  switch (size) {
-    case 's':
-      return `${s}px`
-    case 'm':
-      return `${m}px`
-    case 'l':
-      return `${l}px`
-  }
-}
 
 export const NoticeBlock = styled.div<{
   horizontalPadding?: Size
