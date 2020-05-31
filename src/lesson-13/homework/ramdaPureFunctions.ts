@@ -1,15 +1,15 @@
 import {
   compose,
+  concat,
+  drop,
+  fromPairs,
+  join,
+  map,
   maxBy,
   prop,
   reduce,
-  keys,
-  join,
-  identity,
-  map,
-  tap,
+  split,
   toPairs,
-  concat,
 } from "ramda";
 
 // Задание 1
@@ -32,7 +32,9 @@ export const createQs = compose<
 >(concat("?"), join("&"), map(join("=")), toPairs);
 
 // Задание 3
-export const parseQs = (qs: string) =>
-  compose(() => {
-    const t = 1 + 1;
-  });
+export const parseQs = compose<string, string, string[], string[], QsObj>(
+  fromPairs,
+  map(split("=")),
+  split("&"),
+  drop(1)
+);
