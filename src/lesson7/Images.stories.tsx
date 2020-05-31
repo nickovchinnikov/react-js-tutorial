@@ -1,5 +1,5 @@
 import React from "react";
-import { withKnobs, number, boolean } from "@storybook/addon-knobs";
+import { withKnobs, number } from "@storybook/addon-knobs";
 
 import { ImageLocal } from "./ImageLocal";
 import { ImageServer } from "./ImageServer";

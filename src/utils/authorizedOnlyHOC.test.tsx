@@ -10,7 +10,7 @@ jest.mock("@/api/auth", () => ({
 }));
 
 jest.mock("react-router-dom", () => ({
-  Redirect: function Redirect(props: any) {
+  Redirect: function Redirect(props: object) {
     return <div>Redirect: {JSON.stringify(props)}</div>;
   },
 }));
