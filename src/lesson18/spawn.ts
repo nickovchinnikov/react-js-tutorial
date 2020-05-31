@@ -2,10 +2,10 @@
 // https://stackoverflow.com/a/28032438/10828885
 
 export function spawn<A, P, G>(generator: (...args: A[]) => Generator<G>) {
-  return function (...args: A[]): Promise<P> {
+  return (...args: A[]): Promise<P> => {
     const iter = generator(...args);
 
-    return Promise.resolve().then(function onValue(lastValue): any {
+    return Promise.resolve().then(function onValue(lastValue): P | Promise<P> {
       const result = iter.next(lastValue);
 
       const { done, value } = result;
@@ -14,7 +14,10 @@ export function spawn<A, P, G>(generator: (...args: A[]) => Generator<G>) {
         // generator done, resolve promise
         return value;
       }
-      return Promise.resolve(value).then(onValue, iter.throw.bind(iter)); // repeat
+      return Promise.resolve(value).then(
+        onValue,
+        iter.throw.bind(iter)
+      ) as Promise<P>; // repeat
     });
   };
 }
