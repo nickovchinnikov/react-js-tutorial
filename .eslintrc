@@ -29,7 +29,8 @@
     ],
     "no-console": [
       "error",
-      { "allow": [
+      {
+        "allow": [
           "warn",
           "error"
         ]
@@ -38,7 +39,8 @@
     "@typescript-eslint/explicit-function-return-type": 0,
     "react/prop-types": 0,
     "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn"
+    "react-hooks/exhaustive-deps": "warn",
+    "@typescript-eslint/no-non-null-assertion": "off"
   },
   "parserOptions": {
     "sourceType": "module",
@@ -47,9 +49,13 @@
   },
   "overrides": [
     {
-      "files": ["webpack.config.js"],
+      "files": [
+        "webpack.config.js"
+      ],
       "rules": {
-        "@typescript-eslint/no-var-requires": ["off"]
+        "@typescript-eslint/no-var-requires": [
+          "off"
+        ]
       }
     },
     {
@@ -57,7 +63,17 @@
         "*.stories.tsx"
       ],
       "rules": {
-        "no-restricted-syntax": ["off"]
+        "no-restricted-syntax": "off",
+        "@typescript-eslint/no-explicit-any": "off"
+      }
+    },
+    {
+      "files": [
+        "*.test.tsx",
+        "*.test.ts"
+      ],
+      "rules": {
+        "@typescript-eslint/no-explicit-any": "off"
       }
     }
   ]

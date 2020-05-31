@@ -11,7 +11,7 @@ export const LoginScreen: React.FC<{}> = () => {
       await login(name);
       history.push(`/user/${name}`);
     },
-    [name]
+    [name, history]
   );
   return (
     <form onSubmit={onSubmit}>
