@@ -2,7 +2,7 @@ test("dummy test", () => undefined);
 
 /*
 
-import { OriginalTeam, ExpectedTeam } from "./immutability";
+import { OriginalTeam, ExpectedTeam, originalTeamToExpectedTeam, originalArrayToExpectedArray, originalTeamToExpectedTeam2 } from "./immutability";
 
 // Задание 1
 test("team to team", () => {
@@ -48,7 +48,7 @@ test("team to team deep", () => {
     },
   };
 
-  expect(originalTeamToExpectedTeam(originalTeam)).toBe(expectedTeam);
+  expect(originalTeamToExpectedTeam2(originalTeam)).toBe(expectedTeam);
 });
 
 */

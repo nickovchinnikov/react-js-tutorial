@@ -13,6 +13,8 @@ export type ExpectedTeam = {
 
 export const originalTeamToExpectedTeam = (
   originalTeam: OriginalTeam
+  // eslint-disable-next-line
+  // @ts-ignore
 ): ExpectedTeam => {
   //
 };
@@ -20,7 +22,11 @@ export const originalTeamToExpectedTeam = (
 // Задание 2
 type SomeArray = Array<number | string>;
 
-const originalArrayToExpectedArray = (originalArray: SomeArray): SomeArray => {
+const originalArrayToExpectedArray = (
+  originalArray: SomeArray
+  // eslint-disable-next-line
+  // @ts-ignore
+): SomeArray => {
   //
 };
 
@@ -34,6 +40,10 @@ export type Team = {
   };
 };
 
-export const originalTeamToExpectedTeam = (originalTeam: Team): Team => {
+export const originalTeamToExpectedTeam2 = (
+  originalTeam: Team
+  // eslint-disable-next-line
+  // @ts-ignore
+): Team => {
   //
 };
