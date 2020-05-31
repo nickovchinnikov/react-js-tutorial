@@ -1,15 +1,12 @@
-import {
-  compose,
-  //...
-} from "ramda";
+import { compose, maxBy, prop, reduce } from "ramda";
 
 // Задание 1
 export type Team = { name: string; score: number };
 
-export const getTopName = (teams: Team[]) =>
-  compose(() => {
-    const t = 1 + 1;
-  });
+export const getTopName = compose(
+  prop("name"),
+  reduce<Team, Team>(maxBy<Team>(prop("score")), { name: "", score: 0 })
+);
 
 // Задание 2
 export type QsObj = Record<string, string | number | boolean | object>;

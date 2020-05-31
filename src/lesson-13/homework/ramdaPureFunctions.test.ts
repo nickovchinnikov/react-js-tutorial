@@ -6,7 +6,7 @@ import {
   parseQs,
 } from "./ramdaPureFunctions";
 
-test.skip("getTopName", () => {
+test("getTopName", () => {
   const teams: Team[] = [
     { name: "Lions", score: 5 },
     { name: "Tigers", score: 4 },
