@@ -43,7 +43,10 @@ export class GameSettingsFormState extends React.Component<
   };
 
   componentDidUpdate() {
-    console.log("@@GameSettingsFormState.componentDidUpdate");
+    // eslint-disable-next-line
+    console.log(
+      '@@GameSettingsFormState.componentDidUpdate'
+    );
   }
 
   handleFormInputChange = (ev: FormEvent<HTMLInputElement>) => {

@@ -1,3 +1,7 @@
+test("dummy test", () => undefined);
+
+/*
+
 import {
   getTopName,
   Team,
@@ -40,3 +44,5 @@ test("parseQs", () => {
     somethingElse: "value",
   });
 });
+
+*/
