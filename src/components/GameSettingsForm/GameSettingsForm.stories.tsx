@@ -67,15 +67,22 @@ class StoryWrapperLayout extends React.Component<{
 }
 
 export const forms = () => {
-  const [title, setTitle] = useState("Forms demo");
+  // eslint-disable-next-line
+  const [title, setTitle] = useState('Forms demo');
   return (
     <>
       <h1>{title}</h1>
       <input value={title} onChange={(ev) => setTitle(ev.target.value)} />
       <StoryWrapperLayout
         columns={[
-          { FormComponent: GameSettingsFormDOM, title: "GameSettingsFormDOM" },
-          { FormComponent: GameSettingsFormRef, title: "GameSettingsFormRef" },
+          {
+            FormComponent: GameSettingsFormDOM,
+            title: "GameSettingsFormDOM",
+          },
+          {
+            FormComponent: GameSettingsFormRef,
+            title: "GameSettingsFormRef",
+          },
           {
             FormComponent: GameSettingsFormState,
             title: "GameSettingsFormState",
