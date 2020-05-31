@@ -17,7 +17,7 @@ test("getTopName", () => {
   expect(getTopName(teams)).toBe("Bears");
 });
 
-test.skip("createQs", () => {
+test("createQs", () => {
   const qsObj: QsObj = {
     page: "2",
     pageSize: "10",
@@ -33,7 +33,7 @@ test.skip("createQs", () => {
 test.skip("parseQs", () => {
   const qs = "?page=2&pageSize=10&total=205&somethingElse=value";
 
-  expect(parseQs(qs)).toBe({
+  expect(parseQs(qs)).toEqual({
     page: "2",
     pageSize: "10",
     total: "205",
