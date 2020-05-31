@@ -1,8 +1,8 @@
 // https://en.wikipedia.org/wiki/Pyramid_of_doom_(programming)
 // https://stackoverflow.com/a/28032438/10828885
 
-export function spawn(generator: () => Generator<any>) {
-  return function (...args: any): Promise<any> {
+export function spawn<A, T, G>(generator: () => Generator<G>) {
+  return function (...args: A[]): Promise<T> {
     /* eslint-disable */
     // @ts-ignore
     const iter = generator.apply(this, args);
