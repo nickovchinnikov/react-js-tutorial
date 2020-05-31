@@ -66,3 +66,15 @@ export function* fibonacciSequense(length: number) {
     length--;
   }
 }
+
+export function* strangeZeroOneSequence(length: number) {
+  for (let counter = 0; counter < length; counter++) {
+    let iterator = 0;
+    yield iterator;
+
+    while (iterator <= counter) {
+      yield 1;
+      iterator++;
+    }
+  }
+}

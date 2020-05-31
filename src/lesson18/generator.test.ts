@@ -9,6 +9,7 @@ import {
   wordGenerator,
   passwordGenerator,
   fibonacciSequense,
+  strangeZeroOneSequence,
 } from "./generator";
 import { dictionary } from "./dictionary";
 
@@ -109,5 +110,15 @@ describe("Generators Intro", () => {
     const generator = fibonacciSequense(10);
     const array = [...generator];
     expect(array).toStrictEqual([0, 1, 1, 2, 3, 5, 8, 13, 21, 34]);
+  });
+  it("01 sequence", () => {
+    const generator = strangeZeroOneSequence(1);
+    const array = [...generator];
+    expect(array).toStrictEqual([0, 1]);
+  });
+  it("01011011101111 sequence", () => {
+    const generator = strangeZeroOneSequence(4);
+    const array = [...generator];
+    expect(array.join("")).toBe("01011011101111");
   });
 });
