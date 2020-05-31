@@ -145,7 +145,8 @@ React Patterns
 ## Lesson 13
 * Functional programming
 
-[Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/22) <br>
+[Pull request examples](https://github.com/nickovchinnikov/react-js-tutorial/pull/24) <br>
+[Pull request homework](https://github.com/nickovchinnikov/react-js-tutorial/pull/25) <br>
 [Presentation](https://otus-lesson-fp.saitonakamura.now.sh/) <br>
 
 
