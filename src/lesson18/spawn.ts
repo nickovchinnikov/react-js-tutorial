@@ -1,21 +1,19 @@
 // https://en.wikipedia.org/wiki/Pyramid_of_doom_(programming)
 // https://stackoverflow.com/a/28032438/10828885
 
-export function spawn<A, T, G>(generator: () => Generator<G>) {
-  return function (...args: A[]): Promise<T> {
-    /* eslint-disable */
-    // @ts-ignore
-    const iter = generator.apply(this, args);
+export function spawn<A, P, G>(generator: (...args: A[]) => Generator<G>) {
+  return function (...args: A[]): Promise<P> {
+    const iter = generator(...args);
 
-    return Promise.resolve().then(function onValue(
-      lastValue: any
-    ): Promise<any> {
+    return Promise.resolve().then(function onValue(lastValue): any {
       const result = iter.next(lastValue);
 
-      const done = result.done;
-      const value = result.value;
+      const { done, value } = result;
 
-      if (done) return value; // generator done, resolve promise
+      if (done) {
+        // generator done, resolve promise
+        return value;
+      }
       return Promise.resolve(value).then(onValue, iter.throw.bind(iter)); // repeat
     });
   };
