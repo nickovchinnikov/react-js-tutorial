@@ -32,7 +32,7 @@ const DemoForm: React.FC<DemoFormProps> = ({ FormComponent, title }) => {
         preventDefault: () => null,
       });
     }
-  }, [formRef.current]);
+  }, []);
   return (
     <DemoFormWrapper>
       <h2>{title}</h2>
@@ -66,7 +66,7 @@ class StoryWrapperLayout extends React.Component<{
   }
 }
 
-export const forms = () => {
+export const Forms = () => {
   const [title, setTitle] = useState("Forms demo");
   return (
     <>
@@ -74,8 +74,14 @@ export const forms = () => {
       <input value={title} onChange={(ev) => setTitle(ev.target.value)} />
       <StoryWrapperLayout
         columns={[
-          { FormComponent: GameSettingsFormDOM, title: "GameSettingsFormDOM" },
-          { FormComponent: GameSettingsFormRef, title: "GameSettingsFormRef" },
+          {
+            FormComponent: GameSettingsFormDOM,
+            title: "GameSettingsFormDOM",
+          },
+          {
+            FormComponent: GameSettingsFormRef,
+            title: "GameSettingsFormRef",
+          },
           {
             FormComponent: GameSettingsFormState,
             title: "GameSettingsFormState",

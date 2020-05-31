@@ -43,6 +43,7 @@ export class GameSettingsFormState extends React.Component<
   };
 
   componentDidUpdate() {
+    // eslint-disable-next-line no-console
     console.log("@@GameSettingsFormState.componentDidUpdate");
   }
 
@@ -52,7 +53,7 @@ export class GameSettingsFormState extends React.Component<
         "name"
       ) as keyof GameSettingsFormStateState]: (ev.target as HTMLInputElement)
         .value,
-    } as any);
+    } as object);
   };
 
   render() {
