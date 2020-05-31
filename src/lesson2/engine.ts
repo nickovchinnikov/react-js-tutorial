@@ -141,11 +141,10 @@ export const solveSimpleExp = (line: string): number => {
   return fourthPrioritiesCalc(thirdPrioritiesRes);
 };
 
-export const simplifyExp = (line: string, normalMode: boolean = true): string => {
-  const powReplace = normalMode ? '^ 2' : '2 ^';
+export const simplifyExp = (line: string, normalMode = true): string => {
+  const powReplace = normalMode ? "^ 2" : "2 ^";
   let newLine = line.replace(/\*\*/g, powReplace);
   newLine = newLine.replace(/.\(/g, " (");
   newLine = newLine.replace(/\!/g, " !");
   return newLine;
 };
-

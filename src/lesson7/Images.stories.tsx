@@ -1,9 +1,9 @@
 import React from "react";
-import { withKnobs, number, boolean } from "@storybook/addon-knobs";
+import { withKnobs, number } from "@storybook/addon-knobs";
 
 import { ImageLocal } from "./ImageLocal";
 import { ImageServer } from "./ImageServer";
-import { ImageRandom } from "./ImageRandom";
+// import { ImageRandom } from "./ImageRandom";
 
 export default {
   title: "Images",
@@ -18,6 +18,7 @@ export const RemotelyCreatedURL = () => [
   <ImageServer key="jsx" id={number("id", 7)} />,
 ];
 
+/*
 export const RandomImages = () => [
   <ImageRandom
     key="jsx"
@@ -25,3 +26,4 @@ export const RandomImages = () => [
     isActive={boolean("is active", true)}
   />,
 ];
+*/

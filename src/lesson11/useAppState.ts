@@ -29,6 +29,7 @@ export const useAppState = (): boolean => {
 };
 
 // simplified version, just an example without tests.
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const useAppStateWithoutLogs = (): boolean => {
   const [isForeground, setIsForeground] = useState(true);
 
