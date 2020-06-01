@@ -8,6 +8,7 @@
     },
     "target": "es5",
     "module": "commonjs",
+    "downlevelIteration": true,
     "allowJs": true,
     "jsx": "react",
     "sourceMap": true,
