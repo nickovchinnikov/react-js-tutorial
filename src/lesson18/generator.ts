@@ -73,7 +73,7 @@ export function* fibonacciSequense(length: number) {
   }
 }
 
-// Time complexity https://www.desmos.com/calculator/pzkrvmkdpk
+// Time complexity https://www.desmos.com/calculator/g8ojgsx31c
 export function* strangeZeroOneSequence(length: number) {
   for (let counter = 0; counter < length; counter++) {
     let iterator = 0;
