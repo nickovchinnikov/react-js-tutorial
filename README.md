@@ -168,3 +168,10 @@ React Patterns
 
 [Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/28) <br>
 [Presentation](https://docs.google.com/presentation/d/1cjlHeq53IoWMmQFYSrzmOgiqS6TIEeRIrbCxZ7GjXVc/edit?usp=sharing) <br>
+
+## Lesson 17
+* Redux middlewares
+
+[Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/34) <br>
+[Homework](https://github.com/nickovchinnikov/react-js-tutorial/pull/35) <br>
+[Presentation](https://otus-lesson-react-middlewares.now.sh/) <br>
