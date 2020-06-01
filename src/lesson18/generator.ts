@@ -46,6 +46,11 @@ export function* wordGenerator(): Generator<string> {
   }
 }
 
+export function* getWord(): Generator<string | number[]> {
+  const idx = yield [...dictionary.keys()];
+  yield dictionary[idx as number];
+}
+
 export const passwordGenerator = (countWords: number): string => {
   const generator = wordGenerator();
   let password = "";

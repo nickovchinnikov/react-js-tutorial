@@ -7,6 +7,7 @@ import {
   middleRange,
   rand,
   wordGenerator,
+  getWord,
   passwordGenerator,
   fibonacciSequense,
   strangeZeroOneSequence,
@@ -99,6 +100,12 @@ describe("Generators Intro", () => {
     const secondResultCheck = dictionary.includes(secondResult.value);
 
     expect(firstResultCheck && secondResultCheck).toBe(true);
+  });
+  it("getWord", () => {
+    const generator = getWord();
+    const { value: listKeys } = generator.next();
+    const { value: word } = generator.next(listKeys[5]);
+    expect(word).toBe("Actons");
   });
   it("passwordGenerator", () => {
     const oneWord = passwordGenerator(1);
