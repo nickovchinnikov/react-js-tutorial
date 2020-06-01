@@ -1,5 +1,17 @@
 import { css } from 'styled-components'
-import { Size, sizeToPx } from './utils'
+import { Size, sizeToPx, exactSizeToPx } from './utils'
+
+export const typography = ({
+  fontSize = 'inherit',
+  fontStyle = 'normal',
+  fontWeight = 'normal',
+  lineHeight = 'normal',
+}: Typography) => css`
+  font-size: ${exactSizeToPx(fontSize)};
+  font-style: ${fontStyle};
+  font-weight: ${fontWeight};
+  line-height: ${lineHeight};
+`
 
 export const plainLayout = css`
   width: 100%;
@@ -72,13 +84,40 @@ export const elevated = css`
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `
 
-export const text = ({ size, italic }: { size: Size; italic?: boolean }) => css`
-  font-size: ${(p) => sizeToPx(p.theme, size)};
-  line-height: 1.2em;
-  font-style: ${italic ? 'italic' : 'normal'};
+export const text = ({
+  size,
+  italic,
+  bold,
+}: {
+  size: Size
+  italic?: boolean
+  bold?: boolean
+}) => css`
+  ${(p) =>
+    typography({
+      fontSize: sizeToPx(p.theme, size),
+      fontStyle: italic ? 'italic' : 'normal',
+      // lineHeight: '1.2em',
+      fontWeight: bold ? 500 : 400,
+    })}
 `
 
 export const quote = css`
   font-style: italic;
   border-left: 5px solid ${(p) => p.theme.darkGrayColor};
+`
+
+export type BlockSize = { width?: string | number; height?: string | number }
+
+export const blockSize = (blockSize: BlockSize) => css`
+  ${exactSizeToPx(blockSize.width)
+    ? css`
+        width: ${exactSizeToPx(blockSize.width)};
+      `
+    : ''};
+  ${exactSizeToPx(blockSize.height)
+    ? css`
+        height: ${exactSizeToPx(blockSize.height)};
+      `
+    : ''};
 `
