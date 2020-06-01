@@ -56,6 +56,7 @@ export const passwordGenerator = (countWords: number): string => {
   return password;
 };
 
+// Time complexity O(N)
 export function* fibonacciSequense(length: number) {
   let [prev, current, next] = [0, 0, 1];
   while (length > 0) {
@@ -67,6 +68,7 @@ export function* fibonacciSequense(length: number) {
   }
 }
 
+// Time complexity https://www.desmos.com/calculator/pzkrvmkdpk
 export function* strangeZeroOneSequence(length: number) {
   for (let counter = 0; counter < length; counter++) {
     let iterator = 0;
