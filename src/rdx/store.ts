@@ -1,8 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
 import thunkMiddleware from "redux-thunk";
 import { reducer } from "./reducer";
+import { delayMiddleware } from "./delayMiddleware";
 
-const middleware = [thunkMiddleware];
+const middleware = [thunkMiddleware, delayMiddleware];
 
 if (process.env.NODE_ENV === `development`) {
   // eslint-disable-next-line @typescript-eslint/no-var-requires

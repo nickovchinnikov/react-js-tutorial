@@ -30,6 +30,9 @@ describe("ReduxScreen with mocked store", () => {
     expect(store.getActions()).toMatchInlineSnapshot(`
       Array [
         Object {
+          "meta": Object {
+            "delay": 500,
+          },
           "payload": Object {
             "x": 100,
             "y": 999,
@@ -86,6 +89,9 @@ describe("ReduxScreen with real store", () => {
       Array [
         Array [
           Object {
+            "meta": Object {
+              "delay": 500,
+            },
             "payload": Object {
               "x": 0,
               "y": 1,
