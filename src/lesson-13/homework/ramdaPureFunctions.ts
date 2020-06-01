@@ -10,15 +10,17 @@ import {
   reduce,
   split,
   toPairs,
+  curry,
 } from "ramda";
 
 // Задание 1
 export type Team = { name: string; score: number };
 
-export const getTopName = compose(
-  prop("name"),
-  reduce<Team, Team>(maxBy<Team>(prop("score")), { name: "", score: 0 })
+const topTeam = curry(
+  (teams: Team[]): Team =>
+    reduce<Team, Team>(maxBy<Team>(prop("score")), teams[0], teams)
 );
+export const getTopName = compose<Team[], Team, string>(prop("name"), topTeam);
 
 // Задание 2
 export type QsObj = Record<string, string | number | boolean | object>;
@@ -32,7 +34,7 @@ export const createQs = compose<
 >(concat("?"), join("&"), map(join("=")), toPairs);
 
 // Задание 3
-export const parseQs = compose<string, string, string[], string[], QsObj>(
+export const parseQs = compose<string, string, string[], any, any>(
   fromPairs,
   map(split("=")),
   split("&"),
