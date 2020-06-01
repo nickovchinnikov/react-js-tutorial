@@ -3,9 +3,12 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "yarn start:fp",
+    "start": "yarn start:middlewares",
     "start:fp": "cross-env LESSON=fp yarn start:abstract",
     "build:fp": "cross-env LESSON=fp yarn build:abstract",
+    "start:middlewares": "cross-env LESSON=17 yarn start:abstract",
+    "build:middlewares": "cross-env LESSON=17 yarn build:abstract",
+    "deploy:middlewares": "cross-env LESSON=17 yarn deploy:abstract",
     "start:demo-redux": "cross-env LESSON=demo-redux yarn start:abstract",
     "build:demo-redux": "cross-env LESSON=demo-redux yarn build:abstract",
     "start:abstract": "parcel serve --cache-dir .cache-${LESSON} --out-dir dist-${LESSON} lesson-${LESSON}/index.html",

@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, { css, createGlobalStyle, DefaultTheme } from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
 import {
   PlainLayout,
   DefaultLayout,
@@ -21,11 +21,31 @@ import {
   padding,
   text,
   quote,
+  typography,
+  blockSize,
+  BlockSize,
 } from './mixins'
 import { sizeToPx, iconToUrl, matchColor } from './utils'
 import type { Size, Color, IconType } from './utils'
 
-export const Text = styled.span<{ size: Size; italic?: boolean }>`
+const matchSize = (s: number, m: number, l: number) => (size: Size) => {
+  if (typeof size === 'number') return `${size}px`
+
+  switch (size) {
+    case 's':
+      return `${s}px`
+    case 'm':
+      return `${m}px`
+    case 'l':
+      return `${l}px`
+  }
+}
+
+export const Text = styled.span<{
+  size: Size
+  italic?: boolean
+  bold?: boolean
+}>`
   ${(p) => text(p)}
 `
 
@@ -225,10 +245,14 @@ export const Card = styled(Paper)`
   }
 `
 
-export const ListItem = styled.li``
+export const ListItem = styled.li<Typography>`
+  ${(p) => typography(p)};
+`
 
-export const List = styled.ul<{ gapSize?: Size }>`
+export const List = styled.ul<{ gapSize?: Size } & Typography>`
   ${verticalFlex};
+  ${(p) => typography(p)};
+  padding: 0;
   list-style-type: none;
 
   > * + * {
@@ -260,24 +284,13 @@ export const IconText = (props: {
   </IconTextContainer>
 )
 
-const matchSize = (s: number, m: number, l: number) => (size: Size) => {
-  if (typeof size === 'number') return `${size}px`
-
-  switch (size) {
-    case 's':
-      return `${s}px`
-    case 'm':
-      return `${m}px`
-    case 'l':
-      return `${l}px`
-  }
-}
-
-export const NoticeBlock = styled.div<{
-  horizontalPadding?: Size
-  backgroundColor?: Color
-  fullWidth?: boolean
-}>`
+export const NoticeBlock = styled.div<
+  {
+    horizontalPadding?: Size
+    backgroundColor?: Color
+    fullWidth?: boolean
+  } & BlockSize
+>`
   background-color: ${(p) =>
     matchColor(p.theme, p.backgroundColor ?? 'primary')};
   font-weight: bold;
@@ -288,6 +301,7 @@ export const NoticeBlock = styled.div<{
   width: ${(p) => (p.fullWidth ? '100%' : 'auto')};
   text-align: center;
   ${headingTypography};
+  ${(p) => blockSize(p)}
 `
 
 export const FullWidthFragment = styled(Fragment)`
@@ -297,10 +311,19 @@ export const FullWidthFragment = styled(Fragment)`
 export const OuterLink = styled.a.attrs({
   rel: 'noopener noreferrer',
   target: '_blank',
-})`
-  text-decoration: none;
+})<Typography>`
+  transition: all 0.2s ease;
+  padding: 5px 8px;
+  text-decoration: underline;
+  border-radius: 5px;
+  ${p => typography({ ...p, fontWeight: p.fontWeight ?? '500' )}
+
+  &:visited {
+    color: initial;
+  }
 
   &:hover {
+    color: white;
     background-color: ${(p) => p.theme.primaryColor};
   }
 `
@@ -308,13 +331,17 @@ export const OuterLink = styled.a.attrs({
 export type OtusSlideProps = Omit<SlideProps, 'layout'> & {
   layout?: Layout
   layoutStyle?: React.CSSProperties
-}
+} & Typography
+
+const StyledSlide = styled(Slide)<Typography>`
+  ${(p) => typography(p)}
+`
 
 export const OtusSlide = (props: OtusSlideProps) => {
   const Layout = props.layout ?? CenteredLayout
 
   return (
-    <Slide
+    <StyledSlide
       {...props}
       layout={(children) => (
         <Layout children={children} style={props.layoutStyle} />
@@ -323,8 +350,8 @@ export const OtusSlide = (props: OtusSlideProps) => {
   )
 }
 
-export const Quote = styled.span<{ size: Size }>`
-  ${(p) => text(p)};
+export const Quote = styled.span<Typography>`
+  ${(p) => typography(p)};
   ${quote};
   ${padding('m')}
 `

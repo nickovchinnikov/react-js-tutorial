@@ -10,10 +10,21 @@ import {
   ListItem,
   IconText,
   Text,
+  Card,
+  Avatar,
+  CardContent,
+  CardTitle,
+  CardDesc,
+  OtusSlideProps,
+  OtusSlide,
+  Quote,
 } from './blocks'
 import { SlideProps, Fragment } from '@saitonakamura/presa'
 import { CenteredLayout } from '@saitonakamura/presa/lib/components/slide/layouts'
 import { Size } from './utils'
+import { AnimatedSlide } from './useAnimatedSteps'
+import { animated } from 'react-spring'
+import { CodeProps, Code } from '@saitonakamura/presa/lib/blocks'
 
 export const CheckRecordSlide = (
   <TitleSlide
@@ -81,5 +92,71 @@ export const MicrophoneSlide = (
 )
 
 export const QuestionsSlide = (
-  <MicrophoneSlide name='Вопросы' title='Какие вопросы есть?' />
+  <MicrophoneSlide
+    key='microphone'
+    name='Вопросы'
+    title='Какие вопросы есть?'
+  />
+)
+
+export const MainTitleSlide = (
+  props: SlideProps & { title: React.ReactNode },
+) => (
+  <AnimatedSlide<{
+    card: {
+      top: string
+      left: string
+      transform: string
+    }
+  }>
+    {...props}
+    layout={CenteredPlainLayout}
+    name='ФП'
+    steps={[
+      {
+        card: {
+          top: '150%',
+          left: '50%',
+          transform: 'translate(-50%, -50%) scale(1)',
+        },
+      },
+      {
+        card: {
+          top: '80%',
+        },
+      },
+    ]}
+  >
+    {(styles) => (
+      <React.Fragment>
+        <Alert>{props.title}</Alert>
+        <animated.div style={{ position: 'absolute', ...styles.card }}>
+          <Card>
+            <Avatar />
+            <CardContent>
+              <CardTitle>Майк Башуров</CardTitle>
+              <CardDesc>Senior Frontend Engineer @ WiseBits</CardDesc>
+              <CardDesc>@saitonakamura</CardDesc>
+            </CardContent>
+          </Card>
+        </animated.div>
+      </React.Fragment>
+    )}
+  </AnimatedSlide>
+)
+
+export const QuoteSlide = (props: OtusSlideProps & { quote: string }) => (
+  <OtusSlide {...props} layout={CenteredPlainLayout}>
+    <Quote>{props.quote}</Quote>
+  </OtusSlide>
+)
+
+export const CodeSlide = ({
+  language,
+  code,
+  ...rest
+}: OtusSlideProps & CodeProps & { code: string }) => (
+  <OtusSlide layout={CenteredPlainLayout} {...rest}>
+    <Code language={language}>{code}</Code>
+  </OtusSlide>
 )
