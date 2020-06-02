@@ -4,7 +4,7 @@ const custom = require('../webpack.config.js');
 const webpackRules = require("../webpackRules");
 
 module.exports = {
-  stories: ['../src/**/*.stories.tsx'],
+  stories: ['../src/**/*.stories.tsx', '../lessons/**/*.stories.tsx'],
   addons: [
     '@storybook/addon-actions',
     '@storybook/addon-links',
@@ -35,15 +35,15 @@ module.exports = {
     });
     config.module.rules.push({
       test: /\.tsx?$/,
-      include: path.resolve(__dirname, "../src"),
+      include: path.resolve(__dirname, '../src'),
       use: [
-        require.resolve("babel-loader"),
+        require.resolve('babel-loader'),
         {
-          loader: require.resolve("react-docgen-typescript-loader"),
+          loader: require.resolve('react-docgen-typescript-loader'),
           options: {
             // Provide the path to your tsconfig.json so that your stories can
             // display types from outside each individual story.
-            tsconfigPath: path.resolve(__dirname, "../tsconfig.json"),
+            tsconfigPath: path.resolve(__dirname, '../tsconfig.json'),
           },
         },
       ],
