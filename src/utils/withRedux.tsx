@@ -1,11 +1,14 @@
-import React from "react";
+import React, { Dispatch } from "react";
+import { AnyAction } from "redux";
 import { store } from "@/rdx/store";
+
+interface Props {
+  dispatch?: Dispatch<AnyAction>;
+}
 
 // if you want to get more info
 // try to check https://gist.github.com/gaearon/1d19088790e70ac32ea636c025ba424e
-export function withRedux<
-  Props extends object & { dispatch?: (action: object) => void }
->(
+export function withRedux(
   TargetComponent: React.ComponentType<Props>,
   getPropsFromRedux: (state: object) => Partial<Props>
 ) {

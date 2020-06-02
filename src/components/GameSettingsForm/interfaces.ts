@@ -1,3 +1,5 @@
+import { MutableRefObject } from "react";
+
 export interface PlayerSettings {
   name: string;
   symbol: string;
@@ -11,4 +13,5 @@ export interface GameSettingsFormResult {
 
 export interface GameSettingsFormProps {
   onSubmit: (settings: GameSettingsFormResult) => void;
+  ref?: MutableRefObject<any>;
 }

@@ -87,11 +87,11 @@ export function* strangeZeroOneSequence(length: number) {
 }
 
 export class BinaryTree {
-  private value: string;
-  private left?: BinaryTree;
-  private right?: BinaryTree;
-
-  constructor(value: string, left?: BinaryTree, right?: BinaryTree) {
+  constructor(
+    private value: string,
+    private left?: BinaryTree,
+    private right?: BinaryTree
+  ) {
     this.value = value;
     this.left = left;
     this.right = right;

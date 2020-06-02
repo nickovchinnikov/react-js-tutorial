@@ -3,6 +3,7 @@ import { isNumber } from "./helpers";
 import {
   mathOperators,
   mathPriorities,
+  FunctionOperationType,
   mathOperatorsPriorities,
   trigonomenticOperators,
 } from "./mathOperators";
@@ -17,7 +18,8 @@ export const zeroPrioritiesCalc = (stack: ParsedLineType): ParsedLineType =>
       if (!mathOperators[item]) {
         throw new TypeError("Unexpected stack!");
       }
-      result = [...result.slice(0, -1), mathOperators[item](Number(prevItem))];
+      const action = mathOperators[item] as FunctionOperationType;
+      result = [...result.slice(0, -1), action(Number(prevItem))];
     } else {
       result.push(item);
     }
@@ -34,10 +36,8 @@ export const firstPrioritiesCalc = (stack: ParsedLineType): ParsedLineType =>
         throw new TypeError("Unexpected stack!");
       }
       if (nextItem === "!") {
-        result = [
-          ...result.slice(0, -1),
-          mathOperators[nextItem](Number(item)),
-        ];
+        const action = mathOperators[item] as FunctionOperationType;
+        result = [...result.slice(0, -1), action(Number(item))];
       } else {
         result = [
           ...result.slice(0, -2),
