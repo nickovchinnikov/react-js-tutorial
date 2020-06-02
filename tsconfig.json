@@ -14,5 +14,12 @@
     "sourceMap": true,
     "strict": true,
     "esModuleInterop": true
-  }
+  },
+  "include": [
+    "src/**/*",
+    "scripts/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
