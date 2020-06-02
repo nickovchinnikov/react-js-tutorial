@@ -18,6 +18,7 @@ export const RemotelyCreatedURL = () => [
   <ImageServer key="jsx" id={number("id", 7)} />,
 ];
 
+// Lack of screenshot testing
 /*
 export const RandomImages = () => [
   <ImageRandom

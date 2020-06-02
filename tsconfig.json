@@ -17,7 +17,8 @@
   },
   "include": [
     "src/**/*",
-    "scripts/**/*"
+    "scripts/**/*",
+    "lessons/**/*"
   ],
   "exclude": [
     "node_modules"
