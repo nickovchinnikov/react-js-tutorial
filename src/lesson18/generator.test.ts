@@ -11,6 +11,8 @@ import {
   passwordGenerator,
   fibonacciSequense,
   strangeZeroOneSequence,
+  BinaryTree,
+  dataConsumer,
 } from "./generator";
 import { dictionary } from "./dictionary";
 
@@ -107,6 +109,18 @@ describe("Generators Intro", () => {
     const { value: word } = generator.next(listKeys[5]);
     expect(word).toBe("Actons");
   });
+  it("dataConsumer", () => {
+    const generator = dataConsumer();
+    expect(generator.next()).toStrictEqual({ value: undefined, done: false });
+    expect(generator.next("a")).toStrictEqual({
+      value: undefined,
+      done: false,
+    });
+    expect(generator.next("b")).toStrictEqual({
+      value: ["Started", "1. a", "2. b"],
+      done: true,
+    });
+  });
   it("passwordGenerator", () => {
     const oneWord = passwordGenerator(1);
     const fourWord = passwordGenerator(4);
@@ -127,5 +141,14 @@ describe("Generators Intro", () => {
     const generator = strangeZeroOneSequence(4);
     const array = [...generator];
     expect(array.join("")).toBe("01011011101111");
+  });
+  it("BinaryTree", () => {
+    const tree = new BinaryTree(
+      "a",
+      new BinaryTree("b", new BinaryTree("c"), new BinaryTree("d")),
+      new BinaryTree("e")
+    );
+    const array = [...tree];
+    expect(array).toStrictEqual(["a", "b", "c", "d", "e"]);
   });
 });

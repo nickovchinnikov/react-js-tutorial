@@ -85,3 +85,54 @@ export function* strangeZeroOneSequence(length: number) {
     }
   }
 }
+
+export class BinaryTree {
+  private value: string;
+  private left?: BinaryTree;
+  private right?: BinaryTree;
+
+  constructor(value: string, left?: BinaryTree, right?: BinaryTree) {
+    this.value = value;
+    this.left = left;
+    this.right = right;
+  }
+
+  /** Prefix iteration */
+  *[Symbol.iterator](): Generator<string> {
+    yield this.value;
+    if (this.left) {
+      yield* this.left;
+    }
+    if (this.right) {
+      yield* this.right;
+    }
+  }
+}
+
+export function* dataConsumer() {
+  const result = ["Started"];
+  console.warn(result);
+  result.push(`1. ${yield}`); // (A)
+  result.push(`2. ${yield}`);
+  return result;
+}
+
+/**
+ * Returns a function that, when called,
+ * returns a generator object that is immediately
+ * ready for input via `next()`
+ */
+export const coroutine = (generatorFunction: (...args: any) => Generator) => (
+  ...args: any
+) => {
+  const generatorObject = generatorFunction(...args);
+  generatorObject.next();
+  return generatorObject;
+};
+
+export const wrapped = coroutine(function* () {
+  const result = `First input: ${yield}`;
+  return result;
+});
+
+wrapped().next("hello!");
