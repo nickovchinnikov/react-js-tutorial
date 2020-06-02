@@ -111,7 +111,7 @@ export class BinaryTree {
 
 export function* dataConsumer() {
   const result = ["Started"];
-  console.warn(result);
+  // console.warn(result);
   result.push(`1. ${yield}`); // (A)
   result.push(`2. ${yield}`);
   return result;
