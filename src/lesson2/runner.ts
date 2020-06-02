@@ -1,7 +1,7 @@
 import { solveSimpleExp, simplifyExp } from "./engine";
 import { scalarOperators, trigonomenticOperators } from "./mathOperators";
 
-export const makepolishNotationReg = (): string => {
+export const makepolishNotationReg = (): RegExp => {
   const scalarPart = Object.keys(scalarOperators).reduce(
     (reg, value, index) => {
       return `${reg}${index !== 0 ? "|" : ""}\\${value}`;
@@ -20,9 +20,9 @@ export const makepolishNotationReg = (): string => {
 
 export const pnMode = (
   line: string,
-  pnReg: string = makepolishNotationReg()
+  pnReg: RegExp = makepolishNotationReg()
 ) => {
-  const pnSolve = (pnExp: Array<string> | null, exp): number => {
+  const pnSolve = (pnExp: Array<string> | null, exp: string): number => {
     if (pnExp === null) {
       return Number(exp);
     }
@@ -47,7 +47,7 @@ export const pnMode = (
 
 export const normalMode = (line: string): number => {
   const solveBreackets = (
-    expInBrackets: Array<sring> | null,
+    expInBrackets: Array<string> | null,
     exp: string
   ): number => {
     if (expInBrackets === null) {

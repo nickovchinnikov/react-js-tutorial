@@ -40,7 +40,7 @@ export const SomeForm = () => {
       />
       {validatorRef.current.hasErrors() && (
         <span style={{ color: "red" }}>
-          {validatorRef.current.errors["username"].message}
+          {validatorRef.current?.errors["username"]?.message}
         </span>
       )}
       <button type="submit">Submit</button>
