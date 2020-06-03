@@ -10,7 +10,7 @@ enum CheckState {
 
 export const authorizedOnlyHoc = <Props extends object>(
   Component: React.ComponentType<Props>,
-  redirectPath = "/"
+  redirectPath = "/login"
 ) => (props: Props) => {
   const [isAuthorized, setIsAuthorized] = useState(CheckState.initiated);
 

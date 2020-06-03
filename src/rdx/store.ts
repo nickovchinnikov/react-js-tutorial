@@ -1,18 +1,24 @@
+import { combineReducers } from "redux";
 import { configureStore } from "@reduxjs/toolkit";
-import thunkMiddleware from "redux-thunk";
-import { reducer } from "./reducer";
-import { delayMiddleware } from "./delayMiddleware";
+import createSagaMiddleware from "redux-saga";
+import { fork } from "redux-saga/effects";
 
-const middleware = [thunkMiddleware, delayMiddleware];
+import { loginSlice, loginSaga } from "components/Login";
 
-if (process.env.NODE_ENV === `development`) {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  const { logger } = require(`redux-logger`);
+const sagaMiddleware = createSagaMiddleware();
 
-  middleware.push(logger);
+function* rootSaga() {
+  yield fork(loginSaga);
 }
+
+const reducer = combineReducers({
+  login: loginSlice.reducer,
+});
 
 export const store = configureStore({
   reducer,
-  middleware,
+  middleware: [sagaMiddleware],
 });
+sagaMiddleware.run(rootSaga);
+
+export type TicTacToeGameState = ReturnType<typeof reducer>;
