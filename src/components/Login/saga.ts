@@ -1,5 +1,4 @@
 import { isEmpty } from "ramda";
-import { PayloadAction } from "@reduxjs/toolkit";
 import { takeEvery, call, put, fork } from "redux-saga/effects";
 
 import { getUserSession, login, logout } from "@/api/auth";
@@ -17,7 +16,7 @@ export function* clearUserSession() {
   yield call(logout);
 }
 
-export function* saveUserSession(action: PayloadAction<string>) {
+export function* saveUserSession(action: ReturnType<typeof actions.login>) {
   const username = String(action.payload);
   if (username && !isEmpty(username)) {
     yield call(login, username);
