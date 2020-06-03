@@ -23,7 +23,9 @@ export const LoginComponent: React.FC<Props> = ({ username, login }) => {
   const onSubmit = useCallback(
     async (ev) => {
       ev.preventDefault();
-      login(name);
+      if (!isEmpty(name)) {
+        login(name);
+      }
     },
     [name, login]
   );
