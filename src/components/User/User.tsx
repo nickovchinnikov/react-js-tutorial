@@ -4,17 +4,24 @@ import { connect } from "react-redux";
 import { isEmpty } from "ramda";
 
 import { TicTacToeGameState } from "@/rdx/store";
+import { loginSlice } from "@/components/Login/reducer";
 
 const mapStateToProps = ({ login }: TicTacToeGameState) => ({
   ...login,
 });
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  logout: loginSlice.actions.logout,
+};
 
 export type Props = ReturnType<typeof mapStateToProps> &
   typeof mapDispatchToProps;
 
 class UserComponent extends PureComponent<Props> {
+  logout = () => {
+    const { logout } = this.props;
+    logout();
+  };
   render() {
     const { username } = this.props;
     return isEmpty(username) ? (
@@ -24,7 +31,7 @@ class UserComponent extends PureComponent<Props> {
     ) : (
       <div>
         <h3>Hello, {username}!</h3>
-        <button onClick={() => null}>Logout</button>
+        <button onClick={this.logout}>Logout</button>
       </div>
     );
   }

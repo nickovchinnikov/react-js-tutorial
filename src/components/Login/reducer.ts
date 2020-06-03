@@ -12,5 +12,6 @@ export const loginSlice = createSlice({
       }
       return state;
     },
+    logout: () => initialState,
   },
 });
