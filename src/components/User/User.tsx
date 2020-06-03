@@ -4,14 +4,14 @@ import { connect } from "react-redux";
 import { isEmpty } from "ramda";
 
 import { TicTacToeGameState } from "@/rdx/store";
-import { loginSlice } from "@/components/Login/reducer";
+import { actions } from "@/components/Login/reducer";
 
 const mapStateToProps = ({ login }: TicTacToeGameState) => ({
   ...login,
 });
 
 const mapDispatchToProps = {
-  logout: loginSlice.actions.logout,
+  logout: actions.logout,
 };
 
 export type Props = ReturnType<typeof mapStateToProps> &

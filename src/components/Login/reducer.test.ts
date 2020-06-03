@@ -1,20 +1,16 @@
-import { loginSlice, initialState } from "./reducer";
+import { actions, reducer, initialState } from "./reducer";
 
 describe("Login reducer", () => {
   const username = "ComeToMe";
   it("Attempt login with empty username", () => {
-    expect(
-      loginSlice.reducer(initialState, loginSlice.actions.login(""))
-    ).toEqual({ username: "" });
+    expect(reducer(initialState, actions.login(""))).toEqual({ username: "" });
   });
   it("Correct login action", () => {
-    expect(
-      loginSlice.reducer(initialState, loginSlice.actions.login(username))
-    ).toEqual({ username });
+    expect(reducer(initialState, actions.login(username))).toEqual({
+      username,
+    });
   });
   it("Logout action", () => {
-    expect(
-      loginSlice.reducer({ username }, loginSlice.actions.logout())
-    ).toEqual({ username: "" });
+    expect(reducer({ username }, actions.logout())).toEqual({ username: "" });
   });
 });
