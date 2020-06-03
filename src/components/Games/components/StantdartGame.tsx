@@ -1,8 +1,9 @@
 import React from "react";
+
 import { InteractiveField, Field } from "@/components";
 import { authorizedOnlyHoc } from "@/utils/authorizedOnlyHOC";
 
-export const FieldScreen = authorizedOnlyHoc(() => (
+export const StantdartGame = authorizedOnlyHoc(() => (
   <InteractiveField
     xSize={3}
     ySize={3}

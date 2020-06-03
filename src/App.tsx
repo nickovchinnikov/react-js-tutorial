@@ -1,12 +1,14 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { LoginScreen } from "@/screens/LoginScreen";
-import { FieldScreen } from "@/screens/FieldScreen";
+import { Provider } from "react-redux";
+
+import { LoginScreen, StantdartGame } from "@/components";
+
 import { NoMatchScreen } from "@/screens/NoMatchScreen";
 import { UserScreen } from "@/screens/UserScreen";
 import { FormScreen } from "@/screens/FormScreen";
 import { ReduxScreen } from "@/screens/ReduxScreen";
-import { Provider } from "react-redux";
+
 import { store } from "@/rdx/store";
 
 export const App: React.FC<{}> = () => (
@@ -18,7 +20,7 @@ export const App: React.FC<{}> = () => (
             <Link to="/login">Login</Link>
           </li>
           <li>
-            <Link to="/field">Field</Link>
+            <Link to="/stantdartgame">StantdartGame</Link>
           </li>
           <li>
             <Link to="/user/Nick">Nick</Link>
@@ -35,7 +37,7 @@ export const App: React.FC<{}> = () => (
         <Route path="/login">
           <LoginScreen />
         </Route>
-        <Route path="/field" render={() => <FieldScreen />} />
+        <Route path="/stantdartgame" render={() => <StantdartGame />} />
         <Route path="/user/:name" component={UserScreen} />
         <Route path="/form" component={FormScreen} />
         <Route path="/redux" component={ReduxScreen} />

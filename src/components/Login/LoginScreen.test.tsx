@@ -1,8 +1,9 @@
 import React from "react";
+import { shallow } from "enzyme";
+
+import { login } from "@/api/auth";
 
 import { LoginScreen } from "./LoginScreen";
-import { shallow } from "enzyme";
-import { login } from "@/api/auth";
 
 const mockHistory = { push: jest.fn() };
 jest.mock("react-router-dom", () => ({
