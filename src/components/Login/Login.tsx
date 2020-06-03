@@ -12,20 +12,20 @@ const mapStateToProps = ({ login }: TicTacToeGameState) => ({
 });
 
 const mapDispatchToProps = {
-  setUsername: loginSlice.actions.setUsername,
+  login: loginSlice.actions.login,
 };
 
 export type Props = ReturnType<typeof mapStateToProps> &
   typeof mapDispatchToProps;
 
-export const LoginComponent: React.FC<Props> = ({ username, setUsername }) => {
+export const LoginComponent: React.FC<Props> = ({ username, login }) => {
   const [name, setName] = useState(username);
   const onSubmit = useCallback(
     async (ev) => {
       ev.preventDefault();
-      setUsername(name);
+      login(name);
     },
-    [name, setUsername]
+    [name, login]
   );
   return isEmpty(username) ? (
     <form onSubmit={onSubmit}>

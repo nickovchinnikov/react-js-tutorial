@@ -6,7 +6,7 @@ export const loginSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    setUsername: (state, { payload }) => {
+    login: (state, { payload }) => {
       if (payload.length > 3) {
         return { username: payload };
       }
