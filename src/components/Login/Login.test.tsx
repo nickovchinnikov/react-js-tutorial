@@ -1,17 +1,16 @@
 import React from "react";
 import { shallow } from "enzyme";
 
+import { loginSlice } from "./reducer";
 import { LoginComponent } from "./Login";
 
 describe("Login", () => {
   it("navigates to user page on submit", async () => {
-    const setUsername = jest.fn();
+    jest.spyOn(loginSlice.actions, "login");
 
     const username = "BobMarley";
     const component = shallow(
-      // eslint-disable-next-line
-      // @ts-ignore
-      <LoginComponent username="" setUsername={setUsername} />
+      <LoginComponent username="" login={loginSlice.actions.login} />
     );
 
     component.find("input").simulate("change", {
@@ -24,6 +23,6 @@ describe("Login", () => {
       preventDefault: () => null,
     });
 
-    expect(setUsername).toHaveBeenCalledWith(username);
+    expect(loginSlice.actions.login).toHaveBeenCalledWith(username);
   });
 });
