@@ -1,30 +1,50 @@
 import React, { useCallback, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { Redirect } from "react-router";
+import { connect } from "react-redux";
+import { isEmpty } from "ramda";
 
-import { login } from "@/api/auth";
+import { TicTacToeGameState } from "@/rdx/store";
 
-export const Login: React.FC<{}> = () => {
-  const [name, setName] = useState("");
-  const history = useHistory();
+import { loginSlice } from "./reducer";
+
+const mapStateToProps = ({ login }: TicTacToeGameState) => ({
+  ...login,
+});
+
+const mapDispatchToProps = {
+  setUsername: loginSlice.actions.setUsername,
+};
+
+export type Props = ReturnType<typeof mapStateToProps> &
+  typeof mapDispatchToProps;
+
+export const LoginComponent: React.FC<Props> = ({ username, setUsername }) => {
+  const [name, setName] = useState(username);
   const onSubmit = useCallback(
     async (ev) => {
       ev.preventDefault();
-      await login(name);
-      history.push(`/user/${name}`);
+      setUsername(name);
     },
-    [name, history]
+    [name, setUsername]
   );
-  return (
+  return isEmpty(username) ? (
     <form onSubmit={onSubmit}>
       <label>
         Name:
         <input
-          placeholder="Enter your name"
+          placeholder="Enter your login"
           value={name}
           onChange={(ev) => setName((ev.target as HTMLInputElement).value)}
         />
       </label>
       <button>Login</button>
     </form>
+  ) : (
+    <Redirect to="/stantdartgame" />
   );
 };
+
+export const Login = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(LoginComponent);

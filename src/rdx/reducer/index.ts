@@ -1,7 +1,9 @@
+import { combineReducers } from "redux";
+
+import { nameReducer } from "@/rdx/reducer/name";
+
 import { gameField } from "./gameField";
 import { nextMove } from "./nextMove";
-import { combineReducers } from "redux";
-import { nameReducer } from "@/rdx/reducer/name";
 
 export const reducer = combineReducers({
   nextMove,

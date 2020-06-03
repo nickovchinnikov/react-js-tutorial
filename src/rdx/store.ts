@@ -1,18 +1,14 @@
+import { combineReducers } from "redux";
 import { configureStore } from "@reduxjs/toolkit";
-import thunkMiddleware from "redux-thunk";
-import { reducer } from "./reducer";
-import { delayMiddleware } from "./delayMiddleware";
 
-const middleware = [thunkMiddleware, delayMiddleware];
+import { loginSlice } from "components/Login/reducer";
 
-if (process.env.NODE_ENV === `development`) {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  const { logger } = require(`redux-logger`);
-
-  middleware.push(logger);
-}
+const reducer = combineReducers({
+  login: loginSlice.reducer,
+});
 
 export const store = configureStore({
   reducer,
-  middleware,
 });
+
+export type TicTacToeGameState = ReturnType<typeof reducer>;

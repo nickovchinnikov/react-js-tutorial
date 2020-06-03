@@ -1,30 +1,29 @@
 import React from "react";
 import { shallow } from "enzyme";
 
-import { login } from "@/api/auth";
-
-import { Login } from "./Login";
-
-const mockHistory = { push: jest.fn() };
-jest.mock("react-router-dom", () => ({
-  useHistory: () => mockHistory,
-}));
-
-jest.mock("@/api/auth", () => ({
-  login: jest.fn(),
-}));
+import { LoginComponent } from "./Login";
 
 describe("Login", () => {
   it("navigates to user page on submit", async () => {
-    const name = "BobMarley";
-    const screen = shallow(<Login />);
+    const setUsername = jest.fn();
 
-    screen.find("input").simulate("change", { target: { value: name } });
-    await screen
-      .find("form")
-      .simulate("submit", { preventDefault: () => null });
+    const username = "BobMarley";
+    const component = shallow(
+      // eslint-disable-next-line
+      // @ts-ignore
+      <LoginComponent username="" setUsername={setUsername} />
+    );
 
-    expect(login).toHaveBeenCalledWith(name);
-    expect(mockHistory.push).toHaveBeenCalledWith(`/user/${name}`);
+    component.find("input").simulate("change", {
+      target: {
+        value: username,
+      },
+    });
+
+    await component.find("form").simulate("submit", {
+      preventDefault: () => null,
+    });
+
+    expect(setUsername).toHaveBeenCalledWith(username);
   });
 });
