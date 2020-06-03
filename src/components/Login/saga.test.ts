@@ -6,7 +6,7 @@ import { actions } from "./reducer";
 import { getUserSession } from "@/api/auth";
 
 describe("Login saga", () => {
-  it("checkUserSession", () => {
+  it("checkUserSession success", () => {
     const generator = checkUserSession();
 
     expect(generator.next().value).toEqual(call(getUserSession));
@@ -19,6 +19,28 @@ describe("Login saga", () => {
           "action": Object {
             "payload": "Username",
             "type": "user/login",
+          },
+          "channel": undefined,
+        },
+        "type": "PUT",
+      }
+    `);
+
+    expect(generator.next().done).toBe(true);
+  });
+  it("checkUserSession fail", () => {
+    const generator = checkUserSession();
+
+    expect(generator.next().value).toEqual(call(getUserSession));
+
+    expect(generator.next("").value).toMatchInlineSnapshot(`
+      Object {
+        "@@redux-saga/IO": true,
+        "combinator": false,
+        "payload": Object {
+          "action": Object {
+            "payload": undefined,
+            "type": "user/logout",
           },
           "channel": undefined,
         },

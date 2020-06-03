@@ -8,7 +8,9 @@ import { actions } from "./reducer";
 export function* checkUserSession() {
   const userSession = yield call(getUserSession);
   if (userSession && !isEmpty(userSession)) {
-    yield put({ type: actions.login.type, payload: userSession });
+    yield put(actions.login(userSession));
+  } else {
+    yield put(actions.logout());
   }
 }
 
@@ -16,8 +18,10 @@ export function* clearUserSession() {
   yield call(logout);
 }
 
-export function* saveUserSession(action: ReturnType<typeof actions.login>) {
-  const username = String(action.payload);
+export function* saveUserSession({
+  payload,
+}: ReturnType<typeof actions.login>) {
+  const username = String(payload);
   if (username && !isEmpty(username)) {
     yield call(login, username);
   }

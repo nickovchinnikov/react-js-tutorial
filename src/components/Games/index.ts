@@ -1,1 +1,1 @@
-export * from "./components";
+export { StantdartGame } from "./components";

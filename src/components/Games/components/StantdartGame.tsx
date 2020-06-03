@@ -1,13 +1,14 @@
 import React from "react";
 
-import { InteractiveField, Field } from "@/components";
-import { authorizedOnlyHoc } from "@/utils/authorizedOnlyHOC";
+import { AccessChecker, InteractiveField, Field } from "@/components";
 
-export const StantdartGame = authorizedOnlyHoc(() => (
-  <InteractiveField
-    xSize={3}
-    ySize={3}
-    playerMarks={["x", "y"]}
-    fieldComponent={Field}
-  />
-));
+export const StantdartGame = () => (
+  <AccessChecker>
+    <InteractiveField
+      xSize={3}
+      ySize={3}
+      playerMarks={["x", "y"]}
+      fieldComponent={Field}
+    />
+  </AccessChecker>
+);

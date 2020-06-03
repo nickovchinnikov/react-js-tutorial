@@ -1,1 +1,1 @@
-export * from "./StantdartGame";
+export { StantdartGame } from "./StantdartGame";

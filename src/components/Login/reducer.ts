@@ -1,6 +1,15 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-export const initialState = { username: "" };
+export enum CheckState {
+  initiated,
+  succeed,
+  failed,
+}
+
+export const initialState: { username: string; status?: CheckState } = {
+  username: "",
+  status: CheckState.initiated,
+};
 
 export const loginSlice = createSlice({
   name: "user",
@@ -8,11 +17,14 @@ export const loginSlice = createSlice({
   reducers: {
     login: (state, { payload }: PayloadAction<string>) => {
       if (payload.length > 3) {
-        return { username: payload };
+        return { status: CheckState.succeed, username: payload };
       }
       return state;
     },
-    logout: () => initialState,
+    logout: () => ({
+      username: "",
+      status: CheckState.failed,
+    }),
   },
 });
 
