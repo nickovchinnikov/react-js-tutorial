@@ -1,28 +1,33 @@
-import React from "react";
-import { RouteComponentProps } from "react-router-dom";
-import { logout } from "@/api/auth";
-import { authorizedOnlyHoc } from "@/utils/authorizedOnlyHOC";
+import React, { PureComponent } from "react";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { isEmpty } from "ramda";
 
-interface RouteParams {
-  name: string;
-}
+import { TicTacToeGameState } from "@/rdx/store";
 
-class UserComponent extends React.PureComponent<
-  RouteComponentProps<RouteParams>,
-  {}
-> {
-  logout = async () => {
-    await logout();
-    this.props.history.push("/");
-  };
+const mapStateToProps = ({ login }: TicTacToeGameState) => ({
+  ...login,
+});
+
+const mapDispatchToProps = {};
+
+export type Props = ReturnType<typeof mapStateToProps> &
+  typeof mapDispatchToProps;
+
+class UserComponent extends PureComponent<Props> {
   render() {
-    return (
+    const { username } = this.props;
+    return isEmpty(username) ? (
+      <h3>
+        Nice to see you! Lets <Link to="/login">login</Link> to the game!
+      </h3>
+    ) : (
       <div>
-        <h1>Hello, {this.props.match.params.name}!</h1>
-        <button onClick={this.logout}>Logout</button>
+        <h3>Hello, {username}!</h3>
+        <button onClick={() => null}>Logout</button>
       </div>
     );
   }
 }
 
-export const User = authorizedOnlyHoc(UserComponent, "/login");
+export const User = connect(mapStateToProps, mapDispatchToProps)(UserComponent);

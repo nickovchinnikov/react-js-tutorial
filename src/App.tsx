@@ -9,6 +9,7 @@ import { store } from "@/rdx/store";
 export const App: React.FC<{}> = () => (
   <Provider store={store}>
     <Router>
+      <User />
       <nav>
         <ul>
           <li>
@@ -16,9 +17,6 @@ export const App: React.FC<{}> = () => (
           </li>
           <li>
             <Link to="/stantdartgame">StantdartGame</Link>
-          </li>
-          <li>
-            <Link to="/user/Nick">Nick</Link>
           </li>
           <li>
             <Link to="/redux">ReduxData</Link>
@@ -30,7 +28,6 @@ export const App: React.FC<{}> = () => (
           <Login />
         </Route>
         <Route path="/stantdartgame" render={() => <StantdartGame />} />
-        <Route path="/user/:name" component={User} />
         <Route path="/redux" component={ReduxData} />
         <Route path="*">
           <NoMatch />
