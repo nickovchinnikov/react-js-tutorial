@@ -2,12 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Provider } from "react-redux";
 
-import { LoginScreen, StantdartGame } from "@/components";
-
-import { NoMatchScreen } from "@/screens/NoMatchScreen";
-import { UserScreen } from "@/screens/UserScreen";
-import { FormScreen } from "@/screens/FormScreen";
-import { ReduxScreen } from "@/screens/ReduxScreen";
+import { Login, StantdartGame, NoMatch, User, ReduxData } from "@/components";
 
 import { store } from "@/rdx/store";
 
@@ -26,23 +21,19 @@ export const App: React.FC<{}> = () => (
             <Link to="/user/Nick">Nick</Link>
           </li>
           <li>
-            <Link to="/form">Form</Link>
-          </li>
-          <li>
-            <Link to="/redux">Redux</Link>
+            <Link to="/redux">ReduxData</Link>
           </li>
         </ul>
       </nav>
       <Switch>
         <Route path="/login">
-          <LoginScreen />
+          <Login />
         </Route>
         <Route path="/stantdartgame" render={() => <StantdartGame />} />
-        <Route path="/user/:name" component={UserScreen} />
-        <Route path="/form" component={FormScreen} />
-        <Route path="/redux" component={ReduxScreen} />
+        <Route path="/user/:name" component={User} />
+        <Route path="/redux" component={ReduxData} />
         <Route path="*">
-          <NoMatchScreen />
+          <NoMatch />
         </Route>
       </Switch>
     </Router>

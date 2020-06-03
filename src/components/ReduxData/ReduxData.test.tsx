@@ -1,12 +1,14 @@
 import React from "react";
-import { ReduxScreen } from "./ReduxScreen";
 import { Provider } from "react-redux";
-import { mount } from "enzyme";
-import { reducer } from "@/rdx/reducer";
 import { createStore } from "redux";
 import configureStore from "redux-mock-store";
+import { mount } from "enzyme";
 
-describe("ReduxScreen with mocked store", () => {
+import { reducer } from "@/rdx/reducer";
+
+import { ReduxData } from "./ReduxData";
+
+describe("ReduxData with mocked store", () => {
   const mockStore = configureStore([]);
 
   let store: any;
@@ -21,7 +23,7 @@ describe("ReduxScreen with mocked store", () => {
   it("should generate action on click", () => {
     const wrapper = mount(
       <Provider store={store}>
-        <ReduxScreen />
+        <ReduxData />
       </Provider>
     );
 
@@ -44,7 +46,7 @@ describe("ReduxScreen with mocked store", () => {
   });
 });
 
-describe("ReduxScreen with real store", () => {
+describe("ReduxData with real store", () => {
   let store: any;
 
   beforeEach(() => {
@@ -61,7 +63,7 @@ describe("ReduxScreen with real store", () => {
   it("should generate action on click", () => {
     const wrapper = mount(
       <Provider store={store}>
-        <ReduxScreen />
+        <ReduxData />
       </Provider>
     );
 

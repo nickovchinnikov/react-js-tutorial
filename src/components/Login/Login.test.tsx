@@ -3,7 +3,7 @@ import { shallow } from "enzyme";
 
 import { login } from "@/api/auth";
 
-import { LoginScreen } from "./LoginScreen";
+import { Login } from "./Login";
 
 const mockHistory = { push: jest.fn() };
 jest.mock("react-router-dom", () => ({
@@ -14,10 +14,10 @@ jest.mock("@/api/auth", () => ({
   login: jest.fn(),
 }));
 
-describe("LoginScreen", () => {
+describe("Login", () => {
   it("navigates to user page on submit", async () => {
     const name = "BobMarley";
-    const screen = shallow(<LoginScreen />);
+    const screen = shallow(<Login />);
 
     screen.find("input").simulate("change", { target: { value: name } });
     await screen

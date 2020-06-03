@@ -7,7 +7,7 @@ interface RouteParams {
   name: string;
 }
 
-class RawUserScreen extends React.PureComponent<
+class UserComponent extends React.PureComponent<
   RouteComponentProps<RouteParams>,
   {}
 > {
@@ -25,4 +25,4 @@ class RawUserScreen extends React.PureComponent<
   }
 }
 
-export const UserScreen = authorizedOnlyHoc(RawUserScreen, "/login");
+export const User = authorizedOnlyHoc(UserComponent, "/login");

@@ -24,7 +24,7 @@ const mapDispatchToProps = {
 type RawReduxScreenProps = ReturnType<typeof mapStateToProps> &
   typeof mapDispatchToProps;
 
-class RawReduxScreen extends React.Component<RawReduxScreenProps, {}> {
+class ReduxComponent extends React.Component<RawReduxScreenProps, {}> {
   onCellClick = (x: number, y: number) => {
     this.props[this.props.nextMove === "x" ? "xMove" : "oMove"]({ x, y });
   };
@@ -54,7 +54,7 @@ class RawReduxScreen extends React.Component<RawReduxScreenProps, {}> {
   }
 }
 
-export const ReduxScreen = connect(
+export const ReduxData = connect(
   mapStateToProps,
   mapDispatchToProps
-)(RawReduxScreen);
+)(ReduxComponent);

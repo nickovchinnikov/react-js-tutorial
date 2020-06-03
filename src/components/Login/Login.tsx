@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 
 import { login } from "@/api/auth";
 
-export const LoginScreen: React.FC<{}> = () => {
+export const Login: React.FC<{}> = () => {
   const [name, setName] = useState("");
   const history = useHistory();
   const onSubmit = useCallback(
