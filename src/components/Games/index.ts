@@ -1,1 +1,1 @@
-export { StantdartGame } from "./components";
+export { StantdartGame } from "./StantdartGame";

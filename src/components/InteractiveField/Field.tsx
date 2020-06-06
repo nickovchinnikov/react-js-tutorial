@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import styled from "@emotion/styled";
 import type { FieldProps } from "types/field";
 
-import { Cell } from "./components";
+import { Cell } from "./Cell";
 
 const FieldWrapper = styled.div`
   display: inline-block;

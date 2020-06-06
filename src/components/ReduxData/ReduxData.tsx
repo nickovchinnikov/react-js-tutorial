@@ -1,9 +1,11 @@
 import React from "react";
-import { Field } from "@/components/InteractiveField/components/Field";
-import { NextMove } from "components/NextMove";
+import { connect } from "react-redux";
+
+import { Field } from "@/components/InteractiveField";
+import { NextMove } from "@/components/NextMove";
+
 import { TicTacToeGameState } from "@/rdx/reducer";
 import { xMove, oMove } from "@/rdx/actions";
-import { connect } from "react-redux";
 import { nameActions } from "@/rdx/reducer/name";
 
 function mapStateToProps(state: TicTacToeGameState) {
