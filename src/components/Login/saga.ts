@@ -22,7 +22,7 @@ export function* saveUserSession({
   payload,
 }: ReturnType<typeof actions.login>) {
   const username = String(payload);
-  if (username && !isEmpty(username)) {
+  if (username?.length > 3 && !isEmpty(username)) {
     yield call(login, username);
   }
 }
