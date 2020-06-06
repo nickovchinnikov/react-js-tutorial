@@ -23,7 +23,7 @@ describe("Games reducer", () => {
       fieldSize: defaultFieldSize,
       playerMarks: ["1", "2"],
       nextTurn: "1",
-      filledOutCount: 0,
+      moves: 0,
     });
   });
   it("click action", () => {
@@ -35,7 +35,7 @@ describe("Games reducer", () => {
         ["", "", ""],
       ],
       nextTurn: secondPlayerMark,
-      filledOutCount: 1,
+      moves: 1,
     });
   });
 });

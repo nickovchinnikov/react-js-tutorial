@@ -28,13 +28,13 @@ export const initialState: {
   playerMarks: PlayerMarksType;
   gameField: GameFieldType;
   nextTurn: string;
-  filledOutCount: number;
+  moves: number;
 } = {
   fieldSize: defaultFieldSize,
   playerMarks: PlayerMarks,
   gameField: createEmptyGameField(defaultSizeX, defaultSizeY),
   nextTurn: firstPlayerMark,
-  filledOutCount: 0,
+  moves: 0,
 };
 
 export const gameSlice = createSlice({
@@ -48,13 +48,13 @@ export const gameSlice = createSlice({
     }),
     click: (state, { payload }: ClickActionType) => {
       const { x, y } = payload;
-      const { nextTurn, gameField, filledOutCount } = state;
+      const { nextTurn, gameField, moves } = state;
       return {
         ...state,
         gameField: set(lensPath([y, x]), nextTurn, gameField),
         nextTurn:
           nextTurn === firstPlayerMark ? secondPlayerMark : firstPlayerMark,
-        filledOutCount: filledOutCount + 1,
+        moves: moves + 1,
       };
     },
   },
