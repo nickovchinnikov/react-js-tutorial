@@ -1,5 +1,6 @@
 import {
   actions,
+  GameStatus,
   reducer,
   initialState,
   firstPlayerMark,
@@ -20,6 +21,7 @@ describe("Games reducer", () => {
       )
     ).toEqual({
       gameField: [],
+      gameStatus: GameStatus.NewGame,
       fieldSize: defaultFieldSize,
       playerMarks: ["1", "2"],
       nextTurn: "1",
@@ -36,6 +38,14 @@ describe("Games reducer", () => {
       ],
       nextTurn: secondPlayerMark,
       moves: 1,
+    });
+  });
+  it("change status", () => {
+    expect(
+      reducer(initialState, actions.changeStatus(GameStatus.GameOver))
+    ).toEqual({
+      ...initialState,
+      gameStatus: GameStatus.GameOver,
     });
   });
 });

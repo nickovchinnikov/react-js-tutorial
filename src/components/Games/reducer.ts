@@ -5,6 +5,12 @@ import { Coordinates } from "@/rdx/actions";
 
 import { createEmptyGameField } from "./fieldManager";
 
+export enum GameStatus {
+  NewGame = "New game",
+  Play = "Play",
+  GameOver = "Game over",
+}
+
 export type FieldSizeType = [number, number];
 export type PlayerMarksType = [string, string];
 export type GameFieldType = string[][];
@@ -22,17 +28,20 @@ export type RebuildActionType = PayloadAction<{
 }>;
 
 export type ClickActionType = PayloadAction<Coordinates>;
+export type ChangeStatusActionType = PayloadAction<GameStatus>;
 
 export const initialState: {
   fieldSize: FieldSizeType;
   playerMarks: PlayerMarksType;
   gameField: GameFieldType;
+  gameStatus: GameStatus;
   nextTurn: string;
   moves: number;
 } = {
   fieldSize: defaultFieldSize,
   playerMarks: PlayerMarks,
   gameField: createEmptyGameField(defaultSizeX, defaultSizeY),
+  gameStatus: GameStatus.NewGame,
   nextTurn: firstPlayerMark,
   moves: 0,
 };
@@ -44,6 +53,7 @@ export const gameSlice = createSlice({
     rebuild: (state, { payload }: RebuildActionType) => ({
       ...state,
       gameField: [],
+      gameStatus: GameStatus.NewGame,
       ...payload,
     }),
     click: (state, { payload }: ClickActionType) => {
@@ -57,6 +67,10 @@ export const gameSlice = createSlice({
         moves: moves + 1,
       };
     },
+    changeStatus: (state, { payload }: ChangeStatusActionType) => ({
+      ...state,
+      gameStatus: payload,
+    }),
   },
 });
 
