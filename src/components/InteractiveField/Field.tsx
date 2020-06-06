@@ -13,7 +13,7 @@ const FieldWrapper = styled.div`
 export const Field: FC<FieldProps> = ({ field, onClick }) => (
   <FieldWrapper>
     {field?.map((row, y) => [
-      ...row.map((filled: string, x) => (
+      ...row?.map((filled: string, x) => (
         <Cell key={`${x}_${y}`} x={x} y={y} onClick={onClick}>
           {filled}
         </Cell>

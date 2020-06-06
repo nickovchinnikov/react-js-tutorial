@@ -19,6 +19,11 @@ export type RebuildActionType = PayloadAction<{
 
 export type ClickActionType = PayloadAction<Coordinates>;
 
+export const createEmptyGameField = (rows: number, cols: number) =>
+  Array.from({ length: rows }).map(() =>
+    Array.from({ length: cols }).fill("")
+  ) as string[][];
+
 export const initialState: {
   fieldSize: FieldSizeType;
   playerMarks: PlayerMarksType;
@@ -27,7 +32,7 @@ export const initialState: {
 } = {
   fieldSize: defaultFieldSize,
   playerMarks: PlayerMarks,
-  gameField: [],
+  gameField: createEmptyGameField(defaultFieldSize[0], defaultFieldSize[1]),
   nextTurn: firstPlayerMark,
 };
 
@@ -45,7 +50,7 @@ export const gameSlice = createSlice({
       const { nextTurn, gameField } = state;
       return {
         ...state,
-        gameField: set(lensPath([x, y]), nextTurn, gameField),
+        gameField: set(lensPath([y, x]), nextTurn, gameField),
         nextTurn:
           nextTurn === firstPlayerMark ? secondPlayerMark : firstPlayerMark,
       };

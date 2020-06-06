@@ -1,6 +1,7 @@
 import {
   actions,
   reducer,
+  createEmptyGameField,
   initialState,
   firstPlayerMark,
   secondPlayerMark,
@@ -8,6 +9,11 @@ import {
 } from "./reducer";
 
 describe("Games reducer", () => {
+  it("createEmptyGameField", () => {
+    expect(createEmptyGameField(1, 1)).toEqual([[""]]);
+    expect(createEmptyGameField(1, 2)).toEqual([["", ""]]);
+    expect(createEmptyGameField(2, 1)).toEqual([[""], [""]]);
+  });
   it("rebuild action", () => {
     expect(
       reducer(
@@ -28,7 +34,11 @@ describe("Games reducer", () => {
   it("click action", () => {
     expect(reducer(initialState, actions.click({ x: 1, y: 1 }))).toEqual({
       ...initialState,
-      gameField: [undefined, [undefined, firstPlayerMark]],
+      gameField: [
+        ["", "", ""],
+        ["", firstPlayerMark, ""],
+        ["", "", ""],
+      ],
       nextTurn: secondPlayerMark,
     });
   });

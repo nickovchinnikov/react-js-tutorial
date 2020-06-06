@@ -5,14 +5,14 @@ import { isEmpty } from "ramda";
 
 import { TicTacToeGameState } from "@/rdx/store";
 
-import { loginSlice } from "./reducer";
+import { actions } from "./reducer";
 
 const mapStateToProps = ({ login }: TicTacToeGameState) => ({
   ...login,
 });
 
 const mapDispatchToProps = {
-  login: loginSlice.actions.login,
+  login: actions.login,
 };
 
 export type Props = ReturnType<typeof mapStateToProps> &

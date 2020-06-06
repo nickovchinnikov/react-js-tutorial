@@ -1,14 +1,33 @@
-import React from "react";
+import React, { FC } from "react";
+import { connect } from "react-redux";
 
-import { AccessChecker, InteractiveField, Field } from "@/components";
+import { TicTacToeGameState } from "@/rdx/store";
+import { AccessChecker, Field } from "@/components";
 
-export const StantdartGame = () => (
-  <AccessChecker>
-    <InteractiveField
-      xSize={3}
-      ySize={3}
-      playerMarks={["x", "y"]}
-      fieldComponent={Field}
-    />
-  </AccessChecker>
-);
+import { actions } from "./reducer";
+
+const mapStateToProps = ({ game }: TicTacToeGameState) => ({
+  field: game.gameField,
+});
+
+const mapDispatchToProps = {
+  click: actions.click,
+};
+
+export type Props = ReturnType<typeof mapStateToProps> &
+  typeof mapDispatchToProps;
+
+const InteractiveField: FC<Props> = ({ field, click }) => {
+  const onClick = (x: number, y: number) => click({ x, y });
+
+  return (
+    <AccessChecker>
+      <Field field={field} onClick={onClick} />
+    </AccessChecker>
+  );
+};
+
+export const StantdartGame = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(InteractiveField);
