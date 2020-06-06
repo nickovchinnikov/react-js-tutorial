@@ -6,6 +6,8 @@ export enum CheckState {
   failed,
 }
 
+export const usernameMinLength = 3;
+
 export const initialState: {
   username: string;
   status?: CheckState;
@@ -19,7 +21,7 @@ export const loginSlice = createSlice({
   initialState,
   reducers: {
     login: (state, { payload }: PayloadAction<string>) => {
-      if (payload.length > 3) {
+      if (payload.length > usernameMinLength) {
         return { status: CheckState.succeed, username: payload };
       }
       return state;
