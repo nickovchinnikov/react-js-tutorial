@@ -80,6 +80,7 @@
     "react-test-renderer": "^16.13.1",
     "redux-logger": "^3.0.6",
     "redux-mock-store": "^1.5.4",
+    "redux-saga-test-plan": "^4.0.0-rc.3",
     "storybook-addon-react-docgen": "^1.2.33",
     "ts-node": "^8.10.2",
     "typescript": "^3.9.3",
