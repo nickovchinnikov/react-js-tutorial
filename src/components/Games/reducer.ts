@@ -5,8 +5,9 @@ import { Coordinates } from "@/rdx/actions";
 
 export type FieldSizeType = [number, number];
 export type PlayerMarksType = [string, string];
+export type GameFieldType = string[][];
 
-export const PlayerMarks: PlayerMarksType = ["x", "y"];
+export const PlayerMarks: PlayerMarksType = ["x", "o"];
 export const [firstPlayerMark, secondPlayerMark] = PlayerMarks;
 
 export const defaultFieldSize: FieldSizeType = [3, 3];
@@ -22,12 +23,12 @@ export type ClickActionType = PayloadAction<Coordinates>;
 export const createEmptyGameField = (rows: number, cols: number) =>
   Array.from({ length: rows }).map(() =>
     Array.from({ length: cols }).fill("")
-  ) as string[][];
+  ) as GameFieldType;
 
 export const initialState: {
   fieldSize: FieldSizeType;
   playerMarks: PlayerMarksType;
-  gameField: string[][];
+  gameField: GameFieldType;
   nextTurn: string;
 } = {
   fieldSize: defaultFieldSize,
