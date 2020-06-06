@@ -37,6 +37,9 @@ export const LoginComponent: React.FC<Props> = ({ username, login }) => {
           placeholder="Enter your login"
           value={name}
           onChange={(ev) => setName((ev.target as HTMLInputElement).value)}
+          required
+          minLength={4}
+          maxLength={10}
         />
       </label>
       <button>Login</button>

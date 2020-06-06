@@ -6,7 +6,10 @@ export enum CheckState {
   failed,
 }
 
-export const initialState: { username: string; status?: CheckState } = {
+export const initialState: {
+  username: string;
+  status?: CheckState;
+} = {
   username: "",
   status: CheckState.initiated,
 };

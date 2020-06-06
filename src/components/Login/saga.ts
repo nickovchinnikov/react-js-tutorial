@@ -6,8 +6,8 @@ import { getUserSession, login, logout } from "@/api/auth";
 import { actions } from "./reducer";
 
 export function* checkUserSession() {
-  const userSession = yield call(getUserSession);
-  if (userSession && !isEmpty(userSession)) {
+  const userSession: string = yield call(getUserSession);
+  if (userSession?.length > 3 && !isEmpty(userSession)) {
     yield put(actions.login(userSession));
   } else {
     yield put(actions.logout());
