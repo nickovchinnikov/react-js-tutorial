@@ -1,7 +1,6 @@
 import {
   actions,
   reducer,
-  createEmptyGameField,
   initialState,
   firstPlayerMark,
   secondPlayerMark,
@@ -9,11 +8,6 @@ import {
 } from "./reducer";
 
 describe("Games reducer", () => {
-  it("createEmptyGameField", () => {
-    expect(createEmptyGameField(1, 1)).toEqual([[""]]);
-    expect(createEmptyGameField(1, 2)).toEqual([["", ""]]);
-    expect(createEmptyGameField(2, 1)).toEqual([[""], [""]]);
-  });
   it("rebuild action", () => {
     expect(
       reducer(
@@ -29,6 +23,7 @@ describe("Games reducer", () => {
       fieldSize: defaultFieldSize,
       playerMarks: ["1", "2"],
       nextTurn: "1",
+      filledOutCount: 0,
     });
   });
   it("click action", () => {
@@ -40,6 +35,7 @@ describe("Games reducer", () => {
         ["", "", ""],
       ],
       nextTurn: secondPlayerMark,
+      filledOutCount: 1,
     });
   });
 });

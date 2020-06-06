@@ -3,6 +3,8 @@ import { lensPath, set } from "ramda";
 
 import { Coordinates } from "@/rdx/actions";
 
+import { createEmptyGameField } from "./fieldManager";
+
 export type FieldSizeType = [number, number];
 export type PlayerMarksType = [string, string];
 export type GameFieldType = string[][];
@@ -11,6 +13,7 @@ export const PlayerMarks: PlayerMarksType = ["x", "o"];
 export const [firstPlayerMark, secondPlayerMark] = PlayerMarks;
 
 export const defaultFieldSize: FieldSizeType = [3, 3];
+const [defaultSizeX, defaultSizeY] = defaultFieldSize;
 
 export type RebuildActionType = PayloadAction<{
   fieldSize: FieldSizeType;
@@ -20,21 +23,18 @@ export type RebuildActionType = PayloadAction<{
 
 export type ClickActionType = PayloadAction<Coordinates>;
 
-export const createEmptyGameField = (rows: number, cols: number) =>
-  Array.from({ length: rows }).map(() =>
-    Array.from({ length: cols }).fill("")
-  ) as GameFieldType;
-
 export const initialState: {
   fieldSize: FieldSizeType;
   playerMarks: PlayerMarksType;
   gameField: GameFieldType;
   nextTurn: string;
+  filledOutCount: number;
 } = {
   fieldSize: defaultFieldSize,
   playerMarks: PlayerMarks,
-  gameField: createEmptyGameField(defaultFieldSize[0], defaultFieldSize[1]),
+  gameField: createEmptyGameField(defaultSizeX, defaultSizeY),
   nextTurn: firstPlayerMark,
+  filledOutCount: 0,
 };
 
 export const gameSlice = createSlice({
@@ -48,12 +48,13 @@ export const gameSlice = createSlice({
     }),
     click: (state, { payload }: ClickActionType) => {
       const { x, y } = payload;
-      const { nextTurn, gameField } = state;
+      const { nextTurn, gameField, filledOutCount } = state;
       return {
         ...state,
         gameField: set(lensPath([y, x]), nextTurn, gameField),
         nextTurn:
           nextTurn === firstPlayerMark ? secondPlayerMark : firstPlayerMark,
+        filledOutCount: filledOutCount + 1,
       };
     },
   },

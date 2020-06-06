@@ -2,6 +2,11 @@ import { transpose } from "ramda";
 
 import { GameFieldType } from "./reducer";
 
+export const createEmptyGameField = (rows: number, cols: number) =>
+  Array.from({ length: rows }).map(() =>
+    Array.from({ length: cols }).fill("")
+  ) as GameFieldType;
+
 export const getCols = (gameField: GameFieldType) => transpose(gameField);
 
 export const getDiagonals = (gameField: GameFieldType) => {

@@ -1,9 +1,10 @@
 import {
+  createEmptyGameField,
   getCols,
   getDiagonals,
   getMarksCount,
   getInfoAboutGameField,
-} from "./fieldAnalizator";
+} from "./fieldManager";
 
 const realGamefield = [
   ["x", "x", "x"],
@@ -12,6 +13,11 @@ const realGamefield = [
 ];
 
 describe("Games saga", () => {
+  it("createEmptyGameField", () => {
+    expect(createEmptyGameField(1, 1)).toEqual([[""]]);
+    expect(createEmptyGameField(1, 2)).toEqual([["", ""]]);
+    expect(createEmptyGameField(2, 1)).toEqual([[""], [""]]);
+  });
   it("getCols", () => {
     expect(
       getCols([
