@@ -1,4 +1,4 @@
-import { transpose } from "ramda";
+import { transpose, filter, isNil, complement } from "ramda";
 
 import { GameFieldType } from "./reducer";
 
@@ -9,7 +9,7 @@ export const createEmptyGameField = (rows: number, cols: number) =>
 
 export const getCols = (gameField: GameFieldType) => transpose(gameField);
 
-export const getDiagonals = (gameField: GameFieldType) => {
+export const getMainDiagonals = (gameField: GameFieldType) => {
   const diagonal1: string[] = [];
   const diagonal2: string[] = [];
 
@@ -30,6 +30,31 @@ export const getDiagonals = (gameField: GameFieldType) => {
   return [diagonal1, diagonal2];
 };
 
+export const getDiagonals = (gameField: GameFieldType, bottomToTop = true) => {
+  const Ylength = gameField.length;
+  const Xlength = gameField[0].length;
+  const maxLength = Math.max(Xlength, Ylength);
+  const result: string[][] = [];
+  for (let k = 0; k <= 2 * maxLength; k++) {
+    for (let y = 0; y <= Ylength - 1; y++) {
+      const x = k - (bottomToTop ? Ylength - y : y);
+      if (x >= 0 && x < Xlength && gameField[y][x]) {
+        if (!result[k]) {
+          result[k] = [];
+        }
+        result[k].push(gameField[y][x]);
+      }
+    }
+  }
+  return filter(complement(isNil), result);
+};
+
+export const getAllDiagonals = (gameField: GameFieldType) => {
+  const bottomToTop = getDiagonals(gameField);
+  const topToBottom = getDiagonals(gameField, false);
+  return [...bottomToTop, ...topToBottom];
+};
+
 export const getMarkCount = (gameFieldState: GameFieldType, mark: string) =>
   gameFieldState.map((vector) =>
     vector.reduce((acc, item) => {
@@ -45,6 +70,6 @@ export const getInfoAboutGameField = (
   mark: string
 ) => {
   const cols = getCols(gameFieldState);
-  const diag = getDiagonals(gameFieldState);
+  const diag = getAllDiagonals(gameFieldState);
   return getMarkCount([...gameFieldState, ...cols, ...diag], mark);
 };
