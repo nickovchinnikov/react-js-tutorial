@@ -5,6 +5,7 @@ import { TicTacToeGameState } from "@/rdx/store";
 import { AccessChecker, Field } from "@/components";
 
 import { GameState } from "./GameState";
+import { CreateCustomGame } from "./CreateCustomGame";
 import { actions } from "./reducer";
 
 const mapStateToProps = ({ game }: TicTacToeGameState) => ({
@@ -23,6 +24,7 @@ const InteractiveField: FC<Props> = ({ field, click }) => {
 
   return (
     <AccessChecker>
+      <CreateCustomGame />
       <GameState />
       <Field field={field} onClick={onClick} />
     </AccessChecker>
