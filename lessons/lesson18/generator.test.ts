@@ -5,6 +5,7 @@ import {
   generateRange,
   smallRange,
   middleRange,
+  middleRange2,
   rand,
   wordGenerator,
   getWord,
@@ -31,8 +32,6 @@ describe("Generators Intro", () => {
     expect(firstStep.done).toBe(false);
 
     expect(thirdStep.value).toBe(3);
-    expect(firstStep.done).toBe(false);
-
     expect(thirdStep.done).toBe(true);
   });
 
@@ -86,6 +85,10 @@ describe("Generators Intro", () => {
   });
   it("middleRange run", () => {
     const generator = middleRange();
+    expect([...generator]).toStrictEqual([3, 4, 5, 6, 7, 8, 9, 10]);
+  });
+  it("middleRange2 run", () => {
+    const generator = middleRange2();
     expect([...generator]).toStrictEqual([3, 4, 5, 6, 7, 8, 9, 10]);
   });
   it("rand between range", () => {
