@@ -19,7 +19,7 @@ const winChecker = (check: number) => check >= 3;
 export function* gameStateWatcher() {
   const data = yield select(selectors.game);
 
-  const { moves, gameField, nextTurn } = data;
+  const { moves, gameField } = data;
 
   const gameFieldLength = gameField.length * gameField[0].length;
 

@@ -5,31 +5,14 @@ import {
   initialState,
   firstPlayerMark,
   secondPlayerMark,
-  defaultFieldSize,
 } from "./reducer";
 
 describe("Games reducer", () => {
   it("rebuild action", () => {
     expect(
-      reducer(
-        initialState,
-        actions.rebuild({
-          fieldSize: defaultFieldSize,
-          playerMarks: ["1", "2"],
-          nextTurn: "1",
-        })
-      )
+      reducer({ ...initialState, playerMarks: ["1", "2"] }, actions.rebuild())
     ).toEqual({
-      gameField: [
-        ["", "", ""],
-        ["", "", ""],
-        ["", "", ""],
-      ],
-      gameStatus: GameStatus.NewGame,
-      fieldSize: defaultFieldSize,
-      playerMarks: ["1", "2"],
-      nextTurn: "1",
-      moves: 0,
+      ...initialState,
     });
   });
   it("click action", () => {

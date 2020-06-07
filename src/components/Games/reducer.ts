@@ -46,16 +46,16 @@ export const initialState: {
   gameStatus: GameStatus.NewGame,
   nextTurn: firstPlayerMark,
   moves: 0,
+  winner: undefined,
 };
 
 export const gameSlice = createSlice({
   name: "game",
   initialState,
   reducers: {
-    rebuild: (state, { payload }: RebuildActionType) => ({
+    rebuild: (state) => ({
       ...state,
       ...initialState,
-      ...payload,
     }),
     click: (state, { payload }: ClickActionType) => {
       const { x, y } = payload;
