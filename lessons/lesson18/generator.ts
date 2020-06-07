@@ -34,6 +34,11 @@ export function* middleRange(): Generator<number> {
   yield* generateRange(3, 10);
 }
 
+export function* middleRange2(): Generator<number> {
+  yield* generateRange(3, 5);
+  yield* generateRange(6, 10);
+}
+
 export const rand = (min: number, max: number): number =>
   Math.floor(Math.random() * (max - min)) + min;
 
@@ -41,7 +46,7 @@ export function* wordGenerator(): Generator<string> {
   const { length } = dictionary;
 
   while (true) {
-    const wordNumber = rand(0, length);
+    const wordNumber = rand(0, length - 1);
     yield dictionary[wordNumber];
   }
 }
@@ -49,6 +54,14 @@ export function* wordGenerator(): Generator<string> {
 export function* getWord(): Generator<string | number[]> {
   const idx = yield [...dictionary.keys()];
   yield dictionary[idx as number];
+}
+
+export function* dataConsumer() {
+  const result = ["Started"];
+  // console.warn(result);
+  result.push(`1. ${yield}`); // (A)
+  result.push(`2. ${yield}`);
+  return result;
 }
 
 export const passwordGenerator = (countWords: number): string => {
@@ -109,14 +122,6 @@ export class BinaryTree {
   }
 }
 
-export function* dataConsumer() {
-  const result = ["Started"];
-  // console.warn(result);
-  result.push(`1. ${yield}`); // (A)
-  result.push(`2. ${yield}`);
-  return result;
-}
-
 /**
  * Returns a function that, when called,
  * returns a generator object that is immediately
@@ -130,9 +135,11 @@ export const coroutine = (generatorFunction: (...args: any) => Generator) => (
   return generatorObject;
 };
 
-export const wrapped = coroutine(function* () {
+const gen = function* () {
   const result = `First input: ${yield}`;
   return result;
-});
+};
+
+export const wrapped = coroutine(gen);
 
 wrapped().next("hello!");
