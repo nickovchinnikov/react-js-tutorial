@@ -30,7 +30,7 @@ export const getDiagonals = (gameField: GameFieldType) => {
   return [diagonal1, diagonal2];
 };
 
-export const getMarksCount = (gameFieldState: GameFieldType, mark: string) =>
+export const getMarkCount = (gameFieldState: GameFieldType, mark: string) =>
   gameFieldState.map((vector) =>
     vector.reduce((acc, item) => {
       if (item === mark) {
@@ -46,5 +46,5 @@ export const getInfoAboutGameField = (
 ) => {
   const cols = getCols(gameFieldState);
   const diag = getDiagonals(gameFieldState);
-  return getMarksCount([...gameFieldState, ...cols, ...diag], mark);
+  return getMarkCount([...gameFieldState, ...cols, ...diag], mark);
 };

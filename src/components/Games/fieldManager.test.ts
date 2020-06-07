@@ -2,7 +2,7 @@ import {
   createEmptyGameField,
   getCols,
   getDiagonals,
-  getMarksCount,
+  getMarkCount,
   getInfoAboutGameField,
 } from "./fieldManager";
 
@@ -47,10 +47,10 @@ describe("Games saga", () => {
     const cols = getCols(realGamefield);
     const diag = getDiagonals(realGamefield);
 
-    expect(getMarksCount(realGamefield, "x")).toEqual([3, 0, 2]);
-    expect(getMarksCount(realGamefield, "y")).toEqual([0, 3, 1]);
-    expect(getMarksCount(cols, "x")).toEqual([2, 2, 1]);
-    expect(getMarksCount(diag, "y")).toEqual([2, 1]);
+    expect(getMarkCount(realGamefield, "x")).toEqual([3, 0, 2]);
+    expect(getMarkCount(realGamefield, "y")).toEqual([0, 3, 1]);
+    expect(getMarkCount(cols, "x")).toEqual([2, 2, 1]);
+    expect(getMarkCount(diag, "y")).toEqual([2, 1]);
   });
   it("getInfoAboutGameField", () => {
     expect(getInfoAboutGameField(realGamefield, "y")).toEqual([
