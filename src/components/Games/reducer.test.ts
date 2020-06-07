@@ -20,7 +20,11 @@ describe("Games reducer", () => {
         })
       )
     ).toEqual({
-      gameField: [],
+      gameField: [
+        ["", "", ""],
+        ["", "", ""],
+        ["", "", ""],
+      ],
       gameStatus: GameStatus.NewGame,
       fieldSize: defaultFieldSize,
       playerMarks: ["1", "2"],
@@ -46,6 +50,12 @@ describe("Games reducer", () => {
     ).toEqual({
       ...initialState,
       gameStatus: GameStatus.GameOver,
+    });
+  });
+  it("change winner", () => {
+    expect(reducer(initialState, actions.setWinner(firstPlayerMark))).toEqual({
+      ...initialState,
+      winner: firstPlayerMark,
     });
   });
 });

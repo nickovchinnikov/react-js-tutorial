@@ -22,13 +22,14 @@ export const defaultFieldSize: FieldSizeType = [3, 3];
 const [defaultSizeX, defaultSizeY] = defaultFieldSize;
 
 export type RebuildActionType = PayloadAction<{
-  fieldSize: FieldSizeType;
-  playerMarks: PlayerMarksType;
-  nextTurn: string;
+  fieldSize?: FieldSizeType;
+  playerMarks?: PlayerMarksType;
+  nextTurn?: string;
 }>;
 
 export type ClickActionType = PayloadAction<Coordinates>;
 export type ChangeStatusActionType = PayloadAction<GameStatus>;
+export type SetWinnerActionType = PayloadAction<string>;
 
 export const initialState: {
   fieldSize: FieldSizeType;
@@ -37,6 +38,7 @@ export const initialState: {
   gameStatus: GameStatus;
   nextTurn: string;
   moves: number;
+  winner?: string;
 } = {
   fieldSize: defaultFieldSize,
   playerMarks: PlayerMarks,
@@ -52,8 +54,7 @@ export const gameSlice = createSlice({
   reducers: {
     rebuild: (state, { payload }: RebuildActionType) => ({
       ...state,
-      gameField: [],
-      gameStatus: GameStatus.NewGame,
+      ...initialState,
       ...payload,
     }),
     click: (state, { payload }: ClickActionType) => {
@@ -70,6 +71,10 @@ export const gameSlice = createSlice({
     changeStatus: (state, { payload }: ChangeStatusActionType) => ({
       ...state,
       gameStatus: payload,
+    }),
+    setWinner: (state, { payload }: SetWinnerActionType) => ({
+      ...state,
+      winner: payload,
     }),
   },
 });

@@ -3,13 +3,14 @@ import { configureStore } from "@reduxjs/toolkit";
 import createSagaMiddleware from "redux-saga";
 import { fork } from "redux-saga/effects";
 
-import { gameSlice } from "@/components/Games";
+import { gameSlice, gameSaga } from "@/components/Games";
 import { loginSlice, loginSaga } from "@/components/Login";
 
 const sagaMiddleware = createSagaMiddleware();
 
 function* rootSaga() {
   yield fork(loginSaga);
+  yield fork(gameSaga);
 }
 
 const reducer = combineReducers({
