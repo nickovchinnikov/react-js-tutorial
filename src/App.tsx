@@ -1,8 +1,14 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Redirect,
+  Switch,
+  Route,
+  Link,
+} from "react-router-dom";
 import { Provider } from "react-redux";
 
-import { Login, StantdartGame, NoMatch, User, ReduxData } from "@/components";
+import { Login, StantdartGame, User, ReduxData } from "@/components";
 
 import { store } from "@/rdx/store";
 
@@ -30,7 +36,7 @@ export const App: React.FC<{}> = () => (
         <Route path="/stantdartgame" render={() => <StantdartGame />} />
         <Route path="/redux" component={ReduxData} />
         <Route path="*">
-          <NoMatch />
+          <Redirect to="/stantdartgame" />
         </Route>
       </Switch>
     </Router>
