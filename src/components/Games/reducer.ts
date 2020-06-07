@@ -56,7 +56,20 @@ export const gameSlice = createSlice({
     rebuild: (state) => ({
       ...state,
       ...initialState,
+      gameStatus: GameStatus.NewGame,
+      gameField: createEmptyGameField(...state.fieldSize),
     }),
+    createGameWithParams: (state, { payload }: RebuildActionType) => {
+      const fieldSize = payload.fieldSize ?? state.fieldSize;
+      return {
+        ...state,
+        gameStatus: GameStatus.NewGame,
+        fieldSize,
+        playerMarks: payload.playerMarks ?? state.playerMarks,
+        nextTurn: payload.nextTurn ?? state.nextTurn,
+        gameField: createEmptyGameField(...fieldSize),
+      };
+    },
     click: (state, { payload }: ClickActionType) => {
       const { x, y } = payload;
       const { nextTurn, gameField, moves } = state;

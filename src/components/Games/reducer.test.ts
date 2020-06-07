@@ -15,6 +15,31 @@ describe("Games reducer", () => {
       ...initialState,
     });
   });
+  it("createGameWithParams", () => {
+    expect(
+      reducer(
+        { ...initialState },
+        actions.createGameWithParams({
+          playerMarks: ["1", "2"],
+          nextTurn: "1",
+          fieldSize: [6, 6],
+        })
+      )
+    ).toEqual({
+      ...initialState,
+      playerMarks: ["1", "2"],
+      nextTurn: "1",
+      fieldSize: [6, 6],
+      gameField: [
+        ["", "", "", "", "", ""],
+        ["", "", "", "", "", ""],
+        ["", "", "", "", "", ""],
+        ["", "", "", "", "", ""],
+        ["", "", "", "", "", ""],
+        ["", "", "", "", "", ""],
+      ],
+    });
+  });
   it("click action", () => {
     expect(reducer(initialState, actions.click({ x: 1, y: 1 }))).toEqual({
       ...initialState,
