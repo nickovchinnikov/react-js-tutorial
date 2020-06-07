@@ -55,7 +55,6 @@ export const gameSlice = createSlice({
   reducers: {
     rebuild: (state) => ({
       ...state,
-      ...initialState,
       gameStatus: GameStatus.NewGame,
       gameField: createEmptyGameField(...state.fieldSize),
     }),
@@ -72,14 +71,17 @@ export const gameSlice = createSlice({
     },
     click: (state, { payload }: ClickActionType) => {
       const { x, y } = payload;
-      const { nextTurn, gameField, moves } = state;
-      return {
-        ...state,
-        gameField: set(lensPath([y, x]), nextTurn, gameField),
-        nextTurn:
-          nextTurn === firstPlayerMark ? secondPlayerMark : firstPlayerMark,
-        moves: moves + 1,
-      };
+      const { nextTurn, gameField, moves, gameStatus } = state;
+      if (gameStatus !== GameStatus.GameOver) {
+        return {
+          ...state,
+          gameField: set(lensPath([y, x]), nextTurn, gameField),
+          nextTurn:
+            nextTurn === firstPlayerMark ? secondPlayerMark : firstPlayerMark,
+          moves: moves + 1,
+        };
+      }
+      return state;
     },
     changeStatus: (state, { payload }: ChangeStatusActionType) => ({
       ...state,

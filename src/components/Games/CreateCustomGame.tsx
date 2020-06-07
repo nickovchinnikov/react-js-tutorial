@@ -1,4 +1,4 @@
-import React, { Component, FC } from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import { TicTacToeGameState } from "@/rdx/store";
@@ -47,72 +47,75 @@ class CreateCustomGameComponent extends Component<Props, State> {
   };
   render() {
     return (
-      <form onSubmit={this.handleSumbit}>
-        <label>
-          xSize:
-          <input
-            name="xSize"
-            type="number"
-            value={this.state.xSize}
-            onChange={({ currentTarget }) =>
-              this.setState({ xSize: Number(currentTarget.value) })
-            }
-          />
-        </label>
-        <br />
-        <label>
-          ySize:
-          <input
-            name="ySize"
-            type="number"
-            value={this.state.ySize}
-            onChange={({ currentTarget }) =>
-              this.setState({ ySize: Number(currentTarget.value) })
-            }
-          />
-        </label>
-        <br />
-        <label>
-          Player1 mark:
-          <input
-            name="Player1Mark"
-            type="string"
-            maxLength={1}
-            value={this.state.player1Mark}
-            onChange={({ currentTarget }) =>
-              this.setState({ player1Mark: String(currentTarget.value) })
-            }
-          />
-        </label>
-        <br />
-        <label>
-          Player2 mark:
-          <input
-            name="Player2Mark"
-            type="string"
-            maxLength={1}
-            value={this.state.player2Mark}
-            onChange={({ currentTarget }) =>
-              this.setState({ player2Mark: String(currentTarget.value) })
-            }
-          />
-        </label>
-        <br />
-        <label>
-          NextTurn:
-          <input
-            name="NextTurn"
-            type="string"
-            maxLength={1}
-            value={this.state.nextTurn}
-            onChange={({ currentTarget }) =>
-              this.setState({ nextTurn: String(currentTarget.value) })
-            }
-          />
-        </label>
-        <br />
-        <button type="submit">Submit</button>
-      </form>
+      <>
+        <h3>Create game with custom params</h3>
+        <form onSubmit={this.handleSumbit}>
+          <label>
+            xSize:
+            <input
+              name="xSize"
+              type="number"
+              value={this.state.xSize}
+              onChange={({ currentTarget }) =>
+                this.setState({ xSize: Number(currentTarget.value) })
+              }
+            />
+          </label>
+          <br />
+          <label>
+            ySize:
+            <input
+              name="ySize"
+              type="number"
+              value={this.state.ySize}
+              onChange={({ currentTarget }) =>
+                this.setState({ ySize: Number(currentTarget.value) })
+              }
+            />
+          </label>
+          <br />
+          <label>
+            Player1 mark:
+            <input
+              name="Player1Mark"
+              type="string"
+              maxLength={1}
+              value={this.state.player1Mark}
+              onChange={({ currentTarget }) =>
+                this.setState({ player1Mark: String(currentTarget.value) })
+              }
+            />
+          </label>
+          <br />
+          <label>
+            Player2 mark:
+            <input
+              name="Player2Mark"
+              type="string"
+              maxLength={1}
+              value={this.state.player2Mark}
+              onChange={({ currentTarget }) =>
+                this.setState({ player2Mark: String(currentTarget.value) })
+              }
+            />
+          </label>
+          <br />
+          <label>
+            NextTurn:
+            <input
+              name="NextTurn"
+              type="string"
+              maxLength={1}
+              value={this.state.nextTurn}
+              onChange={({ currentTarget }) =>
+                this.setState({ nextTurn: String(currentTarget.value) })
+              }
+            />
+          </label>
+          <br />
+          <button type="submit">Submit</button>
+        </form>
+      </>
     );
   }
 }

@@ -7,37 +7,39 @@ import {
   secondPlayerMark,
 } from "./reducer";
 
+import { createEmptyGameField } from "./fieldManager";
+
 describe("Games reducer", () => {
   it("rebuild action", () => {
+    const fieldSize: [number, number] = [9, 9];
+    const playerMarks: [string, string] = ["1", "2"];
     expect(
-      reducer({ ...initialState, playerMarks: ["1", "2"] }, actions.rebuild())
+      reducer({ ...initialState, playerMarks, fieldSize }, actions.rebuild())
     ).toEqual({
       ...initialState,
+      gameField: createEmptyGameField(...fieldSize),
+      playerMarks: ["1", "2"],
+      fieldSize: [9, 9],
     });
   });
   it("createGameWithParams", () => {
+    const fieldSize: [number, number] = [6, 6];
+    const playerMarks: [string, string] = ["1", "2"];
     expect(
       reducer(
         { ...initialState },
         actions.createGameWithParams({
-          playerMarks: ["1", "2"],
+          playerMarks,
           nextTurn: "1",
-          fieldSize: [6, 6],
+          fieldSize,
         })
       )
     ).toEqual({
       ...initialState,
-      playerMarks: ["1", "2"],
+      playerMarks,
       nextTurn: "1",
-      fieldSize: [6, 6],
-      gameField: [
-        ["", "", "", "", "", ""],
-        ["", "", "", "", "", ""],
-        ["", "", "", "", "", ""],
-        ["", "", "", "", "", ""],
-        ["", "", "", "", "", ""],
-        ["", "", "", "", "", ""],
-      ],
+      fieldSize,
+      gameField: createEmptyGameField(...fieldSize),
     });
   });
   it("click action", () => {
@@ -50,6 +52,18 @@ describe("Games reducer", () => {
       ],
       nextTurn: secondPlayerMark,
       moves: 1,
+    });
+  });
+  it("click action when game over", () => {
+    expect(
+      reducer(
+        { ...initialState, gameStatus: GameStatus.GameOver },
+        actions.click({ x: 1, y: 1 })
+      )
+    ).toEqual({
+      ...initialState,
+      gameStatus: GameStatus.GameOver,
+      gameField: createEmptyGameField(...initialState.fieldSize),
     });
   });
   it("change status", () => {
