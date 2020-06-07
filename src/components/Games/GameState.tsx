@@ -9,7 +9,7 @@ interface Props {
   moves: number;
   nextPlayer: string;
   gameStatus: GameStatus;
-  rebuild: typeof actions.rebuild;
+  rebuild?: typeof actions.rebuild;
   winner?: string;
 }
 
