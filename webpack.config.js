@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const webpackRules = require("./webpackRules");
 
 module.exports = {
-  entry: "./src/index.tsx",
+  entry: "./lessons/lesson17/homework/index.tsx",
   devtool: "source-map",
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx", ".json"],
