@@ -5,14 +5,14 @@ import { isEmpty } from "ramda";
 
 import { TicTacToeGameState } from "@/rdx/store";
 
-import { loginSlice } from "./reducer";
+import { actions } from "./reducer";
 
 const mapStateToProps = ({ login }: TicTacToeGameState) => ({
   ...login,
 });
 
 const mapDispatchToProps = {
-  login: loginSlice.actions.login,
+  login: actions.login,
 };
 
 export type Props = ReturnType<typeof mapStateToProps> &
@@ -37,6 +37,9 @@ export const LoginComponent: React.FC<Props> = ({ username, login }) => {
           placeholder="Enter your login"
           value={name}
           onChange={(ev) => setName((ev.target as HTMLInputElement).value)}
+          required
+          minLength={4}
+          maxLength={10}
         />
       </label>
       <button>Login</button>

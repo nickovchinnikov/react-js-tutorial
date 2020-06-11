@@ -1,2 +1,2 @@
-export * from "./InteractiveField";
-export * from "./components";
+export { InteractiveField } from "./InteractiveField";
+export { Field } from "./Field";

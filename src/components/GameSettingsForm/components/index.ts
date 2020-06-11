@@ -1,2 +1,3 @@
-export * from "./InputColor";
-export * from "./InputText";
+export { InputColor } from "./InputColor";
+export { InputText } from "./InputText";
+export { Select } from "./Select";

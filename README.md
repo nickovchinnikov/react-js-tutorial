@@ -184,3 +184,11 @@ React Patterns
 [Pull request 2](https://github.com/nickovchinnikov/react-js-tutorial/pull/37) <br>
 [Pull request 3](https://github.com/nickovchinnikov/react-js-tutorial/pull/39) <br>
 [Presentation](https://docs.google.com/presentation/d/1qy80sZm6epqa3ZRtMsx-qsPMO3HaVDnjZuZOB7iDFj4/edit?usp=sharing) <br>
+
+## Lesson 19
+
+* Integration testing
+* redux-saga-test-plan
+
+[Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/41) <br>
+[Presentation](https://docs.google.com/presentation/d/1idaXdDfRzK3xpz7V2InHv60NfD9h5BqrZkQUwYd2oYY/edit?usp=sharing) <br>

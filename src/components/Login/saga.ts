@@ -3,11 +3,11 @@ import { takeEvery, call, put, fork } from "redux-saga/effects";
 
 import { getUserSession, login, logout } from "@/api/auth";
 
-import { actions } from "./reducer";
+import { actions, usernameMinLength } from "./reducer";
 
 export function* checkUserSession() {
-  const userSession = yield call(getUserSession);
-  if (userSession && !isEmpty(userSession)) {
+  const userSession: string = yield call(getUserSession);
+  if (userSession?.length > usernameMinLength && !isEmpty(userSession)) {
     yield put(actions.login(userSession));
   } else {
     yield put(actions.logout());
@@ -22,7 +22,7 @@ export function* saveUserSession({
   payload,
 }: ReturnType<typeof actions.login>) {
   const username = String(payload);
-  if (username && !isEmpty(username)) {
+  if (username?.length > usernameMinLength && !isEmpty(username)) {
     yield call(login, username);
   }
 }

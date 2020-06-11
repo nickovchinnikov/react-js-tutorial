@@ -1,74 +1,43 @@
 import { call } from "redux-saga/effects";
+import { expectSaga } from "redux-saga-test-plan";
 
 import { checkUserSession, saveUserSession } from "./saga";
-import { actions } from "./reducer";
+import { CheckState, actions, reducer } from "./reducer";
 
-import { getUserSession } from "@/api/auth";
+import { getUserSession, login } from "@/api/auth";
 
 describe("Login saga", () => {
   it("checkUserSession success", () => {
-    const generator = checkUserSession();
-
-    expect(generator.next().value).toEqual(call(getUserSession));
-
-    expect(generator.next("Username").value).toMatchInlineSnapshot(`
-      Object {
-        "@@redux-saga/IO": true,
-        "combinator": false,
-        "payload": Object {
-          "action": Object {
-            "payload": "Username",
-            "type": "user/login",
-          },
-          "channel": undefined,
-        },
-        "type": "PUT",
-      }
-    `);
-
-    expect(generator.next().done).toBe(true);
+    const userSession = "Username";
+    return expectSaga(checkUserSession)
+      .withReducer(reducer)
+      .provide([[call(getUserSession), userSession]])
+      .put(actions.login(userSession))
+      .hasFinalState({
+        username: userSession,
+        status: CheckState.succeed,
+      })
+      .run();
   });
   it("checkUserSession fail", () => {
-    const generator = checkUserSession();
-
-    expect(generator.next().value).toEqual(call(getUserSession));
-
-    expect(generator.next("").value).toMatchInlineSnapshot(`
-      Object {
-        "@@redux-saga/IO": true,
-        "combinator": false,
-        "payload": Object {
-          "action": Object {
-            "payload": undefined,
-            "type": "user/logout",
-          },
-          "channel": undefined,
-        },
-        "type": "PUT",
-      }
-    `);
-
-    expect(generator.next().done).toBe(true);
+    const userSession = "";
+    return expectSaga(checkUserSession)
+      .withReducer(reducer)
+      .provide([[call(getUserSession), userSession]])
+      .put(actions.logout())
+      .hasFinalState({
+        username: userSession,
+        status: CheckState.failed,
+      })
+      .run();
   });
   it("checkUserSession", () => {
-    const generator = saveUserSession({
+    const userSession = "Username";
+    return expectSaga(saveUserSession, {
       type: actions.login.type,
-      payload: "Username",
-    });
-    expect(generator.next().value).toMatchInlineSnapshot(`
-      Object {
-        "@@redux-saga/IO": true,
-        "combinator": false,
-        "payload": Object {
-          "args": Array [
-            "Username",
-          ],
-          "context": null,
-          "fn": [Function],
-        },
-        "type": "CALL",
-      }
-    `);
-    expect(generator.next().done).toBe(true);
+      payload: userSession,
+    })
+      .call(login, userSession)
+      .run();
   });
 });
