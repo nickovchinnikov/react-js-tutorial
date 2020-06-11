@@ -192,3 +192,10 @@ React Patterns
 
 [Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/41) <br>
 [Presentation](https://docs.google.com/presentation/d/1idaXdDfRzK3xpz7V2InHv60NfD9h5BqrZkQUwYd2oYY/edit?usp=sharing) <br>
+
+## Lesson 20
+
+* Redux-saga basic concept
+
+[Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/44) <br>
+[Presentation](https://docs.google.com/presentation/d/12kDULqRToPULXu-WQeaDMwJ3mNNuNPfkrQS56DG1yTI/edit?usp=sharing) <br>

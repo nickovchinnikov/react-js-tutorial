@@ -1,5 +1,6 @@
-import { call } from "redux-saga/effects";
 import { expectSaga } from "redux-saga-test-plan";
+
+import * as matchers from "redux-saga-test-plan/matchers";
 
 import { checkUserSession, saveUserSession } from "./saga";
 import { CheckState, actions, reducer } from "./reducer";
@@ -11,7 +12,7 @@ describe("Login saga", () => {
     const userSession = "Username";
     return expectSaga(checkUserSession)
       .withReducer(reducer)
-      .provide([[call(getUserSession), userSession]])
+      .provide([[matchers.call.fn(getUserSession), userSession]])
       .put(actions.login(userSession))
       .hasFinalState({
         username: userSession,
@@ -23,7 +24,7 @@ describe("Login saga", () => {
     const userSession = "";
     return expectSaga(checkUserSession)
       .withReducer(reducer)
-      .provide([[call(getUserSession), userSession]])
+      .provide([[matchers.call.fn(getUserSession), userSession]])
       .put(actions.logout())
       .hasFinalState({
         username: userSession,
