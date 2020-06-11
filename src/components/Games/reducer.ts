@@ -31,22 +31,14 @@ export type ClickActionType = PayloadAction<Coordinates>;
 export type ChangeStatusActionType = PayloadAction<GameStatus>;
 export type SetWinnerActionType = PayloadAction<string>;
 
-export const initialState: {
-  fieldSize: FieldSizeType;
-  playerMarks: PlayerMarksType;
-  gameField: GameFieldType;
-  gameStatus: GameStatus;
-  nextTurn: string;
-  moves: number;
-  winner?: string;
-} = {
+export const initialState = {
   fieldSize: defaultFieldSize,
   playerMarks: PlayerMarks,
   gameField: createEmptyGameField(defaultSizeX, defaultSizeY),
   gameStatus: GameStatus.NewGame,
   nextTurn: firstPlayerMark,
   moves: 0,
-  winner: undefined,
+  winner: undefined as string | undefined,
 };
 
 export const gameSlice = createSlice({

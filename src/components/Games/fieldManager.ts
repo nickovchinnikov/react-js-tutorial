@@ -59,7 +59,7 @@ export const getMarkCount = (gameFieldState: GameFieldType, mark: string) =>
   gameFieldState.map((vector) =>
     vector.reduce((acc, item) => {
       if (item === mark) {
-        return ++acc;
+        return acc + 1;
       }
       return acc;
     }, 0)
