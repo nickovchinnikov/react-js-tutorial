@@ -3,8 +3,8 @@ import { configureStore } from "@reduxjs/toolkit";
 import createSagaMiddleware from "redux-saga";
 import { fork } from "redux-saga/effects";
 
-import { gameSlice, gameSaga } from "@/components/Games";
-import { loginSlice, loginSaga } from "@/components/Login";
+import { gameSlice, gameSaga } from "@/modules/Games";
+import { loginSlice, loginSaga } from "@/modules/Login";
 
 const sagaMiddleware = createSagaMiddleware();
 

@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 
 import { TicTacToeGameState } from "@/rdx/store";
-import { CheckState } from "@/components/Login/reducer";
+import { CheckState } from "@/modules/Login/reducer";
 
 const mapStateToProps = ({ login }: TicTacToeGameState) => ({
   ...login,

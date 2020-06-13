@@ -2,7 +2,8 @@ import React, { FC } from "react";
 import { connect } from "react-redux";
 
 import { TicTacToeGameState } from "@/rdx/store";
-import { AccessChecker, Field } from "@/components";
+import { AccessChecker } from "@/modules";
+import { Field } from "@/components";
 
 import { GameState } from "./GameState";
 import { CreateCustomGame } from "./CreateCustomGame";

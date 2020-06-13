@@ -8,8 +8,7 @@ import {
 } from "react-router-dom";
 import { Provider } from "react-redux";
 
-import { Login, StantdartGame, User, ReduxData } from "@/components";
-
+import { Login, StantdartGame, User } from "@/modules";
 import { store } from "@/rdx/store";
 
 export const App: React.FC<{}> = () => (
@@ -24,9 +23,6 @@ export const App: React.FC<{}> = () => (
           <li>
             <Link to="/stantdartgame">StantdartGame</Link>
           </li>
-          <li>
-            <Link to="/redux">ReduxData</Link>
-          </li>
         </ul>
       </nav>
       <Switch>
@@ -34,7 +30,6 @@ export const App: React.FC<{}> = () => (
           <Login />
         </Route>
         <Route path="/stantdartgame" render={() => <StantdartGame />} />
-        <Route path="/redux" component={ReduxData} />
         <Route path="*">
           <Redirect to="/stantdartgame" />
         </Route>

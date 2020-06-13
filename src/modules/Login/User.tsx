@@ -4,7 +4,8 @@ import { connect } from "react-redux";
 import { isEmpty } from "ramda";
 
 import { TicTacToeGameState } from "@/rdx/store";
-import { actions } from "@/components/Login/reducer";
+
+import { actions } from "./reducer";
 
 const mapStateToProps = ({ login }: TicTacToeGameState) => ({
   ...login,
