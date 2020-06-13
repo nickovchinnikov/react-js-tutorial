@@ -45,7 +45,7 @@ export const LoginComponent: React.FC<Props> = ({ username, login }) => {
       <button>Login</button>
     </form>
   ) : (
-    <Redirect to="/stantdartgame" />
+    <Redirect to="/ticktacktoe" />
   );
 };
 

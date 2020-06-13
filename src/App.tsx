@@ -8,30 +8,32 @@ import {
 } from "react-router-dom";
 import { Provider } from "react-redux";
 
-import { Login, StantdartGame, User } from "@/modules";
+import { TicTacToeGame, Header, SignIn } from "@/screens";
 import { store } from "@/rdx/store";
 
 export const App: React.FC<{}> = () => (
   <Provider store={store}>
     <Router>
-      <User />
+      <Header />
       <nav>
         <ul>
           <li>
-            <Link to="/login">Login</Link>
+            <Link to="/signin">SignIn</Link>
           </li>
           <li>
-            <Link to="/stantdartgame">StantdartGame</Link>
+            <Link to="/ticktacktoe">TickTackToe</Link>
           </li>
         </ul>
       </nav>
       <Switch>
-        <Route path="/login">
-          <Login />
+        <Route path="/signin">
+          <SignIn />
         </Route>
-        <Route path="/stantdartgame" render={() => <StantdartGame />} />
+        <Route path="/ticktacktoe">
+          <TicTacToeGame />
+        </Route>
         <Route path="*">
-          <Redirect to="/stantdartgame" />
+          <Redirect to="/ticktacktoe" />
         </Route>
       </Switch>
     </Router>
