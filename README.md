@@ -199,3 +199,10 @@ React Patterns
 
 [Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/44) <br>
 [Presentation](https://docs.google.com/presentation/d/12kDULqRToPULXu-WQeaDMwJ3mNNuNPfkrQS56DG1yTI/edit?usp=sharing) <br>
+
+## Lesson 21
+
+* Architecture
+
+[Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/45) <br>
+[Presentation](https://docs.google.com/presentation/d/1lHaa-X74A-CH3Gakbmc6UWFemeAGfdAyrvb2pSEnhkU/edit?usp=sharing) <br>
