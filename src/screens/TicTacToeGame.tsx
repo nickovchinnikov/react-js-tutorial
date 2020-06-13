@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import { DynamicModuleLoader } from "redux-dynamic-modules";
 
+import { ErrorBoundary } from "@/components";
 import {
   AccessChecker,
   CreateCustomGame,
@@ -10,11 +11,13 @@ import {
 } from "@/modules";
 
 export const TicTacToeGame: FC<{}> = () => (
-  <DynamicModuleLoader modules={[getInteractiveFieldModule()]}>
-    <AccessChecker>
-      <CreateCustomGame />
-      <GameState />
-      <InteractiveField />
-    </AccessChecker>
-  </DynamicModuleLoader>
+  <ErrorBoundary>
+    <DynamicModuleLoader modules={[getInteractiveFieldModule()]}>
+      <AccessChecker>
+        <CreateCustomGame />
+        <GameState />
+        <InteractiveField />
+      </AccessChecker>
+    </DynamicModuleLoader>
+  </ErrorBoundary>
 );
