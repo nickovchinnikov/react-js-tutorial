@@ -1,9 +1,14 @@
 import React, { FC } from "react";
 import styled from "@emotion/styled";
 
-import type { FieldProps } from "@/types/field";
-
 import { Cell } from "./Cell";
+
+export interface Props {
+  // array representing field state
+  field: string[][];
+  // calback to fire event on field interaction
+  onClick: (x: number, y: number) => void;
+}
 
 const FieldWrapper = styled.div`
   display: inline-block;
@@ -11,7 +16,7 @@ const FieldWrapper = styled.div`
   border: 2px solid lightgray;
 `;
 
-export const Field: FC<FieldProps> = ({ field, onClick }) => (
+export const Field: FC<Props> = ({ field, onClick }) => (
   <FieldWrapper>
     {field?.map((row, y) => [
       ...row?.map((filled: string, x) => (

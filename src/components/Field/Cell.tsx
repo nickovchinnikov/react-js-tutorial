@@ -1,9 +1,19 @@
 import React, { FC } from "react";
-import type { CellProps } from "types/field";
 
 import { CellItem } from "./CellItems";
 
-export const Cell: FC<CellProps> = ({ children, x, y, onClick }) => {
+export interface Props {
+  // is cell filled flag
+  children?: string;
+  // onClick handler to fire events about interactions
+  onClick: (x: number, y: number) => void;
+  // x-coordinate to inform which cell is clicked
+  x?: number;
+  // y-coordinate to inform which cell is clicked
+  y?: number;
+}
+
+export const Cell: FC<Props> = ({ children, x, y, onClick }) => {
   const isFilled = Boolean(children);
 
   return (

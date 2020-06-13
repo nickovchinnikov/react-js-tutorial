@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { TicTacToeGameState } from "@/rdx/store";
+import { TicTacToeGameState } from "@/store";
 
 import { actions } from "./reducer";
 

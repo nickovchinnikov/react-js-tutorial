@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { connect } from "react-redux";
 
-import { TicTacToeGameState } from "@/rdx/store";
+import { TicTacToeGameState } from "@/store";
 
 import { actions, GameStatus } from "./reducer";
 

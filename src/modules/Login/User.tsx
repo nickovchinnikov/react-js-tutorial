@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { isEmpty } from "ramda";
 
-import { TicTacToeGameState } from "@/rdx/store";
+import { TicTacToeGameState } from "@/store";
 
 import { actions } from "./reducer";
 

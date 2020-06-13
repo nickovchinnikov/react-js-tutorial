@@ -1,6 +1,6 @@
 import { takeEvery, select, put } from "redux-saga/effects";
 
-import { TicTacToeGameState } from "@/rdx/store";
+import { TicTacToeGameState } from "@/store";
 
 import { getInfoAboutGameField } from "./fieldManager";
 import {

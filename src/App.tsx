@@ -8,8 +8,9 @@ import {
 } from "react-router-dom";
 import { Provider } from "react-redux";
 
-import { TicTacToeGame, Header, SignIn } from "@/screens";
-import { store } from "@/rdx/store";
+import { TicTacToeGame, Header, SignIn } from "./screens";
+
+import { store } from "./store";
 
 export const App: React.FC<{}> = () => (
   <Provider store={store}>
