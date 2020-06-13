@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { lensPath, set } from "ramda";
 
-import { Coordinates } from "@/rdx/actions";
-
 import { createEmptyGameField } from "./fieldManager";
+
+export type Coordinates = { x: number; y: number };
 
 export enum GameStatus {
   NewGame = "New game",

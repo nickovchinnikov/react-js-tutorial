@@ -2,7 +2,7 @@ import React, { FormEvent } from "react";
 
 import { GameSettingsFormProps } from "./interfaces";
 import { SYMBOL_OPTIONS } from "./constants";
-import { InputColor, InputText, Select } from "./components";
+import { InputColor, InputText, Select } from "@/components";
 
 interface GameSettingsFormStateState {
   player1Name: string;

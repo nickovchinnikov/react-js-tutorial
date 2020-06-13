@@ -1,11 +1,13 @@
 import React, { useState, ComponentType, useRef, useCallback } from "react";
+import styled from "@emotion/styled";
+
 import { withKnobs } from "@storybook/addon-knobs";
+
 import { GameSettingsFormDOM } from "./GameSettingsFormDOM";
 import { GameSettingsFormRef } from "./GameSettingsFormRef";
 import { GameSettingsFormState } from "./GameSettingsFormState";
 import { GameSettingsFormFormik } from "./GameSettingsFormFormik";
 import { GameSettingsFormProps } from "./interfaces";
-import styled from "@emotion/styled";
 
 export default {
   title: "GameSettingsForm",

@@ -1,6 +1,8 @@
 import React from "react";
 import { withKnobs, number, array } from "@storybook/addon-knobs";
-import { Field } from "./Field";
+
+import { Field } from "@/components/Field";
+
 import { InteractiveField } from "./InteractiveField";
 
 export default {

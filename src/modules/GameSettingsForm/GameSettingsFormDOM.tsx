@@ -1,7 +1,9 @@
 import React from "react";
+
+import { InputColor, InputText, Select } from "@/components";
+
 import { GameSettingsFormProps } from "./interfaces";
 import { SYMBOL_OPTIONS } from "./constants";
-import { InputColor, InputText, Select } from "./components";
 
 const getInputValue = (form: HTMLFormElement, name: string): string => {
   return (form.querySelector(`[name=${name}]`) as HTMLInputElement).value;

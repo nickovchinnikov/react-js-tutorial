@@ -2,7 +2,7 @@ import React from "react";
 
 import { GameSettingsFormProps } from "./interfaces";
 import { SYMBOL_OPTIONS } from "./constants";
-import { InputColor, InputText, Select } from "./components";
+import { InputColor, InputText, Select } from "@/components";
 
 export class GameSettingsFormRef extends React.Component<
   GameSettingsFormProps,

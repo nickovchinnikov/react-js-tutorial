@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import styled from "@emotion/styled";
-import type { FieldProps } from "types/field";
+
+import type { FieldProps } from "@/types/field";
 
 import { Cell } from "./Cell";
 
