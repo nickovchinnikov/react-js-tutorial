@@ -4,3 +4,4 @@ export { InteractiveField } from "./InteractiveField";
 
 export { gameSlice } from "./reducer";
 export { gameSaga } from "./saga";
+export { getInteractiveFieldModule } from "./module";

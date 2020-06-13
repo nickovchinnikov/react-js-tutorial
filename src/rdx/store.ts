@@ -1,28 +1,18 @@
 import { combineReducers } from "redux";
-import { configureStore } from "@reduxjs/toolkit";
-import createSagaMiddleware from "redux-saga";
-import { fork } from "redux-saga/effects";
+import { createStore } from "redux-dynamic-modules";
+import { getSagaExtension } from "redux-dynamic-modules-saga";
 
-import { gameSlice, gameSaga } from "@/modules/InteractiveField";
-import { loginSlice, loginSaga } from "@/modules/Login";
+import { gameSlice } from "@/modules/InteractiveField";
+import { loginSlice, getLoginModule } from "@/modules/Login";
 
-const sagaMiddleware = createSagaMiddleware();
-
-function* rootSaga() {
-  yield fork(loginSaga);
-  yield fork(gameSaga);
-}
+export const store = createStore(
+  { extensions: [getSagaExtension({})] },
+  getLoginModule()
+);
 
 const reducer = combineReducers({
   login: loginSlice.reducer,
   game: gameSlice.reducer,
 });
-
-export const store = configureStore({
-  reducer,
-  middleware: [sagaMiddleware],
-});
-
-sagaMiddleware.run(rootSaga);
 
 export type TicTacToeGameState = ReturnType<typeof reducer>;

@@ -33,7 +33,7 @@ export const App: React.FC<{}> = () => (
           <TicTacToeGame />
         </Route>
         <Route path="*">
-          <Redirect to="/ticktacktoe" />
+          <Redirect to="/signin" />
         </Route>
       </Switch>
     </Router>
