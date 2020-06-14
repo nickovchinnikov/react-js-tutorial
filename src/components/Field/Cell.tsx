@@ -2,7 +2,7 @@ import React, { FC } from "react";
 
 import { CellItem } from "./CellItems";
 
-export interface Props {
+export interface CellProps {
   // is cell filled flag
   children?: string;
   // onClick handler to fire events about interactions
@@ -13,7 +13,7 @@ export interface Props {
   y?: number;
 }
 
-export const Cell: FC<Props> = ({ children, x, y, onClick }) => {
+export const Cell: FC<CellProps> = ({ children, x, y, onClick }) => {
   const isFilled = Boolean(children);
 
   return (
