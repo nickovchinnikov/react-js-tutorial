@@ -1,6 +1,6 @@
 import React, { Dispatch } from "react";
 import { AnyAction } from "redux";
-import { store } from "@/rdx/store";
+import { store } from "@/store";
 
 interface Props {
   dispatch?: Dispatch<AnyAction>;
