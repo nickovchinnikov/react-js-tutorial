@@ -47,9 +47,11 @@ describe("Login saga", () => {
     const saga = testSaga(loginSaga);
     saga
       .next()
-      .call(getUserSession)
+      .fork(checkUserSession)
       .next(userSession)
-      .put(actions.login(userSession))
+      .take(actions.login.type)
+      .next(actions.login(userSession))
+      .call(login, userSession)
       .finish();
   });
   it("loginSaga default login fails", () => {
@@ -57,11 +59,11 @@ describe("Login saga", () => {
     const saga = testSaga(loginSaga);
     saga
       .next()
-      .call(getUserSession)
+      .fork(checkUserSession)
       .next(userSession)
-      .put(actions.logout())
-      .next()
-      .call(logout)
+      .take(actions.login.type)
+      .next(actions.login(userSession))
+      .take(actions.logout.type)
       .finish();
   });
   it("loginSaga user login full flow", () => {
@@ -70,28 +72,18 @@ describe("Login saga", () => {
     const saga = testSaga(loginSaga);
     saga
       .next()
-      .call(getUserSession)
+      .fork(checkUserSession)
       .save("LoginSagaDefaultLoginFlow")
-      .next(emptyUserSession)
-      .put(actions.logout())
       .next()
-      .call(logout)
+      .take(actions.login.type)
+      .next(actions.login(emptyUserSession))
+      .take(actions.logout.type)
       .restore("LoginSagaDefaultLoginFlow")
-      .next(userSession)
-      .put(actions.login(userSession))
-      .save("CheckUserLoginFlow")
       .next()
       .take(actions.login.type)
       .next(actions.login(userSession))
       .call(login, userSession)
       .next()
-      .take(actions.logout.type)
-      .next()
-      .call(logout)
-      .restore("LoginSagaDefaultLoginFlow")
-      .next()
-      .take(actions.login.type)
-      .next(actions.login(emptyUserSession))
       .take(actions.logout.type)
       .next()
       .call(logout)
