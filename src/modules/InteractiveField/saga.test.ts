@@ -1,7 +1,8 @@
 import { select } from "redux-saga/effects";
-import { expectSaga } from "redux-saga-test-plan";
+import { expectSaga, testSaga } from "redux-saga-test-plan";
 
-import { selectors, gameStateWatcher } from "./saga";
+import { selectors } from "./reducer";
+import { gameStateWatcher, watchAndLog, watchFirstThreeAction } from "./saga";
 
 import {
   actions,
@@ -65,5 +66,29 @@ describe("Game saga", () => {
       .put(actions.changeStatus(GameStatus.GameOver))
       .put(actions.setWinner(secondPlayerMark))
       .run();
+  });
+  it("watchAndLog", () => {
+    const saga = testSaga(watchAndLog);
+    saga
+      .next()
+      .take("*")
+      .next()
+      .select()
+      .restart()
+      .next()
+      .take("*")
+      .next()
+      .select()
+      .back(2)
+      .next()
+      .take("*")
+      .next()
+      .select()
+      .next()
+      .finish();
+  });
+  it("watchFirstThreeAction", () => {
+    const saga = testSaga(watchFirstThreeAction);
+    saga.next().take("*").next().take("*").next().take("*").next().isDone();
   });
 });

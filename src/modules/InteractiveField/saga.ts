@@ -1,18 +1,13 @@
-import { takeEvery, select, put } from "redux-saga/effects";
-
-import { TicTacToeGameState } from "@/store";
+import { takeEvery, select, take, put, fork } from "redux-saga/effects";
 
 import { getInfoAboutGameField } from "./fieldManager";
 import {
   actions,
+  selectors,
   GameStatus,
   firstPlayerMark,
   secondPlayerMark,
 } from "./reducer";
-
-export const selectors = {
-  game: ({ game }: TicTacToeGameState) => game,
-};
 
 const winChecker = (check: number) => check >= 3;
 
@@ -54,6 +49,26 @@ export function* gameStateWatcher() {
   }
 }
 
+export function* watchAndLog() {
+  while (true) {
+    const action = yield take("*");
+    const state = yield select();
+
+    console.warn("action", action);
+    console.warn("state after", state);
+  }
+}
+
+export function* watchFirstThreeAction() {
+  for (let i = 0; i < 3; i++) {
+    yield take("*");
+    console.warn(`Action number: #${i}`);
+  }
+  console.warn("First tree actions done!");
+}
+
 export function* gameSaga() {
+  yield fork(watchAndLog);
+  yield fork(watchFirstThreeAction);
   yield takeEvery(actions.click.type, gameStateWatcher);
 }

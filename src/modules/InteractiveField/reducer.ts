@@ -1,6 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { lensPath, set } from "ramda";
 
+import { TicTacToeGameState } from "@/store";
+
 import { createEmptyGameField } from "./fieldManager";
 
 export type Coordinates = { x: number; y: number };
@@ -30,6 +32,10 @@ export type RebuildActionType = PayloadAction<{
 export type ClickActionType = PayloadAction<Coordinates>;
 export type ChangeStatusActionType = PayloadAction<GameStatus>;
 export type SetWinnerActionType = PayloadAction<string>;
+
+export const selectors = {
+  game: ({ game }: TicTacToeGameState) => game,
+};
 
 export const initialState = {
   fieldSize: defaultFieldSize,
