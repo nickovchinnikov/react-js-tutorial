@@ -5,17 +5,18 @@ import { getUserSession, login, logout } from "@/api/auth";
 
 import { actions, usernameMinLength } from "./reducer";
 
+export function* clearUserSession() {
+  yield call(logout);
+}
+
 export function* checkUserSession() {
   const userSession: string = yield call(getUserSession);
   if (userSession?.length > usernameMinLength && !isEmpty(userSession)) {
     yield put(actions.login(userSession));
   } else {
     yield put(actions.logout());
+    yield* clearUserSession();
   }
-}
-
-export function* clearUserSession() {
-  yield call(logout);
 }
 
 export function* saveUserSession({

@@ -25,6 +25,7 @@ describe("Login saga", () => {
     return expectSaga(checkUserSession)
       .withReducer(reducer)
       .provide([[matchers.call.fn(getUserSession), userSession]])
+      .call(logout)
       .put(actions.logout())
       .hasFinalState({
         username: userSession,
@@ -59,6 +60,8 @@ describe("Login saga", () => {
       .call(getUserSession)
       .next(userSession)
       .put(actions.logout())
+      .next()
+      .call(logout)
       .finish();
   });
   it("loginSaga user login full flow", () => {
@@ -71,6 +74,8 @@ describe("Login saga", () => {
       .save("LoginSagaDefaultLoginFlow")
       .next(emptyUserSession)
       .put(actions.logout())
+      .next()
+      .call(logout)
       .restore("LoginSagaDefaultLoginFlow")
       .next(userSession)
       .put(actions.login(userSession))
