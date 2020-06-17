@@ -1,11 +1,11 @@
+import { call } from "redux-saga/effects";
 import { expectSaga, testSaga } from "redux-saga-test-plan";
-
 import * as matchers from "redux-saga-test-plan/matchers";
 
 import { checkUserSession, saveUserSession, loginSaga } from "./saga";
 import { CheckState, actions, reducer } from "./reducer";
 
-import { getUserSession, login, logout } from "@/api/auth";
+import { getUserSession, login, logout, sentStatistic } from "@/api/auth";
 
 describe("Login saga", () => {
   it("checkUserSession success", () => {
@@ -86,7 +86,7 @@ describe("Login saga", () => {
       .next()
       .take(actions.logout.type)
       .next()
-      .call(logout)
+      .all([call(logout), call(sentStatistic)])
       .finish();
   });
 });

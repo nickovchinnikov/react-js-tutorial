@@ -1,12 +1,12 @@
 import { isEmpty } from "ramda";
-import { take, call, put, fork } from "redux-saga/effects";
+import { all, take, call, put, fork } from "redux-saga/effects";
 
-import { getUserSession, login, logout } from "@/api/auth";
+import { getUserSession, login, logout, sentStatistic } from "@/api/auth";
 
 import { actions, usernameMinLength } from "./reducer";
 
 export function* clearUserSession() {
-  yield call(logout);
+  yield all([call(logout), call(sentStatistic)]);
 }
 
 export function* checkUserSession() {

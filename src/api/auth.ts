@@ -1,5 +1,9 @@
 import { sleep } from "@/utils/sleep";
 
+export const sentStatistic = async () => {
+  await sleep(1000);
+};
+
 export const login = async (name: string) => {
   await sleep(1000);
 
