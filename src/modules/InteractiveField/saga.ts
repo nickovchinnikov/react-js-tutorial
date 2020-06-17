@@ -54,17 +54,21 @@ export function* watchAndLog() {
     const action = yield take("*");
     const state = yield select();
 
-    console.warn("action", action);
-    console.warn("state after", state);
+    // eslint-disable-next-line no-console
+    console.log("action", action);
+    // eslint-disable-next-line no-console
+    console.log("state after", state);
   }
 }
 
 export function* watchFirstThreeAction() {
   for (let i = 0; i < 3; i++) {
     yield take("*");
-    console.warn(`Action number: #${i}`);
+    // eslint-disable-next-line no-console
+    console.log(`Action number: #${i}`);
   }
-  console.warn("First tree actions done!");
+  // eslint-disable-next-line no-console
+  console.log("First tree actions done!");
 }
 
 export function* gameSaga() {

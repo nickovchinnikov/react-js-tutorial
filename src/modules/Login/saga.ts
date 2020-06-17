@@ -1,5 +1,5 @@
 import { isEmpty } from "ramda";
-import { takeEvery, take, call, put, fork } from "redux-saga/effects";
+import { take, call, put } from "redux-saga/effects";
 
 import { getUserSession, login, logout } from "@/api/auth";
 
@@ -27,18 +27,12 @@ export function* saveUserSession({
   }
 }
 
-export function* loginFlowWatcher() {
-  while (true) {
-    yield take(actions.login.type);
-    console.warn("Login");
-    yield take(actions.logout.type);
-    console.warn("Logout");
-  }
-}
-
 export function* loginSaga() {
-  yield fork(loginFlowWatcher);
-  yield fork(checkUserSession);
-  yield takeEvery(actions.login.type, saveUserSession);
-  yield takeEvery(actions.logout.type, clearUserSession);
+  yield* checkUserSession();
+  while (true) {
+    const action = yield take(actions.login.type);
+    yield* saveUserSession(action);
+    yield take(actions.logout.type);
+    yield* clearUserSession();
+  }
 }

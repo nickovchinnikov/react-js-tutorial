@@ -2,11 +2,10 @@ import { expectSaga, testSaga } from "redux-saga-test-plan";
 
 import * as matchers from "redux-saga-test-plan/matchers";
 
-import { checkUserSession, saveUserSession, loginFlowWatcher } from "./saga";
+import { checkUserSession, saveUserSession, loginSaga } from "./saga";
 import { CheckState, actions, reducer } from "./reducer";
 
-import { getUserSession, login } from "@/api/auth";
-import { logout } from "../../api/auth";
+import { getUserSession, login, logout } from "@/api/auth";
 
 describe("Login saga", () => {
   it("checkUserSession success", () => {
@@ -42,18 +41,55 @@ describe("Login saga", () => {
       .call(login, userSession)
       .run();
   });
-  it("loginFlow", () => {
-    const saga = testSaga(loginFlowWatcher);
+  it("loginSaga default login success", () => {
+    const userSession = "Username";
+    const saga = testSaga(loginSaga);
     saga
       .next()
+      .call(getUserSession)
+      .next(userSession)
+      .put(actions.login(userSession))
+      .finish();
+  });
+  it("loginSaga default login fails", () => {
+    const userSession = "";
+    const saga = testSaga(loginSaga);
+    saga
+      .next()
+      .call(getUserSession)
+      .next(userSession)
+      .put(actions.logout())
+      .finish();
+  });
+  it("loginSaga user login full flow", () => {
+    const emptyUserSession = "";
+    const userSession = "Username";
+    const saga = testSaga(loginSaga);
+    saga
+      .next()
+      .call(getUserSession)
+      .save("LoginSagaDefaultLoginFlow")
+      .next(emptyUserSession)
+      .put(actions.logout())
+      .restore("LoginSagaDefaultLoginFlow")
+      .next(userSession)
+      .put(actions.login(userSession))
+      .save("CheckUserLoginFlow")
+      .next()
       .take(actions.login.type)
+      .next(actions.login(userSession))
+      .call(login, userSession)
       .next()
       .take(actions.logout.type)
-      .restart()
+      .next()
+      .call(logout)
+      .restore("LoginSagaDefaultLoginFlow")
       .next()
       .take(actions.login.type)
-      .next()
+      .next(actions.login(emptyUserSession))
       .take(actions.logout.type)
+      .next()
+      .call(logout)
       .finish();
   });
 });
