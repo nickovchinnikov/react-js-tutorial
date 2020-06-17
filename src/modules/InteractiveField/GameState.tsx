@@ -6,7 +6,7 @@ import { TicTacToeGameState } from "@/store";
 import { actions, selectors } from "./reducer";
 
 const mapStateToProps = (state: TicTacToeGameState) => ({
-  ...selectors.game(state),
+  ...selectors.playerInfo(state),
 });
 
 const mapDispatchToProps = {

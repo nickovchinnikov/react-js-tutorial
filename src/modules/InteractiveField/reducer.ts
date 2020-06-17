@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { lensPath, set } from "ramda";
+import { lensPath, set, pick } from "ramda";
 
 import { TicTacToeGameState } from "@/store";
 
@@ -35,6 +35,8 @@ export type SetWinnerActionType = PayloadAction<string>;
 
 export const selectors = {
   game: ({ game }: TicTacToeGameState) => game,
+  playerInfo: ({ game }: TicTacToeGameState) =>
+    pick(["moves", "nextTurn", "gameStatus", "winner"], game),
 };
 
 export const initialState = {
@@ -44,7 +46,7 @@ export const initialState = {
   gameStatus: GameStatus.NewGame,
   nextTurn: firstPlayerMark,
   moves: 0,
-  winner: undefined as string | undefined,
+  winner: "",
 };
 
 export const gameSlice = createSlice({
