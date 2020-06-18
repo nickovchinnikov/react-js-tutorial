@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import { TicTacToeGameState } from "@/store";
 
-import { actions, selectors } from "./reducer";
+import { actions, selectors, BackgroundStatus } from "./reducer";
 
 const mapStateToProps = (state: TicTacToeGameState) => ({
   ...selectors.background(state),
@@ -19,7 +19,9 @@ export type Props = ReturnType<typeof mapStateToProps> &
 export const BackgroundComponent: FC<Props> = ({ status, cancel }) => (
   <div>
     <h3>Status: {status}</h3>
-    <button onClick={cancel}>Cancel</button>
+    {status !== BackgroundStatus.cancel && (
+      <button onClick={cancel}>Cancel</button>
+    )}
   </div>
 );
 
