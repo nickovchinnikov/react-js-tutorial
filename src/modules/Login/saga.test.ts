@@ -1,11 +1,11 @@
-import { expectSaga } from "redux-saga-test-plan";
-
+import { call } from "redux-saga/effects";
+import { expectSaga, testSaga } from "redux-saga-test-plan";
 import * as matchers from "redux-saga-test-plan/matchers";
 
-import { checkUserSession, saveUserSession } from "./saga";
+import { checkUserSession, saveUserSession, loginSaga } from "./saga";
 import { CheckState, actions, reducer } from "./reducer";
 
-import { getUserSession, login } from "@/api/auth";
+import { getUserSession, login, logout, sentStatistic } from "@/api/auth";
 
 describe("Login saga", () => {
   it("checkUserSession success", () => {
@@ -25,6 +25,7 @@ describe("Login saga", () => {
     return expectSaga(checkUserSession)
       .withReducer(reducer)
       .provide([[matchers.call.fn(getUserSession), userSession]])
+      .call(logout)
       .put(actions.logout())
       .hasFinalState({
         username: userSession,
@@ -40,5 +41,52 @@ describe("Login saga", () => {
     })
       .call(login, userSession)
       .run();
+  });
+  it("loginSaga default login success", () => {
+    const userSession = "Username";
+    const saga = testSaga(loginSaga);
+    saga
+      .next()
+      .fork(checkUserSession)
+      .next(userSession)
+      .take(actions.login.type)
+      .next(actions.login(userSession))
+      .call(login, userSession)
+      .finish();
+  });
+  it("loginSaga default login fails", () => {
+    const userSession = "";
+    const saga = testSaga(loginSaga);
+    saga
+      .next()
+      .fork(checkUserSession)
+      .next(userSession)
+      .take(actions.login.type)
+      .next(actions.login(userSession))
+      .take(actions.logout.type)
+      .finish();
+  });
+  it("loginSaga user login full flow", () => {
+    const emptyUserSession = "";
+    const userSession = "Username";
+    const saga = testSaga(loginSaga);
+    saga
+      .next()
+      .fork(checkUserSession)
+      .save("LoginSagaDefaultLoginFlow")
+      .next()
+      .take(actions.login.type)
+      .next(actions.login(emptyUserSession))
+      .take(actions.logout.type)
+      .restore("LoginSagaDefaultLoginFlow")
+      .next()
+      .take(actions.login.type)
+      .next(actions.login(userSession))
+      .call(login, userSession)
+      .next()
+      .take(actions.logout.type)
+      .next()
+      .all([call(logout), call(sentStatistic)])
+      .finish();
   });
 });

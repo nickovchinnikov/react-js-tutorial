@@ -3,30 +3,22 @@ import { connect } from "react-redux";
 
 import { TicTacToeGameState } from "@/store";
 
-import { actions, GameStatus } from "./reducer";
+import { actions, selectors } from "./reducer";
 
-interface Props {
-  moves: number;
-  nextPlayer: string;
-  gameStatus: GameStatus;
-  rebuild?: typeof actions.rebuild;
-  winner?: string;
-}
-
-const mapStateToProps = ({ game }: TicTacToeGameState) => ({
-  moves: game.moves,
-  nextPlayer: game.nextTurn,
-  gameStatus: game.gameStatus,
-  winner: game.winner,
+const mapStateToProps = (state: TicTacToeGameState) => ({
+  ...selectors.playerInfo(state),
 });
 
 const mapDispatchToProps = {
   rebuild: actions.rebuild,
 };
 
+export type Props = ReturnType<typeof mapStateToProps> &
+  typeof mapDispatchToProps;
+
 export const GameStateComponent: FC<Props> = ({
   moves,
-  nextPlayer,
+  nextTurn,
   gameStatus,
   winner,
   rebuild,
@@ -38,7 +30,7 @@ export const GameStateComponent: FC<Props> = ({
       </h3>
     )}
     <h3>Status: {gameStatus}</h3>
-    <h4>Next player: {nextPlayer}</h4>
+    <h4>Next player: {nextTurn}</h4>
     <h4>Moves number: {moves}</h4>
   </div>
 );

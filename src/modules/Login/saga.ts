@@ -1,9 +1,13 @@
 import { isEmpty } from "ramda";
-import { takeEvery, call, put, fork } from "redux-saga/effects";
+import { all, take, call, put, fork } from "redux-saga/effects";
 
-import { getUserSession, login, logout } from "@/api/auth";
+import { getUserSession, login, logout, sentStatistic } from "@/api/auth";
 
 import { actions, usernameMinLength } from "./reducer";
+
+export function* clearUserSession() {
+  yield all([call(logout), call(sentStatistic)]);
+}
 
 export function* checkUserSession() {
   const userSession: string = yield call(getUserSession);
@@ -11,11 +15,8 @@ export function* checkUserSession() {
     yield put(actions.login(userSession));
   } else {
     yield put(actions.logout());
+    yield* clearUserSession();
   }
-}
-
-export function* clearUserSession() {
-  yield call(logout);
 }
 
 export function* saveUserSession({
@@ -29,6 +30,10 @@ export function* saveUserSession({
 
 export function* loginSaga() {
   yield fork(checkUserSession);
-  yield takeEvery(actions.login.type, saveUserSession);
-  yield takeEvery(actions.logout.type, clearUserSession);
+  while (true) {
+    const action = yield take(actions.login.type);
+    yield* saveUserSession(action);
+    yield take(actions.logout.type);
+    yield* clearUserSession();
+  }
 }
