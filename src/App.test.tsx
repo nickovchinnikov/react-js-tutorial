@@ -15,4 +15,16 @@ describe("App", () => {
     const app = shallow(<App />);
     expect(app.find('Link[to="/signin"]').length).toBe(0);
   });
+
+  it('should update "Sign in" link visibility on login', () => {
+    // hack related to the fact, that we have store as singleton
+    // @todo: refactor `store` to `getStore`
+    store.dispatch(loginSlice.actions.logout());
+
+    const app = shallow(<App />);
+    expect(app.find('Link[to="/signin"]').length).toBe(1);
+    store.dispatch(loginSlice.actions.login("some user"));
+    app.update();
+    expect(app.find('Link[to="/signin"]').length).toBe(0);
+  });
 });
