@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   BrowserRouter as Router,
   Redirect,
@@ -16,7 +16,10 @@ const selectIsAuthorized = (state: TicTacToeGameState): boolean =>
   Boolean(state.login.username);
 
 export const App: React.FC<{}> = () => {
-  const state = store.getState();
+  const [state, setState] = useState(store.getState());
+
+  store.subscribe(() => setState(store.getState()));
+
   const isAuthorized = selectIsAuthorized(state);
 
   return (
