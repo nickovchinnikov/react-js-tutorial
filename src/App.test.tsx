@@ -27,4 +27,13 @@ describe("App", () => {
     app.update();
     expect(app.find('Link[to="/signin"]').length).toBe(0);
   });
+
+  it('should update "Sign in" link visibility on logout', () => {
+    store.dispatch(loginSlice.actions.login("some user"));
+    const app = shallow(<App />);
+    expect(app.find('Link[to="/signin"]').length).toBe(0);
+    store.dispatch(loginSlice.actions.logout());
+    app.update();
+    expect(app.find('Link[to="/signin"]').length).toBe(1);
+  });
 });
