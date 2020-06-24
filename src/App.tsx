@@ -10,10 +10,8 @@ import { Provider } from "react-redux";
 
 import { TicTacToeGame, Header, SignIn } from "./screens";
 
-import { store, TicTacToeGameState } from "./store";
-
-const selectIsAuthorized = (state: TicTacToeGameState): boolean =>
-  Boolean(state.login.username);
+import { store } from "./store";
+import { selectIsAuthorized } from "@/modules/Login/selectors";
 
 export const App: React.FC<{}> = () => {
   const [state, setState] = useState(store.getState());
