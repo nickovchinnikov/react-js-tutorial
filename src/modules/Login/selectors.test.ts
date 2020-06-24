@@ -25,7 +25,7 @@ describe("Login selectors", () => {
             },
           })
         )
-      ).toBe(true);
+      ).toBe(false);
     });
   });
 });
