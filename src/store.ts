@@ -6,12 +6,6 @@ import { gameSlice } from "./modules/InteractiveField";
 import { loginSlice, getLoginModule } from "./modules/Login";
 import { backgroundSlice, getBackgroundModule } from "./modules/Background";
 
-export const store = createStore(
-  { extensions: [getSagaExtension({})] },
-  getLoginModule(),
-  getBackgroundModule()
-);
-
 const reducer = combineReducers({
   login: loginSlice.reducer,
   game: gameSlice.reducer,
@@ -19,3 +13,9 @@ const reducer = combineReducers({
 });
 
 export type TicTacToeGameState = ReturnType<typeof reducer>;
+
+export const store = createStore<TicTacToeGameState>(
+  { extensions: [getSagaExtension({})] },
+  getLoginModule(),
+  getBackgroundModule()
+);
