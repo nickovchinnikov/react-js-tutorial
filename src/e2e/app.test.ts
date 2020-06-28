@@ -1,6 +1,6 @@
 import "expect-puppeteer";
 
-describe("Google", () => {
+describe("TicTacToeGame", () => {
   beforeAll(async () => {
     await page.goto("http://localhost:8080");
   });
