@@ -14,6 +14,7 @@ module.exports = {
     "\\.(css|less)$": "<rootDir>/internals/__mocks__/styleMock.js",
     "^@/(.*)$": "<rootDir>/src/$1",
   },
+  testPathIgnorePatterns: ["src/e2e"],
   moduleDirectories: ["node_modules", "src"],
   coverageThreshold: {
     global: {
