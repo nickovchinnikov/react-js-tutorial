@@ -226,3 +226,12 @@ React Patterns
 * Конфигурация приложения
 
 [Presentation](https://docs.google.com/presentation/d/1YP-MPF1THPrzu7boQbknr1zzGaGBxp7pIiOJ41Ze3CI/edit?usp=sharing) <br>
+
+
+## Lesson 25
+
+* Test quality tools
+* E2E
+
+[Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/49) <br>
+[Presentation](https://docs.google.com/presentation/d/1ox8hQ2Hw2TXKGnlbG4pHoXdgeZ7NKXQ8ev9qryQC448/edit?usp=sharing) <br>
