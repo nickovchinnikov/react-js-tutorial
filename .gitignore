@@ -1,6 +1,7 @@
 .history
 .vscode
 node_modules
+coverage
 dist
 storybook-static
 .idea

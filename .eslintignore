@@ -1,6 +1,7 @@
 .history
 .vscode
 node_modules
+coverage
 storybook-static
 dist
 presa
