@@ -11,7 +11,7 @@
     "loki:update": "npm run build-storybook && npx loki update --requireReference --reactUri file:./storybook-static",
     "loki:approve": "npx loki approve",
     "test": "npx jest",
-    "e2e": "npx jest -c jest.e2e.config.js src/e2e",
+    "e2e": "npx jest -c jest.e2e.config.js e2e",
     "test:loki": "npm run build-storybook && npx loki --requireReference --reactUri file:./storybook-static",
     "ts:check": "npx tsc -p tsconfig.json --noEmit",
     "check": "npm run lint && npm run ts:check && npm test && npm run e2e && npm run test:loki",
