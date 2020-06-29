@@ -7,7 +7,7 @@ module.exports = {
   globalSetup: "jest-environment-puppeteer/setup",
   globalTeardown: "jest-environment-puppeteer/teardown",
   testEnvironment: "jest-environment-puppeteer",
-  setupFilesAfterEnv: ["<rootDir>/internals/jestSettings.js"],
+  setupFilesAfterEnv: ["<rootDir>/internals/jestSettingsE2E.js"],
   transform: {
     "^.+\\.(js|jsx|ts|tsx)$": "<rootDir>/node_modules/babel-jest",
   },
