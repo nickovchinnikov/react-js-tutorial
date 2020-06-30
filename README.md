@@ -214,9 +214,15 @@ React Patterns
 [Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/47) <br>
 [Presentation](https://docs.google.com/presentation/d/1-0NOSE50w_ZIFoL8cF4WWotGAkhfpzHoHUB9EOlz7RU/edit?usp=sharing) <br>
 
-## Lesson 24
+## Lesson 23
 
 * Разработка приложения на React
 
 [Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/48) <br>
 [Presentation](https://docs.google.com/presentation/d/10ixqE3P2BcC3vJg_AnDqNHcHn5oXWGhBfWrQgXaaN5w/edit?usp=sharing) <br>
+
+## Lesson 24
+
+* Конфигурация приложения
+
+[Presentation](https://docs.google.com/presentation/d/1YP-MPF1THPrzu7boQbknr1zzGaGBxp7pIiOJ41Ze3CI/edit?usp=sharing) <br>
