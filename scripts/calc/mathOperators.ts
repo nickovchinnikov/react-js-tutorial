@@ -27,9 +27,11 @@ export const tg: FunctionOperationType = (value) =>
 export const ctg: FunctionOperationType = (value) =>
   parseFloat((cos(value) / sin(value)).toFixed(2));
 
-type MathOperator = "*" | "/" | "+" | "-" | "^" | "!";
+export type ScalarOperator = "*" | "/" | "+" | "-" | "^" | "!";
 
-export const scalarOperators: { [key in MathOperator]: ScalarOperationType } = {
+export const scalarOperators: {
+  [key in ScalarOperator]: ScalarOperationType;
+} = {
   "*": mul,
   "/": div,
   "+": add,
@@ -38,7 +40,7 @@ export const scalarOperators: { [key in MathOperator]: ScalarOperationType } = {
   "!": factorial,
 };
 
-type TrigonomenticOperator = "sin" | "cos" | "tg" | "ctg";
+export type TrigonomenticOperator = "sin" | "cos" | "tg" | "ctg";
 
 export const trigonomenticOperators: {
   [key in TrigonomenticOperator]: FunctionOperationType;
@@ -49,10 +51,10 @@ export const trigonomenticOperators: {
   ctg: ctg,
 };
 
+export type MathOperator = ScalarOperator | TrigonomenticOperator;
+
 export const mathOperators: {
-  [key in MathOperator | TrigonomenticOperator]:
-    | ScalarOperationType
-    | FunctionOperationType;
+  [key in MathOperator]: ScalarOperationType | FunctionOperationType;
 } = {
   ...scalarOperators,
   ...trigonomenticOperators,
@@ -63,7 +65,7 @@ export const mathPriorities: number[] = [0, 1, 2, 3, 4];
 const [ZERO, FIRST, SECOND, THIRD, FOURTH] = mathPriorities;
 
 export const mathOperatorsPriorities: {
-  [key in MathOperator | TrigonomenticOperator]: number;
+  [key in MathOperator]: number;
 } = {
   "!": ZERO,
   "^": FIRST,
