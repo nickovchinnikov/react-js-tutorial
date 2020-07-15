@@ -70,7 +70,7 @@ Typescript: Part 2
 [Presentation](https://docs.google.com/presentation/d/1ucC_6gpybB52DN9tQjDF6SMsmQcdopwchdbp6jVAzOM/edit?usp=sharing)
 
 
-## Lesson 6:
+## Lesson 5:
 * JSX + CSS
 * Project architecture
 
