@@ -6,7 +6,10 @@
 // };
 
 // // Задание 2
-// export type QsObj = Record<string, string | number | boolean | object>;
+export type QsObj = Record<
+  string,
+  string | number | boolean | string[] | number[] | boolean[]
+>;
 
 // export const createQs = (qsObj: QsObj): string => {
 //   //

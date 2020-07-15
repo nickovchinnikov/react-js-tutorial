@@ -58,6 +58,18 @@ React and JSX
 
 [Presentation](https://docs.google.com/presentation/d/1R7sU2VQHHgCExYgX1yEKrcbwhebYSQq_OII5LY4pZuI/edit?usp=sharing)
 
+## Lesson 4.5:
+Typescript: Part 2
+
+* Generics
+* Classes
+* Indexed types/mapped types/infer
+* React+Typescript: common pitfalls
+
+[Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/51)
+[Presentation](https://docs.google.com/presentation/d/1ucC_6gpybB52DN9tQjDF6SMsmQcdopwchdbp6jVAzOM/edit?usp=sharing)
+
+
 ## Lesson 5:
 * JSX + CSS
 * Project architecture
