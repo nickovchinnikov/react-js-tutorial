@@ -56,7 +56,7 @@ React and JSX
 
 [Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/9)
 
-[Presentation](https://docs.google.com/presentation/d/1R7sU2VQHHgCExYgX1yEKrcbwhebYSQq_OII5LY4pZuI/edit?usp=sharing)
+[Presentation](https://docs.google.com/presentation/d/18RMGtm53joXd_bOKXzdN4wtNFXcNFAavmXDa3CNjvpU/edit?usp=sharing)
 
 ## Lesson 4.5:
 Typescript: Part 2
@@ -90,7 +90,7 @@ Typescript: Part 2
 
 [Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/13)
 
-[Presentation](https://docs.google.com/presentation/d/1xRNMkPFhoB3dnrnjQjAGeOumkjjYcga7g0O23UVYYK0/edit?usp=sharing)
+[Presentation](https://docs.google.com/presentation/d/192hcXBkOKCgzEGVD-iCuXnHWTdraD1E99DaFRSnOwFs/edit?usp=sharing)
 
 ## Lesson 8:
 * Списки
