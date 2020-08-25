@@ -53,6 +53,7 @@ export class GameSettingsFormRef extends React.Component<
             <Select
               label="Symbol:"
               name="player1Symbol"
+              ref={this.player1Symbol}
               defaultValue="X"
               options={SYMBOL_OPTIONS}
             />
@@ -73,7 +74,8 @@ export class GameSettingsFormRef extends React.Component<
             </label>
             <Select
               label="Symbol:"
-              name="player1Symbol"
+              name="player2Symbol"
+              ref={this.player2Symbol}
               defaultValue="X"
               options={SYMBOL_OPTIONS}
             />
