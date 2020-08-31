@@ -71,7 +71,7 @@ export class GameSettingsFormDOM extends React.Component<
             </label>
             <Select
               label="Symbol:"
-              name="player1Symbol"
+              name="player2Symbol"
               defaultValue="X"
               options={SYMBOL_OPTIONS}
             />
