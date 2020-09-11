@@ -20,8 +20,14 @@ export const backgroundSlice = createSlice({
   name: "background",
   initialState,
   reducers: {
-    start: (state) => ({ ...state, status: BackgroundStatus.start }),
-    cancel: (state) => ({ ...state, status: BackgroundStatus.cancel }),
+    start: (state) => {
+      state.status = BackgroundStatus.start;
+      return state;
+    },
+    cancel: (state) => {
+      state.status = BackgroundStatus.cancel;
+      return state;
+    },
   },
 });
 

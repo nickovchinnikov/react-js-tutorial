@@ -53,11 +53,11 @@ export const gameSlice = createSlice({
   name: "game",
   initialState,
   reducers: {
-    rebuild: (state) => ({
-      ...state,
-      gameStatus: GameStatus.NewGame,
-      gameField: createEmptyGameField(...state.fieldSize),
-    }),
+    rebuild: (state) => {
+      state.gameStatus = GameStatus.NewGame;
+      state.gameField = createEmptyGameField(...state.fieldSize);
+      return state;
+    },
     createGameWithParams: (state, { payload }: RebuildActionType) => {
       const fieldSize = payload.fieldSize ?? state.fieldSize;
       return {
