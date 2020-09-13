@@ -14,7 +14,7 @@ export const isTrigonometricOperator = (
   item: string | number
 ): item is TrigonomenticOperator => item in trigonomenticOperators;
 
-export const checkerMathOperatorsPriorities = (
+export const checkMathOperatorsPriorities = (
   operator: string,
   priorities: number | number[]
 ) => {
@@ -22,11 +22,11 @@ export const checkerMathOperatorsPriorities = (
     return false;
   }
 
-  if (!Array.isArray(priorities)) {
-    return mathOperatorsPriorities[operator as MathOperator] === priorities;
-  }
+  const prioritiesForCheck = !Array.isArray(priorities)
+    ? [priorities]
+    : priorities;
 
-  for (const priority of priorities) {
+  for (const priority of prioritiesForCheck) {
     if (mathOperatorsPriorities[operator as MathOperator] === priority) {
       return true;
     }

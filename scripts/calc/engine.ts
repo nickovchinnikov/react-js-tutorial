@@ -2,7 +2,7 @@ import { ParsedLineType, parser } from "./parser";
 import {
   isOperator,
   isTrigonometricOperator,
-  checkerMathOperatorsPriorities,
+  checkMathOperatorsPriorities,
 } from "./helpers";
 import {
   mathOperators,
@@ -11,13 +11,13 @@ import {
   trigonomenticOperators,
 } from "./mathOperators";
 
-const { ZERO, FIRST, SECOND, THIRD, FOURTH } = MathPrioritiesList;
+const { zero, first, second, third, fourth } = MathPrioritiesList;
 
 export const zeroPrioritiesCalc = (stack: ParsedLineType): ParsedLineType =>
   stack.reduce<ParsedLineType>((result, item) => {
     const prevItem = result[result.length - 1];
 
-    if (isOperator(item) && checkerMathOperatorsPriorities(item, ZERO)) {
+    if (isOperator(item) && checkMathOperatorsPriorities(item, zero)) {
       const action = mathOperators[item] as FunctionOperationType;
       result = [...result.slice(0, -1), action(Number(prevItem))];
     } else {
@@ -31,7 +31,7 @@ export const firstPrioritiesCalc = (stack: ParsedLineType): ParsedLineType =>
     const prevItem = result[result.length - 2];
     const item = result[result.length - 1];
 
-    if (isOperator(item) && checkerMathOperatorsPriorities(item, FIRST)) {
+    if (isOperator(item) && checkMathOperatorsPriorities(item, first)) {
       if (nextItem === "!") {
         const action = mathOperators[item] as FunctionOperationType;
         result = [...result.slice(0, -1), action(Number(item))];
@@ -53,7 +53,7 @@ export const secondPrioritiesCalc = (stack: ParsedLineType): ParsedLineType =>
 
     if (
       isTrigonometricOperator(prevItem) &&
-      checkerMathOperatorsPriorities(prevItem, SECOND)
+      checkMathOperatorsPriorities(prevItem, second)
     ) {
       result = [
         ...result.slice(0, -1),
@@ -70,7 +70,7 @@ export const thirdPrioritiesCalc = (stack: ParsedLineType): ParsedLineType =>
     const prevItem = result[result.length - 2];
     const item = result[result.length - 1];
 
-    if (isOperator(item) && checkerMathOperatorsPriorities(item, THIRD)) {
+    if (isOperator(item) && checkMathOperatorsPriorities(item, third)) {
       result = [
         ...result.slice(0, -2),
         mathOperators[item](Number(prevItem), Number(nextItem)),
@@ -87,12 +87,12 @@ export const fourthPrioritiesCalc = (stack: ParsedLineType): number =>
 
     if (
       isOperator(item) &&
-      checkerMathOperatorsPriorities(item, [SECOND, THIRD])
+      checkMathOperatorsPriorities(item, [second, third])
     ) {
       throw new TypeError("Unexpected stack!");
     }
 
-    if (isOperator(item) && checkerMathOperatorsPriorities(item, FOURTH)) {
+    if (isOperator(item) && checkMathOperatorsPriorities(item, fourth)) {
       result = mathOperators[item](Number(result), Number(nextItem));
     }
     return result;

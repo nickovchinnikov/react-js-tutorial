@@ -1,9 +1,9 @@
-import { checkerMathOperatorsPriorities, isOperator } from "./helpers";
+import { checkMathOperatorsPriorities, isOperator } from "./helpers";
 import { MathPrioritiesList } from "./mathOperators";
 
 export type ParsedLineType = (number | string)[];
 
-const { ZERO, SECOND } = MathPrioritiesList;
+const { zero, second } = MathPrioritiesList;
 
 export const parser = (line: string): ParsedLineType | null => {
   const stack = line.split(" ");
@@ -15,13 +15,12 @@ export const parser = (line: string): ParsedLineType | null => {
       (isOperator(prevItem) || prevItem === undefined) && !isNaN(Number(item));
 
     const isValidOperator =
-      (!isOperator(prevItem) ||
-        checkerMathOperatorsPriorities(prevItem, ZERO)) &&
+      (!isOperator(prevItem) || checkMathOperatorsPriorities(prevItem, zero)) &&
       isOperator(item);
 
     const isValidTrigOperator =
-      checkerMathOperatorsPriorities(item, SECOND) &&
-      (key === 0 || !checkerMathOperatorsPriorities(prevItem, SECOND));
+      checkMathOperatorsPriorities(item, second) &&
+      (key === 0 || !checkMathOperatorsPriorities(prevItem, second));
 
     const isValidMathOperator = isValidOperator || isValidTrigOperator;
 

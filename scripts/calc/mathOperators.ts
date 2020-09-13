@@ -65,27 +65,27 @@ export const mathOperators: {
 
 export const mathPriorities: number[] = [0, 1, 2, 3, 4];
 
-const [ZERO, FIRST, SECOND, THIRD, FOURTH] = mathPriorities;
+const [zero, first, second, third, fourth] = mathPriorities;
 
 export const MathPrioritiesList = {
-  ZERO,
-  FIRST,
-  SECOND,
-  THIRD,
-  FOURTH,
+  zero,
+  first,
+  second,
+  third,
+  fourth,
 };
 
 export const mathOperatorsPriorities: {
   [key in MathOperator]: number;
 } = {
-  "!": ZERO,
-  "^": FIRST,
-  sin: SECOND,
-  cos: SECOND,
-  tg: SECOND,
-  ctg: SECOND,
-  "*": THIRD,
-  "/": THIRD,
-  "+": FOURTH,
-  "-": FOURTH,
+  "!": zero,
+  "^": first,
+  sin: second,
+  cos: second,
+  tg: second,
+  ctg: second,
+  "*": third,
+  "/": third,
+  "+": fourth,
+  "-": fourth,
 };

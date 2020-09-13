@@ -1,32 +1,32 @@
-import { checkerMathOperatorsPriorities } from "./helpers";
+import { checkMathOperatorsPriorities } from "./helpers";
 import { MathPrioritiesList } from "./mathOperators";
 
 describe("Helpers", () => {
-  describe("checkerMathOperatorsPriorities", () => {
-    it("checkerMathOperatorsPriorities detect priority ZERO", () => {
-      expect(checkerMathOperatorsPriorities("!", MathPrioritiesList.ZERO)).toBe(
+  describe("checkMathOperatorsPriorities", () => {
+    it("checkMathOperatorsPriorities detect priority zero", () => {
+      expect(checkMathOperatorsPriorities("!", MathPrioritiesList.zero)).toBe(
         true
       );
     });
-    it("checkerMathOperatorsPriorities detect priority ZERO false case", () => {
-      expect(checkerMathOperatorsPriorities("+", MathPrioritiesList.ZERO)).toBe(
+    it("checkMathOperatorsPriorities detect priority zero false case", () => {
+      expect(checkMathOperatorsPriorities("+", MathPrioritiesList.zero)).toBe(
         false
       );
     });
-    it("checkerMathOperatorsPriorities detect priority from array of priorities", () => {
+    it("checkMathOperatorsPriorities detect priority from array of priorities", () => {
       expect(
-        checkerMathOperatorsPriorities("sin", [
-          MathPrioritiesList.ZERO,
-          MathPrioritiesList.FIRST,
-          MathPrioritiesList.SECOND,
+        checkMathOperatorsPriorities("sin", [
+          MathPrioritiesList.zero,
+          MathPrioritiesList.first,
+          MathPrioritiesList.second,
         ])
       ).toBe(true);
     });
-    it("checkerMathOperatorsPriorities detect priority from array of priorities false", () => {
+    it("checkMathOperatorsPriorities detect priority from array of priorities false", () => {
       expect(
-        checkerMathOperatorsPriorities("sin", [
-          MathPrioritiesList.ZERO,
-          MathPrioritiesList.FIRST,
+        checkMathOperatorsPriorities("sin", [
+          MathPrioritiesList.zero,
+          MathPrioritiesList.first,
         ])
       ).toBe(false);
     });
