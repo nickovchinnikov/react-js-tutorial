@@ -4,18 +4,8 @@ const custom = require('../webpack.config.js');
 const webpackRules = require("../webpackRules");
 
 module.exports = {
-  stories: [
-    '../src/**/*.stories.@(tsx|mdx)',
-    '../lessons/**/*.stories.tsx',
-  ],
+  stories: ['../src/**/*.stories.@(tsx|mdx)', '../lessons/**/*.stories.tsx'],
   addons: [
-    '@storybook/addon-actions',
-    '@storybook/addon-links',
-    '@storybook/addon-knobs/register',
-    '@storybook/addon-storysource',
-    '@storybook/addon-controls',
-    '@storybook/addon-backgrounds',
-    '@storybook/addon-viewport',
     {
       name: '@storybook/addon-docs',
       options: {
@@ -24,6 +14,13 @@ module.exports = {
         sourceLoaderOptions: null,
       },
     },
+    '@storybook/addon-actions',
+    '@storybook/addon-links',
+    '@storybook/addon-knobs/register',
+    '@storybook/addon-storysource',
+    '@storybook/addon-controls',
+    '@storybook/addon-backgrounds',
+    '@storybook/addon-viewport',
   ],
   webpackFinal: (config) => {
     config.plugins.push(new webpack.HotModuleReplacementPlugin());
