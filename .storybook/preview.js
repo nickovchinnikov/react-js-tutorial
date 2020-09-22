@@ -7,5 +7,6 @@ addParameters({
   docs: {
     container: DocsContainer,
     page: DocsPage,
+    controls: { expanded: true },
   },
 });

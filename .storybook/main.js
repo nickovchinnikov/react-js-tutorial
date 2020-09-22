@@ -13,6 +13,7 @@ module.exports = {
     '@storybook/addon-links',
     '@storybook/addon-knobs/register',
     '@storybook/addon-storysource',
+    '@storybook/addon-controls',
     {
       name: '@storybook/addon-docs',
       options: {
