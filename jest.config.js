@@ -8,6 +8,7 @@ module.exports = {
   setupFilesAfterEnv: ["<rootDir>/internals/jestSettings.js"],
   transform: {
     "^.+\\.(js|jsx|ts|tsx)$": "<rootDir>/node_modules/babel-jest",
+    "^.+\\.mdx$": "@storybook/addon-docs/jest-transform-mdx",
   },
   moduleNameMapper: {
     // https://jestjs.io/docs/en/webpack#handling-static-assets
