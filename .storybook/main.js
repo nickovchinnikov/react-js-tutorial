@@ -15,6 +15,7 @@ module.exports = {
     '@storybook/addon-storysource',
     '@storybook/addon-controls',
     '@storybook/addon-backgrounds',
+    '@storybook/addon-viewport',
     {
       name: '@storybook/addon-docs',
       options: {
