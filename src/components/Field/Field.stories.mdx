@@ -1,0 +1,22 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { action } from "@storybook/addon-actions";
+
+import { Field } from "./Field";
+
+<Meta title="MDX/Field" component={Field} />
+
+# Field
+
+`Field` component with data:
+
+<Canvas>
+  <Field
+    key="jsx"
+    onClick={() => {}}
+    field={[
+      ["", "x", ""],
+      ["", "x", ""],
+      ["0", "0", ""],
+    ]}
+  />
+</Canvas>
