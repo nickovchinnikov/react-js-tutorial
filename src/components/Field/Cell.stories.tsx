@@ -1,61 +1,29 @@
 import React from "react";
 import { action } from "@storybook/addon-actions";
-import { withKnobs, text, number } from "@storybook/addon-knobs";
 import { Cell } from "./Cell";
+
 export default {
   title: "Cell",
-  decorators: [withKnobs],
+  argTypes: {
+    x: { control: { type: "range", min: 1, max: 20, step: 1 } },
+    y: { control: { type: "range", max: 20, step: 1 } },
+    children: {
+      control: { type: "text" },
+    },
+  },
 };
 
-export const nonFilled = () => [
-  <Cell
-    onClick={action("Cell clicked")}
-    x={number("x", 1)}
-    y={number("y", 23)}
-    key="jsx"
-  />,
-  <Cell
-    onClick={action("Cell clicked")}
-    x={number("x", 1)}
-    y={number("y", 23)}
-    key="jsx2"
-  />,
+export const nonFilled = (args: any) => [
+  <Cell onClick={action("Cell clicked")} key="jsx" {...args} />,
+  <Cell onClick={action("Cell clicked")} key="jsx2" {...args} />,
 ];
 
-export const filledWithX = () => [
-  <Cell
-    onClick={action("Cell clicked")}
-    x={number("x", 1)}
-    y={number("y", 23)}
-    key="jsx"
-  >
-    {text("filled with", "x")}
-  </Cell>,
-  <Cell
-    onClick={action("Cell clicked")}
-    x={number("x", 1)}
-    y={number("y", 23)}
-    key="jsx2"
-  >
-    {text("filled with", "x")}
-  </Cell>,
+export const filledWithX = (args: any) => [
+  <Cell onClick={action("Cell clicked")} key="jsx" {...args} />,
+  <Cell onClick={action("Cell clicked")} key="jsx2" {...args} />,
 ];
 
-export const filledWithY = () => [
-  <Cell
-    onClick={action("Cell clicked")}
-    x={number("x", 1)}
-    y={number("y", 23)}
-    key="jsx"
-  >
-    {text("filled with", "y")}
-  </Cell>,
-  <Cell
-    onClick={action("Cell clicked")}
-    x={number("x", 1)}
-    y={number("y", 23)}
-    key="jsx2"
-  >
-    {text("filled with", "y")}
-  </Cell>,
+export const filledWithY = (args: any) => [
+  <Cell onClick={action("Cell clicked")} key="jsx" {...args} />,
+  <Cell onClick={action("Cell clicked")} key="jsx2" {...args} />,
 ];
