@@ -1,3 +1,5 @@
+import { random } from "faker";
+
 import {
   mul,
   div,
@@ -12,32 +14,33 @@ import {
 } from "./mathOperators";
 
 describe("mathOperators test cases", () => {
-  it("mul 1 * 2 to equal 2", () => {
-    expect(mul(1, 2)).toBe(2);
+  const number1 = random.number();
+  const number2 = random.number();
+
+  const resultOfMultiplication = number1 * number2;
+  it(`mul ${number1} * ${number2} to equal ${resultOfMultiplication}`, () => {
+    expect(mul(number1, number2)).toBe(resultOfMultiplication);
   });
 
-  it("mul 2 * 2 to equal 4", () => {
-    expect(mul(2, 2)).toBe(4);
+  const resultOfDivision = number1 / number2;
+  it(`div ${number1} / ${number2} to equal ${resultOfDivision}`, () => {
+    expect(div(number1, number2)).toBe(resultOfDivision);
   });
 
-  it("div 2 / 2 to equal 1", () => {
-    expect(div(2, 2)).toBe(1);
+  const resultOfSum = number1 + number2;
+  it(`add ${number1} + ${number1} to equal ${resultOfSum}`, () => {
+    expect(add(number1, number2)).toBe(resultOfSum);
   });
 
-  it("div 4 / 2 to equal 2", () => {
-    expect(div(4, 2)).toBe(2);
+  const resultOfSubstraction = number1 - number2;
+  it(`minus ${number1} - ${number2} to equal ${resultOfSubstraction}`, () => {
+    expect(minus(number1, number2)).toBe(resultOfSubstraction);
   });
 
-  it("add 4 + 2 to equal 6", () => {
-    expect(add(4, 2)).toBe(6);
-  });
-
-  it("minus 4 - 2 to equal 2", () => {
-    expect(minus(4, 2)).toBe(2);
-  });
-
-  it("pow 2 ^ 3 to equal 8", () => {
-    expect(pow(2, 3)).toBe(8);
+  const power = 2;
+  const resultOfPow = Math.pow(number1, power);
+  it(`pow ${number1} ^ ${power} to equal ${resultOfPow}`, () => {
+    expect(pow(number1, power)).toBe(resultOfPow);
   });
 
   it("3! to equal 6", () => {
