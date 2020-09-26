@@ -1,5 +1,3 @@
-import { without } from "ramda";
-
 import {
   trigonomenticOperators,
   mathOperatorsPriorities,
