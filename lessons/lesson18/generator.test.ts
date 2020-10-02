@@ -127,8 +127,8 @@ describe("Generators Intro", () => {
   it("passwordGenerator", () => {
     const oneWord = passwordGenerator(1);
     const fourWord = passwordGenerator(4);
-    expect(/([A-Z]{1}[a-z]+){1}/.test(oneWord)).toBe(true);
-    expect(/([A-Z]{1}[a-z]+){4}/.test(fourWord)).toBe(true);
+    expect(/^([A-Z][a-z]+){1}$/.test(oneWord)).toBe(true);
+    expect(/^([A-Z][a-z]+){4}$/.test(fourWord)).toBe(true);
   });
   it("fibonacciSequense", () => {
     const generator = fibonacciSequense(10);

@@ -1,5 +1,12 @@
 import 'loki/configure-react';
-import  { addDecorator } from '@storybook/react';
-import  { withPropsTable } from 'storybook-addon-react-docgen';
 
-addDecorator(withPropsTable);
+import { addDecorator, addParameters } from '@storybook/react';
+import { DocsPage, DocsContainer } from '@storybook/addon-docs/blocks';
+
+addParameters({
+  docs: {
+    container: DocsContainer,
+    page: DocsPage,
+    controls: { expanded: true }
+  },
+});

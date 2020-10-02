@@ -15,19 +15,26 @@ export const pow: ScalarOperationType = (first, second) =>
 export const factorial: FunctionOperationType = (first) =>
   first ? first * factorial(first - 1) : 1;
 
+const convertFromDegreeToRadians: FunctionOperationType = (value) =>
+  value * (Math.PI / 180);
+
 export const sin: FunctionOperationType = (value) =>
-  parseFloat(Math.sin(value * (Math.PI / 180)).toFixed(2));
+  parseFloat(Math.sin(convertFromDegreeToRadians(value)).toFixed(2));
 
 export const cos: FunctionOperationType = (value) =>
-  parseFloat(Math.cos(value * (Math.PI / 180)).toFixed(2));
+  parseFloat(Math.cos(convertFromDegreeToRadians(value)).toFixed(2));
 
 export const tg: FunctionOperationType = (value) =>
-  parseFloat(Math.tan(value * (Math.PI / 180)).toFixed(2));
+  parseFloat(Math.tan(convertFromDegreeToRadians(value)).toFixed(2));
 
 export const ctg: FunctionOperationType = (value) =>
   parseFloat((cos(value) / sin(value)).toFixed(2));
 
-export const scalarOperators: { [key: string]: ScalarOperationType } = {
+export type ScalarOperator = "*" | "/" | "+" | "-" | "^" | "!";
+
+export const scalarOperators: {
+  [key in ScalarOperator]: ScalarOperationType;
+} = {
   "*": mul,
   "/": div,
   "+": add,
@@ -36,17 +43,21 @@ export const scalarOperators: { [key: string]: ScalarOperationType } = {
   "!": factorial,
 };
 
+export type TrigonomenticOperator = "sin" | "cos" | "tg" | "ctg";
+
 export const trigonomenticOperators: {
-  [key: string]: FunctionOperationType;
+  [key in TrigonomenticOperator]: FunctionOperationType;
 } = {
-  sin: sin,
-  cos: cos,
-  tg: tg,
-  ctg: ctg,
+  sin,
+  cos,
+  tg,
+  ctg,
 };
 
+export type MathOperator = ScalarOperator | TrigonomenticOperator;
+
 export const mathOperators: {
-  [key: string]: ScalarOperationType | FunctionOperationType;
+  [key in MathOperator]: ScalarOperationType | FunctionOperationType;
 } = {
   ...scalarOperators,
   ...trigonomenticOperators,
@@ -54,17 +65,27 @@ export const mathOperators: {
 
 export const mathPriorities: number[] = [0, 1, 2, 3, 4];
 
-const [ZERO, FIRST, SECOND, THIRD, FOURTH] = mathPriorities;
+const [zero, first, second, third, fourth] = mathPriorities;
 
-export const mathOperatorsPriorities: { [key: string]: number } = {
-  "!": ZERO,
-  "^": FIRST,
-  sin: SECOND,
-  cos: SECOND,
-  tg: SECOND,
-  ctg: SECOND,
-  "*": THIRD,
-  "/": THIRD,
-  "+": FOURTH,
-  "-": FOURTH,
+export const MathPrioritiesList = {
+  zero,
+  first,
+  second,
+  third,
+  fourth,
+};
+
+export const mathOperatorsPriorities: {
+  [key in MathOperator]: number;
+} = {
+  "!": zero,
+  "^": first,
+  sin: second,
+  cos: second,
+  tg: second,
+  ctg: second,
+  "*": third,
+  "/": third,
+  "+": fourth,
+  "-": fourth,
 };

@@ -3,10 +3,12 @@
     "plugin:@typescript-eslint/recommended",
     "prettier/@typescript-eslint",
     "plugin:prettier/recommended",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "plugin:jest/recommended"
   ],
   "plugins": [
-    "react-hooks"
+    "react-hooks",
+    "jest"
   ],
   "settings": {
     "react": {
@@ -14,6 +16,7 @@
     }
   },
   "rules": {
+    "jest/expect-expect": 0,
     "prettier/prettier": [
       "error",
       {
@@ -40,7 +43,8 @@
     "react/prop-types": 0,
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
-    "@typescript-eslint/no-non-null-assertion": "off"
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "react/display-name": 0
   },
   "parserOptions": {
     "sourceType": "module",

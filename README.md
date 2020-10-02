@@ -45,6 +45,9 @@ Basic react configuration
 [Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/7)
 [Pull request2](https://github.com/nickovchinnikov/react-js-tutorial/pull/8)
 
+Update storybook + MDX
+[Pull request3](https://github.com/nickovchinnikov/react-js-tutorial/pull/64)
+
 [Presentation](https://drive.google.com/open?id=10qgUTWj5aMG4WxcNk9UV8_xMHdnE5GRH7I7_Z8w0P7M)
 
 ## Lesson 4:
@@ -56,7 +59,19 @@ React and JSX
 
 [Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/9)
 
-[Presentation](https://docs.google.com/presentation/d/1R7sU2VQHHgCExYgX1yEKrcbwhebYSQq_OII5LY4pZuI/edit?usp=sharing)
+[Presentation](https://docs.google.com/presentation/d/18RMGtm53joXd_bOKXzdN4wtNFXcNFAavmXDa3CNjvpU/edit?usp=sharing)
+
+## Lesson 4.5:
+Typescript: Part 2
+
+* Generics
+* Classes
+* Indexed types/mapped types/infer
+* React+Typescript: common pitfalls
+
+[Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/51)
+[Presentation](https://docs.google.com/presentation/d/1ucC_6gpybB52DN9tQjDF6SMsmQcdopwchdbp6jVAzOM/edit?usp=sharing)
+
 
 ## Lesson 5:
 * JSX + CSS
@@ -78,7 +93,7 @@ React and JSX
 
 [Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/13)
 
-[Presentation](https://docs.google.com/presentation/d/1xRNMkPFhoB3dnrnjQjAGeOumkjjYcga7g0O23UVYYK0/edit?usp=sharing)
+[Presentation](https://docs.google.com/presentation/d/192hcXBkOKCgzEGVD-iCuXnHWTdraD1E99DaFRSnOwFs/edit?usp=sharing)
 
 ## Lesson 8:
 * Списки
@@ -214,9 +229,24 @@ React Patterns
 [Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/47) <br>
 [Presentation](https://docs.google.com/presentation/d/1-0NOSE50w_ZIFoL8cF4WWotGAkhfpzHoHUB9EOlz7RU/edit?usp=sharing) <br>
 
-## Lesson 24
+## Lesson 23
 
 * Разработка приложения на React
 
 [Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/48) <br>
 [Presentation](https://docs.google.com/presentation/d/10ixqE3P2BcC3vJg_AnDqNHcHn5oXWGhBfWrQgXaaN5w/edit?usp=sharing) <br>
+
+## Lesson 24
+
+* Конфигурация приложения
+
+[Presentation](https://docs.google.com/presentation/d/1YP-MPF1THPrzu7boQbknr1zzGaGBxp7pIiOJ41Ze3CI/edit?usp=sharing) <br>
+
+
+## Lesson 25
+
+* Test quality tools
+* E2E
+
+[Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/49) <br>
+[Presentation](https://docs.google.com/presentation/d/1ox8hQ2Hw2TXKGnlbG4pHoXdgeZ7NKXQ8ev9qryQC448/edit?usp=sharing) <br>
