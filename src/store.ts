@@ -6,12 +6,14 @@ import { gameSlice } from "./modules/InteractiveField";
 import { loginSlice, getLoginModule } from "./modules/Login";
 import { backgroundSlice, getBackgroundModule } from "./modules/Background";
 import { chatSlice } from "./modules/Chat";
+import { hashSlice } from "./modules/Hash";
 
 const reducer = combineReducers({
   login: loginSlice.reducer,
   game: gameSlice.reducer,
   background: backgroundSlice.reducer,
   chat: chatSlice.reducer,
+  hash: hashSlice.reducer,
 });
 
 export type TicTacToeGameState = ReturnType<typeof reducer>;

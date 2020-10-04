@@ -1,0 +1,1 @@
+export { hashSlice } from "./reducer";
