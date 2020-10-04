@@ -31,6 +31,15 @@ export const ChatComponent: React.FC<Props> = ({ chat, username, send }) => {
     },
     [message, username, send]
   );
+
+  const onChange = useCallback(async (ev) => {
+    ev.preventDefault();
+    const message = (ev.target as HTMLInputElement).value;
+    if (!isEmpty(message)) {
+      setMsg(message);
+    }
+  }, []);
+
   return !isEmpty(username) ? (
     <>
       {chat.map(({ author, message }, idx) => (
@@ -44,7 +53,7 @@ export const ChatComponent: React.FC<Props> = ({ chat, username, send }) => {
           <input
             placeholder="Enter your msg"
             value={message}
-            onChange={(ev) => setMsg((ev.target as HTMLInputElement).value)}
+            onChange={onChange}
             required
             minLength={4}
             maxLength={10}
