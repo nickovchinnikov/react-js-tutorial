@@ -9,19 +9,26 @@ import {
   InteractiveField,
   getInteractiveFieldModule,
   getChatModule,
+  getHashModule,
   Chat,
+  Hash,
 } from "@/modules";
+
+const dynamicReduxModules = [
+  getInteractiveFieldModule(),
+  getChatModule(),
+  getHashModule(),
+];
 
 export const TicTacToeGame: FC<{}> = () => (
   <ErrorBoundary>
-    <DynamicModuleLoader
-      modules={[getInteractiveFieldModule(), getChatModule()]}
-    >
+    <DynamicModuleLoader modules={dynamicReduxModules}>
       <AccessChecker>
         <CreateCustomGame />
         <GameState />
         <InteractiveField />
         <Chat />
+        <Hash />
       </AccessChecker>
     </DynamicModuleLoader>
   </ErrorBoundary>

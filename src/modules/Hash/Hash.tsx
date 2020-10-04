@@ -8,7 +8,7 @@ interface Props {
 }
 
 const mapStateToProps = ({ hash }: TicTacToeGameState) => ({
-  hash,
+  children: hash,
 });
 
 const mapDispatchToProps = {};

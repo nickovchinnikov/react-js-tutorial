@@ -1,14 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const initialState = {
-  hash: "",
-};
+export const initialState = "";
 
 export const hashSlice = createSlice({
   name: "hash",
   initialState,
   reducers: {
-    update: (state, { payload }) => ({ hash: payload }),
+    update: (state, { payload }) => payload,
   },
 });
 
