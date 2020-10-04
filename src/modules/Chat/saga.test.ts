@@ -17,16 +17,17 @@ describe("Chat Saga", () => {
         author: faker.name.firstName(),
         message: faker.lorem.sentence(),
       };
+      const dummyChannel = "*";
 
       testSaga(chatSaga)
         .next()
         .call(createWebSocketConnection)
         .next(socket)
         .call(createSocketChannel, socket)
-        .next("*")
+        .next(dummyChannel)
         .takeEvery(actions.send.type, sendMessage, socket)
         .next()
-        .take("*")
+        .take(dummyChannel)
         .next(payload)
         .put(actions.update([payload]))
         .finish();

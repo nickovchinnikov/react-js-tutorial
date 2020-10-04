@@ -26,6 +26,7 @@ export const ChatComponent: React.FC<Props> = ({ chat, username, send }) => {
       ev.preventDefault();
       if (!isEmpty(message)) {
         send({ message, author: username });
+        setMsg("");
       }
     },
     [message, username, send]

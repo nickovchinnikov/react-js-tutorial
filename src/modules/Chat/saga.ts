@@ -7,6 +7,8 @@ import { actions } from "./reducer";
 export const createWebSocketConnection = () =>
   SocketIO("http://localhost:3000");
 
+const chatMessageEvent = "chatMessage";
+
 export function createSocketChannel(socket: SocketIOClient.Socket) {
   return eventChannel((emit) => {
     const chatMessageHandler = ({
@@ -15,10 +17,10 @@ export function createSocketChannel(socket: SocketIOClient.Socket) {
       emit(payload);
     };
 
-    socket.on("chatMessage", chatMessageHandler);
+    socket.on(chatMessageEvent, chatMessageHandler);
 
     const unsubscribe = () => {
-      socket.off("chatMessage", chatMessageHandler);
+      socket.off(chatMessageEvent, chatMessageHandler);
     };
 
     return unsubscribe;
@@ -29,7 +31,7 @@ export function* sendMessage(
   socket: SocketIOClient.Socket,
   payload: ReturnType<typeof actions.send>
 ) {
-  socket.emit("chatMessage", payload);
+  socket.emit(chatMessageEvent, payload);
 }
 
 export function* chatSaga() {
