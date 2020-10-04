@@ -107,12 +107,14 @@
     "typescript": "^3.9.7",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.0"
+    "webpack-dev-server": "^3.11.0",
+    "worker-plugin": "^5.0.0"
   },
   "dependencies": {
     "@emotion/core": "^10.0.35",
     "@emotion/styled": "^10.0.27",
     "@reduxjs/toolkit": "^1.4.0",
+    "comlink": "^4.3.0",
     "crypto-js": "^4.0.0",
     "formik": "^2.1.5",
     "jest-puppeteer": "^4.4.0",
