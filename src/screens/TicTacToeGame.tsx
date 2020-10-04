@@ -8,15 +8,20 @@ import {
   GameState,
   InteractiveField,
   getInteractiveFieldModule,
+  getChatModule,
+  Chat,
 } from "@/modules";
 
 export const TicTacToeGame: FC<{}> = () => (
   <ErrorBoundary>
-    <DynamicModuleLoader modules={[getInteractiveFieldModule()]}>
+    <DynamicModuleLoader
+      modules={[getInteractiveFieldModule(), getChatModule()]}
+    >
       <AccessChecker>
         <CreateCustomGame />
         <GameState />
         <InteractiveField />
+        <Chat />
       </AccessChecker>
     </DynamicModuleLoader>
   </ErrorBoundary>

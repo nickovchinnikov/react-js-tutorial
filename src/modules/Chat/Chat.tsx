@@ -32,8 +32,8 @@ export const ChatComponent: React.FC<Props> = ({ chat, username, send }) => {
   );
   return !isEmpty(username) ? (
     <>
-      {chat.map(({ author, message }) => (
-        <MessageComponent key={`${author}_${message}`} author={author}>
+      {chat.map(({ author, message }, idx) => (
+        <MessageComponent key={`${author}_${message}_${idx}`} author={author}>
           {message}
         </MessageComponent>
       ))}
