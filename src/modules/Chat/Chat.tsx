@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { Component, FormEvent, ChangeEvent } from "react";
 import { connect } from "react-redux";
 import { isEmpty } from "ramda";
 
@@ -19,50 +19,59 @@ const mapDispatchToProps = {
 export type Props = ReturnType<typeof mapStateToProps> &
   typeof mapDispatchToProps;
 
-export const ChatComponent: React.FC<Props> = ({ chat, username, send }) => {
-  const [message, setMsg] = useState("");
-  const onSubmit = useCallback(
-    async (ev) => {
-      ev.preventDefault();
-      if (!isEmpty(message)) {
-        send({ message, author: username });
-        setMsg("");
-      }
-    },
-    [message, username, send]
-  );
-
-  const onChange = useCallback(async (ev) => {
-    ev.preventDefault();
-    const message = (ev.target as HTMLInputElement).value;
-    if (!isEmpty(message)) {
-      setMsg(message);
-    }
-  }, []);
-
-  return !isEmpty(username) ? (
-    <>
-      {chat.map(({ author, message }, idx) => (
-        <MessageComponent key={`${author}_${message}_${idx}`} author={author}>
-          {message}
-        </MessageComponent>
-      ))}
-      <form onSubmit={onSubmit}>
-        <label>
-          Message:
-          <input
-            placeholder="Enter your msg"
-            value={message}
-            onChange={onChange}
-            required
-            minLength={4}
-            maxLength={10}
-          />
-        </label>
-        <button>Send</button>
-      </form>
-    </>
-  ) : null;
+export type State = {
+  message: string;
 };
+
+export class ChatComponent extends Component<Props, State> {
+  state = { message: "" };
+
+  onSubmit = (event: FormEvent) => {
+    event.preventDefault();
+    const { message } = this.state;
+    const { username, send } = this.props;
+    if (!isEmpty(message)) {
+      send({ message, author: username });
+      this.setState({ message: "" });
+    }
+  };
+
+  onChange = (event: ChangeEvent<HTMLInputElement>) => {
+    event.preventDefault();
+    const message = event.target.value;
+    if (!isEmpty(message)) {
+      this.setState({ message });
+    }
+  };
+
+  render() {
+    const { message } = this.state;
+    const { username, chat } = this.props;
+
+    return !isEmpty(username) ? (
+      <>
+        {chat.map(({ author, message }, idx) => (
+          <MessageComponent key={`${author}_${message}_${idx}`} author={author}>
+            {message}
+          </MessageComponent>
+        ))}
+        <form onSubmit={this.onSubmit}>
+          <label>
+            Message:
+            <input
+              placeholder="Enter your msg"
+              value={message}
+              onChange={this.onChange}
+              required
+              minLength={4}
+              maxLength={10}
+            />
+          </label>
+          <button>Send</button>
+        </form>
+      </>
+    ) : null;
+  }
+}
 
 export const Chat = connect(mapStateToProps, mapDispatchToProps)(ChatComponent);
