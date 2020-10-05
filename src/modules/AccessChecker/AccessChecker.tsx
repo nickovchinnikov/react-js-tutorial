@@ -6,7 +6,7 @@ import { TicTacToeGameState } from "@/store";
 import { CheckState } from "@/modules/Login/reducer";
 
 const mapStateToProps = ({ login }: TicTacToeGameState) => ({
-  ...login,
+  status: login.status,
 });
 
 export interface Props extends ReturnType<typeof mapStateToProps> {
@@ -14,17 +14,25 @@ export interface Props extends ReturnType<typeof mapStateToProps> {
   redirectPath?: string;
 }
 
+export const ChekingUserMsgComponent = () => (
+  <div>Checking if user is authorized...</div>
+);
+
+export const RedirectUserComponent: FC<{ to: string }> = ({ to }) => (
+  <Redirect to={to} />
+);
+
 export const AccessCheckerComponent: FC<Props> = ({
   children,
   status,
   redirectPath = "/login",
 }) => {
   if (status === CheckState.initiated) {
-    return <div>Checking if user is authorized...</div>;
+    return <ChekingUserMsgComponent />;
   }
 
   if (status === CheckState.failed) {
-    return <Redirect to={redirectPath} />;
+    return <RedirectUserComponent to={redirectPath} />;
   }
 
   return <>{children}</>;

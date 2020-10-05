@@ -8,6 +8,8 @@ export interface State {
   hasError: boolean;
 }
 
+export const ErrorMsgComponent = () => <h1>Something went wrong.</h1>;
+
 export class ErrorBoundary extends Component<Props, State> {
   state = { hasError: false };
 
@@ -16,7 +18,7 @@ export class ErrorBoundary extends Component<Props, State> {
     return { hasError: true };
   }
 
-  componentDidCatch(error: any, errorInfo: any) {
+  componentDidCatch(error: Error, errorInfo: any) {
     // You can also log the error to an error reporting service
     console.error(error, errorInfo);
   }
@@ -24,7 +26,7 @@ export class ErrorBoundary extends Component<Props, State> {
   render() {
     if (this.state.hasError) {
       // You can render any custom fallback UI
-      return <h1>Something went wrong.</h1>;
+      return <ErrorMsgComponent />;
     }
 
     return this.props.children;

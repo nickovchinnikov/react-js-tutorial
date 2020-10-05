@@ -7,3 +7,5 @@ export {
 } from "./InteractiveField";
 export { Login, User, loginSlice, getLoginModule } from "./Login";
 export { Background } from "./Background";
+export { chatSlice, getChatModule, Chat } from "./Chat";
+export { hashSlice, getHashModule, Hash } from "./Hash";

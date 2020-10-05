@@ -250,3 +250,12 @@ React Patterns
 
 [Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/49) <br>
 [Presentation](https://docs.google.com/presentation/d/1ox8hQ2Hw2TXKGnlbG4pHoXdgeZ7NKXQ8ev9qryQC448/edit?usp=sharing) <br>
+
+
+## Lesson 28
+
+* Websocket
+* Webworker + Comlink
+
+[Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/69) <br>
+[Presentation](https://docs.google.com/presentation/d/1PcjJrDn0bj4DNWX1_bquPzKEUW2Ayn02PYOz72y6KWY/) <br>
