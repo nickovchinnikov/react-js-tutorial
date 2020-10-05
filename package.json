@@ -14,7 +14,7 @@
     "e2e": "npx jest -c jest.e2e.config.js e2e",
     "test:loki": "npm run build-storybook && npx loki --requireReference --reactUri file:./storybook-static",
     "ts:check": "npx tsc -p tsconfig.json --noEmit",
-    "check": "npm run lint && npm run ts:check && npm test && npm run e2e && npm run test:loki",
+    "check": "npm run lint && npm run ts:check && npm test -- --coverage && npm run e2e && npm run test:loki",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
