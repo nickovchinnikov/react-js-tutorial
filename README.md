@@ -33,9 +33,11 @@ Result: 9
 
 [Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/3)
 
-[Pull request2](https://github.com/nickovchinnikov/react-js-tutorial/pull/63)
+[Pull request2 with solution](https://github.com/nickovchinnikov/react-js-tutorial/pull/12)
 
-[Pull request3](https://github.com/nickovchinnikov/react-js-tutorial/pull/66)
+[Pull request3](https://github.com/nickovchinnikov/react-js-tutorial/pull/63)
+
+[Pull request4](https://github.com/nickovchinnikov/react-js-tutorial/pull/66)
 
 [Presentation](https://docs.google.com/presentation/d/1ACOGg-BgKrcnLool6gFzT3G3w1oProH_2O4PjCiz2w8/edit?usp=sharing)
 
