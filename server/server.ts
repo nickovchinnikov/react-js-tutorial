@@ -2,9 +2,13 @@ import Express from "express";
 import HTTP from "http";
 import SocketIO from "socket.io";
 
+import { setupAuth } from "./setupAuth";
+
 const app = Express();
 const server = HTTP.createServer(app);
 const io = SocketIO(server);
+
+setupAuth(app);
 
 const chatMsgEvent = "chatMessage";
 
