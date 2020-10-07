@@ -31,6 +31,9 @@ module.exports = {
   },
   devServer: {
     historyApiFallback: true,
+    proxy: {
+      "/auth": "http://localhost:3000",
+    },
   },
   plugins: [
     new WorkerPlugin(),
