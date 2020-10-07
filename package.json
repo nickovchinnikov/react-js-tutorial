@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "npx webpack-dev-server --mode development --hot",
+    "start:be": "ts-node server/server.ts",
     "build": "npx webpack --mode production",
     "calc": "npx ts-node scripts/calc",
     "lint": "npx eslint --ext .js,.jsx,.ts,.tsx --fix ./",
