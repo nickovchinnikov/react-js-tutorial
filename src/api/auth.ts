@@ -9,24 +9,48 @@ export const createConnection = async () => {
 };
 
 export const login = async (name: string) => {
-  await sleep(1000);
+  const response = await fetch("/auth/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    redirect: "follow",
+    body: JSON.stringify({ name }),
+  });
+  const json = await response.json();
 
-  await localStorage.setItem("login", name);
+  if (response.ok) {
+    return json;
+  }
+  throw json;
 };
 
 export const logout = async () => {
-  await sleep(1000);
+  const response = await fetch("/auth/logout", {
+    method: "POST",
+  });
 
-  await localStorage.removeItem("login");
+  const json = await response.json();
+
+  if (response.ok) {
+    return json;
+  }
+  throw json;
 };
 
 export const getUserSession = async () => {
-  await sleep(2000);
-  const login = await localStorage.getItem("login");
-  return login;
+  const response = await fetch("/auth/current");
+  const json = await response.json();
+
+  if (response.ok) {
+    return json;
+  }
+  throw json;
 };
 
 export const isLoggedIn = async () => {
-  const login = await getUserSession();
-  return Boolean(login);
+  const response = await fetch("/auth/current");
+  const json = await response.json();
+
+  return response.ok && Boolean(json.name);
 };
