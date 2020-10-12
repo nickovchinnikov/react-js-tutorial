@@ -1,4 +1,5 @@
 import { mul, div, add, minus } from "./mathOperators";
+import { toSquare } from "./mathOperators";
 
 describe("mathOperators test cases", () => {
   it("mul 1 * 2 to equal 2", () => {
@@ -23,5 +24,9 @@ describe("mathOperators test cases", () => {
 
   it("minus 4 - 2 to equal 2", () => {
     expect(minus(4, 2)).toBe(2);
+  });
+
+  it("squaring 8 to equal 64", () => {
+    expect(toSquare(8)).toBe(64);
   });
 });

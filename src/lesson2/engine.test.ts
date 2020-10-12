@@ -1,4 +1,8 @@
-import { firstPrioritiesCalc, secondPrioritiesCalc } from "./engine";
+import {
+  firstPrioritiesCalc,
+  secondPrioritiesCalc,
+  singleOperandCalc,
+} from "./engine";
 
 describe("firstPrioritiesCalc simple cases", () => {
   it("[1, * 32]", () => {
@@ -43,5 +47,11 @@ describe("secondPrioritiesCalc simple cases", () => {
 
   it("[32, - 32, +, 10]", () => {
     expect(secondPrioritiesCalc([32, "-", 32, "+", 10])).toEqual(10);
+  });
+});
+
+describe("singleOperandCalc cases", () => {
+  it("[8**, +, 6]", () => {
+    expect(singleOperandCalc(["8**", "+", 6])).toEqual([64, "+", 6]);
   });
 });

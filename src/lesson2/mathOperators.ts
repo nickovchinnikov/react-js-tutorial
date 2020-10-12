@@ -1,4 +1,5 @@
 export type ScalarOperationType = (first: number, second: number) => number;
+export type SingleOperandType = (operand: number) => number;
 
 export const mul: ScalarOperationType = (
   first: number,
@@ -20,11 +21,20 @@ export const minus: ScalarOperationType = (
   second: number
 ): number => first - second;
 
+export const toSquare: SingleOperandType = (operand: number): number =>
+  operand * operand;
+
 export const mathOperators: { [key: string]: ScalarOperationType } = {
   "*": mul,
   "/": div,
   "+": add,
   "-": minus,
+};
+
+export const singleOperandMathOperators: {
+  [key: string]: SingleOperandType;
+} = {
+  "**": toSquare,
 };
 
 export const mathPriorities: number[] = [1, 2];
@@ -36,4 +46,5 @@ export const mathOperatorsPriorities: { [key: string]: number } = {
   "/": FIRST,
   "+": SECOND,
   "-": SECOND,
+  "**": FIRST,
 };

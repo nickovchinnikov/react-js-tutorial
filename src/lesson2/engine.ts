@@ -2,6 +2,7 @@ import { ParsedLineType } from "./parser";
 import { isNumber } from "./helpers";
 import {
   mathOperators,
+  singleOperandMathOperators,
   mathPriorities,
   mathOperatorsPriorities,
 } from "./mathOperators";
@@ -40,3 +41,31 @@ export const secondPrioritiesCalc = (stack: ParsedLineType): number =>
     }
     return result;
   }, Number(stack[0]));
+
+export const singleOperandCalc = (stack: ParsedLineType): ParsedLineType => {
+  const countOfOperations = new Map();
+  stack.forEach((stackItem, index) => {
+    Object.keys(singleOperandMathOperators).forEach((operator) => {
+      if (String(stackItem).endsWith(operator)) {
+        if (countOfOperations.has(operator)) {
+          const value = countOfOperations.get(operator);
+          value.push(index);
+        } else {
+          countOfOperations.set(operator, [index]);
+        }
+      }
+    });
+  });
+
+  if (countOfOperations.size === 0) return stack;
+
+  for (const data of countOfOperations) {
+    data[1].forEach((indexInStack: number) => {
+      const value = String(stack[indexInStack]).replace(data[0], "");
+      const calcValue = singleOperandMathOperators[data[0]](Number(value));
+      stack[indexInStack] = calcValue;
+    });
+  }
+
+  return stack;
+};
