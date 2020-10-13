@@ -28,7 +28,7 @@ module.exports = {
         use: ["style-loader", "css-loader"],
       },
       {
-        test: /\.worker\.js$/,
+        test: /\.worker\.(ts|js)$/,
         use: { loader: "worker-loader" },
       },
       ...webpackRules,
