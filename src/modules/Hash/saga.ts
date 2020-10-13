@@ -8,7 +8,7 @@ const worker = new Worker("@/web-worker", {
   type: "module",
 });
 
-const workerApi = wrap<import("@/web-worker").WebWorker>(worker);
+const workerApi = wrap<import("@/web-worker/index.worker").WebWorker>(worker);
 
 export function* updateHash() {
   let hash = initialState;
