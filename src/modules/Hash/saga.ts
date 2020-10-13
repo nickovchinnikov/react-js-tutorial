@@ -1,14 +1,13 @@
 import { wrap } from "comlink";
 import { fork, call, put, delay } from "redux-saga/effects";
+// we're using worker loader https://webpack.js.org/loaders/worker-loader/
+import Worker from "@/web-worker/index.worker";
 
 import { actions, initialState } from "./reducer";
 
-const worker = new Worker("@/web-worker", {
-  name: "WebWorker",
-  type: "module",
-});
+const worker = new Worker();
 
-const workerApi = wrap<import("@/web-worker/index.worker").WebWorker>(worker);
+const workerApi = wrap(worker);
 
 export function* updateHash() {
   let hash = initialState;
