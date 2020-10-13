@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e6d0918a-3f2a-4a07-8994-8d60930a36cc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.prettierrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.eslintrc" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/babel.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/babel.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jest.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/jest.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lesson2/engine.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lesson2/engine.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lesson2/engine.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lesson2/engine.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lesson2/helpers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lesson2/helpers.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lesson2/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lesson2/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lesson2/mathOperators.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lesson2/mathOperators.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lesson2/mathOperators.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lesson2/mathOperators.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lesson2/parser.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lesson2/parser.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lesson2/parser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lesson2/parser.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lesson2/runner.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lesson2/runner.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lesson2/runner.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lesson2/runner.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sum.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/sum.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sum.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/sum.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="ProjectId" id="1iY8JENpv170Nxywc6xu4OeNLfA" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
+    <property name="node.js.detected.package.stylelint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
+    <property name="node.js.path.for.package.stylelint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="" />
+    <property name="node.js.selected.package.stylelint" value="" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs.jest.jest_package" value="$PROJECT_DIR$/node_modules/jest" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="prettierjs.PrettierConfiguration.Package" value="C:\Users\yuri.sidorov\react-js-tutorial\node_modules\prettier" />
+    <property name="settings.editor.selected.configurable" value="settings.javascript.linters.eslint" />
+    <property name="ts.external.directory.path" value="C:\Users\yuri.sidorov\react-js-tutorial\node_modules\typescript\lib" />
+  </component>
+  <component name="RunManager" selected="Jest.Runner with brackets in brackets cases.(((3 ! + 6) * 5) / 2 - 30 / (2 ^ 3 + 2)) * 2">
+    <configuration name="Runner with brackets cases" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="SUITE" />
+      <test-file value="$PROJECT_DIR$/src/lesson2/runner.test.ts" />
+      <test-names>
+        <test-name value="Runner with brackets cases" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="Runner with brackets in brackets cases" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="SUITE" />
+      <test-file value="$PROJECT_DIR$/src/lesson2/runner.test.ts" />
+      <test-names>
+        <test-name value="Runner with brackets in brackets cases" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="Runner with brackets in brackets cases.(((3 ! + 4) * 5) / 2 - 30 / (2 ^ 3 + 2)) * 2" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/lesson2/runner.test.ts" />
+      <test-names>
+        <test-name value="Runner with brackets in brackets cases" />
+        <test-name value="(((3 ! + 4) * 5) / 2 - 30 / (2 ^ 3 + 2)) * 2" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="Runner with brackets in brackets cases.(((3 ! + 6) * 5) / 2 - 30 / (2 ^ 3 + 2)) * 2" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/lesson2/runner.test.ts" />
+      <test-names>
+        <test-name value="Runner with brackets in brackets cases" />
+        <test-name value="(((3 ! + 6) * 5) / 2 - 30 / (2 ^ 3 + 2)) * 2" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="Runner with brackets in brackets cases.(((3 ! + 8) * 5) / 2 - 30 / (2 ^ 3 + 2)) * 2" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/lesson2/runner.test.ts" />
+      <test-names>
+        <test-name value="Runner with brackets in brackets cases" />
+        <test-name value="(((3 ! + 8) * 5) / 2 - 30 / (2 ^ 3 + 2)) * 2" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Jest.Runner with brackets in brackets cases.(((3 ! + 6) * 5) / 2 - 30 / (2 ^ 3 + 2)) * 2" />
+        <item itemvalue="Jest.Runner with brackets in brackets cases.(((3 ! + 8) * 5) / 2 - 30 / (2 ^ 3 + 2)) * 2" />
+        <item itemvalue="Jest.Runner with brackets in brackets cases.(((3 ! + 4) * 5) / 2 - 30 / (2 ^ 3 + 2)) * 2" />
+        <item itemvalue="Jest.Runner with brackets in brackets cases" />
+        <item itemvalue="Jest.Runner with brackets cases" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e6d0918a-3f2a-4a07-8994-8d60930a36cc" name="Default Changelist" comment="" />
+      <created>1602073090874</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1602073090874</updated>
+      <workItem from="1602073092193" duration="2262000" />
+      <workItem from="1602136782328" duration="8075000" />
+      <workItem from="1602176385869" duration="607000" />
+      <workItem from="1602215885194" duration="2000" />
+      <workItem from="1602497136649" duration="11071000" />
+      <workItem from="1602510405002" duration="682000" />
+      <workItem from="1602565727057" duration="13110000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="828" y="411" key="#ESLint" timestamp="1602137920008">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="828" y="411" key="#ESLint/0.0.1920.1040@0.0.1920.1040" timestamp="1602137920008" />
+    <state x="92" y="92" width="1736" height="856" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1602578950914">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="92" y="92" width="1736" height="856" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1602578950914" />
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1602138489886">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1602138489886" />
+    <state width="1877" height="275" key="GridCell.Tab.0.bottom" timestamp="1602589633982">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="275" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1602589633982" />
+    <state width="1877" height="275" key="GridCell.Tab.0.center" timestamp="1602589633982">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="275" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1602589633982" />
+    <state width="1877" height="275" key="GridCell.Tab.0.left" timestamp="1602589633982">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="275" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1602589633982" />
+    <state width="1877" height="275" key="GridCell.Tab.0.right" timestamp="1602589633982">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="275" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1602589633982" />
+    <state x="461" y="165" key="SettingsEditor" timestamp="1602138497762">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1602138497762" />
+    <state x="736" y="269" key="refactoring.ChangeSignatureDialog" timestamp="1602579516261">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="736" y="269" key="refactoring.ChangeSignatureDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1602579516261" />
+  </component>
+</project>

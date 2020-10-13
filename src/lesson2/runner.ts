@@ -1,19 +1,42 @@
-import { parser } from "./parser";
+import { parser } from './parser';
 
-import { firstPrioritiesCalc, secondPrioritiesCalc } from "./engine";
+import {
+    firstPrioritiesCalc,
+    secondPrioritiesCalc,
+    thirdPrioritiesCalc,
+    fourthPrioritiesCalc,
+} from './engine';
 
-export const runner = (line: string): number => {
-  const stack = parser(line);
+const calc = (line: string): number => {
+    const stack = parser(line);
 
-  if (stack === null) {
-    throw new TypeError("Unexpected string");
-  }
+    if (stack === null) {
+        throw new TypeError('Unexpected string');
+    }
 
-  const firstPrioritiesRes = firstPrioritiesCalc(stack);
+    const firstPrioritiesRes = firstPrioritiesCalc(stack);
 
-  if (firstPrioritiesRes.length === 1) {
-    return Number(firstPrioritiesRes[0]);
-  }
+    if (firstPrioritiesRes.length === 1) {
+        return Number(firstPrioritiesRes[0]);
+    }
 
-  return secondPrioritiesCalc(firstPrioritiesRes);
+    const secondPrioritiesRes = secondPrioritiesCalc(firstPrioritiesRes);
+
+    const thirdPrioritiesRes = thirdPrioritiesCalc(secondPrioritiesRes);
+
+    return fourthPrioritiesCalc(thirdPrioritiesRes);
 };
+
+const withoutBrackets = (line: string): string => {
+    const regexp = new RegExp('\\([^()]+\\)');
+    if (regexp.test(line)) {
+        return withoutBrackets(
+            line.replace(regexp, (item) =>
+                calc(item.substr(1, item.length - 2)).toString()
+            )
+        );
+    }
+    return line;
+};
+
+export const runner = (line: string): number => calc(withoutBrackets(line));
