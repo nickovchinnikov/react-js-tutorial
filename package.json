@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npx webpack-dev-server --mode development --hot",
+    "start": "webpack serve --mode development --hot",
     "build": "npx webpack --mode production",
     "calc": "npx ts-node scripts/calc",
     "slides": "reveal-md",
@@ -120,7 +120,7 @@
     "ts-node": "^8.10.2",
     "typescript": "^4.1.2",
     "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.12",
+    "webpack-cli": "^4.0.0",
     "webpack-dev-server": "^3.11.0",
     "worker-plugin": "^5.0.0",
     "yaspeller": "^7.0.0"
