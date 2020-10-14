@@ -1,0 +1,12 @@
+type Query {
+  course(id: Int!): Course
+  courses(topic: String, author: String): [Course]
+}
+type Course {
+  id: Int
+  title: String
+  author: String
+  description: String
+  topic: String
+  url: String
+}
