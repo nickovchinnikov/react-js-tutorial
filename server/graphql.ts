@@ -1,4 +1,5 @@
 import Express from "express";
+import cors from "cors";
 import { graphqlHTTP } from "express-graphql";
 import faker from "faker";
 import { times, identity, includes } from "ramda";
@@ -76,6 +77,12 @@ const root = {
   courses: getCourses,
   updateCourseTopic: updateCourseTopic,
 };
+
+app.use(
+  cors({
+    origin: "http://localhost:8080",
+  })
+);
 
 app.use(
   "/graphql",
