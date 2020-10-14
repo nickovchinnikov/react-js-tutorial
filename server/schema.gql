@@ -1,6 +1,6 @@
 type Query {
   course(id: Int!): Course
-  courses(topic: String, author: String): [Course]
+  courses(topic: String): [Course]
 }
 type Course {
   id: Int

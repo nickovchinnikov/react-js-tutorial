@@ -8,7 +8,7 @@ export type State = {
   search: string;
 };
 
-type SendRequest = (topic?: string) => any;
+type SendRequest = (topic?: string) => Promise<{ courses: Course[] }>;
 
 const sendRequest: SendRequest = async function (topic = "") {
   const response = await fetch("http://localhost:4000/graphql", {
@@ -43,10 +43,9 @@ export class Courses extends Component<{}, State> {
     event.preventDefault();
     const { search } = this.state;
     if (!isEmpty(search)) {
-      const data = await sendRequest(search);
-      console.warn(data);
+      const { courses } = await sendRequest(search);
 
-      this.setState({ courses: data.courses });
+      this.setState({ courses });
     }
   };
 
@@ -57,10 +56,10 @@ export class Courses extends Component<{}, State> {
   };
 
   async componentDidMount() {
-    const data = await sendRequest();
-    console.warn(data);
+    const { courses } = await sendRequest();
+    console.warn(courses);
 
-    this.setState({ courses: data.courses });
+    this.setState({ courses });
   }
 
   render() {

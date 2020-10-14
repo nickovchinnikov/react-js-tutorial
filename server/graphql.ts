@@ -76,7 +76,7 @@ const updateCourseTopic = ({ id, topic }: QueryParams) => {
 const root = {
   course: getCourse,
   courses: getCourses,
-  updateCourseTopic: updateCourseTopic,
+  updateCourseTopic,
 };
 
 app.use(
@@ -88,7 +88,7 @@ app.use(
 app.use(
   "/graphql",
   graphqlHTTP({
-    schema: schema,
+    schema,
     rootValue: root,
     graphiql: true,
   })
