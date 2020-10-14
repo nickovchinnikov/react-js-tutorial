@@ -10,7 +10,7 @@ const app = Express();
 const schema = buildSchema(`
   type Query {
       course(id: Int!): Course
-      courses(topic: String, author: String): [Course]
+      courses(topic: String): [Course]
   },
   type Course {
       id: Int
@@ -22,7 +22,7 @@ const schema = buildSchema(`
   }
 `);
 
-interface Course {
+export interface Course {
   id: number;
   topic: string;
   title: string;
@@ -52,6 +52,7 @@ const getCourse = ({ id }: QueryParams) =>
   coursesData.find((course) => course.id === id);
 
 const getCourses = ({ topic }: QueryParams) => {
+  console.warn(topic);
   if (topic) {
     return coursesData.filter((course) => includes(topic, course.topic));
   } else {

@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 import { Provider } from "react-redux";
 
-import { TicTacToeGame, Header, SignIn } from "./screens";
+import { TicTacToeGame, Header, SignIn, CoursesScreen } from "./screens";
 
 import { store } from "./store";
 import { selectIsAuthorized } from "@/modules/Login/selectors";
@@ -26,6 +26,9 @@ export const App: React.FC<{}> = () => {
         <Header />
         <nav>
           <ul>
+            <li>
+              <Link to="/courses">Courses</Link>
+            </li>
             {!isAuthorized ? (
               <li>
                 <Link to="/signin">SignIn</Link>
@@ -37,6 +40,9 @@ export const App: React.FC<{}> = () => {
           </ul>
         </nav>
         <Switch>
+          <Route path="/courses">
+            <CoursesScreen />
+          </Route>
           <Route path="/signin">
             <SignIn />
           </Route>
