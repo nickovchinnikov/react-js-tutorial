@@ -50,7 +50,6 @@ export class Courses extends Component<{}, State> {
   };
 
   onChange = (event: ChangeEvent<HTMLInputElement>) => {
-    event.preventDefault();
     const search = event.target.value;
     this.setState({ search });
   };
