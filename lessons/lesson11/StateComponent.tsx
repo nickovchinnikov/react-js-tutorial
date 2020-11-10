@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 export const StateComponent = () => {
-  const [name, setName] = useState("Nikita");
+  const [, setName] = useState("Nikita");
   console.warn("re-render StateComponent");
   return (
     <div>
@@ -13,7 +13,7 @@ export const StateComponent = () => {
 };
 
 export const StateComponentWithObj = () => {
-  const [name, setName] = useState({ name: "Ivan" });
+  const [, setName] = useState({ name: "Ivan" });
   console.warn("re-render StateComponentWithObj");
   return (
     <div>
