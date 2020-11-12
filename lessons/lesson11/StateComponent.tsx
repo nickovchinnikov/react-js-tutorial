@@ -4,11 +4,9 @@ export const StateComponent = () => {
   const [, setName] = useState("Nikita");
   console.warn("re-render StateComponent");
   return (
-    <div>
-      <button onClick={() => setName("Nikita")}>
-        State Component with string Click!
-      </button>
-    </div>
+    <button onClick={() => setName("Nikita")}>
+      State Component with string Click!
+    </button>
   );
 };
 
@@ -16,11 +14,9 @@ export const StateComponentWithObj = () => {
   const [, setName] = useState({ name: "Ivan" });
   console.warn("re-render StateComponentWithObj");
   return (
-    <div>
-      <button onClick={() => setName({ name: "Ivan" })}>
-        State Component with obj Click!!
-      </button>
-    </div>
+    <button onClick={() => setName({ name: "Ivan" })}>
+      State Component with obj Click!!
+    </button>
   );
 };
 
@@ -36,10 +32,8 @@ export const StateComponentWithLifeCycle = () => {
 
   console.warn("re-render StateComponentWithLifeCycle");
   return (
-    <div>
-      <button onClick={() => setName("Ivan")}>
-        State Component with string Click!
-      </button>
-    </div>
+    <button onClick={() => setName("Ivan")}>
+      State Component with string Click!
+    </button>
   );
 };
