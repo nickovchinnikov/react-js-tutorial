@@ -23,6 +23,7 @@ function reducer(state: State, action: Action) {
 
 export const CounterReducer = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
+
   return (
     <>
       Count: {state.count}

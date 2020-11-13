@@ -9,9 +9,12 @@ export default {
   title: "StateComponentExample",
 };
 
-export const stateComponentExample = () => [
+export const stateComponentExampleWithScalar = () => [
   <StateComponent key="1" />,
-  <StateComponentWithObj key="2" />,
+];
+
+export const stateComponentExampleWithObj = () => [
+  <StateComponentWithObj key="1" />,
 ];
 
 export const stateComponentWithLifecycleExample = () => [

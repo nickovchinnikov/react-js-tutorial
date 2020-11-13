@@ -20,19 +20,29 @@ export const StateComponentWithObj = () => {
   );
 };
 
+const clickCallback = () => {
+  console.warn("click");
+};
+
 export const StateComponentWithLifeCycle = () => {
   const [name, setName] = useState("John");
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
     console.warn("didMount+didUpdate");
+    document.addEventListener("click", clickCallback);
     return () => {
-      console.warn("willUnmount");
+      document.removeEventListener("click", clickCallback);
     };
   }, [name]);
 
-  console.warn("re-render StateComponentWithLifeCycle");
   return (
-    <button onClick={() => setName("Ivan")}>
+    <button
+      onClick={() => {
+        setCount(count + 1);
+        setName(`Ivan ${count}`);
+      }}
+    >
       State Component with string Click!
     </button>
   );

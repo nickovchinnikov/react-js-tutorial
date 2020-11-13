@@ -1,7 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { FC, useState, useEffect } from "react";
 
-export const ClickCounter = () => {
-  const [count, setCount] = useState(0);
+interface Props {
+  defaultCount?: number;
+}
+
+export const ClickCounter: FC<Props> = ({ defaultCount = 0 }) => {
+  const [count, setCount] = useState(defaultCount);
 
   useEffect(() => {
     // Update the document title using the browser API
