@@ -5,6 +5,10 @@ const WorkerPlugin = require("worker-plugin");
 const webpackRules = require("./webpackRules");
 
 module.exports = {
+  node: {
+    Buffer: false,
+    process: false,
+  },
   entry: "./src/index.tsx",
   devtool: "source-map",
   resolve: {
@@ -19,6 +23,8 @@ module.exports = {
     path: path.join(__dirname, "/dist"),
     filename: "./index.js",
     publicPath: "/",
+    // https://github.com/GoogleChromeLabs/worker-plugin/issues/20
+    // globalObject: "(typeof self!='undefined'?self:global)",
   },
   module: {
     rules: [
