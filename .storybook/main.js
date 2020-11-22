@@ -23,8 +23,6 @@ module.exports = {
     '@storybook/addon-viewport',
   ],
   webpackFinal: (config) => {
-    config.plugins.push(new webpack.HotModuleReplacementPlugin());
-
     config.module.rules.push({
       test: /\.stories\.tsx$/,
       loaders: [
