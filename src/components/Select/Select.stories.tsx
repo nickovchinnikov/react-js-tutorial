@@ -11,5 +11,5 @@ export default {
 };
 
 export const select = () => [
-  <Select key="jsx" label="Symbol" options={array("options", ["R", "Z"])} />,
+  <Select key="jsx" label="Symbol" options={array("options", ["X", "Y"])} />,
 ];

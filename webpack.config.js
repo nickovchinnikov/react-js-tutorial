@@ -5,10 +5,6 @@ const WorkerPlugin = require("worker-plugin");
 const webpackRules = require("./webpackRules");
 
 module.exports = {
-  node: {
-    Buffer: false,
-    process: false,
-  },
   entry: "./src/index.tsx",
   devtool: "source-map",
   resolve: {

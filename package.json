@@ -144,9 +144,9 @@
         "deviceScaleFactor": 1,
         "mobile": false
       },
-      "chrome.googlePixel": {
+      "chrome.iphone7": {
         "target": "chrome.docker",
-        "preset": "Google Pixel"
+        "preset": "iPhone 7"
       }
     }
   }
