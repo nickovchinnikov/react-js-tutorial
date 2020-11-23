@@ -13,7 +13,7 @@ import { TicTacToeGame, Header, SignIn, CoursesScreen } from "./screens";
 import { store } from "./store";
 import { selectIsAuthorized } from "@/modules/Login/selectors";
 
-export const App: React.FC<{}> = () => {
+export const App: React.FC<unknown> = () => {
   const [state, setState] = useState(store.getState());
 
   store.subscribe(() => setState(store.getState()));

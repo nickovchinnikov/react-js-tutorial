@@ -13,9 +13,9 @@ interface ScreenState {
   isActive: boolean;
 }
 
-export class App extends React.Component<{}, ScreenState> {
-  constructor({}) {
-    super({});
+export class App extends React.Component<unknown, ScreenState> {
+  constructor(props: unknown) {
+    super(props);
     this.state = {
       id: 1,
       interval: 1000,

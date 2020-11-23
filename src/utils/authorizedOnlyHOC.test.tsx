@@ -10,7 +10,7 @@ jest.mock("@/api/auth", () => ({
 }));
 
 jest.mock("react-router-dom", () => ({
-  Redirect: function Redirect(props: object) {
+  Redirect: function Redirect(props: unknown) {
     return <div>Redirect: {JSON.stringify(props)}</div>;
   },
 }));
@@ -19,7 +19,9 @@ describe("authorizedOnlyHoc", () => {
   interface ComponentProps {
     name: string;
   }
+
   const Component: React.FC<ComponentProps> = ({ name }) => <h1>{name}</h1>;
+
   const WrappedComponent = authorizedOnlyHoc(Component);
   let wrapper: ReactWrapper<typeof WrappedComponent>;
 

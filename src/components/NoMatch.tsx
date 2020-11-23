@@ -1,3 +1,3 @@
 import React from "react";
 
-export const NoMatch: React.FC<{}> = () => <h1>404</h1>;
+export const NoMatch: React.FC<unknown> = () => <h1>404</h1>;

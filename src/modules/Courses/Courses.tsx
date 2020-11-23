@@ -33,7 +33,7 @@ const sendRequest: SendRequest = async function (topic = "") {
   return data;
 };
 
-export class Courses extends Component<{}, State> {
+export class Courses extends Component<unknown, State> {
   state = {
     courses: [],
     search: "",

@@ -6,17 +6,20 @@ interface Props {
   dispatch?: Dispatch<AnyAction>;
 }
 
+type State = Record<string, unknown>;
+
 // if you want to get more info
 // try to check https://gist.github.com/gaearon/1d19088790e70ac32ea636c025ba424e
 export function withRedux(
   TargetComponent: React.ComponentType<Props>,
-  getPropsFromRedux: (state: object) => Partial<Props>
-) {
+  getPropsFromRedux: (state: State) => Partial<Props>
+): React.ComponentType<Props> {
   class WrappedComponent extends React.Component<
     Omit<Props, keyof ReturnType<typeof getPropsFromRedux>>,
-    {}
+    State
   > {
-    storeSubscription?: Function;
+    storeSubscription?: () => void;
+
     state: ReturnType<typeof getPropsFromRedux> = getPropsFromRedux(
       store.getState()
     );
