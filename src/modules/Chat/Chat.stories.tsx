@@ -12,8 +12,8 @@ export default {
 
 export const ChatComponentExample = () => (
   <ChatComponent
-    chat={[{ author: "Nikita", message: "Test message" }]}
-    username={text("Author", "Nikita")}
+    chat={[{ author: "N", message: "Test" }]}
+    username={text("A", "N")}
     send={action("SendAction") as typeof actions.send}
   />
 );

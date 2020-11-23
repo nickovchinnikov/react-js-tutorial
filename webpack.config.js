@@ -24,7 +24,7 @@ module.exports = {
     filename: "./index.js",
     publicPath: "/",
     // https://github.com/GoogleChromeLabs/worker-plugin/issues/20
-    // globalObject: "(typeof self!='undefined'?self:global)",
+    globalObject: "(typeof self!='undefined'?self:global)",
   },
   module: {
     rules: [

@@ -6,6 +6,9 @@ import { InputText, InputColor } from "./";
 export default {
   title: "Input",
   decorators: [withKnobs],
+  parameters: {
+    loki: { skip: true },
+  },
 };
 
 export const inputText = () => [
