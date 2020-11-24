@@ -42,7 +42,7 @@ description: CI/CD GitHub Actions
 
 ![Неприрывная интеграция](https://miro.medium.com/max/700/0*7Ug0sGytwhy94O3Z.png)
 
-CI/CD — концепция, которая реализуется как конвейер, облегчая слияние только что закомиченного кода в основную кодовую базу.
+CI/CD — концепция, которая реализуется как конвейер, облегчая слияние только что закоммиченного кода в основную кодовую базу.
 
 <!--v-->
 
@@ -209,9 +209,9 @@ npm run test
 
 Для визуальных тестов
 
-[loki](https://loki.js.org/)
+[Loki](https://loki.js.org/)
 
-![loki](https://loki.js.org/img/favicon.svg)
+![Loki](https://loki.js.org/img/favicon.svg)
 
 <!--s-->
 
