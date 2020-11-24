@@ -17,7 +17,7 @@ const question = (): Promise<null> =>
         console.log(`Result: ${result}`);
       }
 
-      resolve();
+      resolve(null);
     });
   });
 

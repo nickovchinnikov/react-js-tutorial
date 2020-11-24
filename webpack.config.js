@@ -19,6 +19,8 @@ module.exports = {
     path: path.join(__dirname, "/dist"),
     filename: "./index.js",
     publicPath: "/",
+    // https://github.com/GoogleChromeLabs/worker-plugin/issues/20
+    globalObject: "(typeof self!='undefined'?self:global)",
   },
   module: {
     rules: [

@@ -20,7 +20,7 @@ const dynamicReduxModules = [
   getHashModule(),
 ];
 
-export const TicTacToeGame: FC<{}> = () => (
+export const TicTacToeGame: FC<unknown> = () => (
   <ErrorBoundary>
     <DynamicModuleLoader modules={dynamicReduxModules}>
       <AccessChecker>
