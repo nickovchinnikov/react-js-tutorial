@@ -7,6 +7,7 @@
     "start": "npx webpack-dev-server --mode development --hot",
     "build": "npx webpack --mode production",
     "calc": "npx ts-node scripts/calc",
+    "slides": "reveal-md",
     "lint": "npx eslint --ext .js,.jsx,.ts,.tsx --fix ./",
     "loki:update": "npm run build-storybook && npx loki update --requireReference --reactUri file:./storybook-static",
     "loki:approve": "npx loki approve",
@@ -14,6 +15,7 @@
     "e2e": "npx jest -c jest.e2e.config.js e2e",
     "test:loki": "npm run build-storybook && npx loki --requireReference --reactUri file:./storybook-static",
     "ts:check": "npx tsc -p tsconfig.json --noEmit",
+    "lint:spell": "yaspeller ./presentations/**",
     "check": "npm run lint && npm run ts:check && npm test -- --coverage && npm run e2e && npm run test:loki",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
@@ -21,8 +23,12 @@
   "husky": {
     "hooks": {
       "pre-commit": "npm run lint",
-      "pre-push": "npm run test && npm run lint"
+      "pre-push": "lint-staged"
     }
+  },
+  "lint-staged": {
+    "*.{js,json,html,css,md,yml,yaml}": ["npm run test", "npm run lint"],
+    "*.md": "yaspeller"
   },
   "repository": {
     "type": "git",
@@ -98,6 +104,7 @@
     "husky": "^4.3.0",
     "jest": "^25.5.4",
     "jest-emotion": "^10.0.32",
+    "lint-staged": "^10.5.2",
     "loki": "^0.25.1",
     "prettier": "^2.2.0",
     "puppeteer": "^4.0.1",
@@ -106,6 +113,7 @@
     "redux-logger": "^3.0.6",
     "redux-mock-store": "^1.5.4",
     "redux-saga-test-plan": "^4.0.1",
+    "reveal-md": "^4.1.7",
     "socket.io": "^2.3.0",
     "stryker-cli": "^1.0.0",
     "ts-node": "^8.10.2",
@@ -113,7 +121,8 @@
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0",
-    "worker-plugin": "^5.0.0"
+    "worker-plugin": "^5.0.0",
+    "yaspeller": "^7.0.0"
   },
   "dependencies": {
     "@emotion/core": "^10.0.35",
