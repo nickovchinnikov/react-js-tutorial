@@ -1,5 +1,12 @@
 # react-js-tutorial
 
+
+## Github actions
+* Deploy config
+
+[pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/82)
+
+
 ## Lesson 1:
 Basic configuration for the project on the master branch. What configurations you can find:
 * Babel
@@ -271,4 +278,5 @@ React Patterns
 * Webworker + Comlink
 
 [Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/69) <br>
-[Presentation](https://docs.google.com/presentation/d/1PcjJrDn0bj4DNWX1_bquPzKEUW2Ayn02PYOz72y6KWY/) <br>
+[Presentation](https://docs.google.com/presentation/d/1PcjJrDn0bj4DNWX1_bquPzKEUW2Ayn02PYOz72y6KWY/)
+
