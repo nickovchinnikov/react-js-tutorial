@@ -194,6 +194,116 @@ compose(id, f) === compose(f, id) === f;
 
 <!--s-->
 
+## Практика
+
+<!--v-->
+
+### Exercise 1
+
+```js
+
+const cars = [{
+  name: 'Aston Martin One-77',
+  horsepower: 750,
+  dollar_value: 1850000,
+  in_stock: true,
+}]
+
+// isLastInStock :: [Car] -> Boolean
+const isLastInStock = (cars) => {
+  const lastCar = last(cars);
+  return prop('in_stock', lastCar);
+};
+
+```
+
+<!--v-->
+
+### Solution
+
+```js
+
+// isLastInStock :: [Car] -> Boolean
+const isLastInStock = compose(prop('in_stock'), last)
+
+```
+
+<!--v-->
+
+### Exercise 2
+
+```js
+
+const cars = [{
+  name: 'Aston Martin One-77',
+  horsepower: 750,
+  dollar_value: 1850000,
+  in_stock: true,
+}]
+
+// averageDollarValue :: [Car] -> Int
+const averageDollarValue = (cars) => {
+  const dollarValues = map(c => c.dollar_value, cars);
+  return average(dollarValues);
+};
+
+```
+
+<!--v-->
+
+### Solution
+
+```js
+
+// averageDollarValue :: [Car] -> Int
+const averageDollarValue = compose(average, map(prop("dollar_value")))
+
+```
+
+<!--v-->
+
+### Exercise 3
+
+```js
+
+const cars = [{
+  name: 'Aston Martin One-77',
+  horsepower: 750,
+  dollar_value: 1850000,
+  in_stock: true,
+}]
+
+// Hint, the `append` function may come in handy.
+// fastestCar :: [Car] -> String
+const fastestCar = (cars) => {
+  const sorted = sortBy(car => car.horsepower, cars);
+  const fastest = last(sorted);
+  return concat(fastest.name, ' is the fastest');
+};
+
+```
+
+<!--v-->
+
+### Solution
+
+```js
+
+// fastestCar :: [Car] -> String
+const fastestCar = compose(
+  append(' is the fastest'),
+  prop('name'),
+  last,
+  sortBy(prop('horsepower')),
+);
+
+```
+<!--v-->
+
+### Вопросы?
+
+<!--s-->
+
 ## Композиция, снова
 
 <!--v-->
@@ -299,5 +409,178 @@ const mediaUrl = compose(prop('m'), prop('media'));
 const images = compose(map(compose(img, mediaUrl)), prop('items'));
 
 ```
+<!--v-->
+
+### Вопросы?
+
+<!--s-->
+
+## Signatures
+
+<!--v-->
+
+### Hindley-Milner type signatures
+
+a function from **String** to **String**
+
+```js
+// capitalize :: String -> String
+const capitalize = s => toUpperCase(head(s)) + toLowerCase(tail(s));
+
+capitalize('smurf'); // 'Smurf'
+```
+
+<!--v-->
+
+### Помним, что такое каррирование!
+
+```js
+const f = (a, b) => a + b
+
+// g :: a -> b -> c
+const g = a => b => a + b
+// OR
+const g = curry(f)
+```
+
+<!--v-->
+
+### Example
+
+You could always just view the last type as the return value
+
+```js
+
+// strLength :: String -> Number
+const strLength = s => s.length;
+
+// join :: String -> [String] -> String
+const join = curry((what, xs) => xs.join(what));
+
+// match :: Regex -> String -> [String]
+const match = curry((reg, s) => s.match(reg));
+
+// replace :: Regex -> String -> String -> String
+const replace = curry((reg, sub, s) => s.replace(reg, sub));
+
+```
+
+<!--v-->
+
+### we are free to group the signature like so:
+
+```js
+
+// match :: Regex -> (String -> [String])
+const match = curry((reg, s) => s.match(reg));
+
+// match :: Regex -> (String -> [String])
+// onHoliday :: String -> [String]
+const onHoliday = match(/holiday/ig);
+
+```
+
+<!--v-->
+
+We can give all the arguments at once if we choose so it's easier to just think of it as: replace takes a __Regex__, a __String__, another __String__ and returns you a __String__
+
+```js
+
+// replace :: Regex -> (String -> (String -> String))
+const replace = curry((reg, sub, s) => s.replace(reg, sub));
+
+```
+
+<!--v-->
+
+__a -> a__ means it has to be the same type, may be __String -> String__ or __Number -> Number__, but not __String -> Bool__.
+
+```js
+
+// id :: a -> a
+const id = x => x;
+
+// map :: (a -> b) -> [a] -> [b]
+const map = curry((f, xs) => xs.map(f));
+// f :: (a -> b)
+// xs :: [a]
+// return :: [b]
+
+```
+
+<!--v-->
+
+```js
+
+// head :: [a] -> a
+const head = xs => xs[0];
+
+// filter :: (a -> Bool) -> [a] -> [a]
+const filter = curry((f, xs) => xs.filter(f));
+
+// reduce :: ((b, a) -> b) -> b -> [a] -> b
+const reduce = curry((f, x, xs) => xs.reduce(f, x));
+
+```
+
+<!--v-->
+
+### Параметризованная типизация
+
+```js
+
+a -> any type
+
+// head :: [a] -> a
+
+// reverse :: [a] -> [a]
+
+```
+
+<!--v-->
+
+### Find your function
+
+
+[Hoogle](https://hoogle.haskell.org)
+
+
+<!--v-->
+
+## Free theorems
+
+```js
+
+// head :: [a] -> a
+compose(f, head) === compose(head, map(f));
+
+// filter :: (a -> Bool) -> [a] -> [a]
+compose(map(f), filter(compose(p, f))) === compose(filter(p), map(f));
+
+```
+
+<!--v-->
+
+## Constraints
+
+__a__ must implement the __Ord__ interface
+
+```js
+
+// sort :: Ord a => [a] -> [a]
+
+```
+
+Here, we have two constraints: __Eq__ and __Show__
+
+```js
+
+// assertEqual :: (Eq a, Show a) => a -> a -> Assertion
+
+```
+
+<!--v-->
+
+### Вопросы?
 
 <!--s-->
