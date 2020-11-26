@@ -13,6 +13,8 @@ import { TicTacToeGame, Header, SignIn, CoursesScreen } from "./screens";
 import { store } from "./store";
 import { selectIsAuthorized } from "@/modules/Login/selectors";
 
+import { result } from "@/modules/Flickr";
+
 export const App: React.FC<unknown> = () => {
   const [state, setState] = useState(store.getState());
 
@@ -37,6 +39,9 @@ export const App: React.FC<unknown> = () => {
             <li>
               <Link to="/ticktacktoe">TickTackToe</Link>
             </li>
+            <li>
+              <Link to="/flikr">Flickr app</Link>
+            </li>
           </ul>
         </nav>
         <Switch>
@@ -48,6 +53,11 @@ export const App: React.FC<unknown> = () => {
           </Route>
           <Route path="/ticktacktoe">
             <TicTacToeGame />
+          </Route>
+          <Route path="/flikr">
+            {() => {
+              result();
+            }}
           </Route>
           <Route path="*">
             <Redirect to="/signin" />
