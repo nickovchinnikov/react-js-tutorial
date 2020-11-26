@@ -11,9 +11,9 @@
     "lint": "npx eslint --ext .js,.jsx,.ts,.tsx --fix ./",
     "loki:update": "npm run build-storybook && npx loki update --requireReference --reactUri file:./storybook-static",
     "loki:approve": "npx loki approve",
+    "test:loki": "npm run build-storybook && npx loki --requireReference --reactUri file:./storybook-static",
     "test": "npx jest",
     "e2e": "npx jest -c jest.e2e.config.js e2e",
-    "test:loki": "npm run build-storybook && npx loki --requireReference --reactUri file:./storybook-static",
     "ts:check": "npx tsc -p tsconfig.json --noEmit",
     "lint:spell": "yaspeller ./presentations/**",
     "check": "npm run lint && npm run ts:check && npm test -- --coverage && npm run e2e && npm run test:loki",
@@ -27,7 +27,10 @@
     }
   },
   "lint-staged": {
-    "*.{js,json,html,css,md,yml,yaml}": ["npm run test", "npm run lint"],
+    "*.{js,ts,tsx,json,html,css,md,yml,yaml}": [
+      "npm run test",
+      "npm run lint"
+    ],
     "*.md": "yaspeller"
   },
   "repository": {
@@ -132,6 +135,7 @@
     "crypto-js": "^4.0.0",
     "formik": "^2.2.5",
     "jest-puppeteer": "^4.4.0",
+    "jquery": "^3.5.1",
     "ramda": "^0.27.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
