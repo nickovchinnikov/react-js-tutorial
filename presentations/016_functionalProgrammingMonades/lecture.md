@@ -256,4 +256,48 @@ const prop = curry((property, object) => object[property]);
 
 ## Пример приложения
 
+<!--v-->
+
+## Refactoring
+
+```js
+// map's composition law
+// compose(map(f), map(g)) === map(compose(f, g));
+
+// original code
+const mediaUrl = compose(prop('m'), prop('media'));
+const mediaUrls = compose(map(mediaUrl), prop('items'));
+const images = compose(map(img), mediaUrls);
+
+```
+<!--v-->
+
+## Refactoring
+
+```js
+// map's composition law
+// compose(map(f), map(g)) === map(compose(f, g));
+
+const mediaUrl = compose(prop('m'), prop('media'));
+
+const images = compose(map(img), map(mediaUrl), prop('items'));
+
+```
+
+<!--v-->
+
+## Refactoring
+
+```js
+/*
+compose(map(f), map(g)) === map(compose(f, g));
+compose(map(img), map(mediaUrl)) === map(compose(img, mediaUrl));
+*/
+
+const mediaUrl = compose(prop('m'), prop('media'));
+
+const images = compose(map(compose(img, mediaUrl)), prop('items'));
+
+```
+
 <!--s-->
