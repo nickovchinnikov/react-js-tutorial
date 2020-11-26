@@ -139,6 +139,7 @@ Git поддерживает [хуки](https://git-scm.com/book/ru/v2/%D0%9D%D0
 Для подключения action нужно просто добавить [yml](https://ru.wikipedia.org/wiki/YAML) файл с нужной структурой.
 
 Примеры файлов можно посмотреть [здесь](https://github.com/otus-js-student/js--game-of-life/tree/master/.github/workflows) и [здесь](https://github.com/nickovchinnikov/react-js-tutorial/tree/master/.github/workflows).
+[pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/82)
 
 <!-- v -->
 
