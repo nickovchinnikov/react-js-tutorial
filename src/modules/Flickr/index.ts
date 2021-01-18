@@ -1,1 +1,0 @@
-export { result } from "./Flickr";
