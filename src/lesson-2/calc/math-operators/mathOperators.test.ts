@@ -1,27 +1,31 @@
-import { mul, div, add, minus } from "./mathOperators";
+import { mul, div, add, minus, pow } from "./mathOperators";
 
 describe("mathOperators test cases", () => {
-  test("mul 1 * 2 to equal 2", () => {
-    expect(mul(1, 2)).toBe(2);
+  let number = Math.floor(Math.random() * 20) + 1;
+  let number1 = Math.floor(Math.random() * 6) + 1;
+  const multiplyResult = number * number1;
+  const divResult = number / number1;
+  const addResult = number + number1;
+  const minusResult = number - number1; 
+  const resultOfPow = Math.pow(number1, number1);
+
+  test(`mul ${number} * ${number1} to equal ${multiplyResult}`, () => {
+    expect(mul(number, number1)).toBe(multiplyResult);
   });
 
-  test("mul 2 * 2 to equal 4", () => {
-    expect(mul(2, 2)).toBe(4);
+  test(`div ${number} / ${number1} to equal ${divResult}`, () => {
+    expect(div(number, number1)).toBe(divResult);
   });
 
-  test("div 2 / 2 to equal 1", () => {
-    expect(div(2, 2)).toBe(1);
+  test(`add ${number} / ${number1} to equal ${addResult}`, () => {
+    expect(add(number, number1)).toBe(addResult);
   });
 
-  test("div 4 / 2 to equal 2", () => {
-    expect(div(4, 2)).toBe(2);
+  test(`min ${number} - ${number1} to equal ${minusResult}`, () => {
+    expect(minus(number, number1)).toBe(minusResult);
   });
 
-  test("add 4 + 2 to equal 6", () => {
-    expect(add(4, 2)).toBe(6);
-  });
-
-  test("minus 4 - 2 to equal 2", () => {
-    expect(minus(4, 2)).toBe(2);
+  test(`pow ${number} ** ${number1} to equal ${resultOfPow}`, () => {
+    expect(pow(number, number1)).toBe(resultOfPow);
   });
 });
