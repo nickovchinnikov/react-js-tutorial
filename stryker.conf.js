@@ -2,12 +2,10 @@
  * @type {import('@stryker-mutator/api/core').StrykerOptions}
  */
 module.exports = {
-  mutator: "typescript",
   packageManager: "npm",
-  reporters: ["html", "clear-text", "progress"],
+  reporters: ["html", "clear-text", "progress", "dashboard"],
   testRunner: "jest",
-  transpilers: [],
   coverageAnalysis: "off",
   tsconfigFile: "tsconfig.json",
-  mutate: ["src/**/*.ts"],
+  mutate: ["src/**/*.ts?(x)", "!src/**/*@(.test|.spec|Spec|stories).ts?(x)"],
 };
