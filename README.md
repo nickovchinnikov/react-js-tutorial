@@ -269,6 +269,7 @@ React Patterns
 * E2E
 
 [Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/49) <br>
+[Pull request2](https://github.com/nickovchinnikov/react-js-tutorial/pull/86) <br>
 [Presentation](https://docs.google.com/presentation/d/1ox8hQ2Hw2TXKGnlbG4pHoXdgeZ7NKXQ8ev9qryQC448/edit?usp=sharing) <br>
 
 
