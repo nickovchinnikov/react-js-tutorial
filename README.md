@@ -281,3 +281,9 @@ React Patterns
 [Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/69) <br>
 [Presentation](https://docs.google.com/presentation/d/1PcjJrDn0bj4DNWX1_bquPzKEUW2Ayn02PYOz72y6KWY/)
 
+## Lesson 29
+
+* GraphQL
+
+[Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/75) <br>
+[Presentation](https://docs.google.com/presentation/d/1dLU-itfXVDSjPNaeU8RBrUzy_VlJF3oYHcoA_j-wGoM/edit#slide=id.p1)
