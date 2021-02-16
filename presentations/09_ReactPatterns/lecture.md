@@ -21,6 +21,15 @@ description: React
 
 <!-- v -->
 
+### Кто этот парень?
+
+1. Громов Фёдор
+2. Открытие, Альфа, Leroy Merlin, Wildberries
+3. Начал работать с React 3 года назад
+4. Начинал изучать frontend с онлайн-курсов 
+
+<!-- v -->
+
 ### React patterns #1
 
 <!-- v -->
@@ -93,6 +102,23 @@ let [first, second, ...restElement] = things;
 ```
 
 <!-- v -->
+### Default props
+
+Паттерн, позволяющий задавать значения по умолчанию для props. 
+
+Объекты
+```js
+let person = { name: "Ted" };
+let { name = "" } = person;
+```
+
+Массивы
+```js
+let things = ["one", "two", "3"];
+let [first = "", second = "2", ...restElement] = things;
+```
+
+<!-- v -->
 
 ### JSX spread attributes 
 
@@ -158,32 +184,16 @@ const RichComponent: FC<ManyProps> = ({ one, ...rest}) => {
 ### Conditional rendering
 
 - Всё что находиться внутри <span style="color:red">{}</span> - парситься как обычный JS
-- **IF**:{condition && <span>Rendered when `truthy`</span>;}
-- **Unless**: {condition || <span>Rendered when `falsy`</span>;}
+- **IF**:{condition && `<span>`Rendered when `'truthy'` `</span>`;}
+- **Unless**: {condition || `<span>`Rendered when `'falsy'` `</span>`;}
 - **If-else**:
 ```js
 {
     condition ? (
-      <span>Rendered when `truthy`</span>
+      <span>Rendered when 'truthy'</span>
     ) : (
-      <span>Rendered when `falsy`</span>
+      <span>Rendered when 'falsy'</span>
     );
-}
-```
-
-<!-- v -->
-
-### Conditional rendering (quick question)
-
-```js
-export default function App() {
-  const someValue = "";
-  return someValue ? <p>True</p> : <p>False</p>;
-}
-
-export default function App() {
-  const someValue = "";
-  return someValue && <p>Something</p>;
 }
 ```
 
@@ -193,8 +203,8 @@ export default function App() {
 
 - Children - это такой же props, только передается как значение внутри тэга. 
 - `<div>`**children**`</div>`
-- В элемент можно передавать: элемент, строка, массив, число, null, bool.
-- В компонент можно передавать всё что угодно!  
+- В элемент можно передавать...что?
+- В компонент можно передавать...что?
 
 <!-- v -->
 
@@ -224,7 +234,7 @@ export default function App() {
 ### Function as children
 
 - Возможно передавать только в компонент
-- Пример из жизни: https://www.apollographql.com/docs/react/data/queries/
+- Пример из жизни: https://final-form.org/docs/react-final-form/getting-started
 - Очень полезно когда отрисовка зависит от данных
 
 ```ts 
@@ -381,58 +391,33 @@ const Btn = ({ className, primary, ...props }) => {
 
 <!-- v -->
 
-### Function component
+### Ищем паттерны
 
-- Cell.txs:6
-- Field.tsx:13
+```js
+import React from "react";
 
-<!-- v -->
+const MyComponent = ({ isActive, text = "", red, ...restProps } = isActive && ({text} ));
+const MyComponent1 = (props) => <MyComponent red {...props} />;
+const Field = ({ children, ...restProps }) => ({children});
 
-### Destructuring
+export class Example extends React.Component {
+  render() {
+    const { items, restProps, children } = this.props;
 
-- Cell.txs:6
-- Field.tsx:13
-- Field.tsx:16
-- Select.tsx:12
-
-<!-- v -->
-
-### Conditional rendering
-
-- Field.tsx:21
-
-<!-- v -->
-
-### Children types (array/function)
-
-- Field.tsx:15
-- Select
-
-<!-- v -->
-
-### Proxy & Style component
-
-- CellItem: 16,20,29
-- InputText
-- InputColor
-
-[Про refs](https://www.pluralsight.com/guides/using-react-refs-typescript)    
-[Про displayName](https://stackoverflow.com/questions/41581130/what-is-react-component-displayname-is-used-for)
-
-<!-- v -->
-
-### JSX spread attributes & merge props
-
-- Как отрефакторить InteractiveField так что можно в FieldComponent передать state через JSX spread?
-
-https://learn.javascript.ru/object#svoystvo-iz-peremennoy
-
-<!-- v -->
-
-### Render prop
-
-- Создадим, если есть время?
-- Создать компонент, который в качестве props принимает label & render. И возвращает элемент переданный в render, окружённый label компонентом с переданным текстом
+    if (!items) {
+      return null;
+    }
+    
+    return (
+      <>
+        {items.map((item) => (<MyComponent key={item} {...restProps}>{item}</MyComponent>))}
+        <MyComponent1 />
+        <Field>{({ input, meta }) => <input {...input} {...meta} />}</Field>
+      </>
+    );
+  }
+}
+```
 
 <!-- v -->  
 
