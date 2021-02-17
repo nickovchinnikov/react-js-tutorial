@@ -490,7 +490,7 @@ expect(result.current).toBe(true);
 
 ### Stack & event queue
 
-![event queue diagramm](/images/event-queue-diagram.png)
+![event queue diagram](images/event-queue-diagram.png)
 
 <!--v-->
 
