@@ -42,9 +42,8 @@ description: React
 
 1. Только в функциональных компонентах
 2. Нельзя в классовых компонентах
-3. React полагается на порядок определения - только верхнеуровневое объявление
-4. Все начинаются с префикса ‘use’
-5. [eslint-plugin-react-hooks](https://www.npmjs.com/package/eslint-plugin-react-hooks)
+3. Все начинаются с префикса "use"
+4. [eslint-plugin-react-hooks](https://www.npmjs.com/package/eslint-plugin-react-hooks)
 
 <!--v-->
 
@@ -54,10 +53,9 @@ description: React
 
 **useState**
 
-1. Может быть любое количество
-2. “array destructuring”
-3. Обычно каждый стэйт - минимальная ячейка, независимая от других.
-4. Перерисовка только когда state изменился (shallowCompare)
+* В компоненте может быть несколько useState
+* "array destructuring"
+* Перерисовка только когда state изменился (shallowCompare)
 
 &darr;&darr;&darr;
 
@@ -66,55 +64,15 @@ description: React
 ```ts
 import React, { FC, useState } from "react";
 
-interface PersonState {
-  name: string;
-  num: number;
-}
-
 export const SmartFunction: FC<{}> = () => {
-  const [person, setPerson] = useState<PersonState>({name: "John", num: 3});
+  const [name, setName] = useState("John");
 
   return (
     <div>
       <button
-        onClick={() => {
-          setPerson({
-            name: "Phil",
-            num: 0,
-          });
-        }}
+        onClick={() => setName("Phil")}
       />
-      <p>{person.toString()}</p>
-    </div>
-  )
-}
-```
-
-<!--v-->
-
-**useState**
-
-```js
-export const StateComponent = () => {
-  const [name, setName] = useState("");
-  console.warn("re-render");
-  return (
-    <div>
-      <button onClick={() => setName("")}>
-        State Component with string Click!
-      </button>
-    </div>
-  )
-}
-
-export const StateComponentWithObj = () => {
-  const [name, setName] = useState({name: ""});
-  console.warn("re-render");
-  return (
-    <div>
-      <button onClick={() => setName({ name: ""})}>
-        State Component with obj Click!!
-      </button>
+      <p>{name}</p>
     </div>
   )
 }
@@ -126,11 +84,10 @@ export const StateComponentWithObj = () => {
 
 - Заменяет собой lifecycle методы
 - Вызывается после каждого рендера
-- Возвращаемая функция вызывается в момент изменения зависимостей, перед новым выполнение  эффекта. 
 - Используется для:
   - Подписки на события
   - I/O вызовы
-  - Сторонние вызовы, запуск анимации…
+  - И прочие Side-Effects
 
 &darr;&darr;&darr;
 
@@ -174,7 +131,7 @@ export const StateComponentWithLifeCycle = () => {
 
 **useEffect**
 
-1. Вызов setState в useEffect(() => {*тут*, []) - Будет вызывать отдельную пере-рисовку! Если нужно - можно использовать useLayoutEffect о котором позднее
+1. Вызов setState в useEffect(() => {*тут*, []) - будет вызывать отдельную пере-рисовку
 2. Функция всегда синхронная. Если нужно асинхронное то:
 
 ```js
@@ -212,7 +169,7 @@ useEffect(() => {
 
 1. Для использования контекста (легко несколько в одном компоненте)
 2. [Context](https://reactjs.org/docs/context.html) - способ передать “пропсы” минуя несколько слоёв. Обычно для глобальных свойств
-3. Популярно использовать для задания темы приложения. [пример](https://reactjs.org/docs/hooks-reference.html#usecontext)
+3. Пример - задание темы приложения. [пример](https://reactjs.org/docs/hooks-reference.html#usecontext)
 
 &darr;&darr;&darr;
 
@@ -247,30 +204,30 @@ export default function App() {
 ```
 
 <!--v-->
-
-**useReducer**
-
-1. *const [state, dispatch] = useReducer(reducer, initValue, initFunction)*
-2. *reducer = (prevState, action) => newState*
-3. Вместо прямого задания нового state, вызывается dispatch. Всё что передано в dispatch -> action в reducer. 
-4. Для инициализации может принимать третьим аргументов функцию, который преобразует initValue
-
-<!--v-->
-
-**useCallback**
-
 Где (если есть) проблема? 
 
 ```js
-export const StateComponent: FC<{}> = () => {
-  const [name, setName] = useState("John");
+import React, { useState, useCallback } from 'react'
 
+const Counter = () => {
+  const [count, setCount] = useState(0)
+  const [count2, setCount2] = useState(0)
+  const increment = () => {
+    setCount(count + 1)
+  }
+  const decrement = () => {
+    setCount(count - 1)
+  }
+  const incrementOtherCounter = () => {
+    setCount2(count2 + 1)
+  }
   return (
-    <div>
-      <button onClick={() => setName("Phil")}>
-        click in state component
-      </button>
-    </div>
+    <>
+      Count: {count}
+      <button onClick={increment}>+</button>
+      <button onClick={decrement}>-</button>
+      <button onClick={incrementOtherCounter}>incrementOtherCounter</button>
+    </>
   )
 }
 ```
@@ -279,104 +236,64 @@ export const StateComponent: FC<{}> = () => {
 
 **useCallback**
 
-```js
-const [name, setName] = useState("John");
-
-const onChange = useCallback(() => setName("Phil"), []);
-
-return (
-  <div>
-    <button onClick={onChange}>
-      click in state component
-    </button>
-  </div>
-)
-```
 1. Позволяет запоминать созданную функцию, во избежания пере-создание 
-2. Массив зависимостей - при изменении каких свойств пере-создавать функцию. 
-3. Пустой массив - создается один раз и **до** unmount
+2. Массив зависимостей - при изменении каких свойств пере-создавать функцию
 
 <!--v-->
 
-**useCallback**
-
-Что выведется после 2х нажатий на кнопку?
+JS и сравнение функций
 
 ```js
-const [name, setName] = useState("John");
+function factory() {
+  return (a, b) => a * b;
+}
 
-const onChange = useCallback(() => setName(`${name} - Phil`), []);
+const function1 = factory();
+const function2 = factory();
 
-return (
-  <div>
-    <button onClick={onChange}>
-      {name}
-    </button>
-  </div>
-)
+function1(1, 2); // => 2
+function2(1, 2); // => 2
+
+function1 === function2; // => false
+function1 === function1; // => true
 ```
 
 <!--v-->
 
 **useCallback**
 
-Что выведется после 2х нажатий на кнопку?
-
 ```js
-const [name, setName] = useState("John");
+const increment = useCallback(() => {
+  setCount(count + 1)
+}, [count])
 
-const onChange = useCallback(() => setName(`${name} - Phil`), [name]);
+const decrement = useCallback(() => {
+  setCount(count - 1)
+}, [count])
 
-return (
-  <div>
-    <button onClick={onChange}>
-      {name}
-    </button>
-  </div>
-)
+const incrementOtherCounter = useCallback(() => {
+  setCount2(count2 + 1)
+}, [count2])
 ```
 
 <!--v-->
 
 **useCallback**
 
-Что выведется после 2х нажатий на кнопку?
+Когда нам не нужен useCallback
 
 ```js
-const [name, setName] = useState("John");
+import React, { useCallback } from 'react';
 
-const onChange = useCallback(() => setName(`${name} - Phil`), []);
+function Component() {
+  // Каждый раз все равно создается новая функция...
+  const handleClick = useCallback(() => {
+    // handle the click event
+  }, []);
 
-return (
-  <div>
-    <button onClick={onChange}>
-      {name}
-    </button>
-  </div>
-)
+  return <ButtonWrapper onClick={handleClick} />;
+}
 ```
-&rarr; <span style="color: Crimson">John - Phil</span>
-
-<!--v-->
-
-**useCallback**
-
-Что выведется после 2х нажатий на кнопку?
-
-```js
-const [name, setName] = useState("John");
-
-const onChange = useCallback(() => setName(`${name} - Phil`), [name]);
-
-return (
-  <div>
-    <button onClick={onChange}>
-      {name}
-    </button>
-  </div>
-)
-```
-&rarr; <span style="color: Crimson">John - Phil - Phil</span>
 
 <!--v-->
 
@@ -393,12 +310,12 @@ const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
 
 **useRef**
 
-1. Создает “коробку” которая держит указатель на объект.
-2. Этот указатель доступен через .current
-3. Наиболее распространенный вариант использования - создание указателя на элемент (пример из документации)
 Эквивалент React.createRef
-4. Но можно размещать любой объект, на изменение которого не требуется запускать перерисовку
-5. [Пример](https://codesandbox.io/s/react-hooks-c3jf4?file=/src/RefComponent.tsx)
+
+* Создает “коробку” которая держит указатель на объект.
+* Этот указатель доступен через .current
+* Наиболее распространенный вариант использования - создание указателя на элемент [пример](https://reactjs.org/docs/hooks-reference.html#useref)
+* Но можно размещать любой объект, на изменение которого не требуется запускать перерисовку
 
 &darr;&darr;&darr;
 
@@ -448,22 +365,14 @@ const useCustomhook = () => {
 
 <!--v-->
 
-### Тестирование [ref](https://kentcdodds.com/blog/how-to-test-custom-react-hooks)
+**useReducer**
 
-1. Основной акцент на custom hooks, т.к. Из всех функциональных компонент можно сделать “презентационные”, с той лишь разницей что они зависят не от props а от возвращаемого значения от хука. 
-2. [@testing-library/react-hooks](https://github.com/testing-library/react-hooks-testing-library)
-3. **renderHook** - имитация использования хука внутри компонента. Возвращает функции, позволяющие контролировать жизненный цикл и считывать результат 
-```js
-const { result } = renderHook(() => useAppState());
-expect(result.current).toBe(true);
-```
-4. **act** - для выполнения любых действий
+1. *const [state, dispatch] = useReducer(reducer, initValue, initFunction)*
+2. *reducer = (prevState, action) => newState*
+3. Вместо прямого задания нового state, вызывается dispatch. Всё что передано в dispatch -> action в reducer. 
+4. Для инициализации может принимать третьим аргументов функцию, который преобразует initValue
 
-<!--v-->
-
-**useCustomHooks**
-
-1. Функция, к которой применяются те же правила, что и к встроенным в React. **Какие?**
+[ref](https://reactjs.org/docs/hooks-reference.html#usereducer)
 
 <!--v-->
 
@@ -471,10 +380,22 @@ expect(result.current).toBe(true);
 
 1. Функция, к которой применяются те же правила, что и к встроенным в React. **Какие?**
   - Начинается с префикса **use**
-  - Используется только в пользовательских  hook функциях или функциональных компонентах
+  - Используется только в пользовательских hook функциях или функциональных компонентах
   - Вызов всегда происходит на верхнем уровне, без условий, циклов и т.п.
-2. Пример в проекте. Функция которая отслеживает состояние фокуса на окне. 
+2. Пример в проекте. Функция которая отслеживает состояние фокуса
 
+<!--v-->
+
+### Тестирование [ref](https://kentcdodds.com/blog/how-to-test-custom-react-hooks)
+
+* [@testing-library/react-hooks](https://github.com/testing-library/react-hooks-testing-library)
+* **renderHook** - имитация использования хука внутри компонента. Возвращает функции, позволяющие контролировать жизненный цикл и считывать результат
+
+```js
+const { result } = renderHook(() => useAppState());
+expect(result.current).toBe(true);
+```
+* **act** - для выполнения любых действий
 
 <!--v-->
 
@@ -499,9 +420,11 @@ expect(result.current).toBe(true);
 1. Стандарт плавности - 60fps = 16ms на отрисовку следующего frame
 2. **Reconciliation** - создание нового дерева, сравнение с предыдущим и определение требуемых обновлений может занять гораздо больше времени
 3. **Fiber** - подход в реализации React reconсilation который позволяет приостанавливать и сохранять текущий stack-call, и проверять event queue
+
+<!--v-->
+
 4. Ставит в приоритет запросы по анимации
 5. Тяжёлые вычисления стали прерываемыми, не блокирую UI
-
 
 <!--v-->
 
