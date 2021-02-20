@@ -26,17 +26,7 @@ description: React
 - Hooks => State + Lifecycle
 - Обзор React Fiber
 
-<!--v-->
-
-### Ссылки про hooks
-
-1. https://reactjs.org/docs/hooks-intro.html
-2. https://medium.com/swlh/built-in-react-hooks-uselayouteffect-and-usedebugvalue-d10efe24d8de
-3. https://medium.com/geographit/accessing-react-state-in-event-listeners-with-usestate-and-useref-hooks-8cceee73c559
-4. https://medium.com/the-guild/under-the-hood-of-reacts-hooks-system-eb59638c9dba
-5. https://www.youtube.com/watch?v=dpw9EHDh2bM
-
-<!--v-->
+<!--s-->
 
 ### React Hooks
 
@@ -77,6 +67,10 @@ export const SmartFunction: FC<{}> = () => {
   )
 }
 ```
+
+<!--s-->
+
+### useEffect == lifecycle
 
 <!--v-->
 
@@ -161,9 +155,9 @@ useEffect(() => {
 
 <!--v-->
 
-## Вопросы?
+### useContext
 
-<!--s-->
+<!--v-->
 
 **useContext**
 
@@ -204,6 +198,15 @@ export default function App() {
 ```
 
 <!--v-->
+
+## Вопросы?
+
+<!--s-->
+
+## Additional hooks
+
+<!--v-->
+
 Где (если есть) проблема? 
 
 ```js
@@ -303,7 +306,8 @@ function Component() {
 2. Используется если нужно произвести какие-либо “тяжёлые” вычисления
 
 ```js
-const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
+const memoizedValue = useMemo(() => 
+  computeExpensiveValue(a, b), [a, b]);
 ```
 
 <!--v-->
@@ -386,7 +390,13 @@ const useCustomhook = () => {
 
 <!--v-->
 
-### Тестирование [ref](https://kentcdodds.com/blog/how-to-test-custom-react-hooks)
+## Вопросы?
+
+<!--s-->
+
+### Тестирование
+
+<!--v-->
 
 * [@testing-library/react-hooks](https://github.com/testing-library/react-hooks-testing-library)
 * **renderHook** - имитация использования хука внутри компонента. Возвращает функции, позволяющие контролировать жизненный цикл и считывать результат
@@ -396,6 +406,12 @@ const { result } = renderHook(() => useAppState());
 expect(result.current).toBe(true);
 ```
 * **act** - для выполнения любых действий
+
+[ref](https://kentcdodds.com/blog/how-to-test-custom-react-hooks)
+
+<!--s-->
+
+### React Fiber
 
 <!--v-->
 
@@ -445,6 +461,16 @@ for (let i = 0; i < 1000; i++) {
 <!--v-->
 
 ## Вопросы?
+
+<!--s-->
+
+### Ссылки про hooks
+
+1. https://reactjs.org/docs/hooks-intro.html
+2. https://medium.com/swlh/built-in-react-hooks-uselayouteffect-and-usedebugvalue-d10efe24d8de
+3. https://medium.com/geographit/accessing-react-state-in-event-listeners-with-usestate-and-useref-hooks-8cceee73c559
+4. https://medium.com/the-guild/under-the-hood-of-reacts-hooks-system-eb59638c9dba
+5. https://www.youtube.com/watch?v=dpw9EHDh2bM
 
 <!--v-->
 
