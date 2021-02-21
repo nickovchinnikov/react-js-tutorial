@@ -1,7 +1,9 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { cleanup, render, screen } from "@testing-library/react";
 
 import { ErrorBoundary } from "./ErrorBoundary";
+
+afterEach(cleanup);
 
 describe("ErrorBoundary test", () => {
   it("Render ErrorMsgComponent Fallback if error ", () => {

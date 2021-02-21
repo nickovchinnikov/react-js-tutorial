@@ -1,57 +1,41 @@
-import React from "react";
-import { mount, shallow } from "enzyme";
+import React, { FC } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
+import { cleanup, render, screen } from "@testing-library/react";
 
 import { CheckState } from "@/modules/Login/reducer";
+import { AccessCheckerComponent } from "./AccessChecker";
 
-import {
-  AccessCheckerComponent,
-  ChekingUserMsgComponent,
-  RedirectUserComponent,
-} from "./AccessChecker";
+const WrappedComponent: FC = () => <div data-testid="no-error">No Error</div>;
 
-const WrappedComponent = () => <div>No Error</div>;
+afterEach(cleanup);
 
 describe("AccessChecker test", () => {
   it("Renders ChekingUserMsgComponent if `status === CheckState.initiated`", () => {
-    const component = (
+    render(
       <AccessCheckerComponent status={CheckState.initiated}>
         <WrappedComponent />
       </AccessCheckerComponent>
     );
-
-    expect(mount(component).html()).toEqual(
-      shallow(<ChekingUserMsgComponent />).html()
-    );
+    expect(screen.getAllByTestId("checking-user-msg-component").length).toBe(1);
   });
 
   it("Renders RedirectUserComponent if `status === CheckState.failed`", () => {
-    const component = (
+    const { container } = render(
       <Router>
         <AccessCheckerComponent status={CheckState.failed}>
           <WrappedComponent />
         </AccessCheckerComponent>
       </Router>
     );
-
-    expect(mount(component).html()).toEqual(
-      shallow(
-        <Router>
-          <RedirectUserComponent to="/login" />
-        </Router>
-      ).html()
-    );
+    expect(container).toMatchInlineSnapshot(`<div />`);
   });
 
   it("Renders children if `status === CheckState.succeed`", () => {
-    const component = (
+    render(
       <AccessCheckerComponent status={CheckState.succeed}>
         <WrappedComponent />
       </AccessCheckerComponent>
     );
-
-    expect(mount(component).html()).toEqual(
-      shallow(<WrappedComponent />).html()
-    );
+    expect(screen.getAllByTestId("no-error").length).toBe(1);
   });
 });
