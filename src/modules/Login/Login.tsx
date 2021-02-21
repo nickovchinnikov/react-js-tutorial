@@ -30,10 +30,11 @@ export const LoginComponent: React.FC<Props> = ({ username, login }) => {
     [name, login]
   );
   return isEmpty(username) ? (
-    <form onSubmit={onSubmit}>
+    <form role="form" onSubmit={onSubmit}>
       <label>
         Name:
         <input
+          type="text"
           placeholder="Enter your login"
           value={name}
           onChange={(ev) => setName((ev.target as HTMLInputElement).value)}
