@@ -1,5 +1,5 @@
 ---
-title: React Basics 
+title: Redux Basics 
 description: React
 ---
 
