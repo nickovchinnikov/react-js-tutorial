@@ -6,7 +6,7 @@ interface Props {
 }
 
 export const MessageComponent: FC<Props> = ({ author, children }) => (
-  <div>
+  <div data-testid="msg-component">
     <b>{author}: </b>
     <span>{children}</span>
   </div>

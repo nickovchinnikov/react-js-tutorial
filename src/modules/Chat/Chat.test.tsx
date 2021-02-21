@@ -1,5 +1,5 @@
 import React from "react";
-import { shallow } from "enzyme";
+import { cleanup, render, screen } from "@testing-library/react";
 import faker from "faker";
 
 import { actions } from "./reducer";
@@ -11,15 +11,18 @@ const props = {
   send: actions.send,
 };
 
+afterEach(cleanup);
+
 describe("ChatComponent test", () => {
   it("Render chat when username is not empty", () => {
-    const component = <ChatComponent {...props} />;
-
-    expect(shallow(component).html()).toMatchSnapshot();
+    render(<ChatComponent {...props} />);
+    expect(screen.getAllByTestId("msg-form").length).toBe(1);
   });
   it("Render null when username is empty", () => {
-    const component = <ChatComponent {...{ ...props, username: "" }} />;
+    const { container } = render(
+      <ChatComponent {...{ ...props, username: "" }} />
+    );
 
-    expect(shallow(component).html()).toMatchSnapshot();
+    expect(container).toMatchInlineSnapshot(`<div />`);
   });
 });
