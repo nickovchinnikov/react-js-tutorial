@@ -1,7 +1,7 @@
-import React from "react";
+import React, { FC } from "react";
 import { useAppState } from "./useAppState";
 
-export const Screen = () => {
+export const Screen: FC = () => {
   const isForeground = useAppState();
   return (
     <div>
