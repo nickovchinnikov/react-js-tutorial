@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, FC } from "react";
 
-export const StateComponent = () => {
+export const StateComponent: FC = () => {
   const [, setName] = useState("Nikita");
   console.warn("re-render StateComponent");
   return (
@@ -10,7 +10,7 @@ export const StateComponent = () => {
   );
 };
 
-export const StateComponentWithObj = () => {
+export const StateComponentWithObj: FC = () => {
   const [, setName] = useState({ name: "Ivan" });
   console.warn("re-render StateComponentWithObj");
   return (
@@ -24,7 +24,7 @@ const clickCallback = () => {
   console.warn("click");
 };
 
-export const StateComponentWithLifeCycle = () => {
+export const StateComponentWithLifeCycle: FC = () => {
   const [name, setName] = useState("John");
   const [count, setCount] = useState(0);
 
