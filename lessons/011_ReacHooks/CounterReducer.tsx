@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { FC, useReducer } from "react";
 
 interface State {
   count: number;
@@ -21,14 +21,24 @@ function reducer(state: State, action: Action) {
   }
 }
 
-export const CounterReducer = () => {
+export const CounterReducer: FC = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   return (
     <>
-      Count: {state.count}
-      <button onClick={() => dispatch({ type: "decrement" })}>-</button>
-      <button onClick={() => dispatch({ type: "increment" })}>+</button>
+      <div data-testid="count">Count: {state.count}</div>
+      <button
+        data-testid="decrement"
+        onClick={() => dispatch({ type: "decrement" })}
+      >
+        -
+      </button>
+      <button
+        data-testid="increment"
+        onClick={() => dispatch({ type: "increment" })}
+      >
+        +
+      </button>
     </>
   );
 };
