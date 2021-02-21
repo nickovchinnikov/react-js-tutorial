@@ -1,11 +1,16 @@
 import React, { FC } from "react";
-import { BrowserRouter as Router } from "react-router-dom";
 import { cleanup, render, screen } from "@testing-library/react";
 
 import { CheckState } from "@/modules/Login/reducer";
 import { AccessCheckerComponent } from "./AccessChecker";
 
 const WrappedComponent: FC = () => <div data-testid="no-error">No Error</div>;
+
+jest.mock("react-router-dom", () => ({
+  Redirect: (props: unknown) => {
+    return <div>Redirect: {JSON.stringify(props)}</div>;
+  },
+}));
 
 afterEach(cleanup);
 
@@ -21,13 +26,18 @@ describe("AccessChecker test", () => {
 
   it("Renders RedirectUserComponent if `status === CheckState.failed`", () => {
     const { container } = render(
-      <Router>
-        <AccessCheckerComponent status={CheckState.failed}>
-          <WrappedComponent />
-        </AccessCheckerComponent>
-      </Router>
+      <AccessCheckerComponent status={CheckState.failed}>
+        <WrappedComponent />
+      </AccessCheckerComponent>
     );
-    expect(container).toMatchInlineSnapshot(`<div />`);
+    expect(container).toMatchInlineSnapshot(`
+      <div>
+        <div>
+          Redirect: 
+          {"to":"/login"}
+        </div>
+      </div>
+    `);
   });
 
   it("Renders children if `status === CheckState.succeed`", () => {
