@@ -1,9 +1,10 @@
 import React from "react";
-import { authorizedOnlyHoc } from "./authorizedOnlyHOC";
+import { cleanup, render, screen, waitFor } from "@testing-library/react";
+import "@testing-library/jest-dom/extend-expect";
+
 import { isLoggedIn } from "@/api/auth";
-import { mount, ReactWrapper } from "enzyme";
-import { sleep } from "@/utils/sleep";
-import { act } from "react-dom/test-utils";
+
+import { authorizedOnlyHoc } from "./authorizedOnlyHOC";
 
 jest.mock("@/api/auth", () => ({
   isLoggedIn: jest.fn(),
@@ -11,9 +12,11 @@ jest.mock("@/api/auth", () => ({
 
 jest.mock("react-router-dom", () => ({
   Redirect: function Redirect(props: unknown) {
-    return <div>Redirect: {JSON.stringify(props)}</div>;
+    return <div data-testid="redirect">Redirect: {JSON.stringify(props)}</div>;
   },
 }));
+
+afterEach(cleanup);
 
 describe("authorizedOnlyHoc", () => {
   interface ComponentProps {
@@ -21,40 +24,50 @@ describe("authorizedOnlyHoc", () => {
   }
 
   const Component: React.FC<ComponentProps> = ({ name }) => <h1>{name}</h1>;
-
   const WrappedComponent = authorizedOnlyHoc(Component);
-  let wrapper: ReactWrapper<typeof WrappedComponent>;
 
   it("renders placeholder during request and component on success", async () => {
     (isLoggedIn as jest.Mock).mockResolvedValueOnce(true);
-    act(() => {
-      wrapper = mount(<WrappedComponent name="Bob" />);
-    });
-    expect(wrapper.html()).toMatchInlineSnapshot(
-      `"<div>Checking if user is authorized</div>"`
-    );
-    await act(async () => {
-      await sleep(10);
-      wrapper.update();
-    });
 
-    expect(wrapper.html()).toMatchInlineSnapshot(`"<h1>Bob</h1>"`);
+    const { container } = render(<WrappedComponent name="Bob" />);
+
+    expect(container).toMatchInlineSnapshot(`
+      <div>
+        <div>
+          Checking if user is authorized
+        </div>
+      </div>
+    `);
+
+    await waitFor(() => screen.getByRole("heading", { name: "Bob" }));
+
+    expect(screen.getByRole("heading")).toHaveTextContent("Bob");
   });
 
   it("renders placeholder during request and redirect on failure", async () => {
     (isLoggedIn as jest.Mock).mockResolvedValueOnce(false);
-    act(() => {
-      wrapper = mount(<WrappedComponent name="Bob" />);
-    });
-    expect(wrapper.html()).toMatchInlineSnapshot(
-      `"<div>Checking if user is authorized</div>"`
-    );
-    await act(async () => {
-      await sleep(10);
-      wrapper.update();
-    });
-    expect(wrapper.html()).toMatchInlineSnapshot(
-      `"<div>Redirect: {\\"to\\":\\"/login\\"}</div>"`
-    );
+
+    const { container } = render(<WrappedComponent name="Bob" />);
+
+    expect(container).toMatchInlineSnapshot(`
+      <div>
+        <div>
+          Checking if user is authorized
+        </div>
+      </div>
+    `);
+
+    await waitFor(() => screen.getByTestId("redirect"));
+
+    expect(container).toMatchInlineSnapshot(`
+      <div>
+        <div
+          data-testid="redirect"
+        >
+          Redirect: 
+          {"to":"/login"}
+        </div>
+      </div>
+    `);
   });
 });
