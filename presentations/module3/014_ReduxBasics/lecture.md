@@ -1,5 +1,5 @@
 ---
-title: React and Redux
+title: Redux Basics 
 description: React
 ---
 
@@ -17,82 +17,41 @@ description: React
 
 <!-- v -->
 
-### Что мы уже знаем
-
-1. React, устройство компонентов, HOOKs & HOCs
-2. Redux и его API
-
-<!-- v -->
-
 ## Вопросы?
 
 <!-- s -->
 
-## Принципы redux?
+## Redux
 
 <!-- v -->
 
-## Что такое редьюсер?
+### Что мы уже знаем
+
+1. **React** — библиотека для интерактивных интерфейсов
+2. Компоненты могут сами себя обновлять через *state + setState*
+3. Иногда компоненты вызывают лайфсайкл-хуки
+4. Паттерны: *HOC, smart / dumb components, render prop*
 
 <!-- v -->
 
-## Что такое action?
+### На вебинаре мы узнаем
+
+<img src="./images/den-abramov.png" style="max-height:55vh">
 
 <!-- v -->
 
-## Как создать store?
+## State management
 
 <!-- v -->
 
-## Какой API у store?
+#### Где мы можем хранить состояние?
+- useState / Component.state
+- URL
+- внешний объект
 
 <!-- v -->
 
-## React + Redux
-
-<!-- v -->
-
-<u>Используем redux в три шага</u>
-- устанавливаем пакет react-redux
-- оборачиваем приложение в `<Provider>`
-- подключаем компоненты с помощью connect
-
-https://react-redux.js.org/introduction/quick-start
-
-<!-- v -->
-
-### react-redux - Provider
-
-```ts
-/**
-*Makes the redux store available to the connect() calls in the component hierarchy below
-*/
-export class Provider<A extends Action = AnyAction> extends Component<ProviderProps<A>> { }
-
-export interface ProvidereProps<A extends Action = AnyAction> {
-  /**
-  *The single Redux store in your application
-  */
-  store: Store<any, A>
-  /**
-  * Optional context to be used internally in react-redux. Use React.createContext()
-  to create a context to be used
-  * If this is used, generate own connect HOC by using connectAdvanced,
-  supplying the same context provder to the Provider.
-  * Initial value doesn't matter, as it is overwritten with the internal state of Provider.
-  */
-  context?: Context<ReactReduxContextValue>;
-}
-```
-
-https://react-redux.js.org/api/provider
-
-<!-- v -->
- 
-### State management
-
-При этом состояние может быть
-
+#### При этом состояние может быть:
 - сосредоточенно в одном месте
 - распределено по дереву компонентов
 
@@ -104,7 +63,11 @@ https://react-redux.js.org/api/provider
 
 <!-- v -->
 
-### Redux
+## Вопросы?
+
+<!-- s -->
+
+## Redux
 
 <!-- v -->
 
@@ -196,6 +159,12 @@ https://rajdee.gitbooks.io/redux-in-russian/content/docs/basics/Store.html
 
 <!-- v -->
 
+### Redux - Поток данных
+
+<img src="./images/redux-data-flow2.png" style="max-height:60vh">
+
+<!-- v -->
+
 ## Вопросы?
 
 <!-- s -->
@@ -235,6 +204,8 @@ https://rajdee.gitbooks.io/redux-in-russian/content/docs/api/
 
 <!-- v -->
 
+#### Redux - Reducer
+
 ```ts
 interface State {
   users: {
@@ -247,6 +218,8 @@ interface State {
 
 <!-- v -->
 
+#### Redux - Reducer
+
 ```ts
 const defaultState: State = {
   users: [],
@@ -256,6 +229,8 @@ const defaultState: State = {
 
 <!-- v -->
 
+#### Redux - Reducer
+
 ```ts
 function reducer(state: State = defaultState, action: Action): State {
   return state;
@@ -263,6 +238,8 @@ function reducer(state: State = defaultState, action: Action): State {
 ```
 
 <!-- v -->
+
+#### Redux - Reducer
 
 ```ts
 function reducer(state: State = defaultState, action: Action): State {
@@ -281,6 +258,8 @@ function reducer(state: State = defaultState, action: Action): State {
 
 <!-- v -->
 
+#### Redux - Reducer
+
 ```ts
 interface State {
   users: // ... <- usersReducer
@@ -289,6 +268,8 @@ interface State {
 ```
 
 <!-- v -->
+
+#### Redux - Reducer
 
 ```ts
 type UsersState = {
@@ -310,6 +291,8 @@ function usersReducer(state: UsersState = defaultUsersState, action: Action): Us
 
 <!-- v -->
 
+#### Redux - Reducer
+
 ```ts
 const reducer = combineReducers([
   users: usersReducer,
@@ -326,10 +309,6 @@ const reducer = combineReducers([
 
 <!-- v -->
 
-## Время тестов
-
-<!-- v -->
-
 ### Как можно тестировать всю эту радость?
 
 - тестировать reducers как чистые функции (state + action in => state out)
@@ -340,9 +319,9 @@ https://redux.js.org/recipes/writing-tests#reducers
 
 <!-- v -->
 
-## Время тестов
+## Вопросы?
 
-<!-- v -->
+<!-- s -->
 
 ### Напишите 2 самых непонятных момента из занятия
 
