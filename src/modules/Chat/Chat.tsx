@@ -55,7 +55,7 @@ export class ChatComponent extends Component<Props, State> {
             {message}
           </MessageComponent>
         ))}
-        <form onSubmit={this.onSubmit} data-testid="msg-form">
+        <form onSubmit={this.onSubmit} role="form">
           <label>
             Message:
             <input

@@ -14,10 +14,8 @@ export const ClickCounter: FC<Props> = ({ defaultCount = 0 }) => {
 
   return (
     <div>
-      <h1 data-testid="counter">Counter: {count}</h1>
-      <button data-testid="increase-btn" onClick={() => setCount(count + 1)}>
-        Increase
-      </button>
+      <h1>Counter: {count}</h1>
+      <button onClick={() => setCount(count + 1)}>Increase</button>
     </div>
   );
 };

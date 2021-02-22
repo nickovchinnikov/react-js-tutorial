@@ -16,7 +16,7 @@ afterEach(cleanup);
 describe("ChatComponent test", () => {
   it("Render chat when username is not empty", () => {
     render(<ChatComponent {...props} />);
-    expect(screen.getAllByTestId("msg-form").length).toBe(1);
+    expect(screen.getAllByRole("form").length).toBe(1);
   });
   it("Render null when username is empty", () => {
     const { container } = render(

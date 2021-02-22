@@ -21,7 +21,11 @@ describe("AccessChecker test", () => {
         <WrappedComponent />
       </AccessCheckerComponent>
     );
-    expect(screen.getAllByTestId("checking-user-msg-component").length).toBe(1);
+    expect(
+      screen.getAllByRole("heading", {
+        name: "Checking if user is authorized...",
+      }).length
+    ).toBe(1);
   });
 
   it("Renders RedirectUserComponent if `status === CheckState.failed`", () => {

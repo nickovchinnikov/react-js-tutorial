@@ -15,9 +15,7 @@ export interface Props extends ReturnType<typeof mapStateToProps> {
 }
 
 export const ChekingUserMsgComponent: FC = () => (
-  <div data-testid="checking-user-msg-component">
-    Checking if user is authorized...
-  </div>
+  <h3>Checking if user is authorized...</h3>
 );
 
 export const RedirectUserComponent: FC<{ to: string }> = ({ to }) => (
