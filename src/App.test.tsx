@@ -1,39 +1,37 @@
 import React from "react";
+import { act, cleanup, render, screen } from "@testing-library/react";
+
+import { loginSlice } from "@/modules/Login";
 import { store } from "./store";
 import { App } from "./App";
-import { shallow } from "enzyme";
-import { loginSlice } from "@/modules/Login";
+
+afterEach(cleanup);
 
 describe("App", () => {
-  it('should show "Sign in" link by default', () => {
-    const app = shallow(<App />);
-    expect(app.find('Link[to="/signin"]').length).toBe(1);
-  });
-
-  it('should not show "Sign in" link for authorized user', () => {
-    store.dispatch(loginSlice.actions.login("some user"));
-    const app = shallow(<App />);
-    expect(app.find('Link[to="/signin"]').length).toBe(0);
-  });
-
   it('should update "Sign in" link visibility on login', () => {
-    // hack related to the fact, that we have store as singleton
-    // @todo: refactor `store` to `getStore`
-    store.dispatch(loginSlice.actions.logout());
+    render(<App />);
 
-    const app = shallow(<App />);
-    expect(app.find('Link[to="/signin"]').length).toBe(1);
-    store.dispatch(loginSlice.actions.login("some user"));
-    app.update();
-    expect(app.find('Link[to="/signin"]').length).toBe(0);
+    expect(screen.getAllByRole("link", { name: "SignIn" }).length).toBe(1);
+
+    act(() => {
+      store.dispatch(loginSlice.actions.login("some user"));
+    });
+
+    expect(
+      screen.getAllByRole("heading", { name: "Hello, some user!" }).length
+    ).toBe(1);
   });
-
   it('should update "Sign in" link visibility on logout', () => {
-    store.dispatch(loginSlice.actions.login("some user"));
-    const app = shallow(<App />);
-    expect(app.find('Link[to="/signin"]').length).toBe(0);
-    store.dispatch(loginSlice.actions.logout());
-    app.update();
-    expect(app.find('Link[to="/signin"]').length).toBe(1);
+    render(<App />);
+    act(() => {
+      store.dispatch(loginSlice.actions.login("some user"));
+    });
+    expect(
+      screen.getAllByRole("heading", { name: "Hello, some user!" }).length
+    ).toBe(1);
+    act(() => {
+      store.dispatch(loginSlice.actions.logout());
+    });
+    expect(screen.getAllByRole("link", { name: "SignIn" }).length).toBe(1);
   });
 });

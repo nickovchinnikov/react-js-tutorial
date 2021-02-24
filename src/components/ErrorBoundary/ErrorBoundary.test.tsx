@@ -1,36 +1,34 @@
 import React from "react";
-import { mount, shallow } from "enzyme";
+import { cleanup, render, screen } from "@testing-library/react";
 
-import { ErrorBoundary, ErrorMsgComponent } from "./ErrorBoundary";
+import { ErrorBoundary } from "./ErrorBoundary";
+
+afterEach(cleanup);
 
 describe("ErrorBoundary test", () => {
-  it("Renders ErrorMsgComponent Fallback if error ", () => {
+  it("Render ErrorMsgComponent Fallback if error ", () => {
     const WrappedComponent = () => {
-      throw new Error("Errored!");
+      throw new Error("Error!");
     };
 
-    const component = (
+    render(
       <ErrorBoundary>
         <WrappedComponent />
       </ErrorBoundary>
     );
 
-    expect(mount(component).html()).toEqual(
-      shallow(<ErrorMsgComponent />).html()
-    );
+    expect(screen.getAllByTestId("error-component").length).toBe(1);
   });
 
-  it("Renders children if have no error", () => {
-    const WrappedComponent = () => <div>No Error</div>;
-
-    const component = (
+  it("Render children if have no error", () => {
+    const WrappedComponent = () => (
+      <div data-testid="no-error-component">No Error</div>
+    );
+    render(
       <ErrorBoundary>
         <WrappedComponent />
       </ErrorBoundary>
     );
-
-    expect(mount(component).html()).toEqual(
-      shallow(<WrappedComponent />).html()
-    );
+    expect(screen.getAllByTestId("no-error-component").length).toBe(1);
   });
 });
