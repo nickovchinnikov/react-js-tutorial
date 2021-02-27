@@ -1,13 +1,20 @@
 # react-js-tutorial
 
+## Global updates
 
-## Github actions
+### Github actions
 * Deploy config
 
 [pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/82)
 
+### Tests refactoring using react-testing-library
 
-## Lesson 1:
+[pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/98)
+
+## Module 1 - preface
+
+### Lesson 1: Webpack + babel
+
 Basic configuration for the project on the master branch. What configurations you can find:
 * Babel
 * Webpack
@@ -20,7 +27,8 @@ Basic configuration for the project on the master branch. What configurations yo
 
 [Presentation](https://drive.google.com/open?id=1uCyasL97go3mQU28Rg7gWPkSpRU--6EUU9bQb9pEbg0)
 
-## Lesson 2:
+### Lesson 2: Typescript part 1
+
 Math calculator with basic arithmetic operations without eval
 
 ```npm run calc```
@@ -48,8 +56,7 @@ Result: 9
 
 [Presentation](https://docs.google.com/presentation/d/1ACOGg-BgKrcnLool6gFzT3G3w1oProH_2O4PjCiz2w8/edit?usp=sharing)
 
-## Lesson 3:
-Basic react configuration
+### Lesson 3: Basic React configuration
 
 * @babel/preset-react
 * Storybook
@@ -63,8 +70,11 @@ Update storybook + MDX
 
 [Presentation](https://drive.google.com/open?id=10qgUTWj5aMG4WxcNk9UV8_xMHdnE5GRH7I7_Z8w0P7M)
 
-## Lesson 4:
-React and JSX
+### Lesson 4: About project
+
+[Presentation](https://docs.google.com/presentation/d/1LUebkHkLa_0gwHG2EfCSFFVUbN04pCUP0tCDc7fA2y4/edit?usp=sharing)
+
+### Lesson 5: React and JSX
 
 * React elements
 * JSX
@@ -74,8 +84,17 @@ React and JSX
 
 [Presentation](https://docs.google.com/presentation/d/18RMGtm53joXd_bOKXzdN4wtNFXcNFAavmXDa3CNjvpU/edit?usp=sharing)
 
-## Lesson 4.5:
-Typescript: Part 2
+### Lesson 5: JSX + CSS
+
+* Project architecture
+
+[Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/11)
+
+[Presentation](https://docs.google.com/presentation/d/1t96SBbpVXh7mPr3G_zsa6cVaCJKR6b4Bl9XnYY6-KHs/edit?usp=sharing)
+
+## Module 2 - React
+
+### Lesson 1: Typescript part 2
 
 * Generics
 * Classes
@@ -83,20 +102,11 @@ Typescript: Part 2
 * React+Typescript: common pitfalls
 
 [Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/51)
+
 [Presentation](https://docs.google.com/presentation/d/1ucC_6gpybB52DN9tQjDF6SMsmQcdopwchdbp6jVAzOM/edit?usp=sharing)
 
+### Lesson 2: React lifecycles
 
-## Lesson 5:
-* JSX + CSS
-* Project architecture
-
-[Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/11)
-
-[Presentation](https://docs.google.com/presentation/d/1t96SBbpVXh7mPr3G_zsa6cVaCJKR6b4Bl9XnYY6-KHs/edit?usp=sharing)
-
-## Lesson 7:
-
-* React lifecycles
 * React state/props
 * PureComponent
 
@@ -108,25 +118,20 @@ Typescript: Part 2
 
 [Presentation](https://docs.google.com/presentation/d/192hcXBkOKCgzEGVD-iCuXnHWTdraD1E99DaFRSnOwFs/edit?usp=sharing)
 
-## Lesson 8:
-* Списки
-* События
-* Формы
-* Рефы
+### Lesson 3: Lists, Events, Forms, Refs
 
 [Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/14/)
 
 [Presentation](https://docs.google.com/presentation/d/1-dCyyIYT0sgeITNLKeSIBufGiuiBKoGRYpeO3pdlZlY/edit?usp=sharing)
 
-## Lesson 8.1
-* Functional programming
+### Lesson 4: Functional programming basic
 
 [Pull request examples](https://github.com/nickovchinnikov/react-js-tutorial/pull/78) <br>
 [Pull request homework](https://github.com/nickovchinnikov/react-js-tutorial/pull/25) <br>
 [Presentation](https://docs.google.com/presentation/d/1dTNFn2c91hnD--kaaN9v5OmwMygUWMgumc1vPISZExA/edit?usp=sharing) <br>
 
-## Lesson 9:
-React Patterns
+### Lesson 5: React Patterns part 1
+
 * function component;
 * destructuring props;
 * JSX spread attributes;
@@ -140,16 +145,14 @@ React Patterns
 * proxy component;
 * style component.
 
-
 [Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/18/)
 
-[Presentation](https://docs.google.com/presentation/d/1Y2TtBz19oXIJgfnddar9v-6m7LYLdKEr4ejibU2YuWQ/edit?usp=sharing)
+[Presentation](https://github.com/nickovchinnikov/react-js-tutorial/tree/master/presentations/module2/5_ReactPatterns)
 
 [Code samples](https://codesandbox.io/s/react-patterns-5huin)
 
+### Lesson 6: React Patterns part 2
 
-## Lesson 10:
-* React Patterns
 * Event switch
 * Layout component
 * Container component
@@ -157,133 +160,138 @@ React Patterns
 * State hoisting
 * Controlled input
 
-
 [Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/19)
 
-[Presentation](https://docs.google.com/presentation/d/1rbPStqB8Q7inem-HH72QpUQxK5Ux7cCEjmR0Zzu_8jk/edit?usp=sharing)
+[Presentation](https://github.com/nickovchinnikov/react-js-tutorial/tree/master/presentations/module2/6_ReactPatterns2)
 
-## Lesson 11:
-* React Hooks
-* Hooks testing
-* React Fiber
+### Lesson 7: React Hooks
 
-[Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/20) <br>
-[Presentation](https://docs.google.com/presentation/d/1ASdPCTPObKZHHfFvd2RARfmHeq4EvHM8x-YBMCzGcb4/edit?usp=sharing) <br>
+* Basic Hooks
+
+[Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/20)
+
+[Presentation](https://github.com/nickovchinnikov/react-js-tutorial/tree/master/presentations/module2/7_ReactHooks)
+
 [Code samples](https://codesandbox.io/s/react-hooks-c3jf4?file=/src/index.tsx)
 
-## Lesson 12:
-* React Router
+### Lesson 8: React Hooks advanced
 
-[Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/21) <br>
-[Presentation](https://drive.google.com/file/d/19xQYJASeA3HQf0tR-tQ3J_I6MRyoHRvw/view?usp=sharing) <br>
+### Lesson 9: React Router
 
-## Lesson 13 (OLD)
-* Functional programming
+[Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/21)
 
-[Pull request examples](https://github.com/nickovchinnikov/react-js-tutorial/pull/24) <br>
-[Pull request homework](https://github.com/nickovchinnikov/react-js-tutorial/pull/25) <br>
-[Presentation](https://otus-lesson-fp.saitonakamura.now.sh/) <br>
+[Presentation](https://github.com/nickovchinnikov/react-js-tutorial/tree/master/presentations/module2/8_ReactRouter)
 
+### Lesson 10: CI/CD Github Actions
 
-## Lesson 14:
-* Redux
+[Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/21)
 
-[Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/23) <br>
-[Presentation](https://drive.google.com/file/d/1VezGwpkXUV38X-pL48j9ZjC58ASPuTPl/view?usp=sharing) <br>
+[Presentation](https://github.com/nickovchinnikov/react-js-tutorial/tree/master/presentations/module2/9_GitHubActions)
 
+## Module 3: React + Redux
 
-## Lesson 15:
-* React + Redux
+### Lesson 1: Redux basic
 
-[Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/27) <br>
-[Presentation](https://docs.google.com/presentation/d/1kng-DBHU91jQqjWHQVOMNMZjjfe8zawS8zzLP44TnuM/edit?usp=sharing) <br>
+[Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/23)
 
-## Lesson 16:
-* React + Redux
+[Presentation](https://github.com/nickovchinnikov/react-js-tutorial/tree/master/presentations/module3/1_ReduxBasics)
 
-[Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/28) <br>
-[Presentation](https://docs.google.com/presentation/d/1cjlHeq53IoWMmQFYSrzmOgiqS6TIEeRIrbCxZ7GjXVc/edit?usp=sharing) <br>
+### Lesson 2: React + Redux
 
-## Lesson 17
-* Redux middlewares
+[Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/27)
 
-[Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/34) <br>
-[Homework](https://github.com/nickovchinnikov/react-js-tutorial/pull/35) <br>
-[Presentation](https://otus-lesson-react-middlewares.now.sh/) <br>
+[Presentation](https://github.com/nickovchinnikov/react-js-tutorial/tree/master/presentations/module3/2_ReactAndRedux)
 
-## Lesson 18
+### Lesson 3: Redux middlewares and side-effects
+
+[Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/34)
+
+[Homework](https://github.com/nickovchinnikov/react-js-tutorial/pull/35)
+
+[Presentation](https://otus-lesson-react-middlewares.now.sh/)
+
+### Lesson 4: Redux toolkit
+
+[Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/28)
+
+[Presentation](https://docs.google.com/presentation/d/1cjlHeq53IoWMmQFYSrzmOgiqS6TIEeRIrbCxZ7GjXVc/edit?usp=sharing)
+
+### Lesson 5: Redux-saga intro
+
 * Generators
-* Redux-saga intro
 
-[Pull request 1](https://github.com/nickovchinnikov/react-js-tutorial/pull/31) <br>
-[Pull request 2](https://github.com/nickovchinnikov/react-js-tutorial/pull/37) <br>
-[Pull request 3](https://github.com/nickovchinnikov/react-js-tutorial/pull/39) <br>
-[Presentation](https://docs.google.com/presentation/d/1qy80sZm6epqa3ZRtMsx-qsPMO3HaVDnjZuZOB7iDFj4/edit?usp=sharing) <br>
+[Pull request 1](https://github.com/nickovchinnikov/react-js-tutorial/pull/31)
 
-## Lesson 19
+[Pull request 2](https://github.com/nickovchinnikov/react-js-tutorial/pull/37)
+
+[Pull request 3](https://github.com/nickovchinnikov/react-js-tutorial/pull/39)
+
+[Presentation](https://github.com/nickovchinnikov/react-js-tutorial/tree/master/presentations/module3/5_ReduxSagaIntro)
+
+### Lesson 6: Redux-saga and integration testing
 
 * Integration testing
 * redux-saga-test-plan
 
-[Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/41) <br>
-[Presentation](https://docs.google.com/presentation/d/1idaXdDfRzK3xpz7V2InHv60NfD9h5BqrZkQUwYd2oYY/edit?usp=sharing) <br>
+[Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/41)
 
-## Lesson 20
+[Presentation](https://docs.google.com/presentation/d/1idaXdDfRzK3xpz7V2InHv60NfD9h5BqrZkQUwYd2oYY/edit?usp=sharing)
 
-* Redux-saga basic concept
+### Lesson 7: Redux-saga basic concept
 
 [Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/44) <br>
 [Presentation](https://docs.google.com/presentation/d/12kDULqRToPULXu-WQeaDMwJ3mNNuNPfkrQS56DG1yTI/edit?usp=sharing) <br>
 
-## Lesson 21
-
-* Architecture
+### Lesson 8: Architecture
 
 [Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/45) <br>
 [Presentation](https://docs.google.com/presentation/d/1lHaa-X74A-CH3Gakbmc6UWFemeAGfdAyrvb2pSEnhkU/edit?usp=sharing) <br>
 
-## Lesson 22
-
-* Redux-saga advanced
+### Lesson 9: Redux-saga advanced
 
 [Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/47) <br>
 [Presentation](https://docs.google.com/presentation/d/1-0NOSE50w_ZIFoL8cF4WWotGAkhfpzHoHUB9EOlz7RU/edit?usp=sharing) <br>
 
-## Lesson 23
+## Module 4: Developer flow, HTTP, WebSockets, GraphQL
 
-* Разработка приложения на React
+### Lesson 1: React developer flow
 
 [Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/48) <br>
 [Presentation](https://docs.google.com/presentation/d/10ixqE3P2BcC3vJg_AnDqNHcHn5oXWGhBfWrQgXaaN5w/edit?usp=sharing) <br>
 
-## Lesson 24
-
-* Конфигурация приложения
+### Lesson 2: Application config
 
 [Presentation](https://docs.google.com/presentation/d/1YP-MPF1THPrzu7boQbknr1zzGaGBxp7pIiOJ41Ze3CI/edit?usp=sharing) <br>
 
+### Lesson 3: Test quality tools
 
-## Lesson 25
-
-* Test quality tools
-* E2E
+* E2E testing
+* Stryker
 
 [Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/49) <br>
 [Pull request2](https://github.com/nickovchinnikov/react-js-tutorial/pull/86) <br>
 [Presentation](https://docs.google.com/presentation/d/1ox8hQ2Hw2TXKGnlbG4pHoXdgeZ7NKXQ8ev9qryQC448/edit?usp=sharing) <br>
 
+### Lesson 4: Websocket
 
-## Lesson 28
-
-* Websocket
 * Webworker + Comlink
 
 [Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/69) <br>
 [Presentation](https://docs.google.com/presentation/d/1PcjJrDn0bj4DNWX1_bquPzKEUW2Ayn02PYOz72y6KWY/)
 
-## Lesson 29
-
-* GraphQL
+### Lesson 5: GraphQL
 
 [Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/75) <br>
 [Presentation](https://docs.google.com/presentation/d/1dLU-itfXVDSjPNaeU8RBrUzy_VlJF3oYHcoA_j-wGoM/edit#slide=id.p1)
+
+## Optional and old
+
+### Functional programming basic (OLD)
+
+[Pull request examples](https://github.com/nickovchinnikov/react-js-tutorial/pull/24) <br>
+[Pull request homework](https://github.com/nickovchinnikov/react-js-tutorial/pull/25) <br>
+[Presentation](https://otus-lesson-fp.saitonakamura.now.sh/) <br>
+
+### Optional: Functional Programming Advanced ***
+
+[Presentation](https://github.com/nickovchinnikov/react-js-tutorial/tree/master/presentations/module3/3_functionalProgrammingMonades)
