@@ -6,12 +6,12 @@ export class Flock {
     this.seagulls = n;
   }
 
-  conjoin(other: Flock) {
+  conjoin(other: Flock): Flock {
     this.seagulls += other.seagulls;
     return this;
   }
 
-  breed(other: Flock) {
+  breed(other: Flock): Flock {
     this.seagulls = this.seagulls * other.seagulls;
     return this;
   }

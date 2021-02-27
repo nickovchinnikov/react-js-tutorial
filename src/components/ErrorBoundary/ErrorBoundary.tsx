@@ -20,7 +20,7 @@ export class ErrorBoundary extends Component<Props, State> {
     return { hasError: true };
   }
 
-  componentDidCatch(error: Error, errorInfo: never): void {
+  componentDidCatch(error: Error, errorInfo: unknown): void {
     // You can also log the error to an error reporting service
     console.error(error, errorInfo);
   }
