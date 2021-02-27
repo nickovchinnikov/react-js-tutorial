@@ -24,10 +24,12 @@ description: React
 ### Что мы уже знаем
 
 1. **React** — библиотека для интерактивных интерфейсов
-2. **JSX** — тонкий синтаксис шаблонов:  
-<span style="color:SkyBlue"><Cmp name={ name } />
-React.createElement(Cmp, { name: name }, []);
-{ type: Cmp, props: { name: name } }</span>
+2. **JSX** — тонкий синтаксис шаблонов:
+
+```
+  <Cmp name={ name } /> == React.createElement(Cmp, { name: name }, []);
+```
+
 3. Компоненты могут сами себя обновлять через **state + setState**
 4. Иногда компоненты вызывают лайфсайкл-хуки
 5. Паттерны: HOC, smart / dumb components, render prop
@@ -41,7 +43,7 @@ React.createElement(Cmp, { name: name }, []);
 - Браузерные API для работы с адресом
 - react-router
 
-<!--v-->
+<!--s-->
 
 ## URL
 
@@ -49,22 +51,24 @@ React.createElement(Cmp, { name: name }, []);
 
 ### Из чего состоит URL?
 
-<p style="text-align:left"><b>Единый указатель ресурса</b> (англ. Uniform Resource Locator, URL) — единообразный локатор (определитель местонахождения) ресурса.  
-</p>
-<p style="text-align:left">Ранее назывался <b>Universal Resource Locator</b> — универсальный указатель ресурса.   URL служит стандартизированным способом записи адреса ресурса в сети Интернет.  
-</p>
+**Единый указатель ресурса** (англ. Uniform Resource Locator, URL) — единообразный локатор (определитель местонахождения) ресурса.  
 
-<u>Общая схема</u>
+Ранее назывался **Universal Resource Locator** — универсальный указатель ресурса.
+URL служит стандартизированным способом записи адреса ресурса в сети Интернет.  
 
+<!--v-->
+
+### Общая схема
+
+```
 scheme:[//[user[:password]@]host[:port]][/path][?query][#fragment]
+```
 
-https://ru.wikipedia.org/wiki/URL
+[URL wiki](https://ru.wikipedia.org/wiki/URL)
 
 <!--v-->
 
 ### Из чего состоит URL?
-
-https://market.yandex.ru:443/catalog--faksy/55024/list?onstock=1#onstock
 
 <div style="display:flex;justify-content:center">
   <div style="display:flex;flex-direction:column;text-align:left">
@@ -141,6 +145,10 @@ https://market.yandex.ru:443/catalog--faksy/55024/list?onstock=1#onstock
 
 <!--v-->
 
+## Вопросы?
+
+<!--s-->
+
 ## Зачем нам URL?
 
 <!--v-->
@@ -178,7 +186,7 @@ https://market.yandex.ru:443/catalog--faksy/55024/list?onstock=1#onstock
 
 - При изменении адреса браузер переходит по адресу, то есть перезагружает страницу. Это нам не подходит.
 - Нам нужна возможность менять URL, но оставаться на текущей странице
-- Это не так просто, как может показаться. Иначе можно было бы показать в браузере “https://sberbank.ru” на своем сайте.
+- Это не так просто, как может показаться. Иначе можно было бы показать в браузере "https://sberbank.ru" на своем сайте.
 - Самое простое — менять хеш. Получаются адреса вида _site.com/#/users/123?search=1_
 - В HTML5 есть History API, с которым все это гораздо удобнее
 - Еще неплохо бы уметь доставать параметры из URL.
@@ -211,7 +219,7 @@ https://jsbin.com/xovezez/edit?html,js
 ### Роутинг
 
 <p style="text-align:left">
-  Обработчик URL - называется <u>роутером</u> ( Router)<br>
+  Обработчик URL - называется <u>роутером</u> (Router)<br>
   Роутер определяет какой код должен выполняться в зависимости от адреса. Логика роутера может быть завязана на параметры.
 </p>
 
@@ -222,9 +230,11 @@ https://jsbin.com/xovezez/edit?html,js
 - Детей-фронтендеров часто пугают тем, что подключать History API к серверу страшно
 - Казалось бы, правда: мы запрашиваем _app/users/123_, а сервер не знает про такой файл, и кидает 404!
 - На самом деле это пишется в 1 строку. nginx:  
-  <i>location / {
-  try_files $uri /index.html;
-  }</i>
+```
+  location / {
+    try_files $uri /index.html;
+  }
+```
 - То есть: поищи файл, не нашел — верни /index.html
   index.html уже грузит наш фронт.
 - **Просто!**
@@ -415,10 +425,12 @@ https://reacttraining.com/react-router/web/
   - _ctrl / alt + click_ — открыть в новой вкладке / сохранить
   - **`<a>`** можно даже перетаскивать!
 - Если вместо **`<a>`** рисовать
-  <i>`<span onClick={ () => history.pushState(…) }>`
-  link
-  `</span>`</i>
-  , то мы теряем всю браузерную обвеску.
+```
+  <span onClick={ () => history.pushState(…) }>
+    link
+  </span>
+```
+  то мы теряем всю браузерную обвеску.
 - С другой стороны **`<a>`** по умолчанию
 
 <!--v-->
@@ -521,9 +533,15 @@ const Page = ({ location }) => {
 
 <!--v-->
 
-## Вопросы?
+### react-router: парсим query string
+
+[query parameters react router way](https://reactrouter.com/web/example/query-parameters)
 
 <!--v-->
+
+## Вопросы?
+
+<!--s-->
 
 ### Что прошли?
 
