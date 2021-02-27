@@ -1,6 +1,6 @@
 import { curry } from "ramda";
 
-export const add = (x: number) => (y: number) => x + y;
+export const add = (x: number) => (y: number): number => x + y;
 export const increment = add(1);
 export const addTen = add(10);
 
