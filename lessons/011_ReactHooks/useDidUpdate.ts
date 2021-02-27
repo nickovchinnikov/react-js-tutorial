@@ -4,7 +4,7 @@ import { useRef, useEffect } from "react";
 // To mimic didUpdate, pass all needed dependencies in the array.
 export const useDidUpdate = (
   callback: () => void,
-  deps?: ReadonlyArray<any>
+  deps?: ReadonlyArray<unknown>
 ): void => {
   const hasMount = useRef(false);
 

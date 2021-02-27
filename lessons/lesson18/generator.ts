@@ -56,7 +56,7 @@ export function* getWord(): Generator<string | number[]> {
   yield dictionary[idx as number];
 }
 
-export function* dataConsumer() {
+export function* dataConsumer(): Generator<undefined, string[]> {
   const result = ["Started"];
   // console.warn(result);
   result.push(`1. ${yield}`); // (A)
@@ -75,7 +75,7 @@ export const passwordGenerator = (countWords: number): string => {
 };
 
 // Time complexity O(N)
-export function* fibonacciSequense(length: number) {
+export function* fibonacciSequense(length: number): Generator<number> {
   let [prev, current, next] = [0, 0, 1];
   while (length > 0) {
     yield current;
@@ -87,7 +87,7 @@ export function* fibonacciSequense(length: number) {
 }
 
 // Time complexity https://www.desmos.com/calculator/g8ojgsx31c
-export function* strangeZeroOneSequence(length: number) {
+export function* strangeZeroOneSequence(length: number): Generator<number> {
   for (let counter = 0; counter < length; counter++) {
     let iterator = 0;
     yield iterator;
@@ -122,13 +122,17 @@ export class BinaryTree {
   }
 }
 
+type CouroutineType<T> = (
+  generatorFunction: (...args: T[]) => Generator
+) => (...args: T[]) => Generator<T>;
+
 /**
  * Returns a function that, when called,
  * returns a generator object that is immediately
  * ready for input via `next()`
  */
-export const coroutine = (generatorFunction: (...args: any) => Generator) => (
-  ...args: any
+export const coroutine: CouroutineType<unknown> = (generatorFunction) => (
+  ...args
 ) => {
   const generatorObject = generatorFunction(...args);
   generatorObject.next();

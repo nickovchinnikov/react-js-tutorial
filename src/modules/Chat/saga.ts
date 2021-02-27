@@ -1,15 +1,17 @@
 import { take, takeEvery, put, call } from "redux-saga/effects";
-import { eventChannel } from "redux-saga";
+import { EventChannel, eventChannel } from "redux-saga";
 import SocketIO from "socket.io-client";
 
 import { actions } from "./reducer";
 
-export const createWebSocketConnection = () =>
+export const createWebSocketConnection = (): SocketIOClient.Socket =>
   SocketIO("http://localhost:3000");
 
 const chatMessageEvent = "chatMessage";
 
-export function createSocketChannel(socket: SocketIOClient.Socket) {
+export function createSocketChannel(
+  socket: SocketIOClient.Socket
+): EventChannel<unknown> {
   return eventChannel((emit) => {
     const chatMessageHandler = ({
       payload,
@@ -30,7 +32,7 @@ export function createSocketChannel(socket: SocketIOClient.Socket) {
 export function* sendMessage(
   socket: SocketIOClient.Socket,
   payload: ReturnType<typeof actions.send>
-) {
+): Generator<void> {
   socket.emit(chatMessageEvent, payload);
 }
 

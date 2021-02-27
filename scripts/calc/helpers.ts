@@ -15,7 +15,7 @@ export const isTrigonometricOperator = (
 export const checkMathOperatorsPriorities = (
   operator: string,
   priorities: number | number[]
-) => {
+): boolean => {
   if (!isOperator(operator)) {
     return false;
   }

@@ -1,4 +1,10 @@
-export const createSimpleIterator = (from: number, to: number) => ({
+type SimpleIterator<T> = (from: number, to: number) => T;
+
+export const createSimpleIterator: SimpleIterator<{
+  from: number;
+  to: number;
+  [Symbol.iterator]: () => { next: () => { done: boolean; value?: number } };
+}> = (from, to) => ({
   from,
   to,
   [Symbol.iterator]: () => ({
@@ -8,10 +14,9 @@ export const createSimpleIterator = (from: number, to: number) => ({
   }),
 });
 
-export const createSimpleIteratorWithGenerator = (
-  from: number,
-  to: number
-) => ({
+export const createSimpleIteratorWithGenerator: SimpleIterator<{
+  [Symbol.iterator]: () => Generator<number>;
+}> = (from, to) => ({
   *[Symbol.iterator]() {
     for (let value = from; value <= to; value++) {
       yield value;
@@ -19,7 +24,11 @@ export const createSimpleIteratorWithGenerator = (
   },
 });
 
-export const createSimpleAsyncIterator = (from: number, to: number) => ({
+export const createSimpleAsyncIterator: SimpleIterator<{
+  [Symbol.asyncIterator]: () => {
+    next: () => Promise<{ done: boolean; value?: number }>;
+  };
+}> = (from, to) => ({
   [Symbol.asyncIterator]() {
     return {
       async next() {
@@ -31,10 +40,15 @@ export const createSimpleAsyncIterator = (from: number, to: number) => ({
   },
 });
 
-export async function* generateSequence(start: number, end: number) {
+export async function* generateSequence(
+  from: number,
+  to: number
+): AsyncGenerator<{
+  [Symbol.asyncIterator](): AsyncGenerator<number, void, unknown>;
+}> {
   return {
     async *[Symbol.asyncIterator]() {
-      for (let i = start; i <= end; i++) {
+      for (let i = from; i <= to; i++) {
         await new Promise((resolve) => setTimeout(resolve, 1000));
 
         yield i;

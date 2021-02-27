@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import styled from "@emotion/styled";
 import { ImageServer as Image } from "./ImageServer";
 import { ImageRandom } from "./ImageRandom";
@@ -14,31 +14,25 @@ interface ScreenState {
 }
 
 export class App extends React.Component<unknown, ScreenState> {
-  constructor(props: unknown) {
-    super(props);
-    this.state = {
-      id: 1,
-      interval: 1000,
-      isActive: true,
-    };
-    this.increment = this.increment.bind(this);
-    this.decrement = this.decrement.bind(this);
-    this.toggle = this.toggle.bind(this);
-  }
+  state = {
+    id: 1,
+    interval: 1000,
+    isActive: true,
+  };
 
-  private increment() {
+  private increment = () => {
     this.setState((state) => ({ id: state.id + 1 }));
-  }
+  };
 
-  private decrement() {
+  private decrement = () => {
     this.setState((state) => ({ id: state.id - 1 }));
-  }
+  };
 
-  private toggle() {
+  private toggle = () => {
     this.setState((state) => ({ isActive: !state.isActive }));
-  }
+  };
 
-  render() {
+  render(): ReactNode {
     const { id, interval, isActive } = this.state;
     return (
       <Container>
