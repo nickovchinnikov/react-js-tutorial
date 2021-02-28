@@ -108,7 +108,7 @@
     "lint-staged": "^10.5.2",
     "loki": "^0.25.1",
     "prettier": "^2.2.0",
-    "puppeteer": "^4.0.1",
+    "puppeteer": "^8.0.0",
     "react-docgen-typescript-loader": "^3.7.2",
     "react-test-renderer": "^16.13.1",
     "redux-logger": "^3.0.6",
