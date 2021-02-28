@@ -1,4 +1,4 @@
-import React, { Component, FormEvent, ChangeEvent } from "react";
+import React, { Component, FormEvent, ChangeEvent, ReactNode } from "react";
 import { connect } from "react-redux";
 import { isEmpty } from "ramda";
 
@@ -26,7 +26,7 @@ export type State = {
 export class ChatComponent extends Component<Props, State> {
   state = { message: "" };
 
-  onSubmit = (event: FormEvent) => {
+  onSubmit = (event: FormEvent): void => {
     event.preventDefault();
     const { message } = this.state;
     const { username, send } = this.props;
@@ -36,7 +36,7 @@ export class ChatComponent extends Component<Props, State> {
     }
   };
 
-  onChange = (event: ChangeEvent<HTMLInputElement>) => {
+  onChange = (event: ChangeEvent<HTMLInputElement>): void => {
     event.preventDefault();
     const message = event.target.value;
     if (!isEmpty(message)) {
@@ -44,7 +44,7 @@ export class ChatComponent extends Component<Props, State> {
     }
   };
 
-  render() {
+  render(): ReactNode {
     const { message } = this.state;
     const { username, chat } = this.props;
 
@@ -55,7 +55,7 @@ export class ChatComponent extends Component<Props, State> {
             {message}
           </MessageComponent>
         ))}
-        <form onSubmit={this.onSubmit}>
+        <form onSubmit={this.onSubmit} role="form">
           <label>
             Message:
             <input

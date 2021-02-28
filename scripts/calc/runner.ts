@@ -21,7 +21,7 @@ export const makepolishNotationReg = (): RegExp => {
 export const pnMode = (
   line: string,
   pnReg: RegExp = makepolishNotationReg()
-) => {
+): number => {
   const pnSolve = (pnExp: Array<string> | null, exp: string): number => {
     if (pnExp === null) {
       return Number(exp);

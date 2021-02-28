@@ -1,5 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`ChatComponent test Render chat when username is not empty 1`] = `"<form><label>Message:<input placeholder=\\"Enter your msg\\" value=\\"\\" required=\\"\\" minLength=\\"4\\" maxLength=\\"10\\"/></label><button>Send</button></form>"`;
-
-exports[`ChatComponent test Render null when username is empty 1`] = `null`;

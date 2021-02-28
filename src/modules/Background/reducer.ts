@@ -9,7 +9,8 @@ export const BackgroundStatus = {
 };
 
 export const selectors = {
-  background: ({ background }: TicTacToeGameState) => background,
+  background: ({ background }: TicTacToeGameState): { status: string } =>
+    background,
 };
 
 export const initialState = {
