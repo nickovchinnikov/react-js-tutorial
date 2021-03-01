@@ -219,7 +219,7 @@ Update storybook + MDX
 
 [Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/28)
 
-[Presentation](https://docs.google.com/presentation/d/1cjlHeq53IoWMmQFYSrzmOgiqS6TIEeRIrbCxZ7GjXVc/edit?usp=sharing)
+[Presentation](https://github.com/nickovchinnikov/react-js-tutorial/tree/master/presentations/module3/4_ReduxToolkit/lecture.md)
 
 ### Lesson 5: Redux-saga intro
 
