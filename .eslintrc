@@ -50,7 +50,6 @@
   },
   "parserOptions": {
     "sourceType": "module",
-    "parser": "babel-eslint",
     "ecmaVersion": 2018
   },
   "overrides": [
