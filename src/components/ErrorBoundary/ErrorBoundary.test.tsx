@@ -6,7 +6,7 @@ import { ErrorBoundary } from "./ErrorBoundary";
 afterEach(cleanup);
 
 describe("ErrorBoundary test", () => {
-  it("Render ErrorMsgComponent Fallback if error ", () => {
+  it("Render ErrorMsgComponent Fallback if error", () => {
     const WrappedComponent = () => {
       throw new Error("Error!");
     };
