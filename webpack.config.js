@@ -1,7 +1,6 @@
 const path = require("path");
 
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const WorkerPlugin = require("worker-plugin");
 const webpackRules = require("./webpackRules");
 
 module.exports = {
@@ -28,6 +27,10 @@ module.exports = {
         test: /\.css$/,
         use: ["style-loader", "css-loader"],
       },
+      {
+        test: /\.worker\.(ts|js)$/,
+        use: { loader: "worker-loader" },
+      },
       ...webpackRules,
     ],
   },
@@ -35,7 +38,6 @@ module.exports = {
     historyApiFallback: true,
   },
   plugins: [
-    new WorkerPlugin(),
     new HtmlWebpackPlugin({
       template: "./public/index.html",
     }),
