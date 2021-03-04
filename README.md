@@ -240,7 +240,7 @@ Update storybook + MDX
 
 [Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/41)
 
-[Presentation](https://docs.google.com/presentation/d/1idaXdDfRzK3xpz7V2InHv60NfD9h5BqrZkQUwYd2oYY/edit?usp=sharing)
+[Presentation](https://github.com/nickovchinnikov/react-js-tutorial/tree/master/presentations/module3/6_ReduxSagaAndIntegrationTesting/lecture.md)
 
 ### Lesson 7: Redux-saga basic concept
 
