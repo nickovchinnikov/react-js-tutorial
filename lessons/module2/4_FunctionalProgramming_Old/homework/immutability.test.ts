@@ -48,7 +48,7 @@ test("team to team deep", () => {
     },
   };
 
-  expect(originalTeamToExpectedTeam(originalTeam)).toBe(expectedTeam);
+  expect(originalTeamToExpectedTeam(originalTeam)).toEqual(expectedTeam);
 });
 
 */
