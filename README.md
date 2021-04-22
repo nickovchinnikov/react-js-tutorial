@@ -81,13 +81,22 @@ Update storybook + MDX
 
 [Presentation](https://docs.google.com/presentation/d/18RMGtm53joXd_bOKXzdN4wtNFXcNFAavmXDa3CNjvpU/edit?usp=sharing)
 
-### Lesson 5: JSX + CSS
+### Lesson 6: JSX + CSS
 
 * Project architecture
 
 [Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/11)
 
 [Presentation](https://docs.google.com/presentation/d/1t96SBbpVXh7mPr3G_zsa6cVaCJKR6b4Bl9XnYY6-KHs/edit?usp=sharing)
+
+### Lesson 7: TDD + React
+
+* TDD + React
+
+[pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/98)
+[pull request2](https://github.com/nickovchinnikov/react-js-tutorial/pull/108)
+
+[Presentation](https://github.com/nickovchinnikov/react-js-tutorial/tree/master/presentations/module1/7_TDDReact/lecture.md)
 
 ## Module 2 - React
 
