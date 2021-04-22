@@ -5,7 +5,10 @@ module.exports = {
   clearMocks: true,
   coverageDirectory: "coverage",
   testEnvironment: "jsdom",
-  setupFilesAfterEnv: ["<rootDir>/internals/jestSettings.js"],
+  setupFilesAfterEnv: [
+    "<rootDir>/internals/jestSettings.js",
+    "<rootDir>/internals/jestSetup.ts",
+  ],
   transform: {
     "^.+\\.(js|jsx|ts|tsx)$": "<rootDir>/node_modules/babel-jest",
     "^.+\\.mdx$": "@storybook/addon-docs/jest-transform-mdx",
