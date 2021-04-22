@@ -19,16 +19,7 @@ description: React
 
 ### Вопросы?
 
-<!-- v -->
-
-### Кто этот парень?
-
-1. Громов Фёдор
-2. Открытие, Альфа, Leroy Merlin, Wildberries
-3. Начал работать с React 3 года назад
-4. Начинал изучать frontend с онлайн-курсов 
-
-<!-- v -->
+<!-- s -->
 
 ### React patterns #1
 
@@ -155,7 +146,7 @@ const RichComponent: FC<ManyProps> = ({ one, ...rest}) => {
 <span style="color:green">**&plus;**</span> Помогает при пробросе props ребёнку задавать default значения  
 <span style="color:red">**&minus;**</span> Нужно всегда помнить о порядке! Что идёт позднее, переписывает предыдущие свойства  
 
-<!-- v -->
+<!-- s -->
 
 ### Conditional rendering
 
@@ -251,7 +242,7 @@ export default function App() {
 }
 ```
 
-<!-- v -->
+<!-- s -->
 
 ### Render prop #1
 
@@ -361,7 +352,7 @@ return <div>{newEl}</div>;
 const Button = props => <button type="button" {...props}> 
 ```
 
-<!-- v -->
+<!-- s -->
 
 ### Style component
 
