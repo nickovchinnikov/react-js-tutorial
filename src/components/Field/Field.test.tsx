@@ -17,7 +17,7 @@ describe("Field", () => {
       />
     );
 
-    expect(screen.getAllByText("x").length).toBe(1);
+    expect(screen.getByText("x")).toBeInTheDocument();
     expect(screen.getAllByText("o").length).toBe(2);
   });
   it("passed onClick inside cells", () => {

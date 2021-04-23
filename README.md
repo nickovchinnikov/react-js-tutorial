@@ -94,7 +94,10 @@ Update storybook + MDX
 * TDD + React
 
 [pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/98)
+
 [pull request2](https://github.com/nickovchinnikov/react-js-tutorial/pull/108)
+
+[pull request3](https://github.com/nickovchinnikov/react-js-tutorial/pull/109)
 
 [Presentation](https://github.com/nickovchinnikov/react-js-tutorial/tree/master/presentations/module1/7_TDDReact/lecture.md)
 

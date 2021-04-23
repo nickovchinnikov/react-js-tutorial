@@ -19,7 +19,8 @@
   "include": [
     "src/**/*",
     "scripts/**/*",
-    "lessons/**/*"
+    "lessons/**/*",
+    "internals/jestSetup.ts"
   ],
   "exclude": [
     "node_modules"
