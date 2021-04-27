@@ -101,6 +101,14 @@ Update storybook + MDX
 
 [Presentation](https://github.com/nickovchinnikov/react-js-tutorial/tree/master/presentations/module1/7_TDDReact/lecture.md)
 
+### Lesson 8: CI/CD Github Actions
+
+* Deploy config
+
+[Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/82)
+
+[Presentation](https://github.com/nickovchinnikov/react-js-tutorial/tree/master/presentations/module2/9_GitHubActions/lecture.md)
+
 ## Module 2 - React
 
 ### Lesson 1: Typescript part 2
@@ -196,14 +204,6 @@ Update storybook + MDX
 [Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/21)
 
 [Presentation](https://github.com/nickovchinnikov/react-js-tutorial/tree/master/presentations/module2/8_ReactRouter/lecture.md)
-
-### Lesson 10: CI/CD Github Actions
-
-* Deploy config
-
-[Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/82)
-
-[Presentation](https://github.com/nickovchinnikov/react-js-tutorial/tree/master/presentations/module2/9_GitHubActions/lecture.md)
 
 ## Module 3: React + Redux
 
