@@ -59,9 +59,6 @@ export const App: React.FC<unknown> = () => {
               result();
             }}
           </Route>
-          <Route path="*">
-            <Redirect to="/signin" />
-          </Route>
         </Switch>
       </Router>
     </Provider>
