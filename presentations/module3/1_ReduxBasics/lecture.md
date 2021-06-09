@@ -294,10 +294,10 @@ function usersReducer(state: UsersState = defaultUsersState, action: Action): Us
 #### Redux - Reducer
 
 ```ts
-const reducer = combineReducers([
+const reducer = combineReducers({
   users: usersReducer,
   gameField: gameFieldReducer,
-]);
+});
 ```
 <!-- v -->
 
