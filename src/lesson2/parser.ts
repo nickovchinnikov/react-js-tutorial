@@ -12,7 +12,7 @@ export const parser = (line: string): ParsedLineType | null => {
     const isValidNumberPush = !isNumber(prevItem) && isNumber(item);
     const isValidOperatorPush =
       isNumber(prevItem) &&
-      !isNumber(item) &&
+      // !isNumber(item) &&
       mathOperators.hasOwnProperty(item);
 
     if (isValidNumberPush) {
