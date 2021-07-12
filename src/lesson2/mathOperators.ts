@@ -1,4 +1,4 @@
-import { sin, cos, tan } from "./mathFunctions";
+import { sin, cos, tan, fib } from "./mathFunctions";
 
 enum MathOperator {
   ADD = "+",
@@ -11,6 +11,7 @@ enum MathOperator {
   SIN = "sin",
   COS = "cos",
   TAN = "tan",
+  FIB = "fib",
 }
 
 export type ScalarOperationType = (first: number, second: number) => number;
@@ -82,11 +83,12 @@ export const mathOperators: {
   [MathOperator.SIN]: sin,
   [MathOperator.COS]: cos,
   [MathOperator.TAN]: tan,
+  [MathOperator.FIB]: fib,
 };
 
 export const priorities: Array<Array<string>> = [
   [MathOperator.SQUARE, MathOperator.FACT],
-  [MathOperator.SIN, MathOperator.COS, MathOperator.TAN],
+  [MathOperator.SIN, MathOperator.COS, MathOperator.TAN, MathOperator.FIB],
   [MathOperator.POWER],
   [MathOperator.MULT, MathOperator.DIV],
   [MathOperator.ADD, MathOperator.MINUS],

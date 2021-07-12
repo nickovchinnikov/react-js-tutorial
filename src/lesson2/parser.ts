@@ -8,7 +8,7 @@ export type ParsedLineType = (NumOrString | ParsedLineType)[];
 export const parser = (line: string): ParsedLineType | null => {
   const stack = line.split(" ");
 
-  let closingBraceIndex: number; // helper
+  let closingBraceIndex: number;
 
   const parserIter = (
     chunk: ParsedLineType,

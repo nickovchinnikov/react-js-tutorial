@@ -17,6 +17,24 @@ export const tan: UnarOperationType = (deg: number): number => {
   return Math.tan(degToRad(deg));
 };
 
+export const fib: UnarOperationType = (num: number): number => {
+  if (num <= 0) {
+    throw new Error("fib function can handle only positive numbers");
+  }
+
+  let a = 1;
+  let b = 1;
+
+  for (let i = 3; i <= num; i++) {
+    const c = a + b;
+
+    a = b;
+    b = c;
+  }
+
+  return b;
+};
+
 export const trigFunctions: { [key: string]: UnarOperationType } = {
   sin,
   cos,

@@ -1,4 +1,4 @@
-import { sin, cos, tan } from "./mathFunctions";
+import { sin, cos, tan, fib } from "./mathFunctions";
 import { isFloatEqual } from "./helpers";
 
 describe("Trigonometric functions", () => {
@@ -24,5 +24,21 @@ describe("Trigonometric functions", () => {
 
   it("tan(90) to equal Infinity", () => {
     expect(tan(90)).toBe(Infinity);
+  });
+});
+
+describe("fib function", () => {
+  it("fib 3 equal 2", () => {
+    expect(fib(3)).toBe(2);
+  });
+
+  it("fib 6 equal 8", () => {
+    expect(fib(6)).toBe(8);
+  });
+
+  it("fib -1 to throw Error", () => {
+    expect(() => fib(-1)).toThrowError(
+      "fib function can handle only positive numbers"
+    );
   });
 });
