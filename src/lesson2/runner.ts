@@ -1,21 +1,5 @@
 import { parser, ParsedLineType, ParsedLineIterType } from "./parser";
-
-import {
-  firstPrioritiesCalc,
-  secondPrioritiesCalc,
-  thirdPrioritiesCalc,
-  fourthPrioritiesCalc,
-  lastPrioritiesCalc,
-  CalcUnarType,
-} from "./engine";
-
-const calcFuncs: Array<CalcUnarType> = [
-  firstPrioritiesCalc,
-  secondPrioritiesCalc,
-  thirdPrioritiesCalc,
-  fourthPrioritiesCalc,
-  lastPrioritiesCalc,
-];
+import { calcFuncs } from "./engine";
 
 const calcChunk = (chunk: ParsedLineIterType): ParsedLineIterType => {
   return calcFuncs.reduce<ParsedLineIterType>((acc, calc) => {

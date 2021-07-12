@@ -93,13 +93,7 @@ const [FIRST, SECOND, THIRD, FOURTH, FIFTH] = Array.from<void, number>(
   (_, index) => index
 );
 
-export const [
-  firstPrioritiesCalc,
-  secondPrioritiesCalc,
-  thirdPrioritiesCalc,
-  fourthPrioritiesCalc,
-  lastPrioritiesCalc,
-] = [
+export const calcFuncs: Array<CalcUnarType> = [
   (stack: ParsedLineIterType): ParsedLineIterType =>
     unarOperatorsCalc(stack, FIRST),
   (stack: ParsedLineIterType): ParsedLineIterType =>
@@ -108,3 +102,11 @@ export const [
   (stack: ParsedLineIterType): ParsedLineIterType => calc(stack, FOURTH),
   (stack: ParsedLineIterType): ParsedLineIterType => calc(stack, FIFTH),
 ];
+
+export const [
+  firstPrioritiesCalc,
+  secondPrioritiesCalc,
+  thirdPrioritiesCalc,
+  fourthPrioritiesCalc,
+  lastPrioritiesCalc,
+] = calcFuncs;
