@@ -1,20 +1,22 @@
-import { ParsedLineType } from "./parser";
+import { ParsedLineIterType } from "./parser";
 import { isNumber } from "./helpers";
 import { mathOperators, priorities } from "./mathOperators";
 
-export type CalcUnarType = (stack: ParsedLineType) => ParsedLineType;
-export type CalcType = (stack: ParsedLineType, num: number) => ParsedLineType;
+export type CalcUnarType = (stack: ParsedLineIterType) => ParsedLineIterType;
+export type CalcType = (
+  stack: ParsedLineIterType,
+  num: number
+) => ParsedLineIterType;
 
-const calc = (stack: ParsedLineType, priority: number): ParsedLineType => {
-  return stack.reduce<ParsedLineType>((result, nextItem) => {
+const calc = (
+  stack: ParsedLineIterType,
+  priority: number
+): ParsedLineIterType => {
+  return stack.reduce<ParsedLineIterType>((result, nextItem) => {
     const prevItem = result[result.length - 2];
     const item = result[result.length - 1];
 
-    if (Array.isArray(nextItem)) {
-      const chunkPiece = calc(nextItem, priority);
-
-      result.push(chunkPiece.length === 1 ? chunkPiece[0] : chunkPiece);
-    } else if (
+    if (
       !isNumber(String(item)) &&
       priorities[priority].includes(String(item))
     ) {
@@ -41,23 +43,19 @@ const calc = (stack: ParsedLineType, priority: number): ParsedLineType => {
 };
 
 export const unarOperatorsCalc: CalcType = (
-  stack: ParsedLineType,
+  stack: ParsedLineIterType,
   priority: number
-): ParsedLineType => {
-  return stack.reduce<ParsedLineType>((acc, currentItem) => {
+): ParsedLineIterType => {
+  return stack.reduce<ParsedLineIterType>((acc, currentItem) => {
     const prevItem = acc[acc.length - 1];
 
-    if (Array.isArray(currentItem)) {
-      const chunkPiece = calc(currentItem, priority);
-
-      acc.push(chunkPiece.length === 1 ? chunkPiece[0] : chunkPiece);
-    } else if (
+    if (
       isNumber(String(prevItem)) &&
       priorities[priority].includes(String(currentItem))
     ) {
       acc = [
         ...acc.slice(0, -1),
-        mathOperators[currentItem](Number(prevItem), 0),
+        mathOperators[String(currentItem)](Number(prevItem), 0),
       ];
     } else {
       acc.push(currentItem);
@@ -68,17 +66,13 @@ export const unarOperatorsCalc: CalcType = (
 };
 
 export const trigFuncsCalc: CalcType = (
-  stack: ParsedLineType,
+  stack: ParsedLineIterType,
   priority: number
-): ParsedLineType => {
-  return stack.reduce<ParsedLineType>((acc, currentItem) => {
+): ParsedLineIterType => {
+  return stack.reduce<ParsedLineIterType>((acc, currentItem) => {
     const prevItem = acc[acc.length - 1];
 
-    if (Array.isArray(currentItem)) {
-      const chunkPiece = calc(currentItem, priority);
-
-      acc.push(chunkPiece.length === 1 ? chunkPiece[0] : chunkPiece);
-    } else if (
+    if (
       isNumber(String(currentItem)) &&
       priorities[priority].includes(String(prevItem))
     ) {
@@ -106,9 +100,11 @@ export const [
   fourthPrioritiesCalc,
   lastPrioritiesCalc,
 ] = [
-  (stack: ParsedLineType): ParsedLineType => unarOperatorsCalc(stack, FIRST),
-  (stack: ParsedLineType): ParsedLineType => trigFuncsCalc(stack, SECOND),
-  (stack: ParsedLineType): ParsedLineType => calc(stack, THIRD),
-  (stack: ParsedLineType): ParsedLineType => calc(stack, FOURTH),
-  (stack: ParsedLineType): ParsedLineType => calc(stack, FIFTH),
+  (stack: ParsedLineIterType): ParsedLineIterType =>
+    unarOperatorsCalc(stack, FIRST),
+  (stack: ParsedLineIterType): ParsedLineIterType =>
+    trigFuncsCalc(stack, SECOND),
+  (stack: ParsedLineIterType): ParsedLineIterType => calc(stack, THIRD),
+  (stack: ParsedLineIterType): ParsedLineIterType => calc(stack, FOURTH),
+  (stack: ParsedLineIterType): ParsedLineIterType => calc(stack, FIFTH),
 ];

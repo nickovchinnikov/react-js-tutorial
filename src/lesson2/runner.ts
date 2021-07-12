@@ -1,4 +1,4 @@
-import { parser, ParsedLineType } from "./parser";
+import { parser, ParsedLineType, ParsedLineIterType } from "./parser";
 
 import {
   firstPrioritiesCalc,
@@ -24,8 +24,8 @@ export const runner = (line: string): number => {
     throw new TypeError("Unexpected string");
   }
 
-  const calcChunk = (chunk: ParsedLineType): ParsedLineType => {
-    return calcFuncs.reduce<ParsedLineType>((acc, calc) => {
+  const calcChunk = (chunk: ParsedLineIterType): ParsedLineIterType => {
+    return calcFuncs.reduce<ParsedLineIterType>((acc, calc) => {
       if (acc.length === 1) return acc;
 
       acc = calc(acc);
@@ -34,10 +34,10 @@ export const runner = (line: string): number => {
     }, chunk);
   };
 
-  const calc = (chunk: ParsedLineType): ParsedLineType => {
-    const result = chunk.reduce<ParsedLineType>((acc, cur) => {
+  const calc = (chunk: ParsedLineType): ParsedLineIterType => {
+    const result = chunk.reduce<ParsedLineIterType>((acc, cur) => {
       if (Array.isArray(cur)) {
-        acc.push(calc(cur));
+        acc.push(calc(cur)[0]);
       } else {
         acc.push(cur);
       }

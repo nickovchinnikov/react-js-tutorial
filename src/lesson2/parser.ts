@@ -1,7 +1,9 @@
 import { isNumber, isOpeningBrace, isClosingBrace } from "./helpers";
 import { mathOperators, unarOperators, trigOperators } from "./mathOperators";
 
-export type ParsedLineType = (number | string | ParsedLineType)[];
+type NumOrString = number | string;
+export type ParsedLineIterType = NumOrString[];
+export type ParsedLineType = (NumOrString | ParsedLineType)[];
 
 export const parser = (line: string): ParsedLineType | null => {
   const stack = line.split(" ");
@@ -14,7 +16,7 @@ export const parser = (line: string): ParsedLineType | null => {
     startKey = 0
   ): ParsedLineType => {
     let braceFlag = true;
-    const result = [];
+    const result: ParsedLineType = [];
 
     for (let key = 0; key < chunk.length && braceFlag; key++) {
       const item = chunk[key];
