@@ -1,3 +1,18 @@
+import { sin, cos, tan } from "./mathFunctions";
+
+enum MathOperator {
+  ADD = "+",
+  MINUS = "-",
+  MULT = "*",
+  DIV = "/",
+  POWER = "^",
+  SQUARE = "**",
+  FACT = "!",
+  SIN = "sin",
+  COS = "cos",
+  TAN = "tan",
+}
+
 export type ScalarOperationType = (first: number, second: number) => number;
 export type UnarOperationType = (num: number) => number;
 
@@ -24,7 +39,13 @@ export const minus: ScalarOperationType = (
 export const exp: ScalarOperationType = (
   first: number,
   second: number
-): number => first ** second;
+): number => {
+  if (!first && !second) {
+    throw new Error("base and power cannot equal zero at once");
+  }
+
+  return first ** second;
+};
 
 export const square: UnarOperationType = (num: number): number => exp(num, 2);
 export const fact: UnarOperationType = (num: number): number => {
@@ -48,27 +69,27 @@ export const fact: UnarOperationType = (num: number): number => {
   return items;
 };
 
-export const mathOperators: { [key: string]: ScalarOperationType } = {
-  "*": mul,
-  "/": div,
-  "+": add,
-  "-": minus,
-  "^": exp,
+export const mathOperators: {
+  [key: string]: ScalarOperationType | UnarOperationType;
+} = {
+  [MathOperator.ADD]: add,
+  [MathOperator.MINUS]: minus,
+  [MathOperator.MULT]: mul,
+  [MathOperator.DIV]: div,
+  [MathOperator.POWER]: exp,
+  [MathOperator.SQUARE]: square,
+  [MathOperator.FACT]: fact,
+  [MathOperator.SIN]: sin,
+  [MathOperator.COS]: cos,
+  [MathOperator.TAN]: tan,
 };
 
-export const mathPriorities: number[] = [1, 2, 3];
+export const priorities: Array<Array<string>> = [
+  [MathOperator.SQUARE, MathOperator.FACT],
+  [MathOperator.SIN, MathOperator.COS, MathOperator.TAN],
+  [MathOperator.POWER],
+  [MathOperator.MULT, MathOperator.DIV],
+  [MathOperator.ADD, MathOperator.MINUS],
+];
 
-const [FIRST, SECOND, THIRD] = mathPriorities;
-
-export const mathOperatorsPriorities: { [key: string]: number } = {
-  "^": FIRST,
-  "*": SECOND,
-  "/": SECOND,
-  "+": THIRD,
-  "-": THIRD,
-};
-
-export const unarOperators: { [key: string]: UnarOperationType } = {
-  "**": square,
-  "!": fact,
-};
+export const [unarOperators, trigOperators] = priorities;

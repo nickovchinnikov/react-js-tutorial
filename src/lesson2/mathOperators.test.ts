@@ -36,6 +36,11 @@ describe("mathOperators test cases", () => {
   it("exp 2 ^ 0 to equal 1", () => {
     expect(exp(2, 0)).toBe(1);
   });
+  it("exp 0 ^ 0 to throw error", () => {
+    expect(() => exp(0, 0)).toThrowError(
+      "base and power cannot equal zero at once"
+    );
+  });
 });
 
 describe("unarOperators test cases", () => {

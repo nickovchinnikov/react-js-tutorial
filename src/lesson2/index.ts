@@ -12,7 +12,7 @@ const question = (): Promise<void> => {
     rl.question("> ", (answer: string) => {
       const result = runner(answer);
 
-      if (result) {
+      if (isFinite(result)) {
         console.log(`Result: ${result}`);
       }
 
