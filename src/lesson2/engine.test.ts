@@ -4,6 +4,7 @@ import {
   thirdPrioritiesCalc,
   fourthPrioritiesCalc,
   lastPrioritiesCalc,
+  calcChunk,
 } from "./engine";
 
 describe("firstPrioritiesCalc simple cases", () => {
@@ -123,5 +124,15 @@ describe("lastPrioritiesCalc simple cases", () => {
 
   it("[32, - 32, +, 10]", () => {
     expect(lastPrioritiesCalc([32, "-", 32, "+", 10])).toEqual([10]);
+  });
+});
+
+describe("calcChunk mixed cases", () => {
+  it("[2 + 2 * 2 **]", () => {
+    expect(calcChunk([2, "+", 2, "*", 2, "**"])).toEqual([10]);
+  });
+
+  it("[3 + sin 90 * 2**]", () => {
+    expect(calcChunk([3, "+", "sin", 90, "*", 2, "**"])).toEqual([7]);
   });
 });

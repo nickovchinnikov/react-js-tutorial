@@ -1,17 +1,7 @@
 import { parser, ParsedLineType, ParsedLineIterType } from "./parser";
-import { calcFuncs } from "./engine";
+import { calcChunk } from "./engine";
 
-const calcChunk = (chunk: ParsedLineIterType): ParsedLineIterType => {
-  return calcFuncs.reduce<ParsedLineIterType>((acc, calc) => {
-    if (acc.length === 1) return acc;
-
-    acc = calc(acc);
-
-    return acc;
-  }, chunk);
-};
-
-export const calc = (chunk: ParsedLineType): ParsedLineIterType => {
+const calc = (chunk: ParsedLineType): ParsedLineIterType => {
   const result = chunk.reduce<ParsedLineIterType>((acc, cur) => {
     if (Array.isArray(cur)) {
       acc.push(calc(cur)[0]);

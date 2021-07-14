@@ -5,6 +5,29 @@ type NumOrString = number | string;
 export type ParsedLineIterType = NumOrString[];
 export type ParsedLineType = (NumOrString | ParsedLineType)[];
 
+export const isValidNumber = (
+  prevItem: NumOrString | ParsedLineType | undefined,
+  item: number
+): boolean => {
+  return (
+    !isNumber(String(prevItem)) &&
+    !Array.isArray(prevItem) &&
+    !unarOperators.includes(String(prevItem)) &&
+    isNumber(String(item))
+  );
+};
+
+export const isValidOperator = (
+  prevItem: NumOrString | ParsedLineType | undefined,
+  item: string
+): boolean => {
+  return (
+    ((isNumber(String(prevItem)) || Array.isArray(prevItem)) &&
+      mathOperators.hasOwnProperty(String(item))) ||
+    (trigOperators.includes(String(item)) && !isNumber(String(prevItem)))
+  );
+};
+
 export const parser = (line: string): ParsedLineType | null => {
   const stack = line.split(" ");
 
@@ -40,15 +63,8 @@ export const parser = (line: string): ParsedLineType | null => {
       } else {
         const prevItem = result[result.length - 1];
 
-        const isValidNumberPush =
-          !isNumber(String(prevItem)) &&
-          !Array.isArray(prevItem) &&
-          !unarOperators.includes(String(prevItem)) &&
-          isNumber(String(item));
-        const isValidOperatorPush =
-          ((isNumber(String(prevItem)) || Array.isArray(prevItem)) &&
-            mathOperators.hasOwnProperty(String(item))) ||
-          (trigOperators.includes(String(item)) && !isNumber(String(prevItem)));
+        const isValidNumberPush = isValidNumber(prevItem, Number(item));
+        const isValidOperatorPush = isValidOperator(prevItem, String(item));
 
         if (isValidNumberPush) {
           result.push(Number(item));
