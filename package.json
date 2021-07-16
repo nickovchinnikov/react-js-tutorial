@@ -44,10 +44,11 @@
   },
   "homepage": "https://github.com/nickovchinnikov/react-js-tutorial#readme",
   "devDependencies": {
-    "@babel/core": "^7.13.8",
+    "@babel/cli": "^7.14.5",
+    "@babel/core": "^7.14.6",
     "@babel/plugin-proposal-class-properties": "^7.13.0",
     "@babel/plugin-transform-runtime": "^7.13.9",
-    "@babel/preset-env": "^7.13.9",
+    "@babel/preset-env": "^7.14.7",
     "@babel/preset-react": "^7.12.13",
     "@babel/preset-typescript": "^7.13.0",
     "@storybook/addon-actions": "^v6.2.0-beta.5",
@@ -127,6 +128,7 @@
     "yaspeller": "^7.0.0"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.12.1",
     "@emotion/core": "^10.0.35",
     "@emotion/styled": "^10.0.27",
     "@reduxjs/toolkit": "^1.5.0",
