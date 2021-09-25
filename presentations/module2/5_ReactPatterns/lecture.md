@@ -93,6 +93,7 @@ let [first, second, ...restElement] = things;
 ```
 
 <!-- v -->
+
 ### Default props
 
 Паттерн, позволяющий задавать значения по умолчанию для props. 
@@ -107,6 +108,48 @@ let { name = "" } = person;
 ```js
 let things = ["one", "two", "3"];
 let [first = "", second = "2", ...restElement] = things;
+```
+
+<!-- v -->
+
+### Default props ES destructoring
+
+```js
+export const Cell: FC<CellProps> = ({ children, x = 0, y = 0, onClick }) => {
+  const isFilled = Boolean(children);
+  
+  return (
+    <CellItem
+      isFilled={isFilled}
+      onClick={() => !isFilled && onClick(x, y)}
+    >
+      {children}
+    </CellItem>
+  );
+};
+```
+
+<!-- v -->
+
+### Default props
+
+```js
+function Greeting(props) {
+  return <div>Hi {props.name}!</div>;
+}
+Greeting.defaultProps = {
+  name: "Guest"
+};
+```
+
+<!-- v -->
+
+### Rest parameter syntax
+
+```js
+function Greeting({ name, ...restProps }) {
+  return <div>Hi {name}!</div>;
+}
 ```
 
 <!-- v -->

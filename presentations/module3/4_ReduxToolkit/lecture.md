@@ -207,27 +207,20 @@ https://redux.js.org/redux-toolkit/overview
 ### Redux Toolkit - Slices
 
 ```ts
-export declare interface Slice<State = any,
- CaseReducers extends SliceCaseReducers<State> = SliceCaseReducers<State>, 
- Name extends string = string> {
-  /**
-  * The slice name.
-  */
-  name: Name;
-  /**
-  * The slice's reducer.
-  */
-  reducer: Reducer<State>;
-  /**
-  * Action creators for the types of actions that are handled by the slice reducer.
-  */
-  actions: CaseReducerActions<CaseReducers>;
-  /**
-  * The individual cae reudcer functions that were passed in the `reducers` parameter.
-  * This enables reuse and testing if they were defined inline when calling `createSlice`.
-  */
-  caseReducers: SliceDefinedCaseReducers<CaseReducers>;
-}
+function createSlice({
+    // A name, used in action types
+    name: string,
+    // The initial state for the reducer
+    initialState: any,
+    // An object of "case reducers". Key names will be used to generate actions.
+    reducers: Object<string, ReducerFunction | ReducerAndPrepareObject>
+    // A "builder callback" function used to add more reducers, or
+    // an additional object of "case reducers", where the keys should be other
+    // action types
+    extraReducers?:
+    | Object<string, ReducerFunction>
+    | ((builder: ActionReducerMapBuilder<State>) => void)
+})
 ```
 
 https://redux-toolkit.js.org/api/createSlice
@@ -249,10 +242,158 @@ const store = configureStore({
 })
 
 document.getElementById("increment").addEventListener("click", () => {
-  store.disptch(counterSlice.actions.increment())
+  store.dispatch(counterSlice.actions.increment())
 })
 ```
 https://redux-toolkit.js.org/tutorials/basic-tutorial#introducing-createslice
+
+<!-- v -->
+
+## extraReducers
+
+[extraReducers](https://redux-toolkit.js.org/api/createSlice#extrareducers)
+
+One of the key concepts of Redux is that each slice reducer "owns" its slice of state, and that many slice reducers can independently respond to the same action type. extraReducers allows createSlice to respond to other action types besides the types it has generated.
+
+As case reducers specified with extraReducers are meant to reference "external" actions, they will not have actions generated in slice.actions.
+
+<!-- v -->
+
+## createAsyncThunk
+
+[what-is-createasyncthunk-in-redux-toolkit](https://theophilusn.com/blog/what-is-createasyncthunk-in-redux-toolkit)
+
+```js
+// First, create the thunk
+const getJobs = createAsyncThunk(
+  "jobs/getJobs",
+  async (thunkAPI) => {
+    const res = axios.get("https://remoteok.io/api");
+    return res.data;
+  }
+);
+
+const getJob = createAsyncThunk(
+  "jobs/getJob",
+  async (id, thunkAPI) => {
+    const res = axios.get(`https://remoteok.io/api/${id}`);
+    return res.data;
+  }
+);
+/*
+pending: jobs/getJobs/pending
+fulfilled: jobs/getJobs/fulfilled
+rejected: jobs/getJobs/rejected
+*/
+```
+
+<!-- v -->
+
+```js
+// Then, handle actions in your reducers:
+const jobsSlice = createSlice({
+  name: "jobs",
+  initialState: {
+    jobsLoading: false,
+    jobs: [],
+    failedMessage: "",
+  },
+  reducers: {},
+  extraReducers: {
+    [getJobs.pending]: (state, action) => {
+      state.jobsLoading = true;
+    },
+    [getJobs.fulfilled]: (state, action) => {
+      state.jobs.push(action.payload);
+      state.jobsLoading = false;
+    },
+    [getJobs.rejected]: (state, action) => {
+      state.jobsLoading = false;
+      state.failedMessage: action.payload
+    },
+    [getJob.fulfilled]: (action) => return action.payload
+  },
+});
+```
+
+<!-- v -->
+
+## payloadcreator API
+
+[payloadcreator](https://soyoung210.github.io/redux-toolkit/api/createAsyncThunk/#payloadcreator)
+
+<!-- v -->
+
+## createEntityAdapter
+
+[createEntityAdapter](https://redux-toolkit.js.org/api/createEntityAdapter)
+
+<!-- v -->
+
+## Вопросы?
+
+<!-- s -->
+
+## useReducer
+
+<!-- v -->
+
+## useReducer
+
+```js
+const initialState = {count: 0};
+
+export function reducer(state, action) {
+  switch (action.type) {
+    case 'increment':
+      return {count: state.count + 1};
+    case 'decrement':
+      return {count: state.count - 1};
+    default:
+      throw new Error();
+  }
+}
+
+function Counter() {
+  const [state, dispatch] = useReducer(reducer, initialState);
+  return (
+    <>
+      Count: {state.count}
+      <button onClick={() => dispatch({type: 'decrement'})}>-</button>
+      <button onClick={() => dispatch({type: 'increment'})}>+</button>
+    </>
+  );
+}
+```
+
+<!-- v -->
+
+## useReducer + createSlice
+
+```ts
+export const counter = createSlice({
+  name: 'counter',
+  initialState: 0 as number,
+  reducers: {
+    increment: (state) => state + 1,
+    decrement: (state) => state - 1
+  },
+})
+
+const { reducer, actions } = counter;
+
+function Counter() {
+  const [state, dispatch] = useReducer(reducer, initialState);
+  return (
+    <>
+      Count: {state.count}
+      <button onClick={() => dispatch(actions.decrement())}>-</button>
+      <button onClick={() => dispatch(actions.increment())}>+</button>
+    </>
+  );
+}
+```
+
 
 <!-- v -->
 
