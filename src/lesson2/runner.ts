@@ -1,19 +1,19 @@
-import { parser } from "./parser";
+import { solveExpression, changeExp } from "./engine";
+import jestConfig from "../../jest.config";
 
-import { firstPrioritiesCalc, secondPrioritiesCalc } from "./engine";
+const openBracket = "(";
+const closeBracket = ")";
 
 export const runner = (line: string): number => {
-  const stack = parser(line);
-
-  if (stack === null) {
-    throw new TypeError("Unexpected string");
-  }
-
-  const firstPrioritiesRes = firstPrioritiesCalc(stack);
-
-  if (firstPrioritiesRes.length === 1) {
-    return Number(firstPrioritiesRes[0]);
-  }
-
-  return secondPrioritiesCalc(firstPrioritiesRes);
+  line = changeExp(line);
+  //console.log ('line = ' + line); 
+  let arrLine: string[] = line.split(" ");    
+  if (arrLine.includes(openBracket)) {     
+     let expInBrackets: string[] = arrLine.slice(arrLine.lastIndexOf(openBracket)+1, arrLine.indexOf(closeBracket));
+     let result = solveExpression(expInBrackets.join(' '));     
+     arrLine.splice(arrLine.lastIndexOf(openBracket), arrLine.indexOf(closeBracket) - arrLine.lastIndexOf(openBracket) + 1, result.toString());     
+     return solveExpression(arrLine.join(' '));
+  } else {
+    return solveExpression(line);
+  }    
 };
