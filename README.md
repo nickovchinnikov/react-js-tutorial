@@ -1,28 +1,21 @@
 # react-js-tutorial
+Домашнее задание 1. Webpack + babel + typescript базовая настройка. Консольный калькулятор
 
-## Lesson 1:
-Basic configuration for the project on the master branch. What configurations you can find:
-* Babel
-* Webpack
-* Typescript
-* Eslint
-* Jest
-* Precommit hooks / husky
+В качестве исходного шаблона для решения задачи взято содержимое папки /src/lesson2 из ветки https://github.com/nickovchinnikov/react-js-tutorial/tree/nick/lesson2
 
-## Lesson 2:
-Math calculator with basic arithmetic operations without eval
+В рамках д/з реализовано:
+1. Добавлена поддержка математических операций **, ^, !
+2. Добавлена возможность вводить математическое выражение не разделяя пробелами числа и знаки (!+-*/)
+3. Добавлена поддержка круглых скобок для управления приоритетом операций в математическом выражении.
 
-```npm run calc```
 
-Then you can calc simple math operations
-
-Examples:
-
+Для запуска:
 ```
-> 10 + 10
-Result: 20
-> 10 + 10 * 20 - 30
-Result: 180
-> 19 + -10
-Result: 9
+npm i
+npm run calc
+```
+Варианты примеров:
+```
+5!*(7+2)-6^2
+2^(3+2)/4+7**
 ```
