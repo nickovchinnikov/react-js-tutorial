@@ -99,6 +99,18 @@ export function* strangeZeroOneSequence(length: number): Generator<number> {
   }
 }
 
+// Linear memory consumption
+export const strangeZeroOneSequence2 = (length: number): string => {
+  let [result, chunk] = ["", 0];
+  // One single loop till the end O(N)
+  for (let i = 0; i < length; i++) {
+    chunk += Math.pow(2, i);
+    // Just binary data casting, that's O(1)
+    result += `0${chunk.toString(2)}`;
+  }
+  return result;
+};
+
 export class BinaryTree {
   constructor(
     private value: string,

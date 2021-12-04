@@ -36,7 +36,7 @@ describe("Login Saga", () => {
       saga
         .next()
         .fork(checkUserSession)
-        .next(userSession)
+        .next()
         .take(actions.login.type)
         .next(actions.login(userSession))
         .call(login, userSession)
@@ -63,7 +63,7 @@ describe("Login Saga", () => {
       saga
         .next()
         .fork(checkUserSession)
-        .next(userSession)
+        .next()
         .take(actions.login.type)
         .next(actions.login(userSession))
         .take(actions.logout.type)
