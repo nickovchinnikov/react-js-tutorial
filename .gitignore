@@ -1,4 +1,5 @@
 .history
+.lh
 .vscode
 node_modules
 dist

@@ -46,6 +46,10 @@ describe("mathOperators test cases", () => {
   it("3! to equal 6", () => {
     expect(factorial(3)).toBe(6);
   });
+
+  it("0! to equal 1", () => {
+    expect(factorial(0)).toBe(1);
+  });
 });
 
 describe("triginimetric operations test cases", () => {
