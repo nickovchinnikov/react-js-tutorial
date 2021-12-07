@@ -314,7 +314,7 @@ const reducer = combineReducers({
 - тестировать reducers как чистые функции (state + action in => state out)
 - тестировать связку dispatch + getState (DevTools в помощь)
 
-http://extension.remotedev.io/  
+https://www.ngxs.io/plugins/devtools  
 https://redux.js.org/recipes/writing-tests#reducers
 
 <!-- v -->
