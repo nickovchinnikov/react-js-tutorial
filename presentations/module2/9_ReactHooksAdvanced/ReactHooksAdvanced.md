@@ -23,29 +23,21 @@ description: Advanced React Hooks
 
 ## О вебинаре
 
-<ul>
-    <li>Дополнительные хуки - useReducer, useDebugValue, useCustomHook</li>
-    <li>Еще раз про тестирование</li>
-    <li>Пример хуков из учебного проекта</li>
-</ul>
+- Дополнительные хуки - useReducer, useDebugValue, useCustomHook
+- Еще раз про тестирование
+- Пример хуков из учебного проекта
+
 
 <!--v-->
 
 ## useReducer
 
-```
+```js
 const [state, dispatch] = useReducer(reducer, initValue, initFunction);
 reducer = (prevState, action) => newState;
 ```
-
-<br />
-
-<section>
-  <ol>
-    <li>Вместо прямого задания нового state, вызывается dispatch. Всё что передано в dispatch -> action в reducer</li>
-    <li>Для инициализации может принимать третьим аргументом функцию, который преобразует initValue</li>
-  </ol>
-</section>
+1. Вместо прямого задания нового state, вызывается dispatch. Всё что передано в dispatch -> action в reducer
+2. Для инициализации может принимать третьим аргументом функцию, который преобразует initValue
 
 <!--v-->
 
@@ -108,10 +100,8 @@ function useReducer(reducer, initialState) {
    - [тестирование](https://github.com/nickovchinnikov/react-js-tutorial/blob/ce3a3fe6fb565377beb6a06041e49531f47ceb78/lessons/module2/7_ReactHooks/CounterReducer.test.tsx) reducer'а
 
 2. Реализуем:
-<ul>
-    <li>дополнительные action'ы для CounterReducer</li>
-    <li>и соответствующие тесты для reducer'а</li>
-</ul> 
+   - дополнительные action'ы для CounterReducer
+   - и соответствующие тесты для reducer'а
 
 <!--v-->
 
@@ -139,12 +129,10 @@ const useCustomhook = () => {
 
 ## useDebugValue. Пример
 1. Рассмотрим hook [useMouseDown](https://github.com/nickovchinnikov/minesweeper/blob/2ad019ff5be521f4e42f0793f69437f31a5a3555/src/components/hooks/useMouseDown.ts):
-<ul>
-    <li>его реализацию</li>
-    <li>для чего используется</li>
-    <li>тесты</li>
-    <li>пример использования useDebugValue</li>
-</ul> 
+   - его реализацию
+   - для чего используется
+   - тесты
+   - пример использования useDebugValue
 
 <!--v-->
 
