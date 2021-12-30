@@ -1,4 +1,3 @@
-[//]: # (TODO: Is this actual?)
 ---
 title: Функциональное программирование и загадочные монады
 description: Monades
