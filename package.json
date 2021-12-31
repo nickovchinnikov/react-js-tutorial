@@ -7,7 +7,7 @@
     "start": "webpack serve --mode development --hot",
     "build": "npx webpack --mode production",
     "calc": "npx ts-node scripts/calc",
-    "slides": "reveal-md",
+    "slides": "reveal-md ./presentations",
     "lint": "npx eslint --ext .js,.jsx,.ts,.tsx --fix ./",
     "loki:update": "npm run build-storybook && npx loki update --requireReference --reactUri file:./storybook-static",
     "loki:approve": "npx loki approve",
