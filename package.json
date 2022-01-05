@@ -1,7 +1,7 @@
 {
   "name": "react-js-tutorial",
   "version": "1.0.0",
-  "description": "",
+  "description": "Basic configuration for the project on the master branch. What configurations you can find:\r * Babel\r * Webpack\r * Typescript\r * Eslint\r * Jest\r * Precommit hooks / husky",
   "main": "index.js",
   "scripts": {
     "build": "npx webpack --mode production",
