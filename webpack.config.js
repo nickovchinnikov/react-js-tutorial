@@ -24,12 +24,43 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/,
+        test: /(?<!module)\.css$/,
         use: ["style-loader", "css-loader"],
+      },
+      {
+        test: /module\.css$/,
+        use: [
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: {
+              modules: true,
+            },
+          },
+        ],
       },
       {
         test: /\.worker\.(ts|js)$/,
         use: { loader: "worker-loader" },
+      },
+      {
+        test: /(?<!module)\.s([aс])ss$/,
+        use: ["style-loader", "css-loader", "sass-loader"],
+      },
+      {
+        test: /module\.s([aс])ss$/,
+        use: [
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: {
+              modules: {
+                localIdentName: "[name]_[local]-[hash:base64:5]",
+              },
+            },
+          },
+          "sass-loader",
+        ],
       },
       ...webpackRules,
     ],

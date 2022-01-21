@@ -20,7 +20,7 @@
     "src/**/*",
     "scripts/**/*",
     "lessons/**/*",
-    "internals/jestSetup.ts"
+    "declarations.d.ts"
   ],
   "exclude": [
     "node_modules"
