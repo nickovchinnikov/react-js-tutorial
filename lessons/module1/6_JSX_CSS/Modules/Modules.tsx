@@ -1,18 +1,20 @@
-import React, { memo, useReducer } from "react";
+import React, { memo, useState } from "react";
 import cn from "clsx";
-import s from "./Modules.module.sass";
+import styles from "./Modules.module.sass";
 
 export type Props = {
   className?: string;
 };
 
 export const Modules = memo<Props>(({ className }) => {
-  const [colored, toggleColored] = useReducer((v) => !v, false);
+  const [colored, setColored] = useState(false);
   return (
-    <div className={cn(s.basis, className)}>
+    <div className={cn(styles.basis, className)}>
       <div>
-        <div className={cn(s.title, colored && s.colored)}>Заголовок</div>
-        <button onClick={toggleColored} className={s.button}>
+        <div className={cn(styles.title, colored && styles.colored)}>
+          Заголовок
+        </div>
+        <button onClick={() => setColored((v) => !v)} className={styles.button}>
           Сменить цвет
         </button>
       </div>
@@ -20,4 +22,4 @@ export const Modules = memo<Props>(({ className }) => {
   );
 });
 
-Modules.displayName = "Basis";
+Modules.displayName = "Modules";

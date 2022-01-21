@@ -1,9 +1,13 @@
-import React, { memo, useReducer } from "react";
+import React, { memo, useState } from "react";
 import styled from "@emotion/styled";
 
 export type Props = {
   className?: string;
 };
+
+const $red = "red";
+const $blue = "#4398e3";
+const $cyan = "#43d6e3";
 
 const Root = styled.div`
   display: flex;
@@ -14,17 +18,16 @@ const Root = styled.div`
   text-align: center;
 `;
 
-const Changed = styled(Root)`
+const ChangedRoot = styled(Root)`
   height: 200px;
 `;
 
-const Title = styled.div`
+const Title = styled.div<{ colored: boolean }>`
   font-size: 16px;
   font-weight: 600;
   margin-bottom: 8px;
   transition: 0.5s;
-  color: ${(props: { colored: boolean }) =>
-    props.colored ? "red" : "inherit"}; ;
+  color: ${(props) => (props.colored ? $red : "inherit")}; ;
 `;
 
 const Button = styled.button`
@@ -34,25 +37,25 @@ const Button = styled.button`
   outline: none;
   cursor: pointer;
   color: #fff;
-  background-color: #4398e3;
+  background-color: ${$blue};
   transition: 0.3s;
   &:hover {
-    box-shadow: 0 0 12px rgba(67, 214, 227, 0.68);
+    box-shadow: 0 0 12px rgba(${$cyan}, 0.68);
   }
   &:active {
-    background-color: #43d6e3;
+    background-color: ${$cyan};
   }
 `;
 
 export const CssInJsRaw = memo<Props>(({ className }) => {
-  const [colored, toggleColored] = useReducer((v) => !v, false);
+  const [colored, setColored] = useState(false);
   return (
-    <Changed className={className}>
+    <ChangedRoot className={className}>
       <div>
         <Title colored={colored}>Заголовок</Title>
-        <Button onClick={toggleColored}>Сменить цвет</Button>
+        <Button onClick={() => setColored((v) => !v)}>Сменить цвет</Button>
       </div>
-    </Changed>
+    </ChangedRoot>
   );
 });
 

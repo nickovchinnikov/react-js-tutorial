@@ -1,3 +1,7 @@
+$red: red
+$blue: #4398e3
+$cyan: #43d6e3
+
 .basis
   display: flex
   height: 100vh
@@ -13,7 +17,7 @@
   transition: 0.5s
 
   &.colored
-    color: red
+    color: $red
 
 .button
   border-radius: 20px
@@ -22,11 +26,11 @@
   outline: none
   cursor: pointer
   color: #fff
-  background-color: #4398e3
+  background-color: $blue
   transition: 0.3s
 
   &:hover
-    box-shadow: 0 0 12px rgba(67, 214, 227, 0.68)
+    box-shadow: 0 0 12px rgba($cyan, 0.68)
 
   &:active
-    background-color: #43D6E3
+    background-color: $cyan
