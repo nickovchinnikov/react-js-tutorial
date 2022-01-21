@@ -11,7 +11,7 @@ const $cyan = "#43d6e3";
 
 const Root = styled.div`
   display: flex;
-  height: 100vh;
+  height: 50vh;
   align-items: center;
   justify-content: center;
   line-height: 1.2;

@@ -24,57 +24,28 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /(?<!module)\.css$/,
-        use: ["style-loader", "css-loader"],
-        exclude: /\.module\.css$/,
-      },
-      {
-        test: /module\.css$/,
-        use: [
-          "style-loader",
-          {
-            loader: "css-loader",
-            options: {
-              modules: true,
-            },
-          },
-        ],
-      },
-      {
-        test: /module\.css$/,
-        use: [
-          "style-loader",
-          {
-            loader: "css-loader",
-            options: {
-              modules: true,
-            },
-          },
-        ],
-      },
-      {
-        test: /\.worker\.(ts|js)$/,
-        use: { loader: "worker-loader" },
-      },
-      {
-        test: /\.s([aс])ss$/,
+        test: /\.(c|s)a?ss$/,
         use: ["style-loader", "css-loader", "sass-loader"],
         exclude: /\.module\.s([aс])ss$/,
       },
       {
-        test: /module\.s([aс])ss$/,
+        test: /\.(c|s)a?ss$/,
         use: [
           "style-loader",
           {
             loader: "css-loader",
             options: {
-              modules: {
-                localIdentName: "[name]_[local]-[hash:base64:5]",
-              },
+              modules: true,
             },
           },
           "sass-loader",
         ],
+        include: /\.module\.(c|s)a?ss$/,
+      },
+
+      {
+        test: /\.worker\.(ts|js)$/,
+        use: { loader: "worker-loader" },
       },
       ...webpackRules,
     ],
