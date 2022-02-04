@@ -18,7 +18,8 @@
     "lint:spell": "yaspeller ./presentations/**",
     "check": "npm run lint && npm run ts:check && npm test -- --coverage && npm run e2e",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "server": "npx ts-node ./server/websocket.ts"
   },
   "husky": {
     "hooks": {

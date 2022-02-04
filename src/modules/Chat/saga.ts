@@ -1,5 +1,5 @@
 import { take, takeEvery, put, call } from "redux-saga/effects";
-import { EventChannel, eventChannel } from "redux-saga";
+import { END, EventChannel, eventChannel } from "redux-saga";
 import SocketIO from "socket.io-client";
 
 import { actions } from "./reducer";
@@ -20,6 +20,10 @@ export function createSocketChannel(
     };
 
     socket.on(chatMessageEvent, chatMessageHandler);
+
+    socket.on("disconnect", () => {
+      emit(END);
+    });
 
     const unsubscribe = () => {
       socket.off(chatMessageEvent, chatMessageHandler);
@@ -49,6 +53,8 @@ export function* chatSaga() {
     } catch (err) {
       console.error("socket error:", err);
       socketChannel.close();
+    } finally {
+      console.info("Channel closed");
     }
   }
 }
