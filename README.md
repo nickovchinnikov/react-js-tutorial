@@ -151,16 +151,6 @@ Update storybook + MDX
 
 * Basic Hooks
 
-- [hook useGame](https://github.com/nickovchinnikov/minesweeper/blob/2ad019ff5be521f4e42f0793f69437f31a5a3555/src/modules/GameWithHooks/useGame.ts)
-
-- [hook useSettings](https://github.com/nickovchinnikov/minesweeper/blob/2ad019ff5be521f4e42f0793f69437f31a5a3555/src/modules/GameWithHooks/useSettings.ts)
-
-- [hook useStatus](https://github.com/nickovchinnikov/minesweeper/blob/2ad019ff5be521f4e42f0793f69437f31a5a3555/src/modules/GameWithHooks/useStatus.ts)
-
-- [hook useTime](https://github.com/nickovchinnikov/minesweeper/blob/2ad019ff5be521f4e42f0793f69437f31a5a3555/src/modules/GameWithHooks/useTime.ts)
-
-- [тесты](https://github.com/nickovchinnikov/minesweeper/blob/2ad019ff5be521f4e42f0793f69437f31a5a3555/src/modules/GameWithHooks/useGame.test.ts) для hook'а useGame
-
 [Presentation](https://github.com/nickovchinnikov/react-js-tutorial/tree/master/presentations/module2/8.2_ReactTestingLibrary/lecture.md)
 
 [Code samples](https://codesandbox.io/s/react-hooks-c3jf4?file=/src/index.tsx)
