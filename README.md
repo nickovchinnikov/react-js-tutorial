@@ -51,7 +51,7 @@ Result: 9
 
 [Presentation](https://docs.google.com/presentation/d/1ACOGg-BgKrcnLool6gFzT3G3w1oProH_2O4PjCiz2w8/edit?usp=sharing)
 
-### Lesson 3: Basic React configuration
+### Lesson 3: Установка и настройка React
 
 * @babel/preset-react
 * Storybook
@@ -67,7 +67,7 @@ Update storybook + MDX
 
 [Presentation](https://drive.google.com/open?id=10qgUTWj5aMG4WxcNk9UV8_xMHdnE5GRH7I7_Z8w0P7M)
 
-### Lesson 4: About project
+### Lesson 4: Консультация по проекту
 
 [Presentation](https://docs.google.com/presentation/d/1LUebkHkLa_0gwHG2EfCSFFVUbN04pCUP0tCDc7fA2y4/edit?usp=sharing)
 
@@ -99,7 +99,7 @@ Update storybook + MDX
 
 [pull request3](https://github.com/nickovchinnikov/react-js-tutorial/pull/109)
 
-[Presentation](https://github.com/nickovchinnikov/react-js-tutorial/tree/master/presentations/module1/7_TDDReact/lecture.md)
+[Presentation](https://github.com/nickovchinnikov/react-js-tutorial/tree/master/presentations/module1/8_TDDReact/lecture.md)
 
 ### Lesson 8: CI/CD Github Actions
 
@@ -111,7 +111,7 @@ Update storybook + MDX
 
 ## Module 2 - React
 
-### Lesson 1: Typescript part 2
+### Lesson 9: Typescript part 2
 
 * Generics
 * Classes
@@ -122,7 +122,7 @@ Update storybook + MDX
 
 [Presentation](https://docs.google.com/presentation/d/1ucC_6gpybB52DN9tQjDF6SMsmQcdopwchdbp6jVAzOM/edit?usp=sharing)
 
-### Lesson 2: React lifecycles
+### Lesson 10: React lifecycles
 
 * React state/props
 * PureComponent
@@ -137,7 +137,33 @@ Update storybook + MDX
 
 [Presentation](https://docs.google.com/presentation/d/192hcXBkOKCgzEGVD-iCuXnHWTdraD1E99DaFRSnOwFs/edit?usp=sharing)
 
-### Lesson 3: Lists, Events, Forms, Refs
+### Lesson 11: React Hooks
+
+* Basic Hooks
+
+[Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/20)
+
+[Presentation](https://github.com/nickovchinnikov/react-js-tutorial/tree/master/presentations/module2/7_ReactHooks/lecture.md)
+
+[Code samples](https://codesandbox.io/s/react-hooks-c3jf4?file=/src/index.tsx)
+
+### Lesson 12: Обзор React testing library
+
+* Basic Hooks
+
+[Presentation](https://github.com/nickovchinnikov/react-js-tutorial/tree/master/presentations/module2/8.2_ReactTestingLibrary/lecture.md)
+
+[Code samples](https://codesandbox.io/s/react-hooks-c3jf4?file=/src/index.tsx)
+
+### Lesson 13: React Hooks advanced
+
+### Lesson 14: Основные концепты Redux и useReducer
+
+[Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/23)
+
+[Presentation](https://github.com/nickovchinnikov/react-js-tutorial/tree/master/presentations/module3/1_ReduxBasics/lecture.md)
+
+### Lesson 15: Lists, Events, Forms, Refs
 
 [Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/14/)
 
@@ -145,15 +171,7 @@ Update storybook + MDX
 
 [Presentation](https://docs.google.com/presentation/d/1-dCyyIYT0sgeITNLKeSIBufGiuiBKoGRYpeO3pdlZlY/edit?usp=sharing)
 
-### Lesson 4: Functional programming basic
-
-[Pull request examples](https://github.com/nickovchinnikov/react-js-tutorial/pull/78)
-
-[Pull request homework](https://github.com/nickovchinnikov/react-js-tutorial/pull/25)
-
-[Presentation](https://docs.google.com/presentation/d/1dTNFn2c91hnD--kaaN9v5OmwMygUWMgumc1vPISZExA/edit?usp=sharing)
-
-### Lesson 5: React Patterns part 1
+### Lesson 16: React Patterns part 1
 
 * function component;
 * destructuring props;
@@ -174,7 +192,7 @@ Update storybook + MDX
 
 [Code samples](https://codesandbox.io/s/react-patterns-5huin)
 
-### Lesson 6: React Patterns part 2
+### Lesson 17: React Patterns part 2
 
 * Event switch
 * Layout component
@@ -187,19 +205,7 @@ Update storybook + MDX
 
 [Presentation](https://github.com/nickovchinnikov/react-js-tutorial/tree/master/presentations/module2/6_ReactPatterns2/lecture.md)
 
-### Lesson 7: React Hooks
-
-* Basic Hooks
-
-[Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/20)
-
-[Presentation](https://github.com/nickovchinnikov/react-js-tutorial/tree/master/presentations/module2/7_ReactHooks/lecture.md)
-
-[Code samples](https://codesandbox.io/s/react-hooks-c3jf4?file=/src/index.tsx)
-
-### Lesson 8: React Hooks advanced
-
-### Lesson 9: React Router
+### Lesson 18: React Router
 
 [Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/21)
 
@@ -207,19 +213,15 @@ Update storybook + MDX
 
 ## Module 3: React + Redux
 
-### Lesson 1: Redux basic
+### Lesson 19: Functional programming basic
 
-[Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/23)
+[Pull request examples](https://github.com/nickovchinnikov/react-js-tutorial/pull/78)
 
-[Presentation](https://github.com/nickovchinnikov/react-js-tutorial/tree/master/presentations/module3/1_ReduxBasics/lecture.md)
+[Pull request homework](https://github.com/nickovchinnikov/react-js-tutorial/pull/25)
 
-### Lesson 2: React + Redux
+[Presentation](https://docs.google.com/presentation/d/1dTNFn2c91hnD--kaaN9v5OmwMygUWMgumc1vPISZExA/edit?usp=sharing)
 
-[Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/27)
-
-[Presentation](https://github.com/nickovchinnikov/react-js-tutorial/tree/master/presentations/module3/2_ReactAndRedux/lecture.md)
-
-### Lesson 3: Redux middlewares and side-effects
+### Lesson 20: Redux middlewares and side-effects
 
 [Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/34)
 
@@ -227,13 +229,19 @@ Update storybook + MDX
 
 [Presentation](https://otus-lesson-react-middlewares.now.sh/)
 
-### Lesson 4: Redux toolkit
+### Lesson 21: Redux toolkit
 
 [Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/28)
 
 [Presentation](https://github.com/nickovchinnikov/react-js-tutorial/tree/master/presentations/module3/4_ReduxToolkit/lecture.md)
 
-### Lesson 5: Redux-saga intro
+### Lesson 22: React + Redux
+
+[Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/27)
+
+[Presentation](https://github.com/nickovchinnikov/react-js-tutorial/tree/master/presentations/module3/2_ReactAndRedux/lecture.md)
+
+### Lesson 23: JS Generators, введение в Redux-Saga
 
 * Generators
 
@@ -245,7 +253,7 @@ Update storybook + MDX
 
 [Presentation](https://github.com/nickovchinnikov/react-js-tutorial/tree/master/presentations/module3/5_ReduxSagaIntro/lecture.md)
 
-### Lesson 6: Redux-saga and integration testing
+### Lesson 24: Redux-saga и интеграционное тестирование
 
 * Integration testing
 * redux-saga-test-plan
@@ -254,17 +262,17 @@ Update storybook + MDX
 
 [Presentation](https://github.com/nickovchinnikov/react-js-tutorial/tree/master/presentations/module3/6_ReduxSagaAndIntegrationTesting/lecture.md)
 
-### Lesson 7: Redux-saga basic concept
+### Lesson 25: Redux-saga примеры использования effects
 
 [Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/44) <br>
 [Presentation](https://docs.google.com/presentation/d/12kDULqRToPULXu-WQeaDMwJ3mNNuNPfkrQS56DG1yTI/edit?usp=sharing) <br>
 
-### Lesson 8: Architecture
+### Lesson 26: Архитектура React-приложения
 
 [Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/45) <br>
 [Presentation](https://docs.google.com/presentation/d/1lHaa-X74A-CH3Gakbmc6UWFemeAGfdAyrvb2pSEnhkU/edit?usp=sharing) <br>
 
-### Lesson 9: Redux-saga advanced
+### Lesson 27: React+Redux, Thunk, Redux-Saga на примерах
 
 [Pull request](https://github.com/nickovchinnikov/react-js-tutorial/pull/47) <br>
 [Presentation](https://docs.google.com/presentation/d/1-0NOSE50w_ZIFoL8cF4WWotGAkhfpzHoHUB9EOlz7RU/edit?usp=sharing) <br>
