@@ -6,3 +6,4 @@ reports
 storybook-static
 dist
 presa
+declarations.d.ts

@@ -14,6 +14,9 @@ import { store } from "./store";
 import { selectIsAuthorized } from "@/modules/Login/selectors";
 
 import { result } from "@/modules/Flickr";
+import { Basis } from "../lessons/module1/6_JSX_CSS/Basis";
+import { Modules } from "../lessons/module1/6_JSX_CSS/Modules";
+import { CssInJs } from "../lessons/module1/6_JSX_CSS/Css-in-js";
 
 export const App: React.FC<unknown> = () => {
   const [state, setState] = useState(store.getState());
@@ -31,6 +34,15 @@ export const App: React.FC<unknown> = () => {
             <li>
               <Link to="/courses">Courses</Link>
             </li>
+            <li>
+              <Link to="/lessons/6/basis">basis</Link>
+            </li>
+            <li>
+              <Link to="/lessons/6/module">module</Link>
+            </li>
+            <li>
+              <Link to="/lessons/6/css-in-js">css-in-js</Link>
+            </li>
             {!isAuthorized ? (
               <li>
                 <Link to="/signin">SignIn</Link>
@@ -45,6 +57,15 @@ export const App: React.FC<unknown> = () => {
           </ul>
         </nav>
         <Switch>
+          <Route path="/lessons/6/basis">
+            <Basis />
+          </Route>
+          <Route path="/lessons/6/module">
+            <Modules />
+          </Route>
+          <Route path="/lessons/6/css-in-js">
+            <CssInJs />
+          </Route>
           <Route path="/courses">
             <CoursesScreen />
           </Route>

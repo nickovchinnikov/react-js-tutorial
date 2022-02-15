@@ -24,9 +24,25 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/,
-        use: ["style-loader", "css-loader"],
+        test: /\.(c|s)a?ss$/,
+        use: ["style-loader", "css-loader", "sass-loader"],
+        exclude: /\.module\.s([aс])ss$/,
       },
+      {
+        test: /\.(c|s)a?ss$/,
+        use: [
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: {
+              modules: true,
+            },
+          },
+          "sass-loader",
+        ],
+        include: /\.module\.(c|s)a?ss$/,
+      },
+
       {
         test: /\.worker\.(ts|js)$/,
         use: { loader: "worker-loader" },
