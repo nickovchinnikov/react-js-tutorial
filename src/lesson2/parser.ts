@@ -3,10 +3,9 @@ import { mathOperators } from "./mathOperators";
 
 export type ParsedLineType = Array<number | string>;
 
-export const parser = (line: string): ParsedLineType | null => {
+export const parser = (line: string): ParsedLineType => {
   const result = [];
   const stack = line.split(" ");
-
   for (let key = 0; key < stack.length; key++) {
     const prevItem = stack[key - 1];
     const item = stack[key];
@@ -25,5 +24,6 @@ export const parser = (line: string): ParsedLineType | null => {
       throw new TypeError("Unexpected string");
     }
   }
+
   return result;
 };

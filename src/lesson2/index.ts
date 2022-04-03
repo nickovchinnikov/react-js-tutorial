@@ -15,8 +15,10 @@ const question = (): Promise<null> =>
       if (result) {
         console.log(`Result: ${result}`);
       }
-
+      /* eslint-disable */
+      // @ts-ignore
       resolve();
+      /* eslint-enable */
     });
   });
 

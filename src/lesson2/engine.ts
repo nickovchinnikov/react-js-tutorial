@@ -6,7 +6,7 @@ import {
   mathOperatorsPriorities,
 } from "./mathOperators";
 
-const { FIRST, SECOND } = mathPriorities;
+const { FIRST, SECOND, THIRD } = mathPriorities;
 
 export const firstPrioritiesCalc = (stack: ParsedLineType): ParsedLineType => {
   let result: ParsedLineType = [];
@@ -29,7 +29,28 @@ export const firstPrioritiesCalc = (stack: ParsedLineType): ParsedLineType => {
   return result;
 };
 
-export const secondPrioritiesCalc = (stack: ParsedLineType): number => {
+export const secondPrioritiesCalc = (stack: ParsedLineType): ParsedLineType => {
+  let result: ParsedLineType = [];
+
+  for (let key = 0; key < stack.length; key++) {
+    const prevItem = result[result.length - 2];
+    const item = result[result.length - 1];
+    const nextItem = stack[key];
+
+    if (!isNumber(String(item)) && mathOperatorsPriorities[item] === SECOND) {
+      result = [
+        ...result.slice(0, -2),
+        mathOperators[item](Number(prevItem), Number(nextItem)),
+      ];
+    } else {
+      result.push(nextItem);
+    }
+  }
+
+  return result;
+};
+
+export const thirdPrioritiesCalc = (stack: ParsedLineType): number => {
   let result = 0;
   for (let key = 0; key < stack.length; key++) {
     if (key === 0) {
@@ -40,7 +61,7 @@ export const secondPrioritiesCalc = (stack: ParsedLineType): number => {
     const item = stack[key - 1];
     const nextItem = stack[key];
 
-    if (!isNumber(String(item)) && mathOperatorsPriorities[item] === SECOND) {
+    if (!isNumber(String(item)) && mathOperatorsPriorities[item] === THIRD) {
       result = mathOperators[item](Number(prevItem), Number(nextItem));
     }
   }

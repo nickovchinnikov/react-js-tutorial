@@ -1,4 +1,4 @@
-import { mul, div, add, minus } from "./mathOperators";
+import { mul, div, add, minus, pow } from "./mathOperators";
 
 test("mul 1 * 2 to equal 2", () => {
   expect(mul(1, 2)).toBe(2);
@@ -22,4 +22,12 @@ test("add 4 + 2 to equal 6", () => {
 
 test("minus 4 - 2 to equal 2", () => {
   expect(minus(4, 2)).toBe(2);
+});
+
+test("pow 4 ^ 2 to equal 16", () => {
+  expect(pow(4, 2)).toBe(16);
+});
+
+test("pow 5 ^ 2 to equal 25", () => {
+  expect(pow(5, 2)).toBe(25);
 });

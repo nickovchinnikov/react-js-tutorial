@@ -1,32 +1,36 @@
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-
 module.exports = {
-  entry: "./src/index.tsx",
-  devtool: "source-map",
-  resolve: {
-    extensions: [".js", ".jsx", ".ts", ".tsx", ".json"],
-  },
-  output: {
-    path: path.join(__dirname, "/dist"),
-    filename: "index.js",
-  },
+  entry: "./src/index.ts",
+  devtool: "inline-source-map",
   module: {
     rules: [
       {
-        test: /\.(js|ts)x?$/,
-        loader: "babel-loader",
+        test: /\.(ts|js)x?$/,
         exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env", "@babel/preset-typescript"],
+          },
+        },
       },
     ],
   },
-  devServer: {
-    historyApiFallback: true,
+  resolve: {
+    extensions: [".tsx", ".ts", ".js", ".json"],
+  },
+  output: {
+    path: path.resolve(__dirname, "dist"),
+    filename: "index.js",
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./src/index.html",
+      filename: "index.html",
+      title: "My calc",
+      hash: true,
+      cache: true,
     }),
   ],
 };

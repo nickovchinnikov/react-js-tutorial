@@ -1,51 +1,43 @@
 {
-  "name": "react-js-tutorial",
+  "name": "mycalc",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npx webpack --mode production",
-    "calc": "npx ts-node src/lesson2",
-    "lint": "npx eslint --ext .js,.jsx,.ts,.tsx --fix ./",
     "test": "npx jest",
-    "check": "npm test && npm run lint"
+    "eslint": "npx eslint --ext .js,.jsx,.ts,.tsx --fix ./",
+    "build": "npx webpack --mode production",
+    "prepare": "husky install",
+    "prettier": "npx prettier --write .",
+    "check": "npm test && npm run eslint && npm run prettier",
+    "tsc": "npx tsc src/index.ts",
+    "start": "npx ts-node src/lesson2"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run check",
-      "pre-push": "npm run check"
-    }
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/nickovchinnikov/react-js-tutorial.git"
-  },
-  "author": "Nick Ovchinnikov",
+  "keywords": [],
+  "author": "Roman Lenshov",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/nickovchinnikov/react-js-tutorial/issues"
-  },
-  "homepage": "https://github.com/nickovchinnikov/react-js-tutorial#readme",
   "devDependencies": {
-    "@babel/core": "^7.9.0",
-    "@babel/preset-env": "^7.9.0",
-    "@babel/preset-typescript": "^7.9.0",
-    "@types/jest": "^25.1.4",
-    "@typescript-eslint/eslint-plugin": "^2.25.0",
-    "@typescript-eslint/parser": "^2.25.0",
-    "babel-jest": "^25.2.4",
-    "babel-loader": "^8.1.0",
-    "eslint": "^6.8.0",
-    "eslint-config-prettier": "^6.10.1",
-    "eslint-plugin-prettier": "^3.1.2",
-    "html-webpack-plugin": "^4.0.3",
-    "husky": "^4.2.3",
-    "jest": "^25.2.4",
-    "prettier": "^2.0.2",
-    "ts-node": "^8.8.2",
-    "typescript": "^3.8.3",
-    "webpack": "^4.42.1",
-    "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.10.3"
+    "@babel/core": "7.17.8",
+    "@babel/preset-env": "7.16.11",
+    "@babel/preset-typescript": "7.16.7",
+    "@types/jest": "27.4.1",
+    "@types/node": "17.0.23",
+    "@typescript-eslint/eslint-plugin": "2.25.0",
+    "@typescript-eslint/parser": "2.25.0",
+    "babel": "6.23.0",
+    "babel-jest": "27.5.1",
+    "babel-loader": "8.2.4",
+    "eslint": "6.8.0",
+    "eslint-config-prettier": "6.10.0",
+    "eslint-plugin-prettier": "3.1.2",
+    "html-webpack-plugin": "5.5.0",
+    "husky": "7.0.4",
+    "jest": "27.5.1",
+    "prettier": "2.0.2",
+    "ts-jest": "27.1.4",
+    "ts-node": "10.7.0",
+    "typescript": "4.6.3",
+    "webpack": "5.70.0",
+    "webpack-cli": "4.9.2"
   }
 }
