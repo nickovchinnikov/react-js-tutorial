@@ -1,0 +1,19 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { action } from "@storybook/addon-actions";
+
+import { Cell } from "./Cell";
+
+<Meta title="MDX/Cell" component={Cell} />
+
+# Cell
+
+`Cell` component filled with "x":
+
+<Canvas>
+  <Cell
+    onClick={() => {}}
+    x={1}
+    y={23}
+    key="jsx"
+  >x</Cell>
+</Canvas>

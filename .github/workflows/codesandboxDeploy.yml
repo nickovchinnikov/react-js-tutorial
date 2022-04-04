@@ -1,0 +1,18 @@
+name: Add codesandbox link
+
+on:
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  codesandbox-comment:
+    name: Add codesandbox link comment
+    runs-on: ubuntu-latest
+    steps:
+      - uses: mshick/add-pr-comment@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          message: |
+            You can check this code at CodeSandbox with the link
+            https://githubbox.com/${{ github.repository }}/tree/${{ github.head_ref }}
