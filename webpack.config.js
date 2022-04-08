@@ -1,32 +1,51 @@
-const path = require("path")
+import path from "path";
+import {
+  Configuration as WebpackConfiguration,
+  HotModuleReplacementPlugin,
+} from "webpack";
+import { Configuration as WebpackDevServerConfiguration } from "webpack-dev-server";
+import HtmlWebpackPlugin from "html-webpack-plugin";
 
-const HtmlWebpackPlugin = require("html-webpack-plugin")
+interface Configuration extends WebpackConfiguration {
+  devServer?: WebpackDevServerConfiguration;
+}
 
-module.exports = {
-  entry: "./src/index.tsx",
-  devtool: "source-map",
-  resolve: {
-    extensions: [".js", ".jsx", ".ts", ".tsx", ".json"]
-  },
+const config: Configuration = {
+  mode: "development",
   output: {
-    path: path.join(__dirname, "/dist"),
-    filename: "index.js"
+    publicPath: "/",
   },
+  entry: "./src/index.tsx",
   module: {
     rules: [
       {
-        test: /\.(js|ts)x?$/,
-        loader: "babel-loader",
-        exclude: /node_modules/
-      }
-    ]
+        test: /\.(ts|js)x?$/i,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env", "@babel/preset-typescript"],
+          },
+        },
+      },
+    ],
   },
-  devServer: {
-    historyApiFallback: true
+  resolve: {
+    extensions: [".tsx", ".ts", ".js"],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./src/index.html"
-    })
-  ]
-}
+      template: "src/index.html",
+    }),
+    new HotModuleReplacementPlugin(),
+  ],
+  devtool: "inline-source-map",
+  devServer: {
+    historyApiFallback: true,
+    port: 4000,
+    open: true,
+    hot: true,
+  },
+};
+
+export default config;
