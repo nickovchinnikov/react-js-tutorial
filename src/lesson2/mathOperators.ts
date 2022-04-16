@@ -36,7 +36,7 @@ export const getValueFunctionFactorial = (single: number): number => {
 };
 
 export const getValueFunctionFibonacci: ScalarOperationType = (
-  first: number,
+  first: number
 ): number => Math.pow(first);
 
 export const mathOperators: { [key: string]: ScalarOperationType } = {
@@ -47,7 +47,7 @@ export const mathOperators: { [key: string]: ScalarOperationType } = {
   "**": getValueFunctionSquaring,
   "^": getValueFunctionExponentiation,
   "!": getValueFunctionFactorial,
-  "fib": getValueFunctionFibonacci,
+  fib: getValueFunctionFibonacci,
 };
 
 export const mathPriorities: number[] = [1, 2];
@@ -62,4 +62,4 @@ export const mathOperatorsPriorities: { [key: string]: number } = {
   "!": FIRST,
   "+": SECOND,
   "-": SECOND,
-}
+};
