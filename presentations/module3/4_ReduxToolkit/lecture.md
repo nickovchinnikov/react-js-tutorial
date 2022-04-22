@@ -320,7 +320,7 @@ const jobsSlice = createSlice({
 
 ## payloadcreator API
 
-[payloadcreator](https://soyoung210.github.io/redux-toolkit/api/createAsyncThunk/#payloadcreator)
+[payloadcreator](https://redux-toolkit.js.org/api/createAsyncThunk#payloadcreator)
 
 <!-- v -->
 
