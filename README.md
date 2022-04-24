@@ -1,11 +1,6 @@
-# Calc readme
+Game of Life
 
- git clone https://github.com/korobprog/calculator-project.git
+Description Game of life https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life
 
-## Install
-
-npx install
-
-yarn run calc      
-
-> 1 + 1 //ENTER
+1) preparation of the board using grid 
+2) simulation
