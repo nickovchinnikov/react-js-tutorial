@@ -227,17 +227,24 @@ https://jsbin.com/xovezez/edit?html,js
 
 ### History API vs server
 
-- Детей-фронтендеров часто пугают тем, что подключать History API к серверу страшно
 - Казалось бы, правда: мы запрашиваем _app/users/123_, а сервер не знает про такой файл, и кидает 404!
 - На самом деле это пишется в 1 строку. nginx:  
+
 ```
   location / {
     try_files $uri /index.html;
   }
 ```
+
+- Вариант на node.js с использованием express:
+
+```js
+  const root = path.join(process.cwd(), 'dist');
+  app.use(express.static(root));
+  app.get('*', (_, res) => res.sendFile('index.html', { root }));
+```
 - То есть: поищи файл, не нашел — верни /index.html
   index.html уже грузит наш фронт.
-- **Просто!**
 
 <!--v-->
 
@@ -245,8 +252,6 @@ https://jsbin.com/xovezez/edit?html,js
 
 - Еще можно полностью проигнорировать URL и никогда его не трогать
 - Состояние в одном браузере можно сохранять в **localStorage**
-- Вот у фотошопа не было урлов и ничего, нормально работал
-- В “почти-приложениях” URL не нужен!
 - По техническим причинам в **iframe** тоже не стоит использовать URL
 
 <!--v-->
@@ -294,15 +299,15 @@ unlisten();
   - Подписываться на изменения URL и обновлять приложение
   - “Виртуальные” ссылки
   - Парсит пути, достает параметры
-- Будем смотреть на react-router v5
+- Будем смотреть на react-router v6
 - Философия — описание роутов в виде компонентов
 
 <!--v-->
 
 ### react-router: Router и Route
 
-```js
-import { BrowserRouter, Route } from ‘react-router-dom’;
+```jsx
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 // BrowserRouter создает объект history и прокидывает
 // его вниз
@@ -310,40 +315,41 @@ import { BrowserRouter, Route } from ‘react-router-dom’;
 const App = () => (
   <BrowserRouter>
     { /* Route просто описывает пути */ }
-    <Route exact path="/" component={Home} />
-    { /* Вместо component можно render */ }
-    <Route exact path=“/news" render={() => <News />} />
-    <Route path=“/category” component={Category} />
+    <Routes>
+      <Route index element={<Home />} />
+      <Route path="news" element={<News />} />
+      <Route path="category" element={<Category />} />
+    </Routes>
   </BrowserRouter>
 );
-// как называется паттерн в Route?)
-// зачем нужен exact?
+// как называется паттерн в Route?
 ```
 
 <!--v-->
 
 ### React-router: вложенные Route
 
-```js
+```jsx
 import {
-  BrowserRouter, Route, Switch
-} from ‘react-router-dom’;
+  BrowserRouter, Route, Routes
+} from "react-router-dom";
 
-// также обратите внимание на Switch
+// также обратите внимание на Routes
 const Category = () => (
-  <Switch>
-    <Route exact path=“/“ component={ CatList } />
-    <Route exact path=“/:catid“ component={ CatPage } />
-  </Switch>
+  <Routes>
+    <Route index element={<CatList />} />
+    <Route path=":catid" element={<CatPage />} />
+  </Routes>
 );
 
 const App = () => (
   <BrowserRouter>
-    { /* Route просто описывает пути */ }
-    <Route exact path="/" component={Home} />
-    { /* Вместо component можно render */ }
-    <Route exact path=“/news" render={() => <News />} />
-    <Route path=“/category” component={Category} />
+    <Routes>
+      <Route path="/" element={<Home />}>
+        <Route path="news" element={<News />} />
+        <Route path="category" element={<Category />} />
+      </Route>
+    </Routes>
   </BrowserRouter>
 );
 ```
@@ -352,16 +358,23 @@ const App = () => (
 
 ### react-router: Route с параметрами
 
-```js
-const CatPage = ({ match }) => (
-  <h1>Viewing category { match.params.catid }</h1>
-);
+```jsx
+import {
+  useParams, Route, Routes
+} from "react-router-dom";
+
+const CatPage = () => {
+  const { catid } = useParams();
+  return (
+    <h1>Viewing category {catid}</h1>
+  );
+}
 
 const Category = () => (
-  <Switch>
-    <Route exact path=“/“ component={ CatList } />
-    <Route exact path=“/:catid“ component={ CatPage } />
-  </Switch>
+  <Routes>
+    <Route path="/" element={<CatList />} />
+    <Route path="/:catid" element={<CatPage />} />
+  </Routes>
 );
 ```
 
@@ -369,29 +382,26 @@ const Category = () => (
 
 ### react-router: действия при входе
 
-```js
-class CatPage extends Component {
-  // используем лайфсайкл-хук
-  componentDidMount() {
-    get(`/goods/${ this.props.catid }`).then(…);
-  }
-  componentDidUpdate() {
-    // стандарто: проверка изменения & load
-  }
-  render () {
-    const { match } = this.props;
-    const { list = [] } = this.state;
-    return <div>
-      <h1>Viewing category { match.params.catid }</h1>
+```jsx
+const CatPage = () => {
+  const { catid } = useParams();
+  
+  useEffect(() => {
+    fetch(`/cats/${catid}`).then(/*...*/)
+  }, [catid]);
+
+  return (
+    <div>
+      <h1>Viewing category {catid}</h1>
     </div>
-  }
+  )
 }
 
 const Category = () => (
-  <Switch>
-    <Route exact path=“/“ component={ CatList } />
-    <Route exact path=“/:catid“ component={ CatPage } />
-  </Switch>
+  <Routes>
+    <Route path="/" element={<CatList />} />
+    <Route path="/:catid" element={<CatPage />} />
+  </Routes>
 );
 ```
 
@@ -431,24 +441,21 @@ https://reacttraining.com/react-router/web/
   </span>
 ```
   то мы теряем всю браузерную обвеску.
-- С другой стороны **`<a>`** по умолчанию
 
 <!--v-->
 
 ### react-router: <Link />
 
-```js
-import { Link } from ‘react-router-dom’;
+```jsx
+import { Link, generatePath } from "react-router-dom";
 // Хитрая ссылка
-<Link to=“/news”>Новости!</Link>
+<Link to="/news">Новости!</Link>
 
 // можно generatePath
-<Link
-  to={ generatePath(“/user/:id/", { id }) }
->{ name }</Link>
+<Link to={generatePath("/user/:id/", { id })}>{name}</Link>
 
 // или просто руками:
-<Link to={ `/user/${id}/` }>{ name }</Link>
+<Link to={`/user/${id}/`}>{name}</Link>
 
 // или объектом
 <Link
@@ -487,23 +494,18 @@ import { Link } from ‘react-router-dom’;
 
 <!--v-->
 
-### react-router: Redirect
+### react-router: Navigate
 
 ```js
-import { Redirect } from ‘react-router-dom’;
-// Рендерим Redirect - переходим по адресу
-<Redirect to=“/view-ad“ />
-
-// или прямо в списке роутов (допустим, миграция):
-<HashRouter>
-  <Redirect from=“/user-list" to="/users" />
-</HashRouter>
+import { Navigate, BrowserRouter } from "react-router-dom";
+// Рендерим Navigate - переходим по адресу
+<Navigate to="/view-ad" />
 
 // Более полезный кейс:
 const withAuth = Cmp => props => {
   return props.user 
     ? <Cmp { ...props } /> 
-    : <Redirect to=“/login” />;
+    : <Navigate to="/login" />;
 };
 ```
 
@@ -525,10 +527,6 @@ const Page = ({ location }) => {
     minPrice={ params.minPrice }
   />
 };
-
-// задание:
-// withRouter подкладывает в пропcы location и match
-// напишите withQuery, который подкладывает queryParams
 ```
 
 <!--v-->
