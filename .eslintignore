@@ -1,8 +1,4 @@
 .history
 .vscode
 node_modules
-coverage
-reports
-storybook-static
 dist
-presa

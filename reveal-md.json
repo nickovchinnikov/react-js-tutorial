@@ -1,7 +1,0 @@
-{
-  "separator": "<!--\\s*s\\s*-->",
-  "verticalSeparator": "<!--\\s*v\\s*-->",
-  "theme": "white",
-  "watch": true,
-  "css": ".reveal-md/styles.css"
-}
