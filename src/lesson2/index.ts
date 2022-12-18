@@ -1,5 +1,7 @@
 import { createInterface } from "readline";
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+// @ts-ignore
 import { runner } from "./runner";
 
 const rl = createInterface({
@@ -21,6 +23,7 @@ const question = (): Promise<null> =>
   });
 
 async function app(): Promise<null> {
+  console.log("Starting app...");
   while (true) {
     await question();
   }

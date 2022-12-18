@@ -1,39 +1,38 @@
 export type ScalarOperationType = (first: number, second: number) => number;
+export type UnaryOperationType = (number: number) => number;
 
-export const mul: ScalarOperationType = (
-  first: number,
-  second: number
-): number => first * second;
-
-export const div: ScalarOperationType = (
-  first: number,
-  second: number
-): number => first / second;
-
-export const add: ScalarOperationType = (
-  first: number,
-  second: number
-): number => first + second;
-
-export const minus: ScalarOperationType = (
-  first: number,
-  second: number
-): number => first - second;
-
-export const mathOperators: { [key: string]: ScalarOperationType } = {
-  "*": mul,
-  "/": div,
-  "+": add,
-  "-": minus,
+const binaryOperations: {
+  [key: string]: ScalarOperationType;
+} = {
+  "+": (a: number, b: number): number => a + b,
+  "-": (a: number, b: number): number => a - b,
+  "*": (a: number, b: number): number => a * b,
+  "/": (a: number, b: number): number => a / b,
+  "^": (a: number, b: number): number => Math.pow(a, b),
 };
 
-export const mathPriorities: number[] = [1, 2];
-
-const [FIRST, SECOND] = mathPriorities;
-
-export const mathOperatorsPriorities: { [key: string]: number } = {
-  "*": FIRST,
-  "/": FIRST,
-  "+": SECOND,
-  "-": SECOND,
+const unaryOperations: {
+  [key: string]: UnaryOperationType;
+} = {
+  "**": (a: number): number => binaryOperations["*"](a, a),
+  "!": (a: number): number => {
+    let f = 1;
+    for (let i = 1; i <= a; i++) {
+      f *= i;
+    }
+    return f;
+  },
 };
+
+const mathOperation = (operator: string, a: number, b?: number): number => {
+  if (b) {
+    return binaryOperations[operator](a, b);
+  } else {
+    console.log(operator);
+    console.log(a);
+    console.log(unaryOperations[operator]);
+    return unaryOperations[operator](a);
+  }
+};
+
+export default mathOperation;
