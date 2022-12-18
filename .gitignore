@@ -2,3 +2,6 @@
 .vscode
 node_modules
 dist
+.idea/
+venv/
+src/lesson2/my_version.js
