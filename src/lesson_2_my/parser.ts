@@ -1,18 +1,29 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const _ = require("lodash");
-import mathOperations from "./mathOperators";
+import mathOperation from "./mathOperators";
 
-const GROUP_PATTERN = /\([-+/*0-9.]{3,}\)/g;
-const DIGIT_PATTERN = /[0-9.]+/g;
-const OPERATOR_PATTERN = /[-+/*]/g;
-const LOW_PRIORITY_PATTERN = /[0-9.]+[+-][0-9.]+/g;
-const HIGH_PRIORITY_PATTERN = /[0-9.]+[*/][0-9.]+/g;
+const GROUP_PATTERN = /\([-+/*0-9\.]{3,}\)/g;
+const DIGIT_PATTERN = /[0-9\.]+/g;
+// const OPERATOR_PATTERN = /[-+/*]/g;
+const ZERO_PRIORITY_PATTERN = /[0-9\.]+[\^][0-9\.]+/g;
+const LOW_PRIORITY_PATTERN = /[0-9\.]+[+-][0-9\.]+/g;
+const HIGH_PRIORITY_PATTERN = /[0-9\.]+[*/][0-9\.]+/g;
+const UNARY_OPERATION = /[\d\.]+(\*{2,}|!)/g;
+
+const priorityOperation: {
+  [key: number]: RegExp;
+} = {
+  0: UNARY_OPERATION,
+  1: ZERO_PRIORITY_PATTERN,
+  2: HIGH_PRIORITY_PATTERN,
+  3: LOW_PRIORITY_PATTERN,
+};
 
 const customEval = (subStr: string): number => {
   const res: RegExpMatchArray | null = subStr.match(DIGIT_PATTERN);
   if (res) {
     const operator: string = _.trimEnd(_.trimStart(subStr, res[0]), res[1]);
-    return mathOperations[operator](Number(res[0]), Number(res[1]));
+    return mathOperation(operator, Number(res[0]), Number(res[1]));
   }
   throw new TypeError("Invalid expression");
 };
@@ -43,7 +54,11 @@ const calculateLowPriority = (subExp: string): string => {
 };
 
 const calculateSubExp = (subExp: string): string => {
-  return calculateLowPriority(calculateHighPriority(subExp));
+  //return calculateLowPriority(calculateHighPriority(subExp));
+  for (const priority in priorityOperation) {
+    subExp = calculateProcess(priorityOperation[priority], subExp);
+  }
+  return subExp;
 };
 
 const calculate = (expression: string): number => {
