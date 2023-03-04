@@ -12,6 +12,10 @@ describe("Runner simple cases", () => {
   it("2 + 32", () => {
     expect(runner("2 + 32")).toEqual(34);
   });
+
+  it("2**", () => {
+    expect(runner("2 **")).toEqual(4);
+  });
 });
 
 describe("Runner tripled/mixed cases", () => {
