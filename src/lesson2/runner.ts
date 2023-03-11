@@ -1,24 +1,40 @@
-import { parser } from "./parser";
+import { parser, ParsedLineType } from "./parser";
+import {
+  fourthPrioritiesCalc,
+  secondPrioritiesCalc,
+  thirdPrioritiesCalc,
+  bracketsProcessing,
+} from "./engine";
 
-import { firstPrioritiesCalc, secondPrioritiesCalc, thirdPrioritiesCalc } from "./engine";
-
-export const runner = (line: string): number => {
-  const stack = parser(line);
-
+export const calc = (stack: ParsedLineType | null): number => {
   if (stack === null) {
     throw new TypeError("Unexpected string");
   }
 
-  const firstPrioritiesRes = firstPrioritiesCalc(stack);
+  const bracketsProcessingRes = bracketsProcessing(stack);
 
-  if (firstPrioritiesRes.length === 1) {
-    return Number(firstPrioritiesRes[0]);
-  }
+  /* const firstPrioritiesRes = firstPrioritiesCalc(stack);
 
-  const secondPrioritiesRes = secondPrioritiesCalc(firstPrioritiesRes);
+   if (firstPrioritiesRes.length === 1) {
+     return Number(firstPrioritiesRes[0]);
+   }*/
+
+  const secondPrioritiesRes = secondPrioritiesCalc(bracketsProcessingRes);
 
   if (secondPrioritiesRes.length === 1) {
     return Number(secondPrioritiesRes[0]);
   }
-  return thirdPrioritiesCalc(firstPrioritiesRes);
+
+  const thirdPrioritiesRes = thirdPrioritiesCalc(secondPrioritiesRes);
+
+  if (thirdPrioritiesRes.length === 1) {
+    return Number(thirdPrioritiesRes[0]);
+  }
+
+  return fourthPrioritiesCalc(thirdPrioritiesRes);
+};
+export const runner = (line: string): number => {
+  const stack = parser(line);
+
+  return calc(stack);
 };

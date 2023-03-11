@@ -1,5 +1,5 @@
 export type ScalarOperationType = (first: number, second: number) => number;
-export type FunctionOperationType = (value: number) => number
+export type FunctionOperationType = (first: number, second?: number) => number;
 
 export const mul: ScalarOperationType = (
   first: number,
@@ -21,13 +21,15 @@ export const minus: ScalarOperationType = (
   second: number
 ): number => first - second;
 
-export const pow: ScalarOperationType = (
-    first: number,
-    second: number
-):number => Math.pow(first, second);
+export const pow: FunctionOperationType = (
+  first: number,
+  second?: number
+): number => Math.pow(first, Number(second));
 
-export const square: FunctionOperationType = (value: number): number => pow(value, 2);
-export const factorial: FunctionOperationType = (value: number): number => pow(value, 2);
+export const square: FunctionOperationType = (value: number): number =>
+  pow(value, 2);
+export const factorial: FunctionOperationType = (value: number): number =>
+  pow(value, 2);
 export const scalarMathOperators: { [key: string]: ScalarOperationType } = {
   "*": mul,
   "/": div,
@@ -38,16 +40,15 @@ export const scalarMathOperators: { [key: string]: ScalarOperationType } = {
 
 export const functionMathOperators: { [key: string]: FunctionOperationType } = {
   "**": square,
-  "!" : factorial
+  "!": factorial,
 };
 
 export const mathOperators: {
-  [key: string]: FunctionOperationType | ScalarOperationType
-} =
-  {
-    ...scalarMathOperators,
-    ...functionMathOperators
-  };
+  [key: string]: FunctionOperationType | ScalarOperationType;
+} = {
+  ...scalarMathOperators,
+  ...functionMathOperators,
+};
 
 export const mathPriorities: number[] = [1, 2, 3, 4];
 
@@ -59,8 +60,8 @@ export const mathOperatorsPriorities: { [key: string]: number } = {
   "+": FOURTH,
   "-": FOURTH,
   "^": THIRD,
-  "**": FIRST,
-  "!": FIRST,
-  "sin": SECOND,
-  "cos": SECOND
+  "**": SECOND,
+  "!": SECOND,
+  sin: FIRST,
+  cos: FIRST,
 };

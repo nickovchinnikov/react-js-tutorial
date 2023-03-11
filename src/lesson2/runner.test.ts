@@ -41,3 +41,21 @@ describe("Runner long cases", () => {
     expect(runner("20 - 10 * 10 / 5 - 3")).toEqual(-3);
   });
 });
+
+describe("Runner with brackets cases", () => {
+  it("(2 + 2) * 2", () => {
+    expect(runner("(2 + 2) * 2")).toEqual(8);
+  });
+});
+
+describe("Runner with brackets cases", () => {
+  it("((2 + 2)) ** * 2", () => {
+    expect(runner("(2 + 2) ** * 2")).toEqual(32);
+  });
+});
+
+describe("Runner with brackets cases", () => {
+  it("8 * 4 + 3 * (4 + 8 - (2 ^ 3 + 1))", () => {
+    expect(runner("8 * 4 + 3 * (4 + 8 - (2 ^ 3 + 1))")).toEqual(41);
+  });
+});
