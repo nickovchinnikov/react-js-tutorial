@@ -35,7 +35,7 @@ export const parser = (line: string): ParsedLineType | null => {
     let countOpenBrackets = 0;
     let countCloseBrackets = 0;
 
-    if (item.includes("(") || item.includes(")")) {
+    if (item.length > 1 && (item.includes("(") || item.includes(")"))) {
       let numberInsideBrackets = false;
       const itemLength = item.length;
       const oldItem = item;
@@ -96,6 +96,8 @@ export const parser = (line: string): ParsedLineType | null => {
     const isValidOperatorPush =
       isValidScalarOperatorPush || isValidFunctionalOperatorPush;
 
+    const isValidBrackets = item.length === 1 && (item === '(' || item === ')')
+
     if (isValidNumberPush) {
       result.push(Number(item));
       if (itemHasCloseBrackets) {
@@ -104,6 +106,8 @@ export const parser = (line: string): ParsedLineType | null => {
         }
       }
     } else if (isValidOperatorPush) {
+      result.push(item);
+    } else if (isValidBrackets) {
       result.push(item);
     } else {
       throw new TypeError("Unexpected string");
