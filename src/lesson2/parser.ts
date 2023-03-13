@@ -96,7 +96,7 @@ export const parser = (line: string): ParsedLineType | null => {
     const isValidOperatorPush =
       isValidScalarOperatorPush || isValidFunctionalOperatorPush;
 
-    const isValidBrackets = item.length === 1 && (item === '(' || item === ')')
+    const isValidBrackets = item.length === 1 && (item === "(" || item === ")");
 
     if (isValidNumberPush) {
       result.push(Number(item));
