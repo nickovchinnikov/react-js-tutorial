@@ -53,7 +53,7 @@ describe("Parser correct cases", () => {
       "+",
       2,
       ")",
-      ")"
+      ")",
     ]);
   });
   it("5 + (3)", () => {
@@ -82,7 +82,7 @@ describe("Parser correct cases", () => {
       2,
       ")",
       "/",
-      2
+      2,
     ]);
   });
 

@@ -8,7 +8,6 @@ import {
 } from "./engine";
 
 export const calc = (stack: ParsedLineType): number => {
-
   const bracketsProcessingRes = bracketsProcessing(stack);
 
   const firstPrioritiesRes = firstPrioritiesCalc(bracketsProcessingRes);

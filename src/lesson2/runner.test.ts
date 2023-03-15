@@ -66,11 +66,10 @@ describe("Runner with sin cases", () => {
   });
 });
 
-
 describe("Runner with null cases", () => {
   it("null", () => {
     expect(() => {
-      runner("")
+      runner("");
     }).toThrow("Unexpected string");
   });
 });

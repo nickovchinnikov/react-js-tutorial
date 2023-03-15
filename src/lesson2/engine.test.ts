@@ -3,7 +3,7 @@ import {
   firstPrioritiesCalc,
   secondPrioritiesCalc,
   thirdPrioritiesCalc,
-  fourthPrioritiesCalc
+  fourthPrioritiesCalc,
 } from "./engine";
 
 describe("brackets processing simple cases", () => {
@@ -24,7 +24,7 @@ describe("brackets processing simple cases", () => {
   it("sin ( 45 + 1 )", () => {
     expect(bracketsProcessing(["sin", "(", 45, "+", 1, ")"])).toEqual([
       "sin",
-      46
+      46,
     ]);
   });
 });
@@ -45,7 +45,7 @@ describe("brackets processing simple cases", () => {
         "+",
         4,
         ")",
-        ")"
+        ")",
       ])
     ).toEqual([1, "+", 17]);
   });
@@ -74,7 +74,7 @@ describe("secondPrioritiesCalc simple cases", () => {
       "/",
       1,
       "-",
-      9
+      9,
     ]);
   });
   it("3, **", () => {
@@ -83,7 +83,7 @@ describe("secondPrioritiesCalc simple cases", () => {
       "+",
       4,
       "^",
-      3
+      3,
     ]);
   });
 });
@@ -101,7 +101,7 @@ describe("thirdPrioritiesCalc simple cases", () => {
     expect(thirdPrioritiesCalc([2, "*", 4, "/", 1, "-", 2])).toEqual([
       8,
       "-",
-      2
+      2,
     ]);
   });
 });
