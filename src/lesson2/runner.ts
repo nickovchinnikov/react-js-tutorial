@@ -33,7 +33,5 @@ export const calc = (stack: ParsedLineType): number => {
 export const runner = (line: string): number => {
   const stack = parser(line);
 
-  console.log(stack);
-
   return calc(stack);
 };
