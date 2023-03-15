@@ -30,6 +30,12 @@ export const square: FunctionOperationType = (value: number): number =>
   pow(value, 2);
 export const factorial: FunctionOperationType = (value: number): number =>
   pow(value, 2);
+export const sin: FunctionOperationType = (value: number): number =>
+  Number(Math.sin(value).toFixed(2));
+export const cos: FunctionOperationType = (value: number): number =>
+  Number(Math.cos(value).toFixed(2));
+export const tan: FunctionOperationType = (value: number): number =>
+  Number(Math.tan(value).toFixed(2));
 export const scalarMathOperators: { [key: string]: ScalarOperationType } = {
   "*": mul,
   "/": div,
@@ -43,11 +49,20 @@ export const functionMathOperators: { [key: string]: FunctionOperationType } = {
   "!": factorial,
 };
 
+export const trigonometryMathOperators: {
+  [key: string]: FunctionOperationType;
+} = {
+  sin: sin,
+  cos: cos,
+  tan: tan,
+};
+
 export const mathOperators: {
   [key: string]: FunctionOperationType | ScalarOperationType;
 } = {
   ...scalarMathOperators,
   ...functionMathOperators,
+  ...trigonometryMathOperators,
 };
 
 export const mathPriorities: number[] = [1, 2, 3, 4];
@@ -64,4 +79,5 @@ export const mathOperatorsPriorities: { [key: string]: number } = {
   "!": SECOND,
   sin: FIRST,
   cos: FIRST,
+  tan: FIRST,
 };

@@ -1,13 +1,14 @@
 import { isNumber } from "./helpers";
 import {
   functionMathOperators,
-  mathOperators,
   scalarMathOperators,
+  trigonometryMathOperators,
+  mathOperators,
 } from "./mathOperators";
 
 export type ParsedLineType = (number | string)[];
 
-export const parser = (line: string): ParsedLineType | null => {
+export const parser = (line: string): ParsedLineType => {
   let _countOpenBrackets = 0;
   let _countCloseBrackets = 0;
   for (let i = 0; i < line.length; i++) {
@@ -23,7 +24,11 @@ export const parser = (line: string): ParsedLineType | null => {
   }
   const stack = line.split(" ");
   return stack.reduce<ParsedLineType>((result, item, key) => {
-    if (key === 0 && mathOperators.hasOwnProperty(item)) {
+    if (
+      key === 0 &&
+      mathOperators.hasOwnProperty(item) &&
+      !trigonometryMathOperators.hasOwnProperty(item)
+    ) {
       throw new TypeError("Unexpected string");
     }
 
@@ -31,6 +36,7 @@ export const parser = (line: string): ParsedLineType | null => {
       throw new TypeError("Unexpected string");
     }
     const prevItem = stack[key - 1];
+    const nextItem = stack[key + 1];
     let itemHasCloseBrackets = false;
     let countOpenBrackets = 0;
     let countCloseBrackets = 0;
@@ -61,13 +67,6 @@ export const parser = (line: string): ParsedLineType | null => {
           numberInsideBrackets = true;
         }
       }
-      if (
-        countOpenBrackets > 0 &&
-        countCloseBrackets > 0 &&
-        countOpenBrackets !== countCloseBrackets
-      ) {
-        throw new TypeError("Unexpected string");
-      }
 
       if (countOpenBrackets > 0) {
         for (let i = 0; i < countOpenBrackets; i++) {
@@ -82,19 +81,23 @@ export const parser = (line: string): ParsedLineType | null => {
 
     const isValidNumberPush = !isNumber(prevItem) && isNumber(item);
     const isValidFunctionalOperatorPush =
-      isNumber(prevItem) &&
-      !isNumber(item) &&
-      functionMathOperators.hasOwnProperty(item);
+      isNumber(prevItem) && functionMathOperators.hasOwnProperty(item);
+
+    const isValidTrigonometryOperatorPush =
+      (isNumber(nextItem) && trigonometryMathOperators.hasOwnProperty(item)) ||
+      ((String(nextItem).indexOf("(") !== -1 ||
+        String(nextItem).indexOf(")") !== -1) &&
+        trigonometryMathOperators.hasOwnProperty(item));
 
     const isValidScalarOperatorPush =
-      (isNumber(prevItem) &&
-        !isNumber(item) &&
-        scalarMathOperators.hasOwnProperty(item)) ||
+      (isNumber(prevItem) && scalarMathOperators.hasOwnProperty(item)) ||
       (functionMathOperators.hasOwnProperty(prevItem) &&
         scalarMathOperators.hasOwnProperty(item));
 
     const isValidOperatorPush =
-      isValidScalarOperatorPush || isValidFunctionalOperatorPush;
+      isValidScalarOperatorPush ||
+      isValidFunctionalOperatorPush ||
+      isValidTrigonometryOperatorPush;
 
     const isValidBrackets = item.length === 1 && (item === "(" || item === ")");
 

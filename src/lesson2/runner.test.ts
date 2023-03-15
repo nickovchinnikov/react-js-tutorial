@@ -59,3 +59,18 @@ describe("Runner with brackets cases", () => {
     expect(runner("8 * 4 + 3 * (4 + 8 - (2 ^ 3 + 1))")).toEqual(41);
   });
 });
+
+describe("Runner with sin cases", () => {
+  it("sin ( 45 )", () => {
+    expect(runner("sin ( 45 )")).toEqual(0.85);
+  });
+});
+
+
+describe("Runner with null cases", () => {
+  it("null", () => {
+    expect(() => {
+      runner("")
+    }).toThrow("Unexpected string");
+  });
+});

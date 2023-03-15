@@ -1,25 +1,23 @@
 import { parser, ParsedLineType } from "./parser";
 import {
-  fourthPrioritiesCalc,
+  firstPrioritiesCalc,
   secondPrioritiesCalc,
+  fourthPrioritiesCalc,
   thirdPrioritiesCalc,
   bracketsProcessing,
 } from "./engine";
 
-export const calc = (stack: ParsedLineType | null): number => {
-  if (stack === null) {
-    throw new TypeError("Unexpected string");
-  }
+export const calc = (stack: ParsedLineType): number => {
 
   const bracketsProcessingRes = bracketsProcessing(stack);
 
-  /* const firstPrioritiesRes = firstPrioritiesCalc(stack);
+  const firstPrioritiesRes = firstPrioritiesCalc(bracketsProcessingRes);
 
-   if (firstPrioritiesRes.length === 1) {
-     return Number(firstPrioritiesRes[0]);
-   }*/
+  if (firstPrioritiesRes.length === 1) {
+    return Number(firstPrioritiesRes[0]);
+  }
 
-  const secondPrioritiesRes = secondPrioritiesCalc(bracketsProcessingRes);
+  const secondPrioritiesRes = secondPrioritiesCalc(firstPrioritiesRes);
 
   if (secondPrioritiesRes.length === 1) {
     return Number(secondPrioritiesRes[0]);
@@ -35,6 +33,8 @@ export const calc = (stack: ParsedLineType | null): number => {
 };
 export const runner = (line: string): number => {
   const stack = parser(line);
+
+  console.log(stack);
 
   return calc(stack);
 };

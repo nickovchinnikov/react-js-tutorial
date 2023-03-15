@@ -53,7 +53,7 @@ describe("Parser correct cases", () => {
       "+",
       2,
       ")",
-      ")",
+      ")"
     ]);
   });
   it("5 + (3)", () => {
@@ -82,7 +82,7 @@ describe("Parser correct cases", () => {
       2,
       ")",
       "/",
-      2,
+      2
     ]);
   });
 
@@ -97,43 +97,35 @@ describe("Parser invalid cases", () => {
       TypeError("Unexpected string")
     );
   });
-
   it("1 ! 33 -", () => {
     expect(() => parser("1 ! 33 -")).toThrow(TypeError("Unexpected string"));
   });
-
   it("** ** **", () => {
     expect(() => parser("** ** **")).toThrow(TypeError("Unexpected string"));
   });
   it("** 2", () => {
     expect(() => parser("** 2")).toThrow(TypeError("Unexpected string"));
   });
-
-  // brackets
   it("7 + ((8 * 9) - 3", () => {
     expect(() => parser("7 + ((8 * 9) - 3")).toThrow(
       TypeError("Unexpected string")
     );
   });
-
   it("7 + (8 * 9)) - 3", () => {
     expect(() => parser("7 + (8 * 9)) - 3")).toThrow(
       TypeError("Unexpected string")
     );
   });
-
   it("7 + (8 * 9)) - 3", () => {
     expect(() => parser("7 + (8 * 9)) - 3")).toThrow(
       TypeError("Unexpected string")
     );
   });
-
   it("7 + 2 () + 1", () => {
     expect(() => parser("7 + 2 () + 1")).toThrow(
       TypeError("Unexpected string")
     );
   });
-
   it("5 + ()3)", () => {
     expect(() => parser("5 + ()3)")).toThrow(TypeError("Unexpected string"));
   });
@@ -146,14 +138,15 @@ describe("Parser invalid cases", () => {
   it("(5 + 3))", () => {
     expect(() => parser("(5 + 3))")).toThrow(TypeError("Unexpected string"));
   });
-
   it("(5.2w + 3)", () => {
     expect(() => parser("(5.2w + 3)")).toThrow(TypeError("Unexpected string"));
   });
-
   it("1 + (1+) - 33", () => {
     expect(() => parser("1 + (1 + ы) - 33")).toThrow(
       TypeError("Unexpected string")
     );
+  });
+  it("5 + (3))", () => {
+    expect(() => parser("5 + (3))")).toThrow(TypeError("Unexpected string"));
   });
 });
