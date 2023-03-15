@@ -10,7 +10,7 @@ const rl = createInterface({
 const question = (): Promise<null> =>
   new Promise((resolve) => {
     rl.question("> ", (answer: string) => {
-      const result = runner(answer);
+      const result = runner(answer.trim());
 
       if (result) {
         console.log(`Result: ${result}`);

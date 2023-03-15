@@ -12,6 +12,10 @@ describe("Runner simple cases", () => {
   it("2 + 32", () => {
     expect(runner("2 + 32")).toEqual(34);
   });
+
+  it("2**", () => {
+    expect(runner("2 **")).toEqual(4);
+  });
 });
 
 describe("Runner tripled/mixed cases", () => {
@@ -35,5 +39,37 @@ describe("Runner long cases", () => {
 
   it("20 - 10 * 10 / 5 - 3", () => {
     expect(runner("20 - 10 * 10 / 5 - 3")).toEqual(-3);
+  });
+});
+
+describe("Runner with brackets cases", () => {
+  it("(2 + 2) * 2", () => {
+    expect(runner("(2 + 2) * 2")).toEqual(8);
+  });
+});
+
+describe("Runner with brackets cases", () => {
+  it("((2 + 2)) ** * 2", () => {
+    expect(runner("(2 + 2) ** * 2")).toEqual(32);
+  });
+});
+
+describe("Runner with brackets cases", () => {
+  it("8 * 4 + 3 * (4 + 8 - (2 ^ 3 + 1))", () => {
+    expect(runner("8 * 4 + 3 * (4 + 8 - (2 ^ 3 + 1))")).toEqual(41);
+  });
+});
+
+describe("Runner with sin cases", () => {
+  it("sin ( 45 )", () => {
+    expect(runner("sin ( 45 )")).toEqual(0.85);
+  });
+});
+
+describe("Runner with null cases", () => {
+  it("null", () => {
+    expect(() => {
+      runner("");
+    }).toThrow("Unexpected string");
   });
 });
