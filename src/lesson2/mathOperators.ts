@@ -25,6 +25,7 @@ export const mathOperators: { [key: string]: ScalarOperationType } = {
   "/": div,
   "+": add,
   "-": minus,
+  "^": minus,
 };
 
 export const mathPriorities: number[] = [1, 2];
