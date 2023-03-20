@@ -1,4 +1,7 @@
 export type ScalarOperationType = (first: number, second: number) => number;
+export type UnionOperationType = (first: number) => number;
+
+export type MathOperationType = UnionOperationType | ScalarOperationType;
 
 export const mul: ScalarOperationType = (
   first: number,
@@ -25,7 +28,18 @@ export const pow: ScalarOperationType = (
   second: number
 ): number => Math.pow(first, second);
 
-export const mathOperators: { [key: string]: ScalarOperationType } = {
+export const factorial: UnionOperationType = (first: number): number => {
+  return first ? first * factorial(first - 1) : 1;
+};
+
+export const sqr: UnionOperationType = (first: number): number => pow(first, 2);
+
+export const unionOperators: { [key: string]: MathOperationType } = {
+  "!": factorial,
+  "**": sqr,
+};
+
+export const mathOperators: { [key: string]: MathOperationType } = {
   "*": mul,
   "/": div,
   "+": add,
@@ -33,11 +47,13 @@ export const mathOperators: { [key: string]: ScalarOperationType } = {
   "^": pow,
 };
 
-export const mathPriorities: number[] = [1, 2];
+export const mathPriorities: number[] = [0, 1, 2];
 
-const [FIRST, SECOND] = mathPriorities;
+const [ZERO, FIRST, SECOND] = mathPriorities;
 
 export const mathOperatorsPriorities: { [key: string]: number } = {
+  "!": ZERO,
+  "**": ZERO,
   "*": FIRST,
   "^": FIRST,
   "/": FIRST,
