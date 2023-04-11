@@ -11,7 +11,10 @@ const orderStates = [
 
 type OrderState = typeof orderStates[number];
 // Hint: type guards
-export const getUserOrderStates = (orderStates: readonly OrderState[]): FIXME[] =>
+export const getUserOrderStates = (
+  orderStates: readonly OrderState[]
+): FIXME[] =>
   orderStates.filter(
-    (state): state is FIXME => state !== "buyingSupplies" && state !== "producing"
+    (state): state is FIXME =>
+      state !== "buyingSupplies" && state !== "producing"
   );

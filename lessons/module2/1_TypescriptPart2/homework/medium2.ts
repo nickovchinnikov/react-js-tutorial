@@ -5,7 +5,7 @@
 import React from "react";
 type FIXME<T> = T extends infer I ? I : never;
 // Hint: infer
-export const getDefaultProps = <T,>(
+export const getDefaultProps = <T>(
   component: React.ComponentType<T>
 ): FIXME<T> => {
   return component.defaultProps;

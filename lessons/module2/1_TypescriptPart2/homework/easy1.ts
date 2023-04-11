@@ -3,7 +3,7 @@
 // Нужно заменить FIXME на тип который вычисляется на освове OrderState
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-type UserOrderStates = Exclude<OrderState[], "buyingSupplies" | "producing">
+type UserOrderStates = Exclude<OrderState[], "buyingSupplies" | "producing">;
 
 const orderStates = [
   "initial",
@@ -15,7 +15,9 @@ const orderStates = [
 
 type OrderState = typeof orderStates[number];
 
-export const getUserOrderStates = (orderStates: OrderState[]): UserOrderStates => {
+export const getUserOrderStates = (
+  orderStates: OrderState[]
+): UserOrderStates => {
   const filteredStates = [] as UserOrderStates;
   orderStates.forEach((element) => {
     if (element !== "buyingSupplies" && element !== "producing") {

@@ -3,7 +3,7 @@
 // Нужно заменить FIXME на тип который достанет из Order все возможные состояния (state)
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-type OrderState = {[P in keyof Order]: Order[P]}["state"];
+type OrderState = { [P in keyof Order]: Order[P] }["state"];
 
 type Order =
   | {
