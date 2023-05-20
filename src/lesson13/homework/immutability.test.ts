@@ -1,8 +1,12 @@
 test("dummy test", () => undefined);
 
-/*
-
-import { OriginalTeam, ExpectedTeam, originalTeamToExpectedTeam, originalArrayToExpectedArray, originalTeamToExpectedTeam2 } from "./immutability";
+import {
+  OriginalTeam,
+  ExpectedTeam,
+  originalTeamToExpectedTeam,
+  originalArrayToExpectedArray,
+  originalTeamToExpectedTeam2,
+} from "./immutability";
 
 // Задание 1
 test("team to team", () => {
@@ -27,7 +31,7 @@ test("array to array", () => {
 
   const expectedArray = ["two", 3, 4, 5];
 
-  expect(originalArrayToExpectedArray(originalArray)).toBe(expectedArray);
+    expect(originalArrayToExpectedArray(originalArray)).toBe(expectedArray);
 });
 
 // Задание 3
@@ -50,5 +54,3 @@ test("team to team deep", () => {
 
   expect(originalTeamToExpectedTeam2(originalTeam)).toBe(expectedTeam);
 });
-
-*/
