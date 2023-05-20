@@ -31,7 +31,9 @@ test("array to array", () => {
 
   const expectedArray = ["two", 3, 4, 5];
 
-  expect(originalArrayToExpectedArray(originalArray)).toStrictEqual(expectedArray);
+  expect(originalArrayToExpectedArray(originalArray)).toStrictEqual(
+    expectedArray
+  );
 });
 
 // Задание 3
