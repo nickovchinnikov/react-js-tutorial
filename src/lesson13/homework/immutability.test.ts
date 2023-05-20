@@ -22,7 +22,7 @@ test("team to team", () => {
     roster: 25,
   };
 
-  expect(originalTeamToExpectedTeam(originalTeam)).toBe(expectedTeam);
+  expect(originalTeamToExpectedTeam(originalTeam)).toStrictEqual(expectedTeam);
 });
 
 // Задание 2
@@ -31,7 +31,7 @@ test("array to array", () => {
 
   const expectedArray = ["two", 3, 4, 5];
 
-    expect(originalArrayToExpectedArray(originalArray)).toBe(expectedArray);
+  expect(originalArrayToExpectedArray(originalArray)).toStrictEqual(expectedArray);
 });
 
 // Задание 3
@@ -52,5 +52,5 @@ test("team to team deep", () => {
     },
   };
 
-  expect(originalTeamToExpectedTeam2(originalTeam)).toBe(expectedTeam);
+  expect(originalTeamToExpectedTeam2(originalTeam)).toStrictEqual(expectedTeam);
 });

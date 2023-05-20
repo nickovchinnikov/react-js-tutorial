@@ -14,9 +14,21 @@ export type ExpectedTeam = {
 export const originalTeamToExpectedTeam = (
   originalTeam: OriginalTeam
   // eslint-disable-next-line
-  // @ts-ignore
+    // @ts-ignore
 ): ExpectedTeam => {
-  //
+  const result: ExpectedTeam = {
+    name: "New York Badgers",
+    roster: 25,
+    league: "",
+  };
+
+  for (const key of Object.keys(originalTeam)) {
+    if (key === "league") {
+      result.league = originalTeam.league;
+    }
+  }
+
+  return result;
 };
 
 // // Задание 2
@@ -25,9 +37,17 @@ type SomeArray = Array<number | string>;
 export const originalArrayToExpectedArray = (
   originalArray: SomeArray
   // eslint-disable-next-line
-  // @ts-ignore
+    // @ts-ignore
 ): SomeArray => {
-  //
+  const newLastItem: number | string = originalArray[originalArray.length - 1];
+
+  const result: SomeArray = originalArray.slice(-2);
+
+  // @ts-ignore
+  result.push(newLastItem + 1);
+  result.unshift("two");
+
+  return result;
 };
 
 // // Задание 3
@@ -43,7 +63,11 @@ export type Team = {
 export const originalTeamToExpectedTeam2 = (
   originalTeam: Team
   // eslint-disable-next-line
-  // @ts-ignore
+    // @ts-ignore
 ): Team => {
-  //
+  const result: Team = Object.assign({}, originalTeam, {});
+
+  result.captain.age = 28;
+
+  return result;
 };
