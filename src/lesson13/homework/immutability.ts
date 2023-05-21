@@ -43,6 +43,7 @@ export const originalArrayToExpectedArray = (
 
   const result: SomeArray = originalArray.slice(-2);
 
+  // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
   // @ts-ignore
   result.push(newLastItem + 1);
   result.unshift("two");

@@ -1,6 +1,5 @@
 import {
   compose,
-  curry,
   map,
   reduce,
   join,
@@ -21,11 +20,6 @@ const getTeamByMaxScore = (maxTeam: Team, item: Team): Team => {
   }
 };
 
-const trace = curry((tag, x) => {
-  console.log(tag, x);
-  return x;
-});
-
 const getTeamName = (item: Team): string => item.name;
 
 // eslint-disable-next-line
@@ -39,11 +33,14 @@ export const getTopName = compose(
 export type QsObj = Record<string, string | number | boolean | object>;
 
 // eslint-disable-next-line
+// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
 // @ts-ignore
 export const createQs = compose(
   concat("?"),
   join("&"),
   map(join("=")),
+  // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+  // @ts-ignore
   toPairs
 );
 
@@ -54,6 +51,7 @@ export const createQs = compose(
 const show = (x) => x;
 
 const reduceIterator = (acc: object, elem: Array<string>) => {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
   // @ts-ignore
   acc[elem[0]] = elem[1];
   return acc;
