@@ -51,9 +51,9 @@ export const createQs = compose(
 // @ts-ignore
 // Задание 3
 
-const show = x => x;
+const show = (x) => x;
 
-const reduceIterator = (acc: object, elem: object) => {
+const reduceIterator = (acc: object, elem: Array<string>) => {
   // @ts-ignore
   acc[elem[0]] = elem[1];
   return acc;
