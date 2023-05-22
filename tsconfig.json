@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "baseUrl": "./",
+    "outDir": "build",
     "paths": {
       "types/*": ["src/types/*"],
       "components/*": ["src/components/*"],

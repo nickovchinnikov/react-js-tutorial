@@ -1,4 +1,4 @@
-import React, { FormEvent } from "react";
+import React, { FormEvent, Component } from "react";
 import { GameSettingsFormProps } from "./interfaces";
 import { SYMBOL_OPTIONS } from "./constants";
 import { InputColor, InputText } from "./components";
@@ -13,7 +13,7 @@ interface GameSettingsFormStateState {
   player2Symbol: string;
 }
 
-export class GameSettingsFormState extends React.Component<
+export class GameSettingsFormState extends Component<
   GameSettingsFormProps,
   GameSettingsFormStateState
 > {
@@ -42,16 +42,13 @@ export class GameSettingsFormState extends React.Component<
     });
   };
 
-  componentDidUpdate() {
-    console.log("@@GameSettingsFormState.componentDidUpdate");
-  }
-
   handleFormInputChange = (ev: FormEvent<HTMLInputElement>) => {
     this.setState({
       [(ev.target as HTMLInputElement).getAttribute(
         "name"
       ) as keyof GameSettingsFormStateState]: (ev.target as HTMLInputElement)
         .value,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } as any);
   };
 

@@ -11,6 +11,7 @@ export const LoginScreen: React.FC<{}> = () => {
       await login(name);
       history.push(`/user/${name}`);
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [name]
   );
   return (

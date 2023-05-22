@@ -7,6 +7,7 @@ jest.mock("./Analytics.ts", () => ({
 }));
 
 describe("test useAppState hook", () => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let listeners: any[] = [];
 
   window.addEventListener = jest.fn((name, handler) => {

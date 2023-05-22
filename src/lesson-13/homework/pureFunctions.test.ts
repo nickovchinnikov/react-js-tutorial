@@ -8,7 +8,7 @@ test("getTopName", () => {
     { name: "Monkeys", score: 2 },
   ];
 
-  expect(getTopName(teams)).toBe("Bears");
+  expect(getTopName(teams)).toEqual("Bears");
 });
 
 test("createQs", () => {
@@ -19,7 +19,7 @@ test("createQs", () => {
     somethingElse: "value",
   };
 
-  expect(createQs(qsObj)).toBe(
+  expect(createQs(qsObj)).toEqual(
     "?page=2&pageSize=10&total=205&somethingElse=value"
   );
 });
@@ -27,7 +27,7 @@ test("createQs", () => {
 test("parseQs", () => {
   const qs = "?page=2&pageSize=10&total=205&somethingElse=value";
 
-  expect(parseQs(qs)).toBe({
+  expect(parseQs(qs)).toEqual({
     page: "2",
     pageSize: "10",
     total: "205",
