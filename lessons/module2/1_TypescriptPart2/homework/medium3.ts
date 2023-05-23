@@ -1,5 +1,7 @@
+type FilteredStates = Array<string>[number];
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-type FIXME = any;
+type FIXME = Array<FilteredStates>;
 
 const orderStates = [
   "initial",

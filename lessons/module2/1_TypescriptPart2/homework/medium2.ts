@@ -3,7 +3,7 @@
 // Нужно заменить FIXME на правильный тип
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-type FIXME = any;
+type FIXME = React.ComponentType<Props>;
 
 // Hint: infer
 export const getDefaultProps = <T>(
