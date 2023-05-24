@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "lib": ["es2020"],
     "baseUrl": "./",
     "paths": {
       "types/*": ["src/types/*"],
