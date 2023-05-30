@@ -6,15 +6,8 @@ export const getTopName = (
   // eslint-disable-next-line
   // @ts-ignore
 ): string => {
-  const maxTeam: Team = teams.reduce(
-    (maxTeam: Team, item: Team) => {
-      if (item.score > maxTeam.score) {
-        return item;
-      } else {
-        return maxTeam;
-      }
-    },
-    { name: "", score: 0 }
+  const maxTeam: Team = teams.reduce((maxTeam: Team, item: Team) =>
+    item.score > maxTeam.score ? item : maxTeam
   );
 
   return maxTeam.name;
