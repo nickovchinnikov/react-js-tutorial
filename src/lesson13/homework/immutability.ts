@@ -60,7 +60,7 @@ export const originalTeamToExpectedTeam2 = (
   // eslint-disable-next-line
     // @ts-ignore
 ): Team => {
-  const result: Team = Object.assign({}, originalTeam, {});
+  const result: Team = JSON.parse(JSON.stringify(originalTeam));
 
   result.captain.age = 28;
 
