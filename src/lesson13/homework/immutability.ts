@@ -19,14 +19,8 @@ export const originalTeamToExpectedTeam = (
   const result: ExpectedTeam = {
     name: "New York Badgers",
     roster: 25,
-    league: "",
+    league: originalTeam.league,
   };
-
-  for (const key of Object.keys(originalTeam)) {
-    if (key === "league") {
-      result.league = originalTeam.league;
-    }
-  }
 
   return result;
 };
