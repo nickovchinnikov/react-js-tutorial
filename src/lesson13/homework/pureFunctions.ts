@@ -39,8 +39,7 @@ export const parseQs = (
 ): QsObj => {
   qs = qs.replace("?", "");
 
-  const parser = (str: string, delimeter: string) =>
-    String(str).split(delimeter);
+  const parser = (str: string, delimeter: string) => str.split(delimeter);
 
   const result = parser(qs, "&").reduce((result: {}, item) => {
     const value = parser(item, "=");
