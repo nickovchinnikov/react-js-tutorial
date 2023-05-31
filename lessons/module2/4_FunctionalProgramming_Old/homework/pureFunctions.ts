@@ -2,7 +2,13 @@
 export type Team = { name: string; score: number };
 
 export const getTopName = (teams: Team[]): string =>
-  [...teams].sort((team1, team2) => team2.score - team1.score)[0].name;
+  teams.reduce((a, b) => {
+    if (a.score > b.score) {
+      return a;
+    } else {
+      return b;
+    }
+  }).name;
 
 // Задание 2
 export type QsObjValue =
@@ -20,11 +26,9 @@ export const createQs = (qsObj: QsObj): string => {
     } else return value.toString();
   };
 
-  const queryArray: string[] = [];
-  Object.keys(qsObj).map((e) =>
-    queryArray.push(`${e}=${formatValue(qsObj[e])}`)
-  );
-  return `?${queryArray.join("&")}`;
+  return `?${Object.keys(qsObj)
+    .map((e) => `${e}=${formatValue(qsObj[e])}`)
+    .join("&")}`;
 };
 
 // Задание 3
