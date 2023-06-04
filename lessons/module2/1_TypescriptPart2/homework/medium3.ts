@@ -1,5 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-type FIXME = any;
+type FIXME = Array<
+  Exclude<OrderState, { state: "initial" | "inWork" | "fullfilled" }>
+>;
 
 const orderStates = [
   "initial",
