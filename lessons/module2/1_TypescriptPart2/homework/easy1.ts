@@ -4,9 +4,7 @@
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 
-type FilteredStates = "initial" | "inWork" | "fullfilled";
-
-type FIXME = Array<FilteredStates>;
+type FIXME = Array<Exclude<OrderState, "buyingSupplies" | "producing">>;
 
 const orderStates = [
   "initial",
