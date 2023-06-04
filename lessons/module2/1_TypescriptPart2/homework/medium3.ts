@@ -1,7 +1,7 @@
-type FilteredStates = Array<string>[number];
-
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-type FIXME = Array<FilteredStates>;
+type FIXME = Array<
+  Exclude<OrderState, { state: "initial" | "inWork" | "fullfilled" }>
+>;
 
 const orderStates = [
   "initial",
